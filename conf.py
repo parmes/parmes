@@ -30,6 +30,6 @@ html_sidebars = {
 html_theme_options = {
     'description': "Parallel mechanics and particulate media software blog",
     'github_user': 'parmes',
-    'github_repo': 'parmes.github.io',
+    'github_repo': 'parmes',
     'fixed_sidebar': True,
 }
