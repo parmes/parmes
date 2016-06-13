@@ -4,7 +4,7 @@ Solfec XDMF export
 ==================
 
 XDMF export allows Solfec results to be saved in `XDMF format <http://www.xdmf.org>`_ and viewed in `Paraview <http://www.paraview.org>`_
-and other post--processors. A quick example of an export is provided below:
+and other post--processors. A quick example of Python syntax is provided below:
 
 ::
 

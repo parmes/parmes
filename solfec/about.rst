@@ -20,11 +20,13 @@ More details can be found in:
 .. toctree::
    :maxdepth: 1
 
-   installation
-   user
-   theory
-   xdmf
-   examples
+   Installation <installation>
+   User Manual <user>
+   Theory Manual <theory>
+   Algorithms Manual <algorithms>
+   ABAQUS import <abaqus>
+   XDMF export <xdmf>
+   Examples <examples>
 
 References:
 

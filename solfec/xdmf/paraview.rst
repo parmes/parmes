@@ -1,7 +1,7 @@
 .. _solfec-xdmf-paraview:
 
-Using Paraview with exported files
-==================================
+Paraview session example
+========================
 
 Paraview ...
 
