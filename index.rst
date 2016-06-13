@@ -2,9 +2,14 @@
 Parallel mechanics and particulate media software blog
 ======================================================
 
-Most recently updated pages:
+Recently modified pages:
 
 .. include:: recent.rst
+
+Recent blog posts:
+
+.. postlist:: 5
+   :excerpts:
 
 .. toctree::
     :hidden:

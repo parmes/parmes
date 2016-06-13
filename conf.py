@@ -1,8 +1,10 @@
 from datetime import datetime
 
+extensions = ['ablog', 'sphinx.ext.mathjax']
+import ablog
+blog_path = 'blog'
 
-extensions = []
-templates_path = ['_templates']
+templates_path = ['_templates', ablog.get_html_templates_path()]
 source_suffix = '.rst'
 master_doc = 'index'
 
@@ -24,6 +26,10 @@ html_sidebars = {
         'navigation.html',
         'relations.html',
         'searchbox.html',
+        'recentposts.html',
+	'tagcloud.html',
+        'categories.html',
+        'archives.html',
         'donate.html',
     ]
 }
