@@ -16,7 +16,7 @@ exclude_patterns = ['_build']
 
 latex_documents = [
 ('solfec/user', 'solfec_user.tex', u'Solfec User Manual', u'Solfec team', 'manual'),
-('solfec/theory', 'solfec_theory.tex', u'Solfec Theory Manual', u'Solfec team', 'manual'),
+('solfec/xdmf', 'solfec_xdmf.tex', u'Solfec XMDF export', u'Solfec team', 'manual'),
 ]
 
 html_theme = 'alabaster'
@@ -37,5 +37,5 @@ html_theme_options = {
     'description': "Parallel mechanics and particulate media software blog",
     'github_user': 'parmes',
     'github_repo': 'parmes',
-    'fixed_sidebar': True,
+    'fixed_sidebar': False,
 }

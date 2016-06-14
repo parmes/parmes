@@ -1,6 +1,6 @@
-======================================================
-Parallel mechanics and particulate media software blog
-======================================================
+============================================================================
+Parallel mechanics and particulate media software :ref:`blog <about-parmes>`
+============================================================================
 
 Recently modified pages:
 

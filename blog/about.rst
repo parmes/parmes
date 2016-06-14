@@ -2,6 +2,8 @@
    :tags: parmes
    :author: TK
 
+.. _about-parmes:
+
 About PARMES
 ============
 
