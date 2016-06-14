@@ -7,7 +7,8 @@ Solfec Python syntx for XDMF export reads:
 
 .. topic:: XDMF_EXPORT (solfec, time, path | subset, attributes)
 	
- Export results in XDMF format. Ignored in 'WRITE' mode.
+ Export results in XDMF format. In 'WRITE' mode only the geometry at time :math:`t=0` is saved,
+ while arguments *time* and *attributes* are ignored.
 
  * solfec -- SOLFEC object;
 
