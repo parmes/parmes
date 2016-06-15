@@ -40,7 +40,12 @@ This is just a matter of convenience, allowing us to run Solfec without the --w 
   ./solfec inp/devel/xdmf-export.py
 
 to perform calculations, by invoking line 23. Calculations finish after several seconds
-and results are saved into the out/domino directory. Here are few screenshots from the Solfec viewer:
+and results are saved into the out/domino directory. :numref:`domino-0-3` includes several
+screenshots captured using a viewer session:
+
+::
+  
+  ./solfec inp/devel/xdmf-export.py -v
 
 .. |dom0| image:: figures/xdmf-domino-0.png    
    :width: 90%
@@ -55,9 +60,13 @@ and results are saved into the out/domino directory. Here are few screenshots fr
    :width: 90%
    :align: middle
 
-+--------+--------+--------+--------+
-| |dom0| | |dom1| | |dom2| | |dom3| |
-+--------+--------+--------+--------+
+.. _domino-0-3:
+
+.. table:: Domino animation at times :math:`t\in\{0.0, 0.25, 0.5, 0.75\}`.
+
+  +--------+--------+--------+--------+
+  | |dom0| | |dom1| | |dom2| | |dom3| |
+  +--------+--------+--------+--------+
 
 We then need to run Solfec one last time:
 
