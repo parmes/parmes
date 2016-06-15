@@ -1,6 +1,7 @@
 from datetime import datetime
 
 extensions = ['ablog', 'sphinx.ext.mathjax']
+numfig = True
 import ablog
 blog_path = 'blog'
 

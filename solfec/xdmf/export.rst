@@ -3,7 +3,7 @@
 XDMF_EXPORT command
 ===================
 
-Solfec Python syntx for XDMF export reads:
+Python syntax for XDMF export reads:
 
 .. topic:: XDMF_EXPORT (solfec, time, path | subset, attributes)
 	
@@ -39,10 +39,12 @@ Currently implemented features:
 
 * Export of constraints into a <path>_constraints.xmf file.
 
-* Expot of SPHERE based bodies into a <path>_spheres.xmf file.
+* Expot of SPHERE shape based bodies into a <path>_spheres.xmf file.
 
 Currently missing features:
 
 * Export of ELLIP shape based bodies.
+
+In the :ref:`following section <solfec-xdmf-example>` we give an example of an application of the above command.
 
 .. [1] `POSIX regular expressions <http://www.boost.org/doc/libs/1_61_0/libs/regex/doc/html/boost_regex/syntax/basic_syntax.html>`_

@@ -20,11 +20,11 @@ Assuming we are inside of Solfec source directory, this example can be executed 
   ./solfec inp/devel/xdmf-export.py --geom0
 
 to first demonstrate the export of initial geometry in 'WRITE' mode. In this case no calculations
-were done and only one, initial state was saved in out/xmftest0 directory. The saved files are:
+were done and only one, initial state was saved in *out/xmftest0* directory. The saved files are:
 
-- out/xmftest0/xmftest0_grids.xmf -- storing grids markup
-- out/xmftest0/xmftest0_spheres.xmf -- storing spheres markup
-- out/xmftest0/xmftest0.h5 -- storing all remaining data
+- *out/xmftest0/xmftest0_grids.xmf* -- storing grids markup
+- *out/xmftest0/xmftest0_spheres.xmf* -- storing spheres markup
+- *out/xmftest0/xmftest0.h5* -- storing all remaining data
 
 We note that:
 
@@ -75,16 +75,16 @@ The first export instance in line 28:
 
   XDMF_EXPORT (solfec, 0.5, 'out/xmftest1')
 
-outputs the simulation state at time :math:`t = 0.5` into the out/xmftest1 directory. The second export instance in line 30:
+outputs the simulation state at time :math:`t = 0.5` into the *out/xmftest1* directory. The second export instance in line 30:
 
 ::
 
   XDMF_EXPORT (solfec, (0.0, 1.0), 'out/xmftest2')
 
-outputs the entire 1000 steps of the simulation into the out/xmftest2 directory. We note that in both cases an extra file
+outputs the entire 1000 steps of the simulation into the *out/xmftest2* directory. We note that in both cases an extra file
 has been created in the output directories, e.g.:
 
-- out/xmftest2/xmftest2_constraints.xmf -- storing constraints markup
+- *out/xmftest2/xmftest2_constraints.xmf* -- storing constraints markup
 
 Exporting all time steps of a simulation may not always be desirable. Sometimes we might like to store more results within the large
 hard drives of a HPC facility and only export subsets for local post--processing. In line 32 we define a list of 101 time instants:
