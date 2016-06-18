@@ -1,13 +1,10 @@
 import subprocess
-import time
-import re
-import os
 
 nrecent = 10
 
 print 'Generating up to %d recently updated pages list...' % nrecent
 
-# Brose git log history and find recent commits
+# Browse git logs and find recent pages commits
 p = subprocess.Popen(['git', 'log',  '--name-status', '-%d' % nrecent], stdout=subprocess.PIPE, stderr=subprocess.STDOUT);
 output = p.communicate()[0]
 date = ['','','']
@@ -40,6 +37,10 @@ with open ('./recent.rst', 'w') as f:
 
 # Previous version, below, was based on filesystem dates
 '''
+import time
+import re
+import os
+
 matches = []
 exclude = ['./__*', './.git*', './blog*']
 pattern = [re.compile(item) for item in exclude]
