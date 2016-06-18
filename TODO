@@ -1,2 +1,1 @@
-Add ablog folder;
-Use "git log --name-status -10 ." type query in recent.py;
+Use ablog in Makefile to automaticly deploy to parmes.gihub.io;
