@@ -25,7 +25,7 @@ where results from the time interval :math:`[0.0, 1.0]` are exported into the '/
 
 .. only:: html
 
-  The following sections provide additional details about this functionality:
+  The following sections provide additional details about the XDMF export functionality:
 
 .. toctree::
 

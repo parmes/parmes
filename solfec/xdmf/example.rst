@@ -32,7 +32,7 @@ We note that:
   
   solfec.cleanup = 'ON'
 
-in line 22 allows Solfec to delete the output directory out/domino in case no results were saved.
+in line 22 allows Solfec to delete the output directory *out/domino* in case no results were saved.
 This is just a matter of convenience, allowing us to run Solfec without the --w switch:
 
 ::
@@ -40,7 +40,7 @@ This is just a matter of convenience, allowing us to run Solfec without the --w 
   ./solfec inp/devel/xdmf-export.py
 
 to perform calculations, by invoking line 23. Calculations finish after several seconds
-and results are saved into the out/domino directory. :numref:`domino-0-3` includes several
+and results are saved into the *out/domino* directory. :numref:`domino-0-3` includes several
 screenshots captured using a viewer session:
 
 ::
@@ -75,7 +75,7 @@ We then need to run Solfec one last time:
   ./solfec inp/devel/xdmf-export.py
 
 
-in order to execute lines 25--40 and output the out/xdmftest[1--5] directories. Recall, that when results
+in order to execute lines 25--40 and output the *out/xdmftest[1--5]* directories. Recall, that when results
 are present Solfec runs in the 'READ' mode, facilitating access to post--processing routines.
 
 The first export instance in line 28:
