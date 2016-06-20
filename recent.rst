@@ -1,4 +1,8 @@
 
+* On Jun 18 2016 :ref:`dynlb-about`
+
+* On Jun 18 2016 :ref:`parmec-about`
+
 * On Jun 18 2016 :ref:`solfec-about`
 
 * On Jun 18 2016 :ref:`solfec-xdmf`
@@ -12,9 +16,3 @@
 * On Jun 13 2016 :ref:`solfec-abaqus`
 
 * On Jun 13 2016 :ref:`solfec-algorithms`
-
-* On Jun 13 2016 :ref:`dynlb-about`
-
-* On Jun 13 2016 :ref:`parmec-about`
-
-* On Jun 13 2016 :ref:`solfec-examples`
