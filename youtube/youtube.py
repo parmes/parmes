@@ -12,6 +12,12 @@ except ImportError:
 from docutils import nodes
 from docutils.parsers import rst
 
+def nonnegative_int(argument):
+  """
+  Check for a non-negative int argument; raise ``ValueError`` if not.
+  (Directive option conversion function.)
+  """
+  return int(argument)
 
 
 class youtube(nodes.General, nodes.Element):
@@ -34,8 +40,11 @@ def get_video_id(url):
 def visit(self, node):
 
     video_id = node.video_id
+    wdt = node['width']
+    hgt = node['height']
     url = u'//www.youtube.com/embed/{0}?rel=0'.format(video_id)
-    tag = u'''<iframe width="640" height="360" src="{0}" frameborder="0" allowfullscreen="1">&nbsp;</iframe>'''.format(url)
+    you = u'''<iframe width="{0}" height="{1}" src="{2}" frameborder="0" allowfullscreen="1">&nbsp;</iframe>'''.format(wdt, hgt, url)
+    tag = u'<p align="center">{0}</p>'.format(you)
 
     self.body.append(tag)
 
@@ -51,10 +60,12 @@ class YoutubeDirective(rst.Directive):
 
     has_content = False
     required_arguments = 1
-    optional_arguments = 0
+    optional_arguments = 1
     final_argument_whitespace = False
-    option_spec = {}
-
+    option_spec = {
+      'width': nonnegative_int,
+      'height': nonnegative_int,
+    }
 
     def run(self):
 
@@ -63,8 +74,18 @@ class YoutubeDirective(rst.Directive):
         arg = self.arguments[0]
 
         if is_url(arg):
-            node.video_id = get_video_id(arg)
+          node.video_id = get_video_id(arg)
         else:
-            node.video_id = arg
+          node.video_id = arg
+
+        if 'width' in self.options:
+          node['width'] = self.options['width']
+	else:
+	  node['width'] = 640
+
+        if 'height' in self.options:
+          node['height'] = self.options['height']
+	else:
+	  node['height'] = 360
 
         return [node]
