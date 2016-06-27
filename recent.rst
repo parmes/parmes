@@ -1,5 +1,5 @@
 
-* On Jun 20 2016 :ref:`solfec-xdmf-paraview`
+* On Jun 21 2016 :ref:`solfec-xdmf-paraview`
 
 * On Jun 18 2016 :ref:`dynlb-about`
 
