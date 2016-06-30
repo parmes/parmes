@@ -8,7 +8,7 @@ SOLFEC
   <iframe src="https://ghbtns.com/github-btn.html?user=tkoziara&repo=solfec&type=watch&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 
-Solfec implements the Non-Smooth Contact Dynamics Method [1]_, [2]_ using MPI, C, Python and several 3rd party
+Solfec implements the Non--Smooth Contact Dynamics Method [1]_, [2]_ using MPI, C, Python and several 3rd party
 codes written in C/C++/Fortran. It includes mesh, convex polyhedra, sphere and ellipsoid based shapes,
 linear elastic first order finite elements, pseudo-rigid and rigid kinematics, velocity based Signorini--Coulomb
 contact/impact law, and a parallel time stepping combined with a simple dynamic load balancing. Solfec
@@ -20,6 +20,7 @@ More details can be found in:
    :maxdepth: 1
 
    Installation <installation>
+   Running <running>
    User Manual <user>
    Theory Manual <theory>
    Algorithms Manual <algorithms>

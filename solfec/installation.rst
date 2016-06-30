@@ -5,7 +5,7 @@ Solfec Installation
 
 Solfec is hosted on `GitHub <https://github.com/tkoziara/solfec>`_ and you will need the *git* command
 installed in order to download its source code. Have a look at https://git-scm.com for instructions.
-Once the git command is available in your command line, type
+Once the git command is available at your command line, type
 
 ::
 
