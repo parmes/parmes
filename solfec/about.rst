@@ -30,6 +30,6 @@ More details can be found in:
 
 References:
 
-.. [1] `CMAME, 177(3-4):329–349, 1999. <http://www.sciencedirect.com/science/article/pii/S0045782598003879>`_
-.. [2] `CMAME, 177(3-4):235–257, 1999. <http://www.sciencedirect.com/science/article/pii/S0045782598003831>`_
-.. [3] `IJNME, 87(1-5):437-456, 2011. <http://onlinelibrary.wiley.com/doi/10.1002/nme.3158/full>`_
+.. [1] `CMAME, 177(3--4):329--349, 1999. <http://www.sciencedirect.com/science/article/pii/S0045782598003879>`_
+.. [2] `CMAME, 177(3--4):235--257, 1999. <http://www.sciencedirect.com/science/article/pii/S0045782598003831>`_
+.. [3] `IJNME, 87(1--5):437--456, 2011. <http://onlinelibrary.wiley.com/doi/10.1002/nme.3158/full>`_

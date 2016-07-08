@@ -43,3 +43,8 @@ html_theme_options = {
     'github_repo': 'parmes',
     'fixed_sidebar': False,
 }
+
+html_static_path = ['_static']
+
+def setup(app):
+    app.add_stylesheet('parmes.css')
