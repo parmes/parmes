@@ -1,16 +1,20 @@
 
-* On Jun 30 2016 :ref:`solfec-about`
+* On Jul 8 2016 :ref:`solfec-about`
 
-* On Jun 30 2016 :ref:`solfec-installation`
+* On Jul 8 2016 :ref:`solfec-user`
 
-* On Jun 30 2016 :ref:`solfec-running`
+* On Jul 8 2016 :ref:`solfec-user-body`
 
-* On Jun 21 2016 :ref:`solfec-xdmf-paraview`
+* On Jul 8 2016 :ref:`solfec-user-constraints`
 
-* On Jun 18 2016 :ref:`dynlb-about`
+* On Jul 8 2016 :ref:`solfec-user-geometry`
 
-* On Jun 18 2016 :ref:`parmec-about`
+* On Jul 8 2016 :ref:`solfec-user-loads`
 
-* On Jun 18 2016 :ref:`solfec-xdmf`
+* On Jul 8 2016 :ref:`solfec-user-materials`
 
-* On Jun 18 2016 :ref:`solfec-xdmf-example`
+* On Jul 8 2016 :ref:`solfec-user-results`
+
+* On Jul 8 2016 :ref:`solfec-user-simulation`
+
+* On Jul 8 2016 :ref:`solfec-user-solfec`

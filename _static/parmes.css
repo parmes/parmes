@@ -1,1 +1,29 @@
+/* Red font role
+ * -------------
+ * RST usage:
+ *
+ * .. role:: red
+ *
+ * Whar follows :red:`is red`.
+ */
 .red { color: red; }
+
+/* Centered text class
+ * -------------------
+ * RST usage:
+ *
+ * .. rst-class:: center
+ *
+ * This paragraph will be centered.
+ */
+.center {text-align: center;}
+
+/* Globally center tables
+ * ----------------------
+ * This modified the table.docutils
+ * class defined in alabaster.css
+ */
+table.docutils {
+  margin-left:auto; 
+  margin-right:auto;
+}
