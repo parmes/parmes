@@ -127,9 +127,9 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   +-------------+-------------------------------------------------------------------------------------------+
   | 'TL'        | Total Lagrangian (default)                                                                |
   +-------------+-------------------------------------------------------------------------------------------+
-  | 'BC'        | Body co-rotational (one co-rotated frame per body, suitable for stiff bodies)             |
+  | 'BC'        | Body co--rotational (one co--rotated frame per body, suitable for stiff bodies)           |
   +-------------+-------------------------------------------------------------------------------------------+
-  | 'RO'        | Reduced order, modal, co-rotational approach. The 'DEF_LIM' integration scheme is always  |
+  | 'RO'        | Reduced order, modal, co--rotational approach. The 'DEF_LIM' integration scheme is always |
   |             | used for this formulation (there would be no computational advantage in using 'DEF_EXP'   |
   |             | since the system matrix is diagonal anyway). :red:`Under development`                     |
   +-------------+-------------------------------------------------------------------------------------------+

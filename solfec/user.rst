@@ -26,8 +26,10 @@ Sections below document Solfec objects and routines used for their manipulation:
    user/body
    user/geometry
    user/materials
+   user/times
    user/loads
    user/constraints
+   user/solvers
    user/simulation
    user/results
    user/utilities

@@ -33,8 +33,6 @@ An object of type CONVEX is either an arbitrary convex polyhedron, or it is a co
 
 Some parameters can also be accessed as members and methods of a CONVEX object, cf. :numref:`convex-params`.
 
-.. role:: red
-
 .. _convex-params:
 
 .. table:: CONVEX object parameters.
