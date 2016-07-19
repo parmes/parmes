@@ -1,8 +1,8 @@
-.. _solfec-user-times:
-
 .. |br| raw:: html
 
   <br />
+
+.. _solfec-user-times:
 
 Time series
 ===========
