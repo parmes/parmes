@@ -18,13 +18,13 @@ An object of type TIME_SERIES is a linear spline based on a series of 2-points.
   * points -- either a list [t0, v0, t1, v1, ....] or a list of lists [[t0,v0], [t1,v1], ...]
     of points (where ti < tj, when i < j), or a path to a file storing times and values pairs in format:
 
-  # comment 1 ... |br|
-  # comment 2 ... |br|
-  t0 v0 |br|
-  t1 v1 |br|
-  # comment 3 ... |br|
-  t2 v2 |br|
-  ... |br|
+    # comment 1 ... |br|
+    # comment 2 ... |br|
+    t0 v0 |br|
+    t1 v1 |br|
+    # comment 3 ... |br|
+    t2 v2 |br|
+    ... |br|
 
   * label -- optional label string; if a label is provided than the TIME_SERIES object is stored in
     memory just once; this facilitates more optimal memory usage in cases where many identical

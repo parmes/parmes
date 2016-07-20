@@ -210,9 +210,9 @@ This routine creates a tetrahedral mesh. `Tetgen <http://wias-berlin.de/software
 
   * shape -- an input shape can be:
 
-    – another MESH object
+    * another MESH object
 
-    – a path (e.g. 'path/to/file.stl') to an input `file supported by Tetgen <http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html>`_
+    * a path (e.g. 'path/to/file.stl') to an input `file supported by Tetgen <http://wias-berlin.de/software/tetgen/1.5/doc/manual/manual006.html>`_
 
   * path -- path to the output file that will store the mesh;
     when called again and this file is found the mesh will be red from the file rather than generated

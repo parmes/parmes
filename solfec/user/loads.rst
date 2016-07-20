@@ -35,14 +35,14 @@ This routine applies a point force to a body.
   * value -- a number, a TIME_SERIES object or a callback routine defining the value of
     the applied force. In case of a callback routine, the following format is assumed: 
 
-  **force = value_callback (data, q, u, time, step)**
+    **force = value_callback (data, q, u, time, step)**
 
-  where data is the optional user data passed to FORCE routine (if data is a tuple it will expand
-  the list of parameters to the callback), q is the configuration of the body passed to the callback,
-  u is the velocity of the body passed to the callback, time is the current time passed to the callback
-  and step is the current time step passed to the callback. The callback returns a force tuple.
-  For rigid body the force reads (spatial force, spatial torque, referential torque), while for other
-  kinds of bodies this is a generalized force of the same dimension as the velocity u (power conjugate to it).
+    where data is the optional user data passed to FORCE routine (if data is a tuple it will expand
+    the list of parameters to the callback), q is the configuration of the body passed to the callback,
+    u is the velocity of the body passed to the callback, time is the current time passed to the callback
+    and step is the current time step passed to the callback. The callback returns a force tuple.
+    For rigid body the force reads (spatial force, spatial torque, referential torque), while for other
+    kinds of bodies this is a generalized force of the same dimension as the velocity u (power conjugate to it).
 
   * data -- callback routine user data
 

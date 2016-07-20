@@ -1,4 +1,6 @@
 
+* On Jul 19 2016 :ref:`solfec-user-times`
+
 * On Jul 19 2016 :ref:`solfec-user`
 
 * On Jul 19 2016 :ref:`solfec-user-body`
@@ -10,8 +12,6 @@
 * On Jul 19 2016 :ref:`solfec-user-materials`
 
 * On Jul 19 2016 :ref:`solfec-user-solvers`
-
-* On Jul 19 2016 :ref:`solfec-user-times`
 
 * On Jul 8 2016 :ref:`solfec-about`
 
