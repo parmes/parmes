@@ -23,7 +23,6 @@ More details can be found in:
    Running <running>
    User Manual <user>
    Theory Manual <theory>
-   Algorithms Manual <algorithms>
    ABAQUS import <abaqus>
    XDMF export <xdmf>
    Examples <examples>

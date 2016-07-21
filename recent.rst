@@ -1,4 +1,12 @@
 
+* On Jul 21 2016 :ref:`solfec-user`
+
+* On Jul 21 2016 :ref:`solfec-user-results`
+
+* On Jul 21 2016 :ref:`solfec-user-simulation`
+
+* On Jul 21 2016 :ref:`solfec-user-utilities`
+
 * On Jul 20 2016 :ref:`solfec-user-constraints`
 
 * On Jul 20 2016 :ref:`solfec-user-geometry`
@@ -10,11 +18,3 @@
 * On Jul 20 2016 :ref:`solfec-user-solvers`
 
 * On Jul 20 2016 :ref:`solfec-user-times`
-
-* On Jul 19 2016 :ref:`solfec-user`
-
-* On Jul 19 2016 :ref:`solfec-user-body`
-
-* On Jul 8 2016 :ref:`solfec-about`
-
-* On Jul 8 2016 :ref:`solfec-user-results`
