@@ -3,6 +3,8 @@
 Solfec User Manual
 ==================
 
+.. role:: red
+
 Solfec input file is a Python source code. Python interpreter is embedded in Solfec.
 At the same time Solfec extends Python by adding a number of objects and routines.
 There are few general principles to remember:
@@ -17,6 +19,8 @@ There are few general principles to remember:
   becomes an empty placeholder. One can use it to assign value, x = CREATE1 (), but using it as an argument,
   z = CREATE2 (x), will cause an abnormal termination. One can create a copy of an object by calling
   z = COPY (x), hence using y = CREATE2 (COPY (x)) leaves x intact.
+
+* Routines marked as :red:`(Under development)` are functional, although they may be unstable.
 
 Sections below document Solfec objects and routines used for their manipulation:
 
