@@ -172,11 +172,11 @@ Routines listed below are related to prallel runtime and performance.
 
   This routine sets the imbalance tolerance for parallel balancing of Solfec data. A ratio of maximal to minimal
   per processor count of objects used. Hence, 1.0 indicates perfect balance, while any ratio > 1.0 indicates an
-  imbalance. Initially imbalance tolerances are all set to 1.3. This routine is ignored during sequential runs.
+  imbalance. Initially imbalance tolerance is set to 1.1. This routine is ignored during sequential runs.
 
   * solfec -- SOLFEC object
 
-  * tolerance -- data imbalance tolerance (default: 1.3)
+  * tolerance -- data imbalance tolerance (default: 1.1)
 
   • weightfactor -- a local dynamics weight factor between 0.0 and 1.0 (default: 1.0). Computational load of
     local dynamics assembling is best balanced when weightfactor equals 1.0. This however can sometimes result
