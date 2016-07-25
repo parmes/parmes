@@ -1,20 +1,20 @@
 
-* On Jul 22 2016 :ref:`solfec-user-simulation`
+* On Jul 25 2016 :ref:`solfec-theory`
 
-* On Jul 21 2016 :ref:`solfec-about`
+* On Jul 25 2016 :ref:`solfec-theory-basics`
 
-* On Jul 21 2016 :ref:`solfec-user`
+* On Jul 25 2016 :ref:`solfec-theory-conform`
 
-* On Jul 21 2016 :ref:`solfec-user-results`
+* On Jul 25 2016 :ref:`solfec-theory-conpnt`
 
-* On Jul 21 2016 :ref:`solfec-user-utilities`
+* On Jul 25 2016 :ref:`solfec-theory-dynamics`
 
-* On Jul 20 2016 :ref:`solfec-user-constraints`
+* On Jul 25 2016 :ref:`solfec-theory-joints`
 
-* On Jul 20 2016 :ref:`solfec-user-geometry`
+* On Jul 25 2016 :ref:`solfec-theory-kinematics`
 
-* On Jul 20 2016 :ref:`solfec-user-loads`
+* On Jul 25 2016 :ref:`solfec-theory-locdyn`
 
-* On Jul 20 2016 :ref:`solfec-user-materials`
+* On Jul 25 2016 :ref:`solfec-theory-materials`
 
-* On Jul 20 2016 :ref:`solfec-user-solvers`
+* On Jul 25 2016 :ref:`solfec-theory-solvers`

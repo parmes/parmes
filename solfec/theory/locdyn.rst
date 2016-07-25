@@ -1,4 +1,4 @@
-.. solfec-theory-locdyn:
+.. _solfec-theory-locdyn:
 
 Local dynamics
 ==============

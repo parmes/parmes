@@ -1,4 +1,4 @@
-.. _solfec-theory_conpnt:
+.. _solfec-theory-conpnt:
 
 Contact points
 ==============
