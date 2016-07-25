@@ -1,11 +1,11 @@
 
+* On Jul 22 2016 :ref:`solfec-user-simulation`
+
 * On Jul 21 2016 :ref:`solfec-about`
 
 * On Jul 21 2016 :ref:`solfec-user`
 
 * On Jul 21 2016 :ref:`solfec-user-results`
-
-* On Jul 21 2016 :ref:`solfec-user-simulation`
 
 * On Jul 21 2016 :ref:`solfec-user-utilities`
 
