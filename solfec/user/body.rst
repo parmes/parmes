@@ -14,7 +14,8 @@ An object of type BODY represents a solid body.
   * solfec -- obj is created for this SOLFEC object
 
   * kind -- a string: 'RIGID', 'PSEUDO_RIGID', 'FINITE_ELEMENT' or
-    'OBSTACLE' describing the kinematic model. See :numref:`body-kind`.
+    'OBSTACLE' describing the kinematic model. See :numref:`body-kind`
+    and the :ref:`Kinematics page <solfec-theory-kinematics>`.
 
   * shape (emptied) - this is can be a CONVEX/MESH/SPHERE/ELLIP object, or a list [obj1, obj2, ...],
     where each object is of type CONVEX/MESH/SPHERE/ELLIP. If the kind is 'FINITE_ELEMENT',
