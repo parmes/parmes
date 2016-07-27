@@ -180,8 +180,11 @@ _______________
    Element types in Solfec: tetrahedron, pyramid, wedge, hexahedron.
 
 Finite--element types available in Solfec are depicted in :numref:`element-types`. Shape functions for those
-elements are summarised in :numref:`element-shapes`. Isoparametric mapping is used to go back and forth between
-the natural element coordinates :math:`\xi_{1}`, :math:`\xi_{2}`, :math:`\xi_{3}` and the mesh nodes :math:`\mathbf{Y}_{i}`
+elements are summarised in :numref:`element-shapes`.
+
+Isoparametric mapping is used to go back and forth between the natural element coordinates :math:`\xi_{1}`,
+:math:`\xi_{2}`, :math:`\xi_{3}`, local to individual element domains, and the referential mesh coordinates
+:math:`\mathbf{Y}`
 
 .. math::
 
@@ -191,9 +194,8 @@ the natural element coordinates :math:`\xi_{1}`, :math:`\xi_{2}`, :math:`\xi_{3}
   \mathbf{Y}_{n}
   \end{array}\right]
 
-where :math:`\mathbf{Y}` is a referential point expressed as a function of the natural coordinates,
-local to individual element domains. The function :math:`\mathbf{N}\left(\mathbf{X}\right)` in
-:eq:`femmot` and :eq:`femvel` has the following form
+where :math:`\mathbf{Y}_{i}` are referential coordinates of mesh nodes. The function :math:`\mathbf{N}\left(\mathbf{X}\right)`
+in :eq:`femmot` and :eq:`femvel` has the following form
 
 .. math::
 

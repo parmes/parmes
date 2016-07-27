@@ -710,8 +710,9 @@ Iso-parametric mapping is used to go back and forth between the natural
 \begin_inset Formula $\xi_{3}$
 \end_inset
 
- and the mesh nodes 
-\begin_inset Formula $\mathbf{Y}_{i}$
+, local to individual element domains, and the referential mesh coordinates
+ 
+\begin_inset Formula $\mathbf{Y}$
 \end_inset
 
 
@@ -730,11 +731,10 @@ Iso-parametric mapping is used to go back and forth between the natural
 \end_inset
 
 where 
-\begin_inset Formula $\mathbf{Y}$
+\begin_inset Formula $\mathbf{Y}_{i}$
 \end_inset
 
- is a referential point expressed as a function of the natural coordinates,
- local to individual element domains.
+ are referential coordinates of mesh nodes.
  The function 
 \begin_inset Formula $\mathbf{N}\left(\mathbf{X}\right)$
 \end_inset
