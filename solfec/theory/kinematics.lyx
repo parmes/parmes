@@ -103,7 +103,18 @@ where
 \end_inset
 
 .
- The hat operator 
+ W note that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{\omega}=\mathbf{\Lambda}\mathbf{\Omega}
+\]
+
+\end_inset
+
+The hat operator 
 \begin_inset Formula $\hat{\mathbf{y}}$
 \end_inset
 

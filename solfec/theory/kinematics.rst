@@ -42,6 +42,12 @@ The velocity of the spatial point reads
   
 where :math:`\mathbf{\omega}` is the spatial angular velocity vector, :math:`\mathbf{\Omega}` is the referential
 angular velocity vector, and :math:`\dot{\bar{\mathbf{x}}}` is the velocity of the spatial image of :math:`\bar{\mathbf{X}}`.
+W note that
+
+.. math::
+
+  \mathbf{\omega}=\mathbf{\Lambda}\mathbf{\Omega}
+
 The hat operator :math:`\hat{\mathbf{y}}` creates an anti--symmetric :math:`3\times3` matrix out of a 3--vector as follows
 
 .. math::
@@ -52,7 +58,7 @@ The hat operator :math:`\hat{\mathbf{y}}` creates an anti--symmetric :math:`3\ti
   -y_{2} & y_{1} & 0
   \end{array}\right]
   
-In vector notation the configuration \mathbf{q} and the velocity \mathbf{u} can be expressed as
+In vector notation the configuration :math:`\mathbf{q}` and the velocity :math:`\mathbf{u}` can be expressed as
 
 .. math::
 
@@ -97,7 +103,11 @@ The velocity of the spatial point reads
   \dot{\mathbf{x}}\left(t\right)=\dot{\mathbf{F}}\left(t\right)\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}\left(t\right)
   
 where :math:`\dot{\mathbf{F}}` is the velocity of the deformation gradient and :math:`\dot{\bar{\mathbf{x}}}` is the velocity of the spatial
-image of :math:`\bar{\mathbf{X}}`. In vector notation the configuration :math:`\mathbf{q}` and the velocity :math:`\mathbf{u}` can be expressed as
+image of :math:`\bar{\mathbf{X}}`.
+
+.. _pseudo-rigid-vectors:
+
+In vector notation the configuration :math:`\mathbf{q}` and the velocity :math:`\mathbf{u}` can be expressed as
 
 .. math::
 
@@ -139,8 +149,9 @@ The velocity of the spatial point reads
   
   \dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\dot{\mathbf{q}}\left(t\right)
   
-where :math:`\dot{\mathbf{q}}` is the vector of nodal :math:`x,y,z` velocities. In vector notation,
-the configuration :math:`\mathbf{q}` and the velocity \mathbf{u} can be expressed as
+where :math:`\dot{\mathbf{q}}` is the vector of nodal :math:`x,y,z` velocities.
+
+In vector notation, the configuration :math:`\mathbf{q}` and the velocity :math:`\mathbf{u}` can be expressed as
 
 .. math::
 
