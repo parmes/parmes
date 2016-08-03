@@ -526,7 +526,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\mathbf{f}_{\text{damp}}=\alpha\mathbf{K}
+\mathbf{f}_{\text{damp}}=\eta\mathbf{K}
 \]
 
 \end_inset
@@ -566,11 +566,11 @@ where, except for
 
 .
  Stiffness proportional damping is used in Solfec, hence 
-\begin_inset Formula $\mathbf{f}_{\text{damp}}=\alpha\mathbf{K}$
+\begin_inset Formula $\left\{ \mathbf{f}_{\text{damp}}=\right\} \eta\mathbf{K}$
 \end_inset
 
 , where 
-\begin_inset Formula $\alpha\ge0$
+\begin_inset Formula $\eta\ge0$
 \end_inset
 
 .

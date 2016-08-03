@@ -7,8 +7,8 @@ Solfec implements instances of the Non--Smooth `Contact Dynamics <https://en.wik
 [1]_, [2]_ and the `Discrete Element Method <https://en.wikipedia.org/wiki/Discrete_element_method>`_. The software originated
 from the PhD research [3]_ and its further development [4]_. Thesis [3]_ can be used as an auxiliary "theory manual". The intention
 behind this document is to provide a minimalist exposition of core computational methods and algorithms implemented in Solfec
-and facilitate cross--referencing with the functionalities described in the :ref:`User Manual <solfec-user>`. The theory manual
-comprises the following sections:
+and facilitate cross--referencing with `the source code <https://github.com/tkoziara/solfec>`_ and the functionalities described
+in the :ref:`User Manual <solfec-user>`. The theory manual comprises the following sections:
 
 .. toctree::
 

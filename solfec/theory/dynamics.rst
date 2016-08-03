@@ -196,7 +196,7 @@ of external forces. These matrices and vectors are defined as follows
 
 .. math::
 
-  \mathbf{f}_{\text{damp}}=\alpha\mathbf{K}
+  \mathbf{f}_{\text{damp}}=\eta\mathbf{K}
 
 .. math::
   :label: fext
@@ -207,14 +207,26 @@ where, except for :math:`\mathbf{f}_{\text{ext}}`, the so called total Lagrangia
 :math:`\mathbf{B}=\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\}^{T}` with the first Piola stress tensor, :math:`\mathbf{B}:\mathbf{P}=\sum_{ij}B_{ij}P_{ij}`,
 creates the nodal components of the internal force vector. The derivative of the internal force with respect to displacements,
 :math:`\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}`, is customarily called the stiffness matrix, :math:`\mathbf{K}`. Stiffness proportional damping
-is used in Solfec, hence :math:`\mathbf{f}_{\text{damp}}=\alpha\mathbf{K}`, where :math:`\alpha\ge0`.
+is used in Solfec, hence :math:`\mathbf{f}_{\text{damp}}=\eta\mathbf{K}`, where :math:`\eta\ge0`.
+
+In matrix notation we simply have
+
+.. math::
+
+  \mathbf{M}\dot{\mathbf{u}}=\mathbf{f}
+  
+where
+
+.. math::
+
+  \mathbf{f}=\mathbf{f}_{\text{ext}}-\mathbf{f}_{\text{int}}-\mathbf{f}_{\text{damp}} 
 
 Implementation
 --------------
 
 Dynamics is implement in `bod.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (rigid, pseudo--rigid)
 and `fem.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (finite--element) files. Mass and stiffness
-matrices :math:`\mathbf{M}` and :math:`\mathbf{K}`, and the damping factor :math:`\alpha`, are declared in
+matrices :math:`\mathbf{M}` and :math:`\mathbf{K}`, and the damping factor :math:`\eta`, are declared in
 `bod.h <https://github.com/tkoziara/solfec/blob/master/bod.h#L178>`_ as follows:
 
 .. literalinclude:: ../../../solfec/bod.h

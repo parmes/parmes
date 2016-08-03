@@ -15,7 +15,7 @@ An object of type BODY represents a solid body.
 
   * kind -- a string: 'RIGID', 'PSEUDO_RIGID', 'FINITE_ELEMENT' or
     'OBSTACLE' describing the kinematic model. See :numref:`body-kind`
-    and the :ref:`Kinematics page <solfec-theory-kinematics>`.
+    and the :ref:`Kinematics manual page <solfec-theory-kinematics>`.
 
   * shape (emptied) - this is can be a CONVEX/MESH/SPHERE/ELLIP object, or a list [obj1, obj2, ...],
     where each object is of type CONVEX/MESH/SPHERE/ELLIP. If the kind is 'FINITE_ELEMENT',
@@ -85,7 +85,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   | **obj.selfcontact** -- self-contact detection flag (default: 'OFF”) taking values 'ON' or 'OFF'         |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.scheme** -- time integration scheme (default: 'DEFAULT') used to integrate motion.                |
-  | See :numref:`body-scheme`.                                                                              |
+  | See :numref:`body-scheme` and the :ref:`Time integration manual page <solfec-theory-timeint>`.          |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.damping** -- stiffness proportional damping coefficient (default: 0.0) for the dynamic case       |
   | (ignored for rigid bodies).                                                                             |
@@ -98,7 +98,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
 
 .. _body-kind:
 
-.. table:: Body kinds.
+.. table:: Body kinds. See also the :ref:`Kinematics manual page <solfec-theory-kinematics>`.
 
   +-------------------+-------------------------------------------------------------------------------------+
   | Body kind         | Remarks                                                                             |
@@ -175,7 +175,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
 
 .. _body-scheme:
 
-.. table:: Time integration schema.
+.. table:: Time integration schema. See also the :ref:`Time integration manual page <solfec-theory-timeint>`.
 
   +-----------+----------------+----------------------------------------------------------------------------+
   | Scheme    | Kinematics     | Remarks                                                                    |
