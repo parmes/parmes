@@ -74,6 +74,7 @@ In matrix notation these balance principles read
 where
 
 .. math::
+  :label: mrig
 
   \mathbf{M}=\left[\begin{array}{cc}
   \mathbf{J}\\
@@ -83,6 +84,7 @@ where
 and
 
 .. math::
+  :label: frig
 
   \mathbf{f}=\left[\begin{array}{c}
   \mathbf{\Lambda}^{T}\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+
@@ -107,7 +109,7 @@ The referential angular momentum balance reads
   \left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(
   \mathbf{X}-\bar{\mathbf{X}}\right)dV
   
-where :math:`\mathbf{E}_{0}` is defined in :eq:`E0`, :math:`V` is the volume of the domain, and :math:`\bar{\mathbf{P}}` is the average referential stress, defined as
+where :math:`\mathbf{E}_{0}` is defined in :eq:`E0`, :math:`V` is the volume of the domain, and :math:`\bar{\mathbf{P}}` is the average referential first Piola stress, defined as
 
 .. math::
 
@@ -141,6 +143,7 @@ In matrix notation these balance principles read
 where
 
 .. math::
+  :label: mprb
 
   \mathbf{M}=\left[\begin{array}{cccc}
   \mathbf{E}_{0}\\
@@ -152,6 +155,7 @@ where
 and
 
 .. math::
+  :label: fprb
 
   \mathbf{f}=\left[\begin{array}{c}
   \int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV-V\bar{\mathbf{P}}\\
@@ -164,5 +168,79 @@ which allows us to use the computationally convenient block--diagonal form of :m
 Finite--element dynamics
 ------------------------
 
+The linear momentum balance reads
+
+.. math::
+
+  \mathbf{M}\dot{\mathbf{u}}+\mathbf{f}_{\text{int}}\left(\mathbf{q}\right)+
+  \mathbf{f}_{\text{damp}}\left(\mathbf{q},\mathbf{u}\right)=\mathbf{f}_{\text{ext}}\left(\mathbf{q}\right)
+  
+where :math:`\mathbf{M}` is the mass matrix, :math:`\mathbf{f}_{\text{int}}` is a vector of internal forces,
+:math:`\mathbf{f}_{\text{damp}}` is a vector of damping forces, and :math:`\mathbf{f}_{\text{ext}}` is a vector
+of external forces. These matrices and vectors are defined as follows
+
+.. math::
+  :label: mfem
+
+  \mathbf{M}=\int_{\mathcal{B}_{0}}\rho_{0}\mathbf{N}^{T}\mathbf{N}dV
+
+.. math::
+  :label: fint
+
+  \mathbf{f}_{\text{int}}=\int_{\mathcal{B}_{0}}\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}\colon\mathbf{P}dV
+
+.. math::
+  :label: kfem
+
+  \mathbf{K}=\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}
+
+.. math::
+
+  \mathbf{f}_{\text{damp}}=\alpha\mathbf{K}
+
+.. math::
+  :label: fext
+
+  \mathbf{f}_{\text{ext}}=\int_{\mathcal{B}}\rho\mathbf{N}^{T}\mathbf{b}dv+\int_{\partial\mathcal{B}}\mathbf{N}^{T}\mathbf{t}da
+  
+where, except for :math:`\mathbf{f}_{\text{ext}}`, the so called total Lagrangian notation was used. The contraction of the strain matrix
+:math:`\mathbf{B}=\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\}^{T}` with the first Piola stress tensor, :math:`\mathbf{B}:\mathbf{P}=\sum_{ij}B_{ij}P_{ij}`,
+creates the nodal components of the internal force vector. The derivative of the internal force with respect to displacements,
+:math:`\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}`, is customarily called the stiffness matrix, :math:`\mathbf{K}`. Stiffness proportional damping
+is used in Solfec, hence :math:`\mathbf{f}_{\text{damp}}=\alpha\mathbf{K}`, where :math:`\alpha\ge0`.
+
 Implementation
 --------------
+
+Dynamics is implement in `bod.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (rigid, pseudo--rigid)
+and `fem.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (finite--element) files. Mass and stiffness
+matrices :math:`\mathbf{M}` and :math:`\mathbf{K}`, and the damping factor :math:`\alpha`, are declared in
+`bod.h <https://github.com/tkoziara/solfec/blob/master/bod.h#L178>`_ as follows:
+
+.. literalinclude:: ../../../solfec/bod.h
+   :lines: 139-140
+   :lineno-start: 139
+   :linenos:
+
+.. literalinclude:: ../../../solfec/bod.h
+   :lines: 178-182
+   :lineno-start: 178
+   :linenos:
+
+.. literalinclude:: ../../../solfec/bod.h
+   :lines: 214
+   :lineno-start: 214
+   :linenos:
+
+.. |br| raw:: html
+
+  <br />
+
+Assembling of :eq:`mrig` is in `bod.c:rig_dynamic_inverse <https://github.com/tkoziara/solfec/blob/master/bod.c#L232>`_. |br|
+Evaluation of :eq:`frig` is in `bod.c:rig_static_force <https://github.com/tkoziara/solfec/blob/master/bod.c#L345>`_. |br|
+Assembling of :eq:`mprb` is in `bod.c:prb_dynamic_explicit_inverse <https://github.com/tkoziara/solfec/blob/master/bod.c#L479>`_. |br|
+Evaluation of :eq:`fprb` is in `bod.c:prb_dynamic_force <https://github.com/tkoziara/solfec/blob/master/bod.c#L647>`_. |br|
+Assembling of diagonalized :eq:`mfem` is in `fem.c:diagonal_inertia <https://github.com/tkoziara/solfec/blob/master/fem.c#L1697>`_. |br|
+Evaluation of :eq:`fint` is in `fem.c:internal_force <https://github.com/tkoziara/solfec/blob/master/fem.c#L1398>`_. |br|
+Assembling of :eq:`kfem` is in `fem.c:tangent_stiffness <https://github.com/tkoziara/solfec/blob/master/fem.c#L1577>`_. |br|
+Evaluation of :eq:`fext` is in `fem.c:external_force <https://github.com/tkoziara/solfec/blob/master/fem.c#L1506>`_. |br|

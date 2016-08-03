@@ -269,7 +269,7 @@ The referential angular momentum balance reads
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\ddot{\mathbf{F}}\mathbf{E}_{0}+V\bar{\mathbf{P}}=\int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV
+\ddot{\mathbf{F}}\mathbf{E}_{0}+V\bar{\mathbf{P}}=\int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV\label{eq:angprb}
 \end{equation}
 
 \end_inset
@@ -293,7 +293,7 @@ reference "eq:E0"
 \begin_inset Formula $\bar{\mathbf{P}}$
 \end_inset
 
- is the average referential stress, defined as
+ is the average referential first Piola stress, defined as
 \end_layout
 
 \begin_layout Standard
@@ -432,7 +432,7 @@ and
 \mathbf{f}=\left[\begin{array}{c}
 \int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV-V\bar{\mathbf{P}}\\
 \int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
-\end{array}\right]
+\end{array}\right]\label{eq:fprb}
 \end{equation}
 
 \end_inset
@@ -456,6 +456,124 @@ It should be noted, that it is the row-wise composition of
 
 \begin_layout Section
 Finite-element dynamics
+\end_layout
+
+\begin_layout Standard
+The linear momentum balance reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{M}\dot{\mathbf{u}}+\mathbf{f}_{\text{int}}\left(\mathbf{q}\right)+\mathbf{f}_{\text{damp}}\left(\mathbf{q},\mathbf{u}\right)=\mathbf{f}_{\text{ext}}\left(\mathbf{q}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{M}$
+\end_inset
+
+ is the mass matrix, 
+\begin_inset Formula $\mathbf{f}_{\text{int}}$
+\end_inset
+
+ is a vector of internal forces, 
+\begin_inset Formula $\mathbf{f}_{\text{damp}}$
+\end_inset
+
+ is a vector of damping forces, and 
+\begin_inset Formula $\mathbf{f}_{\text{ext}}$
+\end_inset
+
+ is a vector of external forces.
+ These matrices and vectors are defined as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{M}=\int_{\mathcal{B}_{0}}\rho_{0}\mathbf{N}^{T}\mathbf{N}dV
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{f}_{\text{int}}=\int_{\mathcal{B}_{0}}\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}\colon\mathbf{P}dV
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{K}=\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{f}_{\text{damp}}=\alpha\mathbf{K}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{f}_{\text{ext}}=\int_{\mathcal{B}}\rho\mathbf{N}^{T}\mathbf{b}dv+\int_{\partial\mathcal{B}}\mathbf{N}^{T}\mathbf{t}da
+\]
+
+\end_inset
+
+where, except for 
+\begin_inset Formula $\mathbf{f}_{\text{ext}}$
+\end_inset
+
+, the so called total Lagrangian notation was used.
+ The contraction of the strain matrix 
+\begin_inset Formula $\mathbf{B}=\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}$
+\end_inset
+
+ with the first Piola stress tensor, 
+\begin_inset Formula $\mathbf{B}:\mathbf{P}=\sum_{ij}B_{ij}P_{ij}$
+\end_inset
+
+, creates the nodal components of the internal force vector.
+ The derivative of the internal force with respect to displacements, 
+\begin_inset Formula $\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}$
+\end_inset
+
+, is customarily called the stiffness matrix, 
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+.
+ Stiffness proportional damping is used in Solfec, hence 
+\begin_inset Formula $\mathbf{f}_{\text{damp}}=\alpha\mathbf{K}$
+\end_inset
+
+, where 
+\begin_inset Formula $\alpha\ge0$
+\end_inset
+
+.
 \end_layout
 
 \end_body

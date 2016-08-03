@@ -1,9 +1,9 @@
 
+* On Jul 28 2016 :ref:`solfec-theory-dynamics`
+
+* On Jul 28 2016 :ref:`solfec-theory-kinematics`
+
 * On Jul 27 2016 :ref:`solfec-about`
-
-* On Jul 27 2016 :ref:`solfec-theory-dynamics`
-
-* On Jul 27 2016 :ref:`solfec-theory-kinematics`
 
 * On Jul 27 2016 :ref:`solfec-theory`
 

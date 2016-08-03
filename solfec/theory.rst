@@ -16,6 +16,7 @@ comprises the following sections:
    theory/kinematics
    theory/dynamics
    theory/timeint
+   theory/constraints
    theory/locdyn
    theory/joints
    theory/conpnt
