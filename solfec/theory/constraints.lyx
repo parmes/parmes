@@ -1,0 +1,738 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+Constraints allow to limit kinematic freedom of bodies, e.g.
+ control displacements or prevent interpenetration.
+ This is reflected on the level of dynamics via reaction forces, which are
+ used to produce desired kinematic effects.
+ Solfec includes equality constraints, or joints, and contact constraints
+ applied at individual contact points.
+ In this section we briefly demonstrate how constraints are incorporated
+ into the time stepping schemes introduced earlier.
+\end_layout
+
+\begin_layout Section
+From global to local velocity
+\end_layout
+
+\begin_layout Standard
+Velocity 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+, as defined for :ref:`rigid <qurig>`, :ref:`pseudo-rigid <quprb>`, and
+ :ref:`finite–element <qufem>` bodies, can be qualified as a global, or
+ generalized, or body–space entity.
+ In order to obtain a local, spatial 3–dimensional velocity vector, 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+, of any spatial image 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ of a referential point 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+, we shall use a linear transformation of the kind
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\left(\mathbf{X}\right)\mathbf{u}\label{eq:UHu0}
+\end{equation}
+
+\end_inset
+
+Most generally the local velocity 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ will be expressed in a local coordinate system, made up of three linearly
+ independent 3–vectors, 
+\begin_inset Formula $\mathbf{a}_{i}$
+\end_inset
+
+, juxtaposed, in a column–wise manner into a matrix 
+\begin_inset Formula $\left\{ \mathbf{a}_{i}\right\} $
+\end_inset
+
+, also called 
+\emph on
+local frame
+\emph default
+, cf.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:localframe"
+
+\end_inset
+
+.
+ Such matrix will have an inverse which we can denote as 
+\begin_inset Formula $\left\{ \mathbf{a}^{i}\right\} ^{T}=\left\{ \mathbf{a}_{i}\right\} ^{-1}$
+\end_inset
+
+.
+ The two coordinate systems, 
+\begin_inset Formula $\left\{ \mathbf{a}_{i}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ \mathbf{a}^{i}\right\} $
+\end_inset
+
+, are traditionally referred to as covariant and contravariant, respectively.
+ In Solfec we use an orthogonal local base 
+\begin_inset Formula $\left\{ \mathbf{a}_{i}\right\} $
+\end_inset
+
+ and in this case 
+\begin_inset Formula $\left\{ \mathbf{a}^{i}\right\} =\left\{ \mathbf{a}_{i}\right\} $
+\end_inset
+
+, so that 
+\begin_inset Formula $\left\{ \mathbf{a}^{i}\right\} ^{T}=\left\{ \mathbf{a}_{i}\right\} ^{T}$
+\end_inset
+
+.
+ Consequently, the local frame is functionally equivalent to a rotation
+ matrix.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/tomek/Dropbox/tkwork/codes/parmes/solfec/figures/localframe.png
+	lyxscale 30
+	width 60text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:localframe"
+
+\end_inset
+
+A local frame between two bodies.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+The linear transformation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:UHu0"
+
+\end_inset
+
+) can be most generally derived as follows.
+ Take any motion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{x}\left(\mathbf{X},t\right)=\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)
+\]
+
+\end_inset
+
+and calculate its derivative with respect to time
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}\mathbf{u}\left(t\right)
+\]
+
+\end_inset
+
+Then transform this spatial velocity from the global Euclidean frame into
+ the local frame
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{U}=\left\{ \mathbf{a}^{i}\right\} ^{T}\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}\mathbf{u}
+\]
+
+\end_inset
+
+Thus
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{H}\left(\mathbf{X}\right)=\left\{ \mathbf{a}^{i}\right\} ^{T}\frac{\partial\chi\left(\mathbf{X},\mathbf{q}\left(t\right)\right)}{\partial\mathbf{q}}
+\]
+
+\end_inset
+
+Specific forms of this transformation are described in sections below.
+\end_layout
+
+\begin_layout Subsection
+Rigid kinematics
+\end_layout
+
+\begin_layout Standard
+For rigid bodies, there holds
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\mathbf{x}}=\mathbf{\Lambda}\hat{\mathbf{\Omega}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{u}=\left[\begin{array}{c}
+\mathbf{\Omega}\\
+\dot{\bar{\mathbf{x}}}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{ccc}
+\mathbf{\Lambda}\left(\hat{\bar{\mathbf{X}}}-\hat{\mathbf{X}}\right) &  & \mathbf{I}\end{array}\right]
+\end{equation}
+
+\end_inset
+
+where the :ref:`hat operator <hat>` makes an anti–symmetric matrix out of
+ a 3–vector, and 
+\begin_inset Formula $\mathbf{I}$
+\end_inset
+
+ is a 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ identity matrix.
+\end_layout
+
+\begin_layout Subsection
+Pseudo--rigid kinematics
+\end_layout
+
+\begin_layout Standard
+For pseudo-rigid bodies, there holds
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\mathbf{x}}=\dot{\mathbf{F}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)+\dot{\bar{\mathbf{x}}}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{u}=\left[\begin{array}{c}
+\dot{F}_{11}\\
+\dot{F}_{12}\\
+...\\
+\dot{\bar{\mathbf{x}}}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\left[\begin{array}{cccccc}
+\mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &  &  & 1\\
+ & \mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &  &  & 1\\
+ &  & \mathbf{X}^{T}-\bar{\mathbf{X}}^{T} &  &  & 1
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Finite–element kinematics
+\end_layout
+
+\begin_layout Standard
+For finite–element bodies, there holds
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\dot{\mathbf{x}}\left(\mathbf{X},t\right)=\mathbf{N}\left(\mathbf{X}\right)\mathbf{u}
+\end{equation}
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{H}=\left\{ \mathbf{a}^{i}\right\} ^{T}\mathbf{N}\left(\mathbf{X}\right)
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Time stepping with constraints
+\end_layout
+
+\begin_layout Standard
+If we wish to control components of a local velocity 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ at a point 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, we can do this by applying a force 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ at this point.
+ Such local force 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ is reflected as a global, or generalized, or body–space force, 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+ as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{r}=\mathbf{H}^{T}\mathbf{R}
+\end{equation}
+
+\end_inset
+
+The momentum balance is modified accordingly
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}+\mathbf{H}^{T}\mathbf{R}
+\end{equation}
+
+\end_inset
+
+In case of multiple forces, 
+\begin_inset Formula $\mathbf{R}_{\alpha}$
+\end_inset
+
+, applied at multiple points 
+\begin_inset Formula $\mathbf{x}_{\alpha}$
+\end_inset
+
+, and controlling multiple local velocities 
+\begin_inset Formula $\mathbf{U}_{\alpha}$
+\end_inset
+
+, the modified momentum balance reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}+\sum_{\alpha}\mathbf{H}_{\alpha}^{T}\mathbf{R}_{\alpha}
+\end{equation}
+
+\end_inset
+
+Our attempt to control components of local velocities can be interpreted
+ as applying 
+\emph on
+constraints
+\emph default
+.
+ With such understanding, we can call 
+\begin_inset Formula $\mathbf{U}_{\alpha}$
+\end_inset
+
+ 
+\emph on
+constraints velocities
+\emph default
+, and 
+\begin_inset Formula $\mathbf{R}_{\alpha}$
+\end_inset
+
+ 
+\emph on
+constraints reactions
+\emph default
+.
+ For the sake of convenience, in case of a multi–body system, we can use
+ symbols 
+\begin_inset Formula $\mathbf{M}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{f}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+, etc.
+ as suitably juxtaposing matrices and vectors of all associated individual
+ bodies or constraints.
+ For example
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{U}=\left[\begin{array}{c}
+...\\
+\mathbf{U}_{\alpha}\\
+...
+\end{array}\right],\,\,\,\mathbf{R}=\left[\begin{array}{c}
+...\\
+\mathbf{R}_{\alpha}\\
+...
+\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{H}=\left[\begin{array}{ccc}
+... & \mathbf{H}_{\alpha} & ...\end{array}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{M}=\left[\begin{array}{ccc}
+...\\
+ & \mathbf{M}_{i}\\
+ &  & ...
+\end{array}\right],\,\,\,\mathbf{f}=\left[\begin{array}{c}
+...\\
+\mathbf{f}_{i}\\
+...
+\end{array}\right],\,\,\,\mathbf{u}=\left[\begin{array}{c}
+...\\
+\mathbf{u}_{i}\\
+...
+\end{array}\right]
+\]
+
+\end_inset
+
+With such understanding in mind, we can incorporate any set of constraints
+ into a multi–body system, by saying
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}+\mathbf{H}^{T}\mathbf{R}\label{eq:Muf1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\mathbf{u}\label{eq:UHu1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\label{eq:CUR1}
+\end{equation}
+
+\end_inset
+
+where the relation 
+\begin_inset Formula $\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}$
+\end_inset
+
+ implicitly expresses a control over local velocities 
+\begin_inset Formula $\mathbf{U}_{\alpha}$
+\end_inset
+
+, exerted using reaction forces 
+\begin_inset Formula $\mathbf{R}_{\alpha}$
+\end_inset
+
+.
+ Now, including constraints, we can modify the :ref:`previously introduced
+ time stepping <solfec-theory-timeint>` as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\label{eq:q1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+\mathbf{A}^{-1}h\mathbf{H}^{T}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{R}\label{eq:u2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\label{eq:UHu2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\label{eq:CUR2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\label{eq:q2}
+\end{equation}
+
+\end_inset
+
+The first step (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:q1"
+
+\end_inset
+
+) is explicit.
+ Equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:u2"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:UHu2"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CUR2"
+
+\end_inset
+
+) are solved together, implicitly.
+ The final step (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:q2"
+
+\end_inset
+
+) is again explicit.
+ This form of constrained time integration is implemented in Solfec.
+\end_layout
+
+\begin_layout Section
+Implementation
+\end_layout
+
+\end_body
+\end_document

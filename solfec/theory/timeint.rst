@@ -62,7 +62,7 @@ otherwise
 .. math::
   :label: W3(t+h)
 
-  \mbox{\textbf{solve} }\left(\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\mathbf{J}\mathbf{\Omega}_{3}^{t+h}=
+  \textbf{solve} \left(\exp\left[\frac{h}{2}\mathbf{\Omega}_{3}^{t+h}\right]\mathbf{J}\mathbf{\Omega}_{3}^{t+h}=
   \exp\left[-\frac{h}{2}\mathbf{\Omega}^{t}\right]\mathbf{J}\mathbf{\Omega}^{t}+h\mathbf{T}^{t+\frac{h}{2}}\right)
 
 .. math::

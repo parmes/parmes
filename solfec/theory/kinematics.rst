@@ -50,6 +50,8 @@ W note that
 
 The hat operator :math:`\hat{\mathbf{y}}` creates an anti--symmetric :math:`3\times3` matrix out of a 3--vector as follows
 
+.. _hat:
+
 .. math::
 
   \hat{\mathbf{y}}=\left[\begin{array}{ccc}
@@ -60,7 +62,10 @@ The hat operator :math:`\hat{\mathbf{y}}` creates an anti--symmetric :math:`3\ti
   
 In vector notation the configuration :math:`\mathbf{q}` and the velocity :math:`\mathbf{u}` can be expressed as
 
+.. _qurig:
+
 .. math::
+  :label: qurig
 
   \mathbf{q}=\left[\begin{array}{c}
   \Lambda_{11}\\
@@ -109,7 +114,10 @@ image of :math:`\bar{\mathbf{X}}`.
 
 In vector notation the configuration :math:`\mathbf{q}` and the velocity :math:`\mathbf{u}` can be expressed as
 
+.. _quprb:
+
 .. math::
+  :label: quprb
 
   \mathbf{q}=\left[\begin{array}{c}
   F_{11}\\
@@ -153,7 +161,10 @@ where :math:`\dot{\mathbf{q}}` is the vector of nodal :math:`x,y,z` velocities.
 
 In vector notation, the configuration :math:`\mathbf{q}` and the velocity :math:`\mathbf{u}` can be expressed as
 
+.. _qufem:
+
 .. math::
+  :label: qufem
 
   \mathbf{q}=\left[\begin{array}{c}
   q_{1x}\\
