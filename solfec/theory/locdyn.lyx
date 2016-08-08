@@ -1,0 +1,754 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+Let us start by restating the constrained time stepping scheme from the
+ :ref:`previous section <solfec-theory-constraints>`
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+\frac{h}{2}}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\label{eq:q1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{u}^{t+h}=\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\left(\mathbf{q}^{t+\frac{h}{2}},\mathbf{u}^{t}\right)+\mathbf{A}^{-1}h\mathbf{H}^{T}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{R}\label{eq:u2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\left(\mathbf{q}^{t+\frac{h}{2}}\right)\mathbf{u}\label{eq:UHu2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\label{eq:CUR2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h}=\mathbf{q}^{t+\frac{h}{2}}+\frac{h}{2}\mathbf{u}^{t+h}\label{eq:q2}
+\end{equation}
+
+\end_inset
+
+We said, that the equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:u2"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:UHu2"
+
+\end_inset
+
+), (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:CUR2"
+
+\end_inset
+
+) are solved together, implicitly.
+ In practice, since a solution process may take many iterations, it is often
+ more efficient to produce an assembled form of the relationship between
+ 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+, and use it together with 
+\begin_inset Formula $\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)$
+\end_inset
+
+ to find reaction forces 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+.
+ By substituting (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:u2"
+
+\end_inset
+
+) into (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:UHu2"
+
+\end_inset
+
+) we obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)+\mathbf{H}\mathbf{A}^{-1}h\mathbf{H}^{T}\mathbf{R}
+\end{equation}
+
+\end_inset
+
+and rewrite it as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}\label{eq:UWRB}
+\end{equation}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{B}=\mathbf{H}\left(\mathbf{u}^{t}+\mathbf{A}^{-1}h\mathbf{f}\right)\label{eq:B0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{W}=h\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^{T}\label{eq:W0}
+\end{equation}
+
+\end_inset
+
+Relation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:UWRB"
+
+\end_inset
+
+) can be called 
+\emph on
+local dynamics
+\emph default
+, since it relates point forces and (relative) point velocities.
+ 
+\begin_inset Formula $\mathbf{B}$
+\end_inset
+
+ can be called local free velocity, since it is a relative local velocity
+ of constraints when no reaction forces are applied.
+ 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ can be called a generalized inverse inertia matrix.
+\end_layout
+
+\begin_layout Section
+Detailed multi–body derivation
+\end_layout
+
+\begin_layout Standard
+So far we have presented formulas at certain level of generality.
+ Let us now present detailed multi–body formulas.
+ Let 
+\begin_inset Formula $\left\{ \mathcal{B}_{i}\right\} $
+\end_inset
+
+ be a set of bodies and 
+\begin_inset Formula $\left\{ \mathcal{C}_{\alpha}\right\} $
+\end_inset
+
+ be a set of local frames.
+ To each local frame 
+\begin_inset Formula $\mathcal{C}_{\alpha}$
+\end_inset
+
+ there corresponds a pair of bodies 
+\begin_inset Formula $\mathcal{B}_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}_{j}$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\mathcal{B}_{j}$
+\end_inset
+
+ be the body, to which the local frame is attached.
+ 
+\begin_inset Formula $\mathcal{B}_{j}$
+\end_inset
+
+ will be called the 
+\emph on
+master
+\emph default
+ in 
+\begin_inset Formula $\mathcal{C}_{\alpha}$
+\end_inset
+
+ and denoted by 
+\begin_inset Formula $\mathcal{M}_{\alpha}$
+\end_inset
+
+.
+ Consequently, 
+\begin_inset Formula $\mathcal{B}_{i}$
+\end_inset
+
+ will be called the 
+\emph on
+slave
+\emph default
+ in 
+\begin_inset Formula $\mathcal{C}_{\alpha}$
+\end_inset
+
+ and denoted by 
+\begin_inset Formula $\mathcal{S}_{\alpha}$
+\end_inset
+
+.
+ Of course, the choice is arbitrary.
+ Considering evolution of a multi-body system over an interval 
+\begin_inset Formula $\left[t,t+h\right]$
+\end_inset
+
+, an analogue of equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:UWRB"
+
+\end_inset
+
+) can be written down for each of the local frames
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U_{\alpha}}=\mathbf{B_{\alpha}}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}\label{eq:dynloc}
+\end{equation}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}\label{eq:U}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{b}_{i}-\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{b}_{j}\label{eq:B}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}\label{eq:Walbe}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{W}_{\alpha\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}\label{eq:Walal}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+k_{\beta}=\left\{ \begin{array}{cc}
+i & \textrm{if }\mathcal{B}_{i}\in\mathcal{C}_{\beta}\\
+j & \textrm{if }\mathcal{B}_{j}\in\mathbf{\mathcal{C}_{\beta}}
+\end{array}\right.
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+s_{\alpha\beta}=\left\{ \begin{array}{rl}
+-1 & \textrm{if }\mathcal{B}_{k_{\beta}}\textrm{ is }\left(\mathcal{M}_{\alpha}\wedge\mathcal{S}_{\beta}\right)\vee\left(\mathcal{S}_{\alpha}\wedge\mathcal{M}_{\beta}\right)\\
+1 & \textrm{otherwise}
+\end{array}\right.\label{eq:sdef}
+\end{equation}
+
+\end_inset
+
+The above formulae can be conveniently applied in a computer implementation.
+ They stem from the following algebra of the multi–body dynamics.
+ Let 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{f}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ gather the suitable vectors and matrices as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}=\left[\begin{array}{c}
+\mathbf{q}_{1}\\
+\mathbf{q}_{2}\\
+...\\
+\mathbf{q}_{n}
+\end{array}\right],\mathbf{u}=\left[\begin{array}{c}
+\mathbf{u}_{1}\\
+\mathbf{u}_{2}\\
+...\\
+\mathbf{u}_{n}
+\end{array}\right],\mathbf{f}=\left[\begin{array}{c}
+\mathbf{f}_{1}\\
+\mathbf{f}_{2}\\
+...\\
+\mathbf{f}_{n}
+\end{array}\right],\mathbf{A}=\left[\begin{array}{cccc}
+\mathbf{A}_{1}\\
+ & \mathbf{A}_{2}\\
+ &  & ...\\
+ &  &  & \mathbf{A}_{n}
+\end{array}\right]\label{eq:qufM}
+\end{equation}
+
+\end_inset
+
+To each local frame 
+\begin_inset Formula $\mathcal{C}_{\alpha},$
+\end_inset
+
+ there corresponds a block-row of the global 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ operator
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{H}=\left[\begin{array}{ccccccc}
+... & -\mathbf{H}_{j1} & ... & \mathbf{H}_{i1} & ...\\
+... & ... & ... & ... & ... & ... & ...\\
+ & ... & \mathbf{H}_{i\alpha} & ... & -\mathbf{H}_{j\alpha} & ...\\
+... & ... & ... & ... & ... & ... & ...\\
+ &  & ... & \mathbf{H}_{im} & ... & -\mathbf{H}_{jm} & ...
+\end{array}\right]\label{eq:Hglob}
+\end{equation}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{H}_{k\alpha}=\mathbf{H}\left(\left\{ \mathbf{a}^{i}\right\} \in\mathcal{C}_{\alpha},\mathbf{X}\in\mathcal{B}_{k}\right)
+\end{equation}
+
+\end_inset
+
+is evaluated according to one of the specific formulas :ref:`introduced
+ in the section on constraints <solfec-theory-constraints>`.
+\end_layout
+
+\begin_layout Section
+The 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ operator
+\end_layout
+
+\begin_layout Standard
+Operator 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ maps local forces into local relative velocities.
+ Algebraically, it is represented by a sparse matrix, composed of dense
+ 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ blocks 
+\begin_inset Formula $\mathbf{W}_{\alpha\beta}$
+\end_inset
+
+.
+ The sparsity pattern of
+\series bold
+ 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+
+\series default
+ corresponds to the vertex connectivity in the graph of local frames.
+ Vertices of this graph are the local frames 
+\begin_inset Formula $\left\{ \mathcal{C}_{\alpha}\right\} $
+\end_inset
+
+, while the edges comprise a subset of all bodies 
+\begin_inset Formula $\left\{ \mathcal{B}_{i}\right\} $
+\end_inset
+
+, such that 
+\begin_inset Formula $\mathcal{B}_{i}\in\mathcal{C_{\alpha}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathcal{B}_{i}\in\mathcal{C}_{\beta}$
+\end_inset
+
+ for 
+\begin_inset Formula $\alpha\ne\beta$
+\end_inset
+
+.
+ This has been illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:locgraph"
+
+\end_inset
+
+.
+ Operator 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ derives from the formula
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{W}=\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^{T}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ is a 
+\begin_inset Formula $n\times n$
+\end_inset
+
+ symmetric and positive definite matrix, and 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ is an 
+\begin_inset Formula $m\times n$
+\end_inset
+
+ transformation operator.
+ 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ is an 
+\begin_inset Formula $m\times m$
+\end_inset
+
+ symmetric matrix.
+ It is positive definite, provided rows of 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ are linearly independent.
+ This is easiest to see from the flow of the actions in the above formula.
+ A local force 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ is first mapped by 
+\begin_inset Formula $\mathbf{H}^{T}$
+\end_inset
+
+ into a generalized force 
+\begin_inset Formula $\mathbf{r}$
+\end_inset
+
+.
+ If rows of 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ are not linearly independent, then there exist 
+\begin_inset Formula $\mathbf{R}_{1}\ne\mathbf{R}_{2}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathbf{H}^{T}\mathbf{R}_{1}=\mathbf{H}^{T}\mathbf{R}_{2}$
+\end_inset
+
+ and hence 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ fails to be a bijection.
+ This means, that the null space of 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ is larger than 
+\begin_inset Formula $\left\{ \mathbf{0}\right\} $
+\end_inset
+
+, so that 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ is not invertible in the usual sense.
+ 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ becomes singular whenever 
+\begin_inset Formula $m>n$
+\end_inset
+
+, which is trivially related to the number of considered bodies relative
+ to the number of constraints.
+ On the other hand, one can always introduce singularity of 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ by using local frames between the same pair of bodies, in such a way that
+ their 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ operators are linearly dependent.
+ This can be related to deformability of kinematic models.
+ For example, the pseudo-rigid body has a linear distribution of the instantaneo
+us velocity over an arbitrary flat surface.
+ Thus, the relative velocity between two bodies over a flat surface is fully
+ parametrized by three points.
+ A larger number of local frames results in the singularity of 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+.
+ So does their collinearity.
+ In practice, 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ often becomes numerically singular for many practically encountered configurati
+ons of local frames.
+ Indeterminacy of local forces 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ is then an unavoidable consequence of either kinematic simplicity, or geometric
+ complexity, and as such it needs to be accepted in numerical practice.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ../../../../books/tkb0/locgraph.eps
+	lyxscale 50
+	width 65text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:locgraph"
+
+\end_inset
+
+A graph of local frames and the corresponding pattern of 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Implementation
+\end_layout
+
+\end_body
+\end_document

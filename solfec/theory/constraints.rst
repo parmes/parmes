@@ -240,6 +240,8 @@ exerted using reaction forces :math:`\mathbf{R}_{\alpha}`. Now, including
 constraints, we can modify the :ref:`previously introduced time stepping
 <solfec-theory-timeint>` as follows
 
+.. _timestepping1:
+
 .. math::
   :label: q1
 
