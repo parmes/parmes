@@ -151,8 +151,7 @@ reference "eq:CUR2"
 
 ) are solved together, implicitly.
  In practice, since a solution process may take many iterations, it is often
- more efficient to produce an assembled form of the relationship between
- 
+ efficient to produce an assembled form of the relationship between 
 \begin_inset Formula $\mathbf{U}$
 \end_inset
 
@@ -349,7 +348,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}\label{eq:U}
+\mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}^{t+h}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}^{t+h}\label{eq:U}
 \end{equation}
 
 \end_inset
@@ -360,7 +359,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{b}_{i}-\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{b}_{j}\label{eq:B}
+\mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\left(\mathbf{u}_{i}^{t}+\mathbf{A}_{i}^{-1}h\mathbf{f}_{i}\right)-\mathbf{H}_{j\alpha}\left(\mathbf{u}_{j}^{t}+\mathbf{A}_{j}^{-1}h\mathbf{f}_{j}\right)\label{eq:B}
 \end{equation}
 
 \end_inset
@@ -371,7 +370,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}\label{eq:Walbe}
+\left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}h\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}\label{eq:Walbe}
 \end{equation}
 
 \end_inset
@@ -382,7 +381,7 @@ where
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{W}_{\alpha\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}\label{eq:Walal}
+\mathbf{W}_{\alpha\alpha}=h\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+h\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}\label{eq:Walal}
 \end{equation}
 
 \end_inset
@@ -416,7 +415,7 @@ s_{\alpha\beta}=\left\{ \begin{array}{rl}
 \end_inset
 
 The above formulae can be conveniently applied in a computer implementation.
- They stem from the following algebra of the multi–body dynamics.
+ They stem from the following, juxtaposed algebra of  multi–body dynamics.
  Let 
 \begin_inset Formula $\mathbf{q}$
 \end_inset
@@ -509,11 +508,10 @@ The
 \begin_inset Formula $\mathbf{W}$
 \end_inset
 
- operator
+ matrix
 \end_layout
 
 \begin_layout Standard
-Operator 
 \begin_inset Formula $\mathbf{W}$
 \end_inset
 

@@ -34,7 +34,7 @@ scheme from the :ref:`previous section <timestepping1>`
 
 We said, that the equations :eq:`u2`, :eq:`UHu2`, :eq:`CUR2`
 are solved together, implicitly. In practice, since a solution process
-may take many iterations, it is often more efficient to produce an
+may take many iterations, it is often efficient to produce an
 assembled form of the relationship between :math:`\mathbf{U}` and :math:`\mathbf{R}`,
 and use it together with :math:`\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)`,
 to find reaction forces :math:`\mathbf{R}`. By substituting :eq:`u2`
@@ -47,7 +47,7 @@ into :eq:`UHu2` we obtain
 and rewrite it as
 
 .. math::
-  :label: UWRB
+  :label: UBWR
 
   \mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}
 
@@ -63,14 +63,16 @@ where
 
   \mathbf{W}=h\mathbf{H}\mathbf{A}^{-1}\mathbf{H}^{T}\label{eq:W0}
 
-Relation :eq:`UWRB` can be called *local dynamics*, since
+Relation :eq:`UBWR` can be called *local dynamics*, since
 it relates point forces and (relative) point velocities. :math:`\mathbf{B}`
 can be called local free velocity, since it is a relative local velocity
 of constraints when no reaction forces are applied. :math:`\mathbf{W}`
 can be called a generalized inverse inertia matrix.
 
-Detailed multi--body derivation
--------------------------------
+.. _detailed_notation:
+
+Detailed multi--body notation
+-----------------------------
 
 So far we have presented formulas at certain level of generality.
 Let us now present detailed multi--body formulas. Let :math:`\left\{ \mathcal{B}_{i}\right\}`
@@ -83,7 +85,7 @@ and denoted by :math:`\mathcal{M}_{\alpha}`. Consequently, :math:`\mathcal{B}_{i
 will be called the *slave* in :math:`\mathcal{C}_{\alpha}` and denoted
 by :math:`\mathcal{S}_{\alpha}`. Of course, the choice is arbitrary. Considering
 evolution of a multi--body system over an interval :math:`\left[t,t+h\right]`,
-an analogue of equation :eq:`UWRB` can be written down for each of the local frames
+an analogue of equation :eq:`UBWR` can be written down for each of the local frames
 
 .. math::
   :label: dynloc
@@ -95,22 +97,23 @@ where
 .. math::
   :label: U
 
-  \mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}
+  \mathbf{U}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{u}_{i}^{t+h}-\mathbf{H}_{j\alpha}\mathbf{u}_{j}^{t+h}
 
 .. math::
-  :label: B
+  :label: Bal
 
-  \mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{b}_{i}-\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{b}_{j}
+  \mathbf{B}_{\alpha}=\mathbf{H}_{i\alpha}\left(\mathbf{u}_{i}^{t}+\mathbf{A}_{i}^{-1}h\mathbf{f}_{i}\right)-
+  \mathbf{H}_{j\alpha}\left(\mathbf{u}_{j}^{t}+\mathbf{A}_{j}^{-1}h\mathbf{f}_{j}\right)
 
 .. math::
   :label: Walbe
 
-  \left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}
+  \left.\mathbf{W}_{\alpha\beta}\right|_{\alpha\ne\beta}=s_{\alpha\beta}h\mathbf{H}_{k_{\beta}\alpha}\mathbf{A}_{k_{\beta}}^{-1}\mathbf{H}_{k_{\beta}\beta}^{T}
 
 .. math::
   :label: Walal
 
-  \mathbf{W}_{\alpha\alpha}=\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}
+  \mathbf{W}_{\alpha\alpha}=h\mathbf{H}_{i\alpha}\mathbf{A}_{i}^{-1}\mathbf{H}_{i\alpha}^{T}+h\mathbf{H}_{j\alpha}\mathbf{A}_{j}^{-1}\mathbf{H}_{j\alpha}^{T}
 
 .. math::
   k_{\beta}=\left\{ \begin{array}{cc}
@@ -127,7 +130,7 @@ where
   \end{array}\right.
 
 The above formulae can be conveniently applied in a computer implementation.
-They stem from the following algebra of the multi--body dynamics.
+They stem from the following, juxtaposed algebra of multi--body dynamics.
 Let :math:`\mathbf{q}`, :math:`\mathbf{u}`, :math:`\mathbf{f}`, :math:`\mathbf{A}`
 gather the suitable vectors and matrices as
 
@@ -179,10 +182,10 @@ where
 
 is evaluated according to one of the specific formulas :ref:`introduced in the section on constraints <solfec-theory-constraints>`.
 
-The :math:`\mathbf{W}` operator
--------------------------------
+The :math:`\mathbf{W}` matrix
+-----------------------------
 
-Operator :math:`\mathbf{W}` maps local forces into local relative velocities.
+:math:`\mathbf{W}` maps local forces into local relative velocities.
 Algebraically, it is represented by a sparse matrix, composed of dense
 :math:`3\times3` blocks :math:`\mathbf{W}_{\alpha\beta}`. The sparsity pattern
 of :math:`\textbf{ $\mathbf{W}$}` corresponds to the vertex connectivity in
@@ -236,4 +239,116 @@ complexity, and as such it needs to be accepted in numerical practice.
 Implementation
 --------------
 
-Implementation ...
+Local dynamics is implemented in files `ldy.h <https://github.com/tkoziara/solfec/blob/master/ldy.h>`_ 
+and `ldy.c <https://github.com/tkoziara/solfec/blob/master/ldy.h>`_.
+
+Off--diagonal blocks of :math:`\mathbf{W}_{\alpha\beta}` :eq:`Walal`,
+diagonal block :math:`\mathbf{W}_{\alpha\alpha}` :eq:`Walal`,
+and the entire :math:`\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}` system :eq:`UBWR` are
+declared in `ldy.h:39 <https://github.com/tkoziara/solfec/blob/master/ldy.h#L39>`_ as follows:
+
+.. literalinclude:: ../../../solfec/ldy.h
+   :lines: 39-41
+   :lineno-start: 39
+   :linenos:
+
+
+Off--diagonal blocks of :math:`\mathbf{W}_{\alpha\beta}` :eq:`Walbe` are declared in
+`ldy.h:44 <https://github.com/tkoziara/solfec/blob/master/ldy.h#L44>`_ as follows:
+
+.. code-block:: c
+  :lineno-start: 44
+  :linenos:
+
+  struct offb
+  {
+    double W [9];
+    ...
+    DIAB *dia;
+    OFFB *n;
+  };
+
+.. stop ** in vim
+
+Diagonal blocks of :math:`\mathbf{W}_{\alpha\alpha}` :eq:`Walal` and
+free velocity :math:`\mathbf{B}_{\alpha}` :eq:`Bal` are declared in
+`ldy.h:53 <https://github.com/tkoziara/solfec/blob/master/ldy.h#L53>`_ as follows:
+
+.. code-block:: c
+  :lineno-start: 53
+  :linenos:
+
+  struct diab
+  {
+    double *R, /* average reaction ... */
+
+.. stop ** in vim
+
+.. code-block:: c
+  :lineno-start: 58
+  :linenos:
+
+           W [9], /* diagonal block of W */
+	   ...
+	   B [3], /* free velocity */
+
+.. stop ** in vim
+
+.. code-block:: c
+  :lineno-start: 63
+  :linenos:
+
+    OFFB *adj;
+
+    CON *con;  /* the underlying constraint ... */
+
+.. stop ** in vim
+
+.. code-block:: c
+  :lineno-start: 71
+  :linenos:
+
+    DIAB *p, *n;
+
+.. stop ** in vim
+
+.. code-block:: c
+  :lineno-start: 78
+  :linenos:
+
+  };
+
+The local dynamics system is stored as a doubly linked list of diagonal blocs
+further pointing to singly linked lists of off--diagonal blocks in
+`ldy.h:81 <https://github.com/tkoziara/solfec/blob/master/ldy.h#L81>`_ as:
+
+.. code-block:: c
+  :lineno-start: 81
+  :linenos:
+
+  struct locdyn
+  {
+
+.. code-block:: c
+  :lineno-start: 87
+  :linenos:
+
+  DIAB *dia; /* list of diagonal blocks */
+
+.. stop ** in vim
+
+.. code-block:: c
+  :lineno-start: 90
+  :linenos:
+
+  };
+
+.. |br| raw:: html
+
+  <br />
+
+Symbolic insertion of rows into :math:`\mathbf{W}`, without assembling of the numeric block values,
+is administered by `ldy.c:LOCDYN_Insert <https://github.com/tkoziara/solfec/blob/master/ldy.c#L478>`_. |br|
+Similarly, deletion of rows from :math:`\mathbf{W}` is administered by
+`ldy.c:LOCDYN_Remove <https://github.com/tkoziara/solfec/blob/master/ldy.c#L557>`_. |br|
+Assembling of :math:`\mathbf{W}` and :math:`\mathbf{B}` is invoked by `ldy.c:LOCDYN_Update_Begin <https://github.com/tkoziara/solfec/blob/master/ldy.c#L612>`_.
