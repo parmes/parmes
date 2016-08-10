@@ -5,12 +5,14 @@ Constraints
 
 An object of type CONSTRAINT represents a constraint and its associated data (e.g. constraint reaction).
 Both, user prescribed constraints (routines below) and contact constraints (detected automatically) are
-represented by an object of the same type.
+represented by an object of the same type. See also, the :ref:`Joints section <solfec-theory-joints>`.
+
+.. _fix_point:
 
 FIX_POINT
 ---------
 
-This routine creates a fixed point constraint.
+This routine creates a :ref:`fixed point constraint <fixed-point>`.
 
 .. topic:: obj = FIX_POINT (body, point | strength)
 
@@ -22,11 +24,14 @@ This routine creates a fixed point constraint.
 
   * strength - optionally an ultimate magnitude of the reaction force, beyond which the constraint will be deleted (default: infinity)
 
+.. _fix_direction:
+
 FIX_DIRECTION 
 -------------
 
 This routine fixes the motion of a referential point along a specified spatial direction.
 If body2 is given the motion of point2 along the direction convected with the first body is fixed.
+See also, formulation of the :ref:`fixed direction constraint <fixed-direction>`.
 
 .. topic:: obj = FIX_DIRECTION (body, point, direction | body2, point2)
 
@@ -42,10 +47,13 @@ If body2 is given the motion of point2 along the direction convected with the fi
 
   * point2 -- (x, y, z) tuple with referential point on body2
 
+.. _set_displacement: 
+
 SET_DISPLACEMENT 
 ----------------
 
 This routine prescribes a displacement history of a referential point along a specified spacial direction.
+See also, formulation of the :ref:`prescribed displacement constraint <prescribed-displacement>`.
 
 .. topic:: obj = SET_DISPLACEMENT (body, point, direction, tms)
 
@@ -59,10 +67,13 @@ This routine prescribes a displacement history of a referential point along a sp
 
   * tms -- TIME_SERIES object with the displacement history
 
+.. _set_velocity: 
+
 SET_VELOCITY 
 ------------
 
 This routine prescribes a velocity history of a referential point along a specified spacial direction.
+See also, formulation of the :ref:`prescribed velocity constraint <prescribed-velocity>`.
 
 .. topic:: obj = SET_VELOCITY (body, point, direction, value)
 
@@ -76,10 +87,13 @@ This routine prescribes a velocity history of a referential point along a specif
 
   * value -- a constant value or a TIME_SERIES object with the velocity history
 
+.. _set_acceleration: 
+
 SET_ACCELERATION 
 ----------------
 
 This routine prescribes an acceleration history of a referential point along a specified spacial direction.
+See also, formulation of the :ref:`prescribed acceleration constraint <prescribed-acceleration>`.
 
 .. topic:: obj = SET_ACCELERATION (body, point, direction, tms)
 
@@ -93,10 +107,13 @@ This routine prescribes an acceleration history of a referential point along a s
 
   * tms -- TIME_SERIES object with the acceleration history
 
+.. _put_rigid_link: 
+
 PUT_RIGID_LINK 
 --------------
 
 This routine creates a rigid link constraints between two referential points of two distinct bodies.
+See also, formulation of the :ref:`rigid link constraint <rigid-link>`.
 
 .. topic:: obj = PUT_RIGID_LINK (body1, body2, point1, point2 | strength)
 
@@ -113,10 +130,13 @@ This routine creates a rigid link constraints between two referential points of 
   • strength -- optionally an ultimate tensile strength if point1 != point2,
     beyond which the link will be deleted (default: infinity); or ultimate reaction magnitude (point1 == point2)
 
+.. _put_spring:
+
 PUT_SPRING 
 ----------
 
 This routine creates an arbitrary spring between two referential points of two distinct bodies.
+See also, formulation of the :ref:`spring constraint <simple-spring>`.
 
 .. topic:: obj = PUT_SPRING (body1, point1, body2, point2, function, limits)
 
