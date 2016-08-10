@@ -204,3 +204,13 @@ and hence
   
 where the user force is prescribed as a Python subroutine.
 The tangential plane is unused, hence zero tangential reaction.
+
+Implementation
+--------------
+
+Joints are implemented as a part of constraint solvers. For example, function
+`dbs.c:DIAGONAL_BLOCK_Solver <https://github.com/tkoziara/solfec/blob/master/dbs.c#L483>`_ is a driver
+routine for all joint types solved within the :ref:`gauss-seidel` solver, invoked from within
+`bgs.c:GAUSS_SEIDEL_Solve <https://github.com/tkoziara/solfec/blob/master/bgs.c#L901>`_.
+Within the :ref:`projected-newton` solver the routine
+`nts.c:solve <https://github.com/tkoziara/solfec/blob/master/nts.c#L939>`_ implements all joint types.

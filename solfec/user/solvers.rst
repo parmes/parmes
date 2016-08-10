@@ -7,6 +7,8 @@ Solver objects represent a constraint solution scheme applied at every time step
 of a simulation in order to resolve the equality and inequality constraints. User defined
 constraints and contact constraints are handled together as one nonlinear root finding problem.
 
+.. _gauss-seidel:
+
 Gauss--Seidel
 -------------
 
@@ -111,6 +113,8 @@ Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object,
   | 'BOUNDARY_JACOBI'	     | Use Jacobi update for all off--processor data. This approach will fail in    |
   |                          | most cases. It servers as illustration.                                      |
   +--------------------------+------------------------------------------------------------------------------+
+
+.. _projected-newton:
 
 Projected Newton
 ----------------
