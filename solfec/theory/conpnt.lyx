@@ -1,0 +1,533 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+In Solfec contact points are generated from volumetric intersections of
+ convex primitive shapes.
+ For example, in case of finite elements, a single contact point is generated
+ as a result of an intersection of two elements.
+ Once an intersection is calculated, a contact point is obtained as a centroid
+ of the intersection surface; a contact normal is calculated by averaging
+ normal directions of the constituent surfaces.
+ This is illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:conpnt"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/tomek/Dropbox/tkwork/codes/parmes/solfec/figures/conpnt.png
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:conpnt"
+
+\end_inset
+
+Contact points and normals obtained from volumetric intersections of convex
+ primitives.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Calculating volumetric intersection
+\end_layout
+
+\begin_layout Standard
+Intersection of two convex polyhedra is a convex polyhedron.
+ The convex intersection algorithm, based on 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Muller"
+
+\end_inset
+
+, is implemented in cvi.c and it can be summarized as follows.
+ Let vectors
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{v}=\left[\begin{array}{c}
+\mathbf{v}_{1}\\
+...\\
+\mathbf{v}_{n}
+\end{array}\right],\,\,\,\mathbf{p}=\left[\begin{array}{c}
+\mathbf{p}_{1}\\
+...\\
+\mathbf{p}_{m}
+\end{array}\right]
+\]
+
+\end_inset
+
+store vertices and face planes of a polyhedron.
+ Vertices are made of triplets of coordinates
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{v}_{i}=\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}
+\end{array}\right]_{i}
+\]
+
+\end_inset
+
+Planes are made of four components
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{p}_{i}=\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}\\
+d
+\end{array}\right]_{i}
+\]
+
+\end_inset
+
+The plane equation reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+n_{x}\cdot x+n_{y}\cdot y+n_{z}\cdot z+d=0
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\left[n_{x},n_{y},n_{z}\right]^{T}$
+\end_inset
+
+ can be interpreted as a direction normal to the plane.
+ The convex intersection takes as input
+\end_layout
+
+\begin_layout LyX-Code
+va - vertices of polyhedron 'a'
+\end_layout
+
+\begin_layout LyX-Code
+pa - face planes of polyhedron 'a'
+\end_layout
+
+\begin_layout LyX-Code
+vb, pb - vertices and planes of polyhedron 'b'
+\end_layout
+
+\begin_layout Standard
+as seen in cvi.c:118.
+ The algorithm begins by finding a distance between, and a pair closest
+ points in 'a' and 'b'
+\end_layout
+
+\begin_layout LyX-Code
+1  d,p,q = gjk(va, vb)
+\end_layout
+
+\begin_layout LyX-Code
+2  if d > 0 return NULL
+\end_layout
+
+\begin_layout LyX-Code
+3  else x = p
+\end_layout
+
+\begin_layout Standard
+which maps to cvi.c:132.
+ The GJK algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "GJK"
+
+\end_inset
+
+, implemented in gjk.c:342, is used.
+ In case there is a positive separating distance between the input polyhedrons,
+ null intersection is returned.
+ For the intersection algorithm to work we need a point 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+, that is inside of both input polyhedrons.
+ GJK will at best return a common point on the surfaces of both polyhedra.
+ In the next step
+\end_layout
+
+\begin_layout LyX-Code
+4  x = refine_point(x)
+\end_layout
+
+\begin_layout Standard
+point 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ is refined by pushing it deeper inside of polyhedrons 'a' and 'b'.
+ This maps to cvi.c:136.
+ Once 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ has been refined, we transform the input plane definitions
+\end_layout
+
+\begin_layout LyX-Code
+5  transform(pa)
+\end_layout
+
+\begin_layout LyX-Code
+6  transform(pb)
+\end_layout
+
+\begin_layout Standard
+so that 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ acts as an origin of the coordinate system 
+\begin_inset Formula $\left[0,0,0\right]^{T}$
+\end_inset
+
+.
+ In the course of this transformation we also scale the normal direction
+ components so that 
+\begin_inset Formula $d_{i}=-1$
+\end_inset
+
+.
+ This maps to cvi.c:143-159.
+ In the next step
+\end_layout
+
+\begin_layout LyX-Code
+7  h = quickhull(normals(pa+pb))
+\end_layout
+
+\begin_layout Standard
+we calculate the convex hull of the transformed normal directions of 'a'
+ and 'b' (cvi.c:163).
+ The quickhull algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Quickhull"
+
+\end_inset
+
+, implemented in hull.c:555, is used.
+ The result can be interpreted as a 
+\emph on
+dual polyhedron
+\emph default
+ of the intersection polyhedron of 'a' and 'b': for a convex polyhedron
+ 
+\begin_inset Formula $\left(\mathbf{v},\mathbf{p}\right)$
+\end_inset
+
+, its dual (or 
+\emph on
+polar
+\emph default
+) polyhedron is made by reinterpreting vertices as planes, and planes as
+ vertices, as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}
+\end{array}\right]_{i}\rightarrow\left[\begin{array}{c}
+v_{x}\\
+v_{y}\\
+v_{z}\\
+-1
+\end{array}\right]_{i},\,\,\,l_{v}=\sqrt{v_{x}^{2}+v_{y}^{2}+v_{z}^{2}}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}\\
+-1
+\end{array}\right]_{i}\rightarrow\left[\begin{array}{c}
+n_{x}\\
+n_{y}\\
+n_{z}
+\end{array}\right]_{i},\,\,\,l_{n}=\sqrt{n_{x}^{2}+n_{y}^{2}+n_{z}^{2}}
+\]
+
+\end_inset
+
+where vertices at distance 
+\begin_inset Formula $l_{v}$
+\end_inset
+
+ from the origin become planes at distance 
+\begin_inset Formula $1/l_{v}$
+\end_inset
+
+ from the origin, while planes at distance 
+\begin_inset Formula $1/l_{n}$
+\end_inset
+
+ from the origin become vertices at distance 
+\begin_inset Formula $l_{n}$
+\end_inset
+
+.
+ In order to obtain vertices of the intersection polyhedron we then calculate
+ the polar set
+\end_layout
+
+\begin_layout LyX-Code
+8  v = polarize(h)
+\end_layout
+
+\begin_layout Standard
+which maps to cvi.c:164 and is implemented in tri.c:351.
+ The vertices 
+\begin_inset Formula $\mathbf{v}$
+\end_inset
+
+ of the dual intersection polyhedron are translated back, 
+\begin_inset Formula $\mathbf{v}+\mathbf{x}$
+\end_inset
+
+, into the input coordinate system, and triangulated
+\end_layout
+
+\begin_layout LyX-Code
+9  t = triangulate(v+x)
+\end_layout
+
+\begin_layout Standard
+which maps to cvi.c:170-220.
+ The triangulation is then returned
+\end_layout
+
+\begin_layout LyX-Code
+10 return t
+\end_layout
+
+\begin_layout Standard
+at cvi.v:231.
+\end_layout
+
+\begin_layout Section
+Deriving contact points and normals
+\end_layout
+
+\begin_layout Section
+Contact sparsification
+\end_layout
+
+\begin_layout Section
+Broad phase contact detection
+\end_layout
+
+\begin_layout Section
+Other implementation aspects
+\end_layout
+
+\begin_layout Standard
+Mention: cvi.*, gjk.*, hull.*, hyb.*, tri.* and corresponding tests.
+ Mention the standalone version of some of these algorithms in cvxlib.
+ Talk about goc.* and contact sparsification and box.*.
+ Mention more box overlap algorithms (point to all files) and mention the
+ corresponding test example.
+ Alternatively, mention all files in the sections above and don't use this
+ section.
+ Mention GEOMETRIC_EPSILON.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Muller"
+
+\end_inset
+
+D.
+ E.
+ Muller and F.
+ P.
+ Preparata, Finding the intersection of two convex polyhedra, Theoretical
+ Computer Science, 7, 217-236, 1978.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Quickhull"
+
+\end_inset
+
+C.
+ B.
+ Barber, D.
+ P.
+ Dobkin, and H.
+ Huhdanpaa, The Quickhull Algorithm for Convex Hulls, ACM Transactions on
+ Mathematical Software, 22 (4), 469-483, 1996.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "GJK"
+
+\end_inset
+
+E.
+ G.
+ Gilbert, and D.
+ W.
+ Johnson, and S.
+ S.
+ Keerthi, Fast procedure for computing the distance between complex objects
+ in three-dimensional space, IEEE journal of robotics and automation, 4
+ (2), 193-203, 1988.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Zomorodian"
+
+\end_inset
+
+A.
+ Zomorodian and H.
+ Edelsbrunner, Fast software for box intersections, International Journal
+ of Computational Geometry and Applications, 12 (1-2), 143-172, 2002.
+\end_layout
+
+\end_body
+\end_document
