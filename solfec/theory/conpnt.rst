@@ -168,8 +168,85 @@ at `cvi.c:231 <https://github.com/tkoziara/solfec/blob/master/cvi.c#L231>`_.
 Deriving contact points and normals
 -----------------------------------
 
+Contact points and contact normals are calculated based on the intersection surfaces obtained in the previous step.
+For various pairing of geometrical objects, calculation of contact points and contact normals is implemented in
+`goc.c <https://github.com/tkoziara/solfec/blob/master/goc.c>`_. For the pairing of two convex polyhedral surfaces
+contact detection is implemented in `goc.c:detect_convex_convex <https://github.com/tkoziara/solfec/blob/master/goc.c#L257>`_,
+where fist at `goc.c:272 <https://github.com/tkoziara/solfec/blob/master/goc.c#L272>`_, triangulation of the intersection of
+the input surfaces is obtained, and next at `goc.c:274 <https://github.com/tkoziara/solfec/blob/master/goc.c#L274>`_ a contact
+point and contact normal are obtained out of this triangulation. Implementation of this calculation is found at
+`goc.c:130 <https://github.com/tkoziara/solfec/blob/master/goc.c#L130>`_ and it can be summarized as follows. Let :math:`\partial A`
+and :math:`\partial B` be the surfaces of the input polytopes :math:`A` and :math:`B`. Let :math:`\left\{ t_{i}\right\}`  and
+:math:`\left\{ \mathbf{v}_{i}\right\}`  be the sets of triangles and vertices of the intersection surface of :math:`A\cap B`. Then
+
+.. |br| raw:: html
+
+  <br />
+
+1 :math:`\,\,` :math:`\mathbf{p}=\mathbf{0}`, :math:`\mathbf{n}=\mathbf{0}`, :math:`area = 0` |br|
+2 :math:`\,\,` for each :math:`t_{i}\in\left\{ t_{i}\right\}`  do |br|
+3 :math:`\,\,\,\,\,\,` :math:`a = area \left(t_{i}\right)`, :math:`b = a^{2}` |br|
+4 :math:`\,\,\,\,\,\,` if :math:`t_{i}\in\partial A` then :math:`\mathbf{n}=\mathbf{n}+b\cdot\text{normal}\left(t_{i}\right)` |br|
+5 :math:`\,\,\,\,\,\,` else :math:`\mathbf{n}=\mathbf{n}-b\cdot\text{normal}\left(t_{i}\right)` |br|
+6 :math:`\,\,\,\,\,\,` :math:`\mathbf{p}=\mathbf{p}+a\cdot\text{centroid}\left(t_{i}\right)` |br|
+7 :math:`\,\,\,\,\,\,` :math:`area=area+a` |br|
+8 :math:`\,\,\,\,\,\,` :math:`\mathbf{p}=\mathbf{p}/area`, :math:`\mathbf{n}=\mathbf{n}/\left\Vert \mathbf{n}\right\Vert` , :math:`area=0.5\cdot area` |br|
+9 :math:`\,\,\,\,\,\,` if :math:`\mathbf{p}` outside of :math:`A` or :math:`B` return NULL |br|
+10 :math:`\,\,\,\,\,` :math:`spair_{0}=\text{nearest_surface_id}\left(\mathbf{p},\partial A\right)` |br|
+11 :math:`\,\,\,\,\,` :math:`spair_{1}=\text{nearest_surface_id}\left(\mathbf{p},\partial B\right)` |br|
+12 :math:`\,\,\,\,\,` :math:`gap=\underset{\mathbf{v}_{i}\in\left\{ \mathbf{v}_{i}\right\} }{\min}\mathbf{n}\cdot\mathbf{v}_{i}-
+\underset{\mathbf{v}_{i}\in\left\{ \mathbf{v}_{i}\right\} }{\max}\mathbf{n}\cdot\mathbf{v}_{i}` |br|
+13 :math:`\,\,\,\,\,` if :math:`\left|gap\right|` seems too large |br|
+14 :math:`\,\,\,\,\,\,\,\,\,` :math:`A^{\prime}=A+\mathbf{n}\cdot\left|gap\right|`, :math:`B^{\prime}=B-\mathbf{n}\cdot\left|gap\right|` |br|
+15 :math:`\,\,\,\,\,\,\,\,\,` :math:`gap=\min\left(\text{gjk}\left(A^{\prime},B^{\prime}\right)-2\left|gap\right|,0\right)` |br|
+16 :math:`\,\,` return :math:`\mathbf{p}`, :math:`\mathbf{n}`, :math:`area`, :math:`spair`, :math:`gap`
+
+Lines 1-8 above map to `goc.c:141-158 <https://github.com/tkoziara/solfec/blob/master/goc.c#L141L158>`_.
+Line 9 corresponds to `goc.c:160 <https://github.com/tkoziara/solfec/blob/master/goc.c#L160>`_ .
+Lines 10-11 map to `goc.c:163-172 <https://github.com/tkoziara/solfec/blob/master/goc.c#L163L172>`_ .
+Lines 12-15 map to `goc.c:214-243 <https://github.com/tkoziara/solfec/blob/master/goc.c#L214L243>`_.
+The extra check in line 13-15 is added to improve robustness of gap calculation. We note that, apart from the contact point,
+the contact normal, and the gap, we also calculate contact area, and surface pairing spair, storing identifiers of the input
+surfaces that are nearest to the contact point. In line 4, accumulated normal directions are scaled by square area of triangles,
+weighting down the influence of triangles with small areas. In line 9, we terminate in case the contact point fell outside of
+the input surfaces due to roundoff.
+
+.. _contact_sparsification:
+
 Contact sparsification
 ----------------------
+
+Contact geometries made of many individual convex objects often generate many contact points. Some of these contact points
+are ill–conditioned, in the sense that their corresponding contact normals do not necessarily represent a most natural
+direction of contact resolution. This frequently happens near corners or sharp edges, due to roundoff error. Also, for
+contact problems among bodies represented by simple kinematic models (e.g. rigid or pseudo-rigid) complex geometries may
+give rise to the number of contact points far exceeding the available kinematic freedom. This renders the :math:`\mathbf{W}`
+matrix ill-conditioned, as already explained in :ref:`the section on local dynamics <W_matrix>`. For the above
+reasons, a heuristic method of refining contact points, or *sparsification*, has been implemented in 
+`dom.c:sparsify_contacts <https://github.com/tkoziara/solfec/blob/master/dom.c#L2808>`_.
+The result of application of this routine is seen in :numref:`sparsification`. 
+
+.. _sparsification:
+
+.. figure:: ../figures/sparsification.png
+   :width: 100%
+   :align: center
+
+   Heuristic filtering of redundant contact points (736 to 168).     
+
+The sparsification approach can be summarized as follows. Let :math:`\left\{ c_{i}\right\}`  be a set of all contact points
+and let :math:`threshold`, :math:`minarea` and :math:`mindist` be given. Then
+
+1 :math:`\,\,` for all newly detected :math:`c_{i}\in\left\{ c_{i}\right\}` do |br|
+2 :math:`\,\,\,\,\,\,` if :math:`\text{area}\left(c_{i}\right)<minarea` then :math:`\text{delete}\left(c_{i}\right)` |br|
+3 :math:`\,\,\,\,\,\,`  for all :math:`c_{j}\in\text{adjacency}\left(c_{i}\right)` do |br|
+4 :math:`\,\,\,\,\,\,\,\,\,\,` if :math:`\text{area}\left(c_{i}\right)<threshold\cdot\text{area}\left(c_{j}\right)` and |br|
+:math:`\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,\,` :math:`c_{i}\text{ and }c_{j}\text{ are topologically adjacent}` then :math:`\text{delete}\left(c_{i}\right)` |br|
+5 :math:`\,\,\,\,\,\,\,\,\,\,` else if :math:`\left\Vert \mathbf{p}\left(c_{i}\right)-\mathbf{p}\left(c_{j}\right)\right\Vert <mindist` then :math:`\text{delete}\left(c_{i}\right)`
+
+Contact points are “topologically adjacent” if they are generated by geometrical primitives which themselves are topologically adjacent
+(e.g. finite elements that share element faces). We note, that parameters :math:`threshold`, :math:`minarea` and :math:`mindist` can be
+adjusted by using the :ref:`CONTACT_SPARSIFY <contact_sparsify>` input command.
 
 Broad phase contact detection
 -----------------------------

@@ -1,4 +1,6 @@
 
+* On Aug 12 2016 :ref:`solfec-theory-conpnt`
+
 * On Aug 10 2016 :ref:`solfec-theory-joints`
 
 * On Aug 10 2016 :ref:`solfec-user-solvers`
@@ -16,5 +18,3 @@
 * On Aug 3 2016 :ref:`solfec-theory`
 
 * On Aug 3 2016 :ref:`solfec-theory-dynamics`
-
-* On Aug 3 2016 :ref:`solfec-user-body`

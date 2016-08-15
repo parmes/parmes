@@ -182,6 +182,8 @@ where
 
 is evaluated according to one of the specific formulas :ref:`introduced in the section on constraints <solfec-theory-constraints>`.
 
+.. _W_matrix:
+
 The :math:`\mathbf{W}` matrix
 -----------------------------
 

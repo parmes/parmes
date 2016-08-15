@@ -444,12 +444,453 @@ at cvi.v:231.
 Deriving contact points and normals
 \end_layout
 
+\begin_layout Standard
+Contact points and contact normals are calculated based on the intersection
+ surfaces obtained in the previous step.
+ For various pairing of geometrical objects, calculation of contact points
+ and contact normals is implemented in goc.c.
+ For the pairing of two convex polyhedral surfaces contact detection is
+ implemented in goc.c:detect_convex_convex, where fist at goc.c:272, triangulation
+ of the intersection of the input surfaces is obtained, and next at goc.c:274
+ a contact point and contact normal are obtained out of this triangulation.
+ Implementation of this calculation is found at goc.c:130 and it can be summarize
+d as follows.
+ Let 
+\begin_inset Formula $\partial A$
+\end_inset
+
+ and 
+\begin_inset Formula $\partial B$
+\end_inset
+
+ be the surfaces of the input polytopes 
+\begin_inset Formula $A$
+\end_inset
+
+ and 
+\begin_inset Formula $B$
+\end_inset
+
+.
+ Let 
+\begin_inset Formula $\left\{ t_{i}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $\left\{ \mathbf{v}_{i}\right\} $
+\end_inset
+
+ be the sets of triangles and vertices of the intersection surface of 
+\begin_inset Formula $A\cap B$
+\end_inset
+
+.
+ Then
+\end_layout
+
+\begin_layout LyX-Code
+1  
+\begin_inset Formula $\mathbf{p}=\mathbf{0}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{n}=\mathbf{0}$
+\end_inset
+
+, 
+\begin_inset Formula $area$
+\end_inset
+
+ = 0
+\end_layout
+
+\begin_layout LyX-Code
+2  for each 
+\begin_inset Formula $t_{i}\in\left\{ t_{i}\right\} $
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+3    
+\begin_inset Formula $a$
+\end_inset
+
+ = area 
+\begin_inset Formula $\left(t_{i}\right)$
+\end_inset
+
+, 
+\begin_inset Formula $b$
+\end_inset
+
+ = 
+\begin_inset Formula $a^{2}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+4    if 
+\begin_inset Formula $t_{i}\in\partial A$
+\end_inset
+
+ then 
+\begin_inset Formula $\mathbf{n}=\mathbf{n}+b\cdot\text{normal}\left(t_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+5    else 
+\begin_inset Formula $\mathbf{n}=\mathbf{n}-b\cdot\text{normal}\left(t_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+6    
+\begin_inset Formula $\mathbf{p}=\mathbf{p}+a\cdot\text{centroid}\left(t_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+7    
+\begin_inset Formula $area=area+a$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+8  
+\begin_inset Formula $\mathbf{p}=\mathbf{p}/area$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{n}=\mathbf{n}/\left\Vert \mathbf{n}\right\Vert $
+\end_inset
+
+, 
+\begin_inset Formula $area=0.5\cdot area$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+9  if 
+\begin_inset Formula $\mathbf{p}$
+\end_inset
+
+ outside of 
+\begin_inset Formula $A$
+\end_inset
+
+ or 
+\begin_inset Formula $B$
+\end_inset
+
+ return NULL
+\end_layout
+
+\begin_layout LyX-Code
+10 
+\begin_inset Formula $spair_{0}=\text{nearest\_surface\_id}\left(\mathbf{p},\partial A\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+11 
+\begin_inset Formula $spair_{1}=\text{nearest\_surface\_id}\left(\mathbf{p},\partial B\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+12 
+\begin_inset Formula $gap=\underset{\mathbf{v}_{i}\in\left\{ \mathbf{v}_{i}\right\} }{\min}\mathbf{n}\cdot\mathbf{v}_{i}-\underset{\mathbf{v}_{i}\in\left\{ \mathbf{v}_{i}\right\} }{\max}\mathbf{n}\cdot\mathbf{v}_{i}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+13 if 
+\begin_inset Formula $\left|gap\right|$
+\end_inset
+
+ seems too large
+\end_layout
+
+\begin_layout LyX-Code
+14   
+\begin_inset Formula $A^{\prime}=A+\mathbf{n}\cdot\left|gap\right|$
+\end_inset
+
+, 
+\begin_inset Formula $B^{\prime}=B-\mathbf{n}\cdot\left|gap\right|$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+15   
+\begin_inset Formula $gap=\min\left(\text{gjk}\left(A^{\prime},B^{\prime}\right)-2\left|gap\right|,0\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+16 return 
+\begin_inset Formula $\mathbf{p}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{n}$
+\end_inset
+
+, 
+\begin_inset Formula $area$
+\end_inset
+
+, 
+\begin_inset Formula $spair$
+\end_inset
+
+, 
+\begin_inset Formula $gap$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Lines 1-8 above map to goc.c:141-158.
+ Line 9 corresponds to goc.c:160.
+ Lines 10-11 map to goc.c:163-172.
+ Lines 12-15 map to goc.c:214-243.
+ The extra check in line 13-15 is added to improve robustness of gap calculation.
+ We note that, apart from the contact point, the contact normal, and the
+ 
+\begin_inset Formula $gap$
+\end_inset
+
+, we also calculate contact 
+\begin_inset Formula $area$
+\end_inset
+
+, and surface pairing 
+\begin_inset Formula $spair$
+\end_inset
+
+, storing identifiers of the input surfaces that are nearest to the contact
+ point.
+ In line 4, accumulated normal directions are scaled by square area of triangles
+, weighting down the influence of triangles with small areas.
+ In line 9, we terminate in case the contact point fell outside of the input
+ surfaces due to roundoff.
+\end_layout
+
 \begin_layout Section
 Contact sparsification
 \end_layout
 
+\begin_layout Standard
+Contact geometries made of many individual convex objects often generate
+ many contact points.
+ Some of these contact points are ill–conditioned, in the sense that their
+ corresponding contact normals do not necessarily represent a most natural
+ direction of contact resolution.
+ This frequently happens near corners or sharp edges, due to roundoff error.
+ Also, for contact problems among bodies represented by simple kinematic
+ models (e.g.
+ rigid or pseudo-rigid) complex geometries may give rise to the number of
+ contact points far exceeding the available kinematic freedom.
+ This renders the 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ matrix ill-conditioned, as already explained in :ref:`the section on local
+ dynamics <solfec-theory-locdyn>`.
+ For the above reasons, a heuristic method of refining contact points, or
+ 
+\emph on
+sparsification
+\emph default
+, has been implemented in dom.c:sparsify_contacts.
+ The result of application of this routine is seen in :numref:`sparsification`.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/tomek/Dropbox/tkwork/codes/parmes/solfec/figures/sparsification.png
+	lyxscale 50
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic filtering of redundant contact points (736 to 168).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The sparsification approach can be summarized as follows.
+ Let 
+\begin_inset Formula $\left\{ c_{i}\right\} $
+\end_inset
+
+ be a set of all contact points and let 
+\begin_inset Formula $threshold$
+\end_inset
+
+, 
+\begin_inset Formula $minarea$
+\end_inset
+
+ and 
+\begin_inset Formula $mindist$
+\end_inset
+
+ be given.
+ Then
+\end_layout
+
+\begin_layout LyX-Code
+1  for all newly detected 
+\begin_inset Formula $c_{i}\in\left\{ c_{i}\right\} $
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+2    if 
+\begin_inset Formula $\text{area}\left(c_{i}\right)<minarea$
+\end_inset
+
+ then 
+\begin_inset Formula $\text{delete}\left(c_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+3    for all 
+\begin_inset Formula $c_{j}\in\text{adjacency}\left(c_{i}\right)$
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+4      if 
+\begin_inset Formula $\text{area}\left(c_{i}\right)<threshold\cdot\text{area}\left(c_{j}\right)$
+\end_inset
+
+ and
+\end_layout
+
+\begin_layout LyX-Code
+          
+\begin_inset Formula $c_{i}\text{ and }c_{j}\text{ are topologically adjacent}$
+\end_inset
+
+ then 
+\begin_inset Formula $\text{delete}\left(c_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+5      else if 
+\begin_inset Formula $\left\Vert \mathbf{p}\left(c_{i}\right)-\mathbf{p}\left(c_{j}\right)\right\Vert <mindist$
+\end_inset
+
+ then 
+\begin_inset Formula $\text{delete}\left(c_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Contact points are 
+\begin_inset Quotes eld
+\end_inset
+
+topologically adjacent
+\begin_inset Quotes erd
+\end_inset
+
+ if they are generated by geometrical primitives which themselves are topologica
+lly adjacent (e.g.
+ finite elements that share element faces).
+ We note, that parameters 
+\begin_inset Formula $threshold$
+\end_inset
+
+, 
+\begin_inset Formula $minarea$
+\end_inset
+
+ and 
+\begin_inset Formula $mindist$
+\end_inset
+
+ can be adjusted by using the :ref:`CONTACT_SPARSIFY` input command.
+\end_layout
+
 \begin_layout Section
 Broad phase contact detection
+\end_layout
+
+\begin_layout Standard
+Broad phase contact detection precedes the detailed pairwise checks, one
+ of which is described above.
+ During the broad phase we only intend to find a likely candidates for the
+ detailed contact tests and for this reason axis aligned bounding boxes
+ are used to represent geometrical primitives.
+ For example, each finite element is represented by a corresponding bounding
+ box, and so are spheres and ellipsoids present in a simulation.
 \end_layout
 
 \begin_layout Section
