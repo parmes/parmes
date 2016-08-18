@@ -251,8 +251,53 @@ adjusted by using the :ref:`CONTACT_SPARSIFY <contact_sparsify>` input command.
 Broad phase contact detection
 -----------------------------
 
+Broad phase contact detection precedes the detailed pairwise checks, one of which is described above.
+During the broad phase we only intend to find a likely candidates for the detailed pairwise overlap tests
+and for this reason axis aligned bounding boxes are used to represent geometrical primitives. For example,
+each finite element is represented by a corresponding bounding box, and so are spheres and ellipsoids present
+in a simulation. A number of box overlap test algorithms are implemented, as seen in :numref:`boxtest`, where
+a test program, implemented in `tst/boxtest.c <https://github.com/tkoziara/solfec/blob/master/tst/boxtest.c>`_,
+is shown. All these algorithms are detailed in thesis [5]_. The driver interface for various box overlap algorithms
+is implemented in `box.c <https://github.com/tkoziara/solfec/blob/master/box.c>`_ and `box.h <https://github.com/tkoziara/solfec/blob/master/box.h>`_.
+The hybrid algorithm [4]_ is currently used in Solfec as a fixed choice, cf. `dom.c:114 <https://github.com/tkoziara/solfec/blob/master/dom.c#L114>`_.
+The `box.c:AABB_Update <https://github.com/tkoziara/solfec/blob/master/box.c#L379>`_ routine is called inside of the time
+integration loop in `dom.c:3595 <https://github.com/tkoziara/solfec/blob/master/dom.c#L3595>`_. When box overlaps are
+detected the callback `dom.c:overal_create <https://github.com/tkoziara/solfec/blob/master/dom.c#L344>`_ is invoked,
+from within which the `goc.c:gobjcontact <https://github.com/tkoziara/solfec/blob/master/goc.c#L1339>`_ pairwise overlap
+detection routined is called. Should an overlap occur, an individual contact point is created as a result,
+in `dom.c:384-402 <https://github.com/tkoziara/solfec/blob/master/dom.c#L384L402>`_.
+
+.. _boxtest:
+
+.. figure:: ../figures/boxtest.png
+   :width: 75%
+   :align: center
+
+   Box test program illustrating various box overlap detection algorithms.
+
+.. _geometric_epsilon_section:
+
+Geometric epsilon
+-----------------
+
+It is important to note that GEOMETRIC_EPSILON, defined in `alg.c:24 <https://github.com/tkoziara/solfec/blob/master/alg.c#L24>`_,
+has significant effect on the behavior of most of the geometrical calculations in Solfec. For example, often points are regarded as
+coincident if they are closer than this value. The input command :ref:`GEOMETRIC_EPSILON <geometric_epsilon>` allows to change the
+default value of 1E-6.  It is recommended to use about 0.0001 to 0.01 times the dimension of a smallest significant geometrical
+feature in a model.
+
 Other implementation aspects
 ----------------------------
+
+Test examples
+
+* `tst/cvitest.c <https://github.com/tkoziara/solfec/blob/master/tst/cvitest.c>`_ for convex intersection implemented in `cvi.c <https://github.com/tkoziara/solfec/blob/master/cvi.c>`_
+
+* `tst/gjktest.c <https://github.com/tkoziara/solfec/blob/master/tst/gjktest.c>`_ for GJK proximity query implemented in `gjk.c <https://github.com/tkoziara/solfec/blob/master/gjk.c>`_
+
+* `tst/hultest.c <https://github.com/tkoziara/solfec/blob/master/tst/hultest.c>`_ for convex hull calculation implemented in `hul.c <https://github.com/tkoziara/solfec/blob/master/hul.c>`_
+
+can be used to improve understanding of the pairwise overlap test described above.
 
 .. [1] D. E. Muller and F. P. Preparata, Finding the intersection of two convex polyhedra,
        Theoretical Computer Science, 7, 217-236, 1978.
@@ -260,3 +305,6 @@ Other implementation aspects
        ACM Transactions on Mathematical Software, 22 (4), 469-483, 1996.
 .. [3] E. G. Gilbert, and D. W. Johnson, and S. S. Keerthi, Fast procedure for computing the distance between complex 
        bjects in three-dimensional space, IEEE journal of robotics and automation, 4 (2), 193-203, 1988.
+.. [4] A. Zomorodian and H. Edelsbrunner, Fast software for box intersections, International Journal
+       of Computational Geometry and Applications, 12 (1-2), 143-172, 2002.
+.. [5] `Koziara, PhD thesis, 2008. <http://theses.gla.ac.uk/429/>`_

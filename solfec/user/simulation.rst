@@ -110,10 +110,13 @@ Contact handling
 
 Routines listed below affect contact detection and contact handling.
 
+.. _geometric_epsilon:
+
 .. topic:: GEOMETRIC_EPSILON (epsilon)
 
   This routine sets a numerical tolerance for geometric tests performed within Solfec.
   The tolerance is a characteristic distance between two distinct points below which they can be regarded as one.
+  See also :ref:`this comment <geometric_epsilon_section>` in the :ref:`Theory Manual <solfec-theory>`.
 
   * epsilon -- geometrical tolerance (default: 1E-6)
 

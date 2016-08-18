@@ -887,10 +887,102 @@ Broad phase contact detection
 Broad phase contact detection precedes the detailed pairwise checks, one
  of which is described above.
  During the broad phase we only intend to find a likely candidates for the
- detailed contact tests and for this reason axis aligned bounding boxes
- are used to represent geometrical primitives.
+ detailed pairwise overlap tests and for this reason axis aligned bounding
+ boxes are used to represent geometrical primitives.
  For example, each finite element is represented by a corresponding bounding
  box, and so are spheres and ellipsoids present in a simulation.
+ A number of box overlap test algorithms are implemented, as seen in Figure
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:boxtest"
+
+\end_inset
+
+, where a test program, implemented in tst/boxtest.c, is shown.
+ All these algorithms are detailed in thesis 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Koziara"
+
+\end_inset
+
+.
+ The driver interface for various box overlap algorithms is implemented
+ in box.c and box.h.
+ The hybrid algorithm 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Zomorodian"
+
+\end_inset
+
+ is currently used in Solfec as a fixed choice, cf.
+ dom.c:114.
+ The AABB_Update routine (link to box.c) is called inside of the time integration
+ loop in dom.c:3595.
+ When box overlaps are detected the callback dom.c:overal_create is invoked,
+ from within which the goc.c:gobjcontact pairwise overlap detection routined
+ is called.
+ Should an overlap occur, an individual contact point is created as a result,
+ in dom.c:384-402.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename /Users/tomek/Dropbox/tkwork/codes/parmes/solfec/figures/boxtest.png
+	lyxscale 25
+	width 75text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:boxtest"
+
+\end_inset
+
+Box test program illustrating various box overlap detection algorithms.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Geometrical epsilon
+\end_layout
+
+\begin_layout Standard
+It is important to note that GEOMETRIC_EPSILON, defined in alg.c:24, has
+ significant effect on the behavior of most of the geometrical calculations
+ in Solfec.
+ For example, often points are regarded as coincident if they are closer
+ than this value.
+ The input command :ref:`GEOMETRICAL_EPSILON` allows to change the default
+ value of 1E-6.
+ It is recommended to use about 0.0001 to 0.01 times the dimension of a smallest
+ significant geometrical feature in a model.
 \end_layout
 
 \begin_layout Section
@@ -898,14 +990,24 @@ Other implementation aspects
 \end_layout
 
 \begin_layout Standard
-Mention: cvi.*, gjk.*, hull.*, hyb.*, tri.* and corresponding tests.
- Mention the standalone version of some of these algorithms in cvxlib.
- Talk about goc.* and contact sparsification and box.*.
- Mention more box overlap algorithms (point to all files) and mention the
- corresponding test example.
- Alternatively, mention all files in the sections above and don't use this
- section.
- Mention GEOMETRIC_EPSILON.
+Test examples
+\end_layout
+
+\begin_layout Itemize
+tst/cvitest.c for convex intersection implemented in cvi.c
+\end_layout
+
+\begin_layout Itemize
+tst/gjktest.c for GJK proximity query implemented in gjk.c
+\end_layout
+
+\begin_layout Itemize
+tst/hultest.c for convex hull calculation implemented in hul.c
+\end_layout
+
+\begin_layout Standard
+can be used to improve  understanding of the pairwise overlap test described
+ above.
 \end_layout
 
 \begin_layout Bibliography
@@ -968,6 +1070,17 @@ A.
  Zomorodian and H.
  Edelsbrunner, Fast software for box intersections, International Journal
  of Computational Geometry and Applications, 12 (1-2), 143-172, 2002.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Koziara"
+
+\end_inset
+
+ `Koziara, PhD thesis, 2008.
+ <http://theses.gla.ac.uk/429/>`_
 \end_layout
 
 \end_body
