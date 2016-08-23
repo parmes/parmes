@@ -130,6 +130,8 @@ See also, formulation of the :ref:`rigid link constraint <rigid-link>`.
   • strength -- optionally an ultimate tensile strength if point1 != point2,
     beyond which the link will be deleted (default: infinity); or ultimate reaction magnitude (point1 == point2)
 
+.. role:: red
+
 .. _put_spring:
 
 PUT_SPRING 
@@ -138,7 +140,7 @@ PUT_SPRING
 This routine creates an arbitrary spring between two referential points of two distinct bodies.
 See also, formulation of the :ref:`spring constraint <simple-spring>`.
 
-.. topic:: obj = PUT_SPRING (body1, point1, body2, point2, function, limits)
+.. topic:: obj = PUT_SPRING (body1, point1, body2, point2, function, limits | direction, update) :red:`(Under development)`
 
   * obj -- created CONSTRAINT object
 
@@ -154,11 +156,17 @@ See also, formulation of the :ref:`spring constraint <simple-spring>`.
   
     **force = function (stroke, velocity)**
 
+    where :math:`\text{stroke=}\mathbf{n}\cdot\text{current}\left(\text{point2}-\text{point1}\right)-\text{initial}\left(\left|\text{point2}-\text{point1}\right|\right)`
+    and *velocity* is the current relative velocity along the spring direction :math:`\mathbf{n}` (positive if stroke increases)
 
-    where stroke = current (\|point2 -- point1\|) -- initial (\|point2 -- point1\|) and velocity is the current relative velocity along
-    the current direction of point2 -- point1 (positive if distance increases).
+  * limits -- (smin, smax) tuple defining stroke limits (smin :math:`\le` 0 and smax :math:`\ge` 0)
 
-  • limits -- (smin, smax) tuple defining stroke limits (smin :math:`\le` 0 and smax :math:`\ge` 0)
+  * direction -- (nx, ny, nz) tuple storing spring direction :math:`\mathbf{n}`.
+    Default: :math:`\mathbf{n}=\text{normalized}\left(\text{current}\left(\text{point2}-\text{point1}\right)\right)` resulting in a follower type spring.
+    When specified, :math:`\mathbf{n}` will be updated according to the value of update.
+
+  * update -- direction update kind (default: 'FIXED'); one of: 'FIXED' where :math:`\mathbf{n}` is kept fixed,
+    or 'CONV1' where :math:`\mathbf{n}` is convected with body1, or 'CONV2' where :math:`\mathbf{n}` is convected with body2.
 
 Some parameters can also be accessed as members of a CONSTRAINT object, cf. :numref:`constraint-params`.
 
