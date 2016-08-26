@@ -1,4 +1,8 @@
 
+* On Aug 23 2016 :ref:`solfec-examples`
+
+* On Aug 23 2016 :ref:`solfec-examples-hybrid_modelling`
+
 * On Aug 23 2016 :ref:`solfec-user-constraints`
 
 * On Aug 18 2016 :ref:`solfec-theory-conpnt`
@@ -14,7 +18,3 @@
 * On Aug 8 2016 :ref:`solfec-theory-constraints`
 
 * On Aug 8 2016 :ref:`solfec-theory-kinematics`
-
-* On Aug 8 2016 :ref:`solfec-theory-timeint`
-
-* On Aug 3 2016 :ref:`solfec-theory`
