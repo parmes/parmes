@@ -1,3 +1,5 @@
+:orphan:
+
 .. _solfec-examples-hybrid_modelling:
 
 Hybrid modeling

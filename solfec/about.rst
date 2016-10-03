@@ -25,8 +25,10 @@ More details can be found in:
    Running <running>
    User Manual <user>
    Theory Manual <theory>
+   Validation Manual <validation>
    ABAQUS import <abaqus>
    XDMF export <xdmf>
+   Applications <applications>
    Examples <examples>
 
 References:
