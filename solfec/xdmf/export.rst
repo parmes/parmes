@@ -31,7 +31,7 @@ Python syntax for XDMF export reads:
  * attributes -- list of export attributes; default ['DISP', 'VELO', 'REAC', 'GAP'];
    available attributes are 'DISP' (body displacement), 'VELO' (body velocity), 'STRESS' (body stress),
    'REAC' (constraint reactions), 'RELV' (relative constraint velocities), 'GAP' (contact gaps);
-
+   a non-optional scalar attribute 'BID' (body identifier) is always included with exported geometry;
 
 Currently implemented features:
 
