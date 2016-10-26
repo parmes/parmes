@@ -14,5 +14,5 @@ which you will find gradually better documented here.
 There are also other computational codes and libraries, that I would like to share and write about.
 Some of those are included in the Navigation area.
 
-Parmes is written using `Sphinx <http://www.sphinx-doc.org>`_ generator,
+Parmes website is written using `Sphinx <http://www.sphinx-doc.org>`_ generator,
 `alabaster <http://alabaster.readthedocs.io>`_ theme, and `ablog <http://ablog.readthedocs.io>`_ extension.
