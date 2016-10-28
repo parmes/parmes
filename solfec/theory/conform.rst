@@ -114,8 +114,8 @@ Non--smooth force equation formulation
 Non-smooth velocity equation formulation
 ----------------------------------------
 
-Semi-explicit penalty formulation
----------------------------------
+Semi--explicit penalty formulation
+----------------------------------
 
 .. [1] P. Alart, A. Curnier, A mixed formulation for frictional contact problems prone to Newton like solution methods,
        Computer Methods in Applied Mechanics and Engineering, 92 (3), 353-375, 1991.
