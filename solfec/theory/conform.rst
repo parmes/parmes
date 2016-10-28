@@ -111,8 +111,8 @@ Non--smooth force equation formulation
 
 .. _solfec-theory-conform-nsveq:
 
-Non-smooth velocity equation formulation
-----------------------------------------
+Non--smooth velocity equation formulation
+-----------------------------------------
 
 Semi--explicit penalty formulation
 ----------------------------------
