@@ -72,8 +72,8 @@
 
 \begin_layout Standard
 \noindent
-Constraint solvers are used to find approximate solution to the :ref:`constraint
-s <solfec-theory-constraints>` equations
+Constraint solvers are used to find approximate a solution to the :ref:`constrai
+nts <solfec-theory-constraints>` equations
 \end_layout
 
 \begin_layout Standard
@@ -84,9 +84,101 @@ s <solfec-theory-constraints>` equations
 
 \end_inset
 
-including ref:`joints <solfec-theory-joints>` and ref:`contact constraints
- <solfec-theory-conform>`.
- Constraint solvers included into Solfec, are described in sections below.
+expressing :ref:`joints <solfec-theory-joints>` and :ref:`contact conditions
+ <solfec-theory-conform>`, together with the :ref:`local dynamics <solfec-theory
+-locdyn>` equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{U}=\mathbf{B}+\mathbf{WR}
+\]
+
+\end_inset
+
+The merit function used as one of the termination conditions and the constraint
+ solvers included into Solfec, are described in sections below.
+\end_layout
+
+\begin_layout Section
+Merit function (all solvers)
+\end_layout
+
+\begin_layout Standard
+As discussed on the :ref:`basics page <solfec-theory-basics>`, at every
+ time step an implicit equation 
+\begin_inset Formula $\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}$
+\end_inset
+
+ is solved.
+ This solution is approximate.
+ In order to express its accuracy as a scalar value, we formulate 
+\begin_inset Formula $\mathbf{C}\left(\mathbf{R}\right)$
+\end_inset
+
+ in terms of velocity (see the :ref:`non-smooth velocity equation formulation
+ <solfec-theory-conform-nsveq>` and use
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+g\left(\mathbf{R}\right)=\sum_{\alpha}\left\langle \mathbf{W}_{\alpha\alpha}^{-1}\mathbf{C}_{\alpha}\left(\mathbf{R}\right),\mathbf{C}_{\alpha}\left(\mathbf{R}\right)\right\rangle /\sum_{\alpha}\left\langle \mathbf{W}_{\alpha\alpha}^{-1}\mathbf{B}_{\alpha},\mathbf{B}_{\alpha}\right\rangle \label{eq:accuracy}
+\end{equation}
+
+\end_inset
+
+in order to approximately measure the relative amount of 
+\begin_inset Quotes eld
+\end_inset
+
+energy
+\begin_inset Quotes erd
+\end_inset
+
+, due to an inexact satisfaction of constraints.
+ The denominator corresponds to the kinetic energy of the relative free
+ motion, hence 
+\begin_inset Formula $g\left(\mathbf{R}\right)$
+\end_inset
+
+ is the ratio of the 
+\begin_inset Quotes eld
+\end_inset
+
+spurious energy
+\begin_inset Quotes erd
+\end_inset
+
+ over the nominal amount of the 
+\begin_inset Quotes eld
+\end_inset
+
+energy available at the constraints
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Since inverting 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ would be unpractical or impossible due to its singularity, we only use
+ the diagonal blocks, which are always positive definite.
+ To recapitulate, in short
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+g\left(\mathbf{R}\right)\simeq\frac{\mbox{"spurious energy due to inaccurate solution"}}{\mbox{"free energy available at the constraints"}}
+\end{equation}
+
+\end_inset
+
+Such merit function is used as one of the stopping criterions for the solvers
+ described below.
 \end_layout
 
 \begin_layout Section
@@ -94,7 +186,7 @@ Gauss-Seidel solver
 \end_layout
 
 \begin_layout Section
-Projected Newton Solver
+Projected (quasi) Newton Solver
 \end_layout
 
 \begin_layout Section
@@ -115,6 +207,32 @@ key "Adams"
  In Supercomputing ’01: Proceedings of the 2001 ACM/IEEE conference on Supercomp
 uting, pages 4–4, New York, USA, 2001.
  ACM Press.
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Fukushima"
+
+\end_inset
+
+Masao Fukushima, Zhi-Quan Luo, and Paul Tseng.
+ Smoothing functions for second-order-cone complementarity problems.
+ SIAM Journal on Optimization, 12(2):436–460, 2002.
+ 
+\end_layout
+
+\begin_layout Bibliography
+\begin_inset CommandInset bibitem
+LatexCommand bibitem
+key "Hayashi"
+
+\end_inset
+
+Shunsuke Hayashi, Nobuo Yamashita, and Masao Fukushima, A Combined Smoothing
+ and Regularization Method for Monotone Second-Order Cone Complementarity
+ Problems, SIAM J.
+ Optim., 15(2), 593–615, 2005.
 \end_layout
 
 \end_body

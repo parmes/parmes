@@ -1,4 +1,6 @@
 
+* On Oct 26 2016 :ref:`solfec-theory-conform`
+
 * On Oct 10 2016 :ref:`solfec-user-results`
 
 * On Oct 10 2016 :ref:`solfec-xdmf-export`
@@ -16,5 +18,3 @@
 * On Aug 23 2016 :ref:`solfec-user-constraints`
 
 * On Aug 18 2016 :ref:`solfec-theory-conpnt`
-
-* On Aug 18 2016 :ref:`solfec-user-simulation`
