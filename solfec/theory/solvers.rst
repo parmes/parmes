@@ -16,7 +16,8 @@ the :ref:`local dynamics <solfec-theory-locdyn>` equations
 
   \mathbf{U}=\mathbf{B}+\mathbf{WR}
   
-The merit function used as one of the termination conditions and the constraint solvers included into Solfec, are described in sections below.
+The merit function used as one of the termination conditions by all solvers, and the algorithms of the Solfec solvers themselves,
+are described in sections below.
 
 Merit function
 --------------
@@ -24,7 +25,7 @@ Merit function
 As discussed on the :ref:`basics page <solfec-theory-basics>`, at every time step an implicit equation
 :math:`\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}` is solved. This solution is approximate. In order to express its accuracy
 as a scalar value, we formulate :math:`\mathbf{C}\left(\mathbf{R}\right)` in terms of velocity
-(see the :ref:`non-smooth velocity equation formulation <solfec-theory-conform-nsveq>` and use
+(see :ref:`the non-smooth velocity equation formulation <solfec-theory-conform-nsveq>`) and use
 
 .. math::
 
@@ -50,8 +51,8 @@ Gauss--Seidel solver
 
 .. _solfec-theory-solvers-pqn:
 
-Projected (quasi) Newton solver
--------------------------------
+Projected Newton solver
+-----------------------
 
 .. _solfec-theory-solvers-penalty:
 

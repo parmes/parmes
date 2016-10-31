@@ -22,7 +22,7 @@ in the :ref:`User Manual <solfec-user>`. The theory manual comprises the followi
    theory/conpnt
    theory/conform
    theory/solvers
-   theory/materials
+   theory/bulkmat
 
 .. [1] `CMAME, 177(3--4):329--349, 1999. <http://www.sciencedirect.com/science/article/pii/S0045782598003879>`_
 .. [2] `CMAME, 177(3--4):235--257, 1999. <http://www.sciencedirect.com/science/article/pii/S0045782598003831>`_

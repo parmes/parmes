@@ -97,8 +97,9 @@ expressing :ref:`joints <solfec-theory-joints>` and :ref:`contact conditions
 
 \end_inset
 
-The merit function used as one of the termination conditions and the constraint
- solvers included into Solfec, are described in sections below.
+The merit function used as one of the termination conditions by all solvers,
+ and the algorithms of the Solfec solvers themselves, are described in sections
+ below.
 \end_layout
 
 \begin_layout Section
@@ -117,8 +118,8 @@ As discussed on the :ref:`basics page <solfec-theory-basics>`, at every
 \begin_inset Formula $\mathbf{C}\left(\mathbf{R}\right)$
 \end_inset
 
- in terms of velocity (see the :ref:`non-smooth velocity equation formulation
- <solfec-theory-conform-nsveq>` and use
+ in terms of velocity (see :ref:`the non-smooth velocity equation formulation
+ <solfec-theory-conform-nsveq>`) and use
 \end_layout
 
 \begin_layout Standard
@@ -185,12 +186,1643 @@ Such merit function is used as one of the stopping criterions for the solvers
 Gauss-Seidel solver
 \end_layout
 
+\begin_layout Standard
+The equations of :ref:`local dynamics <solfec-theory-locdyn>` read
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}_{\alpha}=\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{U}_{\alpha}$
+\end_inset
+
+ are relative velocities and 
+\begin_inset Formula $\mathbf{R}_{\alpha}$
+\end_inset
+
+ are reactions at constraint points.
+ 
+\begin_inset Formula $\mathbf{U}_{\alpha},\mathbf{R}_{\alpha},\mathbf{B}_{\alpha}$
+\end_inset
+
+ are 3-vectors, while 
+\begin_inset Formula $\mathbf{W}_{\alpha\beta}$
+\end_inset
+
+ are 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ matrix blocks.
+ Each constraint equation can be formulated as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}
+\end{equation}
+
+\end_inset
+
+or in other words
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+SERIAL_GAUSS_SEIDEL 
+\begin_inset Formula $\left(Constraints,\epsilon,\gamma\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+1  do
+\end_layout
+
+\begin_layout LyX-Code
+2    for each 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ in 
+\begin_inset Formula $Constraints$
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+3      
+\begin_inset Formula $\mathbf{S}_{\alpha}=\mathbf{R}_{\alpha}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+4      find 
+\begin_inset Formula $\mathbf{R}_{\alpha}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+5                         assuming 
+\begin_inset Formula $\mathbf{R}_{\beta}=\mbox{constant}$
+\end_inset
+
+ for 
+\begin_inset Formula $\beta\ne\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+6  while 
+\begin_inset Formula $\left\Vert \mathbf{S}-\mathbf{R}\right\Vert /\left\Vert \mathbf{R}\right\Vert >\epsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $g\left(\mathbf{R}\right)>\gamma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Serial-Gauss-Seidel"
+
+\end_inset
+
+Serial Gauss-Seidel algorithm
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Serial-Gauss-Seidel"
+
+\end_inset
+
+ is quite simple: diagonal block problems are solved until reaction change
+ is small enough.
+ The Gauss-Seidel paradigm corresponds to the fact, that the most recent
+ off-diagonal reactions are used when solving the diagonal problem.
+ Of course, because of that, a perfectly parallel implementation is not
+ possible.
+ After all, reactions are updated in a sequence.
+ We can nevertheless relax the need for sequential processing.
+ Perhaps the most scalable Gauss-Seidel approach to date was devised by
+ Adams 
+\begin_inset CommandInset citation
+LatexCommand cite
+key "Adams01"
+
+\end_inset
+
+.
+ Although originally it was used as a multi-grid smoother, the core idea
+ can be as well applied in our context.
+ Each processor owes a subset of (internal) constraints 
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+, where 
+\begin_inset Formula $i=1,2,...,n$
+\end_inset
+
+ are the processors indices.
+ Therefore the local velocity update can be rewritten as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}_{\alpha}=\mathbf{B}_{\alpha}+\sum_{\beta\in Q_{i}}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}+\sum_{\beta\notin Q_{i}}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta}
+\end{equation}
+
+\end_inset
+
+Some of the 
+\begin_inset Formula $\mathbf{W}_{\alpha\beta}$
+\end_inset
+
+ blocks and reactions 
+\begin_inset Formula $\mathbf{R}_{\beta}$
+\end_inset
+
+ correspond to the (external) constraints stored on other processors (
+\begin_inset Formula $\beta\notin Q_{i}$
+\end_inset
+
+).
+ Let us denote the set of corresponding reaction indices by 
+\begin_inset Formula $P_{i}$
+\end_inset
+
+.
+ That is 
+\begin_inset Formula 
+\begin{equation}
+P_{i}=\left\{ \beta:\exists\mathbf{W}_{\alpha\beta}\ne\mathbf{0}\mbox{ and }\alpha\in Q_{i}\mbox{ and }\beta\notin Q_{i}\right\} 
+\end{equation}
+
+\end_inset
+
+For each 
+\begin_inset Formula $\beta\in P_{i}$
+\end_inset
+
+ we know an index of processor 
+\begin_inset Formula $cpu\left(\beta\right)$
+\end_inset
+
+ storing the constraint with index 
+\begin_inset Formula $\beta$
+\end_inset
+
+.
+ For processor 
+\begin_inset Formula $i$
+\end_inset
+
+ we can then define a set of adjacent processors as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+adj\left(i\right)=\left\{ cpu\left(\beta\right):\beta\in P_{i}\right\} 
+\end{equation}
+
+\end_inset
+
+When updating reactions, a processor needs to communicate only with other
+ adjacent processors.
+ We are going to optimise a pattern of this communication by 
+\emph on
+coloring
+\emph default
+ the processors.
+ We shall then assign to each processor a color, such that no two adjacent
+ processors have the same color.
+ A simple coloring method is summarised in Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Simple-processor-coloring"
+
+\end_inset
+
+.
+ We try to assign as few colors as possible.
+ We then split the index sets 
+\begin_inset Formula $Q_{i}$
+\end_inset
+
+ as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+COLOR 
+\begin_inset Formula $\left(\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+1  for 
+\begin_inset Formula $i$
+\end_inset
+
+
+\begin_inset Formula $=1,...,n$
+\end_inset
+
+ do 
+\begin_inset Formula $color\left[i\right]=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+2  for 
+\begin_inset Formula $i$
+\end_inset
+
+
+\begin_inset Formula $=1,...,n$
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+3    do
+\end_layout
+
+\begin_layout LyX-Code
+4      
+\begin_inset Formula $color\left[i\right]=color\left[i\right]+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+5    while for any 
+\begin_inset Formula $j\in adj\left(i\right)$
+\end_inset
+
+ there holds 
+\begin_inset Formula $color\left[i\right]=color\left[j\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Simple-processor-coloring"
+
+\end_inset
+
+
+\lang english
+Simple processor coloring.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Top_{i}=\left\{ \alpha:\forall\mathbf{W}_{\alpha\beta}:\beta\in P_{i}\wedge color\left[cpu\left(\beta\right)\right]<color\left[i\right]\right\} 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Bottom_{i}=\left\{ \alpha:\forall\mathbf{W}_{\alpha\beta}:\beta\in P_{i}\wedge color\left[cpu\left(\beta\right)\right]>color\left[i\right]\right\} 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Middle_{i}=\left\{ \alpha:\forall\mathbf{W}_{\alpha\beta}:\beta\in P_{i}\wedge\alpha\notin Top_{i}\cup Bottom_{i}\right\} 
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Inner_{i}=Q_{i}\setminus\left\{ Top_{i}\cup Bottom_{i}\cup Middle_{i}\right\} 
+\end{equation}
+
+\end_inset
+
+The top constraints require communication only with processors of lower
+ colors.
+ The bottom constraints require communication only with processors of higher
+ colors.
+ The middle constraints require communication with either.
+ The inner constraints require no communication.
+ The inner reactions are further split in two sets
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+Inner_{i}=Inner1_{i}\cup Inner2_{i}
+\end{equation}
+
+\end_inset
+
+so that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left|Bottom_{i}\right|+\left|Inner2_{i}\right|=\left|Top_{i}\right|+\left|Inner1_{i}\right|\label{eq:gsbalcnd}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+SWEEP 
+\begin_inset Formula $\left(Set\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+1  for each 
+\begin_inset Formula $\alpha\in Set$
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+2    find 
+\begin_inset Formula $\mathbf{R}_{\alpha}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+3                       assuming 
+\begin_inset Formula $\mathbf{R}_{\beta}=\mbox{constant}$
+\end_inset
+
+ for 
+\begin_inset Formula $\beta\ne\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+LOOP 
+\begin_inset Formula $\left(Set\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+1  descending sort of 
+\begin_inset Formula $\alpha\in Set$
+\end_inset
+
+ based on 
+\begin_inset Formula $\max\left(color\left[cpu\left(\beta\right)\right]\right)$
+\end_inset
+
+ where 
+\begin_inset Formula $\exists\mathbf{W}_{\alpha\beta}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+2  for each ordered 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ in 
+\begin_inset Formula $Set$
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+3    for each 
+\begin_inset Formula $\beta$
+\end_inset
+
+ such that 
+\begin_inset Formula $\exists\mathbf{W}_{\alpha\beta}$
+\end_inset
+
+ and 
+\begin_inset Formula $color\left[cpu\left(\alpha\right)\right]<color\left[cpu\left(\beta\right)\right]$
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+4      if not received 
+\begin_inset Formula $\left(\mathbf{R}_{\beta}\right)$
+\end_inset
+
+ then receive 
+\begin_inset Formula $\left(\mathbf{R}_{\beta}\right)$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout LyX-Code
+5    find 
+\begin_inset Formula $\mathbf{R}_{\alpha}$
+\end_inset
+
+ such that 
+\begin_inset Formula $\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+6                       assuming 
+\begin_inset Formula $\mathbf{R}_{\beta}=\mbox{constant}$
+\end_inset
+
+ for 
+\begin_inset Formula $\beta\ne\alpha$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+7    send 
+\begin_inset Formula $\left(\mathbf{R}_{\alpha}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+8  receive all remaining 
+\begin_inset Formula $\mathbf{R}_{\beta}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+ 
+\end_layout
+
+\begin_layout LyX-Code
+PARALLEL_GAUSS_SEIDEL 
+\begin_inset Formula $\left(\epsilon,\gamma\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+1   COLOR 
+\begin_inset Formula $\left(\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+2   do
+\end_layout
+
+\begin_layout LyX-Code
+3     
+\begin_inset Formula $\mathbf{S}=\mathbf{R}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+4     SWEEP 
+\begin_inset Formula $\left(Top_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+5     send 
+\begin_inset Formula $\left(Top_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+6     SWEEP 
+\begin_inset Formula $\left(Inner2_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+7     receive 
+\begin_inset Formula $\left(Top_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+8     LOOP 
+\begin_inset Formula $\left(Middle_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+9     SWEEP 
+\begin_inset Formula $\left(Bottom_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+10    send 
+\begin_inset Formula $\left(Bottom_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+11    SWEEP 
+\begin_inset Formula $\left(Inner1_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+12    receive 
+\begin_inset Formula $\left(Bottom_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+13  while 
+\begin_inset Formula $\left\Vert \mathbf{S}-\mathbf{R}\right\Vert /\left\Vert \mathbf{R}\right\Vert >\epsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $g\left(\mathbf{R}\right)>\gamma$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Parallel-Gauss-Seidel"
+
+\end_inset
+
+Parallel Gauss-Seidel algorithm.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The parallel Gauss-Seidel scheme is summarised in Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Parallel-Gauss-Seidel"
+
+\end_inset
+
+.
+ The presented version is simplified in the respect, that alternate forward
+ and backward runs are not accounted for (in terms of constraints ordering).
+ We first process the 
+\begin_inset Formula $Top_{i}$
+\end_inset
+
+ set: a single sweep over the corresponding diagonal block problems is performed
+ in line 3.
+ Then we send the computed top reactions to the processors with lower colors.
+ We try to overlap communication and computation, hence we sweep over the
+ 
+\begin_inset Formula $Inner2_{i}$
+\end_inset
+
+ set (line 5) while sending.
+ We then receive the top reactions.
+ It should be noted that all communication is asynchronous - we only wait
+ to receive reactions immediately necessary for computations.
+ In line 7 we enter the loop processing the 
+\begin_inset Formula $Middle_{i}$
+\end_inset
+
+ set.
+ This is the location of the computational bottleneck.
+ Middle nodes communicate with processors of higher and lower colors and
+ hence, they need to be processed in a sequence.
+ The sequential processing is still relaxed by using processor coloring.
+ In the LOOP algorithm we first sort the constraints according to the descending
+ order of maximal colors of their adjacent processors (line 1).
+ We then maintain this ordering while processing constraints.
+ As the top reactions were already sent, some of the constraints from the
+ middle set will have their external reactions from higher colors fully
+ updated.
+ These will be processed first in line 5 of LOOP and then sent to lower
+ and higher (by color) processors in line 7.
+ This way some processors with lower colors will have their higher color
+ off-diagonal reactions of middle set constraints fully updated and they
+ will proceed next.
+ And so on.
+ At the end (line 8), we need to receive all remaining reactions that have
+ been sent in line 7 of LOOP.
+ Coming back to PARALLEL_GAUSS_SEIDEL, after the bottleneck of the LOOP,
+ in lines 8-11 we process the 
+\begin_inset Formula $Bottom_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $Inner1_{i}$
+\end_inset
+
+ sets in the same way as we did with the 
+\begin_inset Formula $Top_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $Inner2_{i}$
+\end_inset
+
+ sets.
+ The condition (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:gsbalcnd"
+
+\end_inset
+
+) attempts to balance the amount of computations needed to hide the communicatio
+n (e.g.
+ the larger the 
+\begin_inset Formula $Top_{i}$
+\end_inset
+
+ set is, the larger the 
+\begin_inset Formula $Inner2_{i}$
+\end_inset
+
+ set becomes).
+ It should be noted that the convergence criterion in line 12 is global
+ across all processors.
+ 
+\end_layout
+
+\begin_layout Standard
+In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:GAUSS_SEIDEL_SOLVER"
+
+\end_inset
+
+ several variants of the parallel algorithm are listed.
+ Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Parallel-Gauss-Seidel"
+
+\end_inset
+
+ corresponds to the FULL variant.
+ We might like to relax the bottleneck of LOOP in line 7 of Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Parallel-Gauss-Seidel"
+
+\end_inset
+
+ by replacing it with
+\end_layout
+
+\begin_layout LyX-Code
+7.1   SWEEP 
+\begin_inset Formula $\left(Middle_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+7.2   send 
+\begin_inset Formula $\left(Middle_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+7.3   receive 
+\begin_inset Formula $\left(Middle_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+so that the middle nodes are processed in an inconsistent manner: the off-proces
+sor information corresponds to the previous iteration (just like in the
+ Jacobi method).
+ Usually the 
+\begin_inset Formula $Middle_{i}$
+\end_inset
+
+ sets are small and hence this inconsistency does not have to lead to divergence
+ (especially for deformable kinematics, where constraint interactions are
+ weak, while 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ is diagonally dominant).
+ This is the MIDDLE_JACOBI variant of the algorithm.
+ The last variant corresponds to a rather gross inconsistency: something
+ usually called 
+\begin_inset Quotes eld
+\end_inset
+
+a processor Gauss-Seidel method
+\begin_inset Quotes erd
+\end_inset
+
+.
+ Let us define the set
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+All_{i}=Top_{i}\cup Bottom_{i}\cup Middle_{i}\cup Inner_{i}
+\end{equation}
+
+\end_inset
+
+In this case, lines 3-11 of PARALLEL_GAUSS_SEIDEL from Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Parallel-Gauss-Seidel"
+
+\end_inset
+
+ need to be replaced with
+\end_layout
+
+\begin_layout LyX-Code
+3   SWEEP 
+\begin_inset Formula $\left(All_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+4   send 
+\begin_inset Formula $\left(All_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+5   receive 
+\begin_inset Formula $\left(All_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+Although this kind of approach does work as a multi-grid smoother, it has
+ little use in our context.
+ Nevertheless, we use it for illustration sake and name the BOUNDARY_JACOBI.
+\end_layout
+
 \begin_layout Section
 Projected (quasi) Newton Solver
 \end_layout
 
+\begin_layout Standard
+Let us rewrite the frictional contact problem (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:C1"
+
+\end_inset
+
+) once again
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}\left(\mathbf{R}\right)=\mathbf{F}\left(\mathbf{R}\right)+\mathbf{m}\left(\mathbf{R}-\mathbf{F}\left(\mathbf{R}\right)\right)=\mathbf{0}\mbox{ and }\mathbf{R}\in K\label{eq:C1a}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $K$
+\end_inset
+
+ is the direct sum of friction cones at all contact points.
+ Since 
+\begin_inset Formula $\mathbf{C}\left(\mathbf{R}\right)$
+\end_inset
+
+ is not smooth, to compute 
+\begin_inset Formula $\nabla\mathbf{C}$
+\end_inset
+
+ we generalize the approach from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Fukushima2002"
+
+\end_inset
+
+, where only the self-dual case (friction coefficient equal to 1) was considered.
+ Our idea is to employ the following projected quasi-Newton step
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\mathbf{A}^{-1}\mathbf{C}\left(\mathbf{R}\right)\right]\label{eq:newton}
+\end{equation}
+
+\end_inset
+
+so that, as required, the iterates remain within the friction cone and where
+ 
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}\simeq\nabla\mathbf{C}
+\end{equation}
+
+\end_inset
+
+is an easy to invert approximation of 
+\begin_inset Formula $\nabla\mathbf{C}$
+\end_inset
+
+.
+ Since in many practical situations 
+\begin_inset Formula $\nabla\mathbf{C}$
+\end_inset
+
+ is singular, we cannot hope to employ 
+\begin_inset Formula $\nabla\mathbf{C}$
+\end_inset
+
+.
+ We then employ two variants of 
+\begin_inset Formula $\mathbf{A}\simeq\nabla\mathbf{C}$
+\end_inset
+
+.
+ The first one reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}_{1}=\nabla\mathbf{C}+\delta\mathbf{I},\mbox{ combined with GMRES.}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\delta\ge0$
+\end_inset
+
+.
+ This is related to numerical integration of an artificial ODE 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\frac{d\mathbf{R}}{dt}=\mathbf{C}\left(\mathbf{R}\right)
+\end{equation}
+
+\end_inset
+
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+to a steady state (take one step of implicit Euler, in the literature this
+ is called 
+\family default
+\series default
+\shape default
+\size default
+\emph on
+\bar default
+\noun default
+\color inherit
+pseudo-transient continuation
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+).
+ The second variant reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}_{2}=\mbox{diag}_{3\times3}\left[\nabla\mathbf{C}\right],\mbox{ combined with direct inversion.}
+\end{equation}
+
+\end_inset
+
+and it is combined with a heuristic stabilization technique
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\triangle\mathbf{R}^{k+1}=\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mathbf{A}^{k}\right)^{-1}\mathbf{C}^{k}
+\end{equation}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\theta\in\left[0,1\right]\mbox{.}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Description
+PQN1(
+\begin_inset Formula $\mathbf{R},\gamma,n,\omega,\delta,m,\epsilon$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangle\mathbf{R}^{0}=\mathbf{0}$
+\end_inset
+
+, 
+\begin_inset Formula $k=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Do
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{U}^{k}=\mathbf{W}\mathbf{R}^{k}+\mathbf{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Compute 
+\begin_inset Formula $\mathbf{C}^{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{A}^{k}=\nabla\mathbf{C}_{\alpha\alpha}^{k}+\delta\mathbf{I}$
+\end_inset
+
+ using smoothing 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangle\mathbf{R}^{k+1}=-\left(\mathbf{A}^{k}\right)_{\mbox{GMRES}\left(\epsilon\left\Vert \mathbf{C}^{k}\right\Vert ,m\right)}^{-1}\mathbf{C}^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\triangle\mathbf{R}^{k+1}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $k=k+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+while 
+\begin_inset Formula $g\left(\mathbf{R}^{k}\right)\ge\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $k<n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:PQN1"
+
+\end_inset
+
+The projected quasi-Newton method with GMRES.
+ Use linver = 'GMRES' in NEWTON_SOLVER to enable this variant (this is the
+ default).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+We then have two variants of the projected quasi-Newton step:
+\end_layout
+
+\begin_layout Enumerate
+PQN1 (cf.
+ Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:PQN1"
+
+\end_inset
+
+): 
+\begin_inset Formula 
+\[
+\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\left(\nabla\mathbf{C}^{k}+\delta\mathbf{I}\right)_{\mbox{GMRES}\left(\epsilon\left\Vert \mathbf{C}^{k}\right\Vert ,m\right)}^{-1}\mathbf{C}^{k}\right]
+\]
+
+\end_inset
+
+where GMRES is preconditioned with 
+\begin_inset Formula $\left[\mbox{diag}_{3\times3}\left(\nabla\mathbf{C}_{\alpha\alpha}^{k}+\delta\mathbf{I}\right)\right]^{-1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ need to be suitably selected.
+ The linear problem should be solved only roughly, usually 
+\begin_inset Formula $\epsilon=0.25$
+\end_inset
+
+ and 
+\begin_inset Formula $m=10$
+\end_inset
+
+ (iterations bound) work well.
+ For ill-conditioned problems a too accurate solution of the linear sub-problem
+ results in a poor convergence rate.
+ The diagonal regularization 
+\begin_inset Formula $\delta$
+\end_inset
+
+ needs to be adjusted 
+\begin_inset Quotes eld
+\end_inset
+
+by hand
+\begin_inset Quotes erd
+\end_inset
+
+.
+ The automatic update formulas that can be found in literature work only
+ for well-conditioned cases and hence they are not very useful for us.
+ For ill-conditioned problems one should pick 
+\begin_inset Formula $\delta$
+\end_inset
+
+ that delivers an overall best convergence behavior.
+ Large values will slow down convergence, but stabilize it; small values
+ may destabilize convergence for ill-conditioned problems; 
+\begin_inset Formula $\delta$
+\end_inset
+
+ (typically 
+\begin_inset Formula $\ll1$
+\end_inset
+
+) should be tuned together with 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+ and 
+\begin_inset Formula $m$
+\end_inset
+
+ (e.g.
+ find a suitably small 
+\begin_inset Formula $\delta$
+\end_inset
+
+ first, then tweak 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+).
+ 
+\emph on
+Since rigorous analysis is still missing for these parameters, please experiment
+ before settling on specific values for a specific problem.
+
+\emph default
+ Use linver = 'GMRES' in NEWTON_SOLVER to enable this variant (this is the
+ default).
+\end_layout
+
+\begin_layout Enumerate
+PQN2 (cf.
+ Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:PQN2"
+
+\end_inset
+
+): 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula 
+\[
+\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\theta\in\left[0,1\right]$
+\end_inset
+
+ and the diagonal 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ blocks of 
+\begin_inset Formula $\nabla\mathbf{C}^{k}$
+\end_inset
+
+ are directly inverted.
+ This simple scheme is interesting because it converges for a sufficiently
+ small 
+\begin_inset Formula $\theta$
+\end_inset
+
+, while it is essentially a nonlinear Jacobi-type method.
+ 
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+Use linver = 'DIAG' in NEWTON_SOLVER to enable this variant.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Description
+PQN2(
+\begin_inset Formula $\mathbf{R},\theta,\gamma,n,\omega$
+\end_inset
+
+):
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangle\mathbf{R}^{0}=\mathbf{0}$
+\end_inset
+
+, 
+\begin_inset Formula $k=0$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Do
+\begin_inset Separator latexpar
+\end_inset
+
+
+\end_layout
+
+\begin_deeper
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{U}^{k}=\mathbf{W}\mathbf{R}^{k}+\mathbf{B}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+Compute 
+\begin_inset Formula $\mathbf{C}^{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{A}^{k}=\mbox{diag}_{3\times3}\left[\nabla\mathbf{C}_{\alpha\alpha}^{k}\right]$
+\end_inset
+
+ using smoothing 
+\begin_inset Formula $\omega$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\triangle\mathbf{R}^{k+1}=\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mathbf{A}^{k}\right)^{-1}\mathbf{C}^{k}$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\triangle\mathbf{R}^{k+1}\right]$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+\begin_inset Formula $k=k+1$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Plain Layout
+while 
+\begin_inset Formula $g\left(\mathbf{R}^{k}\right)\ge\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $k<n$
+\end_inset
+
+.
+\end_layout
+
+\end_deeper
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:PQN2"
+
+\end_inset
+
+The projected quasi-Newton method with diagonal direct solve and averaging.
+ Use linver = 'DIAG' in NEWTON_SOLVER to enable this variant.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Penalty solver
+\end_layout
+
+\begin_layout Standard
+The penalty solver is quite straightforward.
+ On each processor we split the constraints into 
+\begin_inset Formula $Contacts_{i}$
+\end_inset
+
+ and 
+\begin_inset Formula $Others_{i}$
+\end_inset
+
+, hence we separate contact constraints from bilateral ones.
+ We then update the contacts using the spring-dashpot model and calculate
+ reactions of bilateral constraints using the Gauss-Seidel solver (fixed
+ accuracy 
+\begin_inset Formula $\mbox{epsilon=1E-4, maxiter = 1000}$
+\end_inset
+
+ is used).
+ We use the Gauss-Seidel approach for non-contacts because in this case
+ it is quite fast, while it avoids issues related to penalisation of bilateral
+ constraints.
+ Algorithm 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:Parallel-explicit-solver"
+
+\end_inset
+
+ summarises the method.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout LyX-Code
+PARALLEL_PENALTY_SOLVER 
+\begin_inset Formula $\left(\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+1  for all 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ in 
+\begin_inset Formula $Contacts_{i}$
+\end_inset
+
+ do
+\end_layout
+
+\begin_layout LyX-Code
+2    SPRING_DASHPOT 
+\begin_inset Formula $\left(h,gap_{\alpha},spring_{\alpha},dashpot_{\alpha},friction_{\alpha},cohesion_{\alpha},cohesive_{\alpha}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+3  send 
+\begin_inset Formula $\left(Contacts_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+4  receive 
+\begin_inset Formula $\left(Contacts_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+5  GAUSS_SEIDEL 
+\begin_inset Formula $\left(Others_{i}\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\lang british
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:Parallel-explicit-solver"
+
+\end_inset
+
+
+\lang english
+Parallel penalty solver.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Bibliography

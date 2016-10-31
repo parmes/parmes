@@ -91,8 +91,8 @@ traints <solfec-theory-constraints>`.
  points simultaneously).
  This however does not affect the mathematics of a contact formulation itself.
  Sections below describe the formulations employed by Solfec and point to
- references, source code sections and solver settings related to these formulati
-ons.
+ references, source code sections, and descriptions of solvers that utilize
+ them.
 \end_layout
 
 \begin_layout Section
@@ -100,7 +100,8 @@ The frictional contact law
 \end_layout
 
 \begin_layout Standard
-The frictional contact law in Solfec employs Signorini-Coulomb conditions.
+The frictional contact law in Solfec employs the so called Signorini-Coulomb
+ conditions.
  The velocity based Signorini non-penetration condition reads
 \end_layout
 
@@ -144,7 +145,7 @@ reference "eq:Signorini"
 \end_inset
 
  allows to account for the Newton impact law, for models where multiple
- impacts occur during one time step using 
+ impacts occur during one time step, using 
 \begin_inset Formula $e>0$
 \end_inset
 
@@ -214,11 +215,11 @@ where vector
 \begin_inset Formula $R_{N}-\rho\bar{U}_{N}$
 \end_inset
 
- is projected onto the set 
+ is projected onto the set of positive real numbers 
 \begin_inset Formula $R_{+}$
 \end_inset
 
- of positive real numbers.
+.
  Similarly, the Coulomb law (
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -466,6 +467,23 @@ reference "eq:RTproj"
 \end_inset
 
 ).
+ The appeal of this approach is in the separation of velocities on the left
+ hand side of the inclusion (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DSF"
+
+\end_inset
+
+) from forces on the right hand side, as well as in the constancy of the
+ friction cone 
+\begin_inset Formula $K_{\alpha}$
+\end_inset
+
+, which together make this formulation seem even more like a statement of
+ optimality for a constrained optimization problem.
+ This may be helpful in formulating solution strategies based on already
+ existing approaches.
 \end_layout
 
 \begin_layout Section
@@ -557,7 +575,7 @@ reference "eq:NSFEQ"
 
 \end_inset
 
-) expresses the projection formulas (
+) encapsulates the projection formulas (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:RNproj"
@@ -571,7 +589,8 @@ reference "eq:RTproj"
 
 \end_inset
 
-).
+) and it has been shown to work well as a basis for Newton type solution
+ schemes in the finite–element context.
 \end_layout
 
 \begin_layout Section
@@ -579,18 +598,18 @@ Non-smooth velocity equation formulation
 \end_layout
 
 \begin_layout Standard
-This is an implicit formulation developed specifically for Solfec and combining
- ideas from 
-\begin_inset CommandInset citation
-LatexCommand cite
-key "DeSaxceFeng"
+This is an implicit formulation developed specifically for Solfec based
+ on formula (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:DSF"
 
 \end_inset
 
- and 
+) from 
 \begin_inset CommandInset citation
 LatexCommand cite
-key "Fukushima,Hayashi"
+key "DeSaxceFeng"
 
 \end_inset
 
@@ -647,11 +666,15 @@ where
 \begin_inset Formula $\mu_{\alpha}$
 \end_inset
 
- is the coefficient of friction, 
+ is the coefficient of friction at a contact point 
+\begin_inset Formula $\alpha$
+\end_inset
+
+, 
 \begin_inset Formula $K_{\alpha}$
 \end_inset
 
- is the friction cone (
+ is the corresponding friction cone (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Kalpha"
@@ -792,7 +815,7 @@ Semi-explicit penalty formulation
 
 \begin_layout Standard
 This is a simple penalty based formulation developed specifically for Solfec
- and used within the :ref:`penalty qsolver <solfec-theory-solvers-penalty>`.
+ and used within the :ref:`penalty solver <solfec-theory-solvers-penalty>`.
  On the point level this formulation is implemented in `pes.c <https://github.com/
 tkoziara/solfec/blob/master/pes.c#L33>`_.
  Let
@@ -944,7 +967,15 @@ The reason for using the above, rather than the classical
 
  is in an increased stability of the this approach.
  Since we aim at simplicity and want to avoid any nonlinear solve only at
- this stage we include the Hertz law power
+ this stage we include the 
+\begin_inset Quotes eld
+\end_inset
+
+Hertz power
+\begin_inset Quotes erd
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -992,11 +1023,39 @@ Again aiming at maximum simplicity and assuming
 
 \end_inset
 
-The complete interface law is expressed the Algorithm below (where 
+The complete interface law is expressed the below algorithm (where 
+\begin_inset Formula $h$
+\end_inset
+
+ is the time step, 
+\begin_inset Formula $g$
+\end_inset
+
+ is the contact gap, 
+\begin_inset Formula $s$
+\end_inset
+
+ is the spring constant, 
+\begin_inset Formula $d$
+\end_inset
+
+ is the damper constant, 
 \begin_inset Formula $\mu$
 \end_inset
 
- refers there to the coefficient of friction).
+ refers there to the coefficient of friction, and 
+\begin_inset Formula $m$
+\end_inset
+
+ is the 
+\begin_inset Quotes eld
+\end_inset
+
+Hertz power
+\begin_inset Quotes erd
+\end_inset
+
+).
  
 \end_layout
 
@@ -1017,7 +1076,7 @@ SPRING_DASHPOT_CONTACT
 \end_layout
 
 \begin_layout LyX-Code
-  if implicit then
+  if semi-explicit then
 \end_layout
 
 \begin_layout LyX-Code

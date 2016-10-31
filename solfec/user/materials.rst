@@ -42,6 +42,8 @@ Some parameters can also be accessed as members of a FIELD object, cf. :numref:`
   | *obj.label*                                                                                             |
   +---------------------------------------------------------------------------------------------------------+
 
+.. _solfec-user-material-bulkmat:
+
 BULK_MATERIAL
 -------------
 
