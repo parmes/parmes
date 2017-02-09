@@ -237,22 +237,28 @@ or in other words
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}
+\mathbf{C}_{\alpha}\left(\mathbf{B}_{\alpha}+\sum_{\beta}\mathbf{W}_{\alpha\beta}\mathbf{R}_{\beta},\mathbf{R}_{\alpha}\right)=\mathbf{0}\label{eq:nleq}
 \end{equation}
 
 \end_inset
 
+A series of 
+\begin_inset Formula $3$
+\end_inset
 
+--component non–linear equations (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:nleq"
+
+\end_inset
+
+) for all constrains can be approximately solved using the below serial
+ Gauss--Seidel paradigm
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout LyX-Code
-SERIAL_GAUSS_SEIDEL 
+SERIAL_GS 
 \begin_inset Formula $\left(Constraints,\epsilon,\gamma\right)$
 \end_inset
 
@@ -319,42 +325,16 @@ SERIAL_GAUSS_SEIDEL
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:Serial-Gauss-Seidel"
-
-\end_inset
-
-Serial Gauss-Seidel algorithm
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:Serial-Gauss-Seidel"
-
-\end_inset
-
- is quite simple: diagonal block problems are solved until reaction change
- is small enough.
- The Gauss-Seidel paradigm corresponds to the fact, that the most recent
- off-diagonal reactions are used when solving the diagonal problem.
+\begin_layout Standard
+Algorithm SERIAL_GS is quite simple: diagonal block problems are solved
+ until reaction change is small enough.
+ The Gauss--Seidel paradigm corresponds to the fact, that the most recent
+ off--diagonal reactions are used when solving the diagonal problem.
  Of course, because of that, a perfectly parallel implementation is not
  possible.
  After all, reactions are updated in a sequence.
  We can nevertheless relax the need for sequential processing.
- Perhaps the most scalable Gauss-Seidel approach to date was devised by
+ Perhaps the most scalable Gauss--Seidel approach to date was devised by
  Adams 
 \begin_inset CommandInset citation
 LatexCommand cite
@@ -441,34 +421,15 @@ adj\left(i\right)=\left\{ cpu\left(\beta\right):\beta\in P_{i}\right\}
 
 When updating reactions, a processor needs to communicate only with other
  adjacent processors.
- We are going to optimise a pattern of this communication by 
+ We are going to optimize a pattern of this communication by 
 \emph on
 coloring
 \emph default
  the processors.
  We shall then assign to each processor a color, such that no two adjacent
  processors have the same color.
- A simple coloring method is summarised in Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:Simple-processor-coloring"
-
-\end_inset
-
-.
- We try to assign as few colors as possible.
- We then split the index sets 
-\begin_inset Formula $Q_{i}$
-\end_inset
-
- as follows
+ A simple coloring method is summarized in Algorithm COLOR below
 \end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
 
 \begin_layout LyX-Code
 COLOR 
@@ -530,31 +491,13 @@ COLOR
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\lang british
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:Simple-processor-coloring"
-
+\begin_layout Standard
+We try to assign as few colors as possible.
+ We then split the index sets 
+\begin_inset Formula $Q_{i}$
 \end_inset
 
-
-\lang english
-Simple processor coloring.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
+ as follows
 \end_layout
 
 \begin_layout Standard
@@ -626,14 +569,12 @@ so that
 
 \end_inset
 
-
+The parallel Gauss-Seidel scheme is summarized in Algorithm PARALLEL_GS
+ below.
+ The presented version is simplified in the respect, that alternate forward
+ and backward runs are not accounted for (in terms of constraints ordering).
+ 
 \end_layout
-
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
 
 \begin_layout LyX-Code
 SWEEP 
@@ -788,7 +729,7 @@ LOOP
 \end_layout
 
 \begin_layout LyX-Code
-PARALLEL_GAUSS_SEIDEL 
+PARALLEL_GS 
 \begin_inset Formula $\left(\epsilon,\gamma\right)$
 \end_inset
 
@@ -899,57 +840,24 @@ PARALLEL_GAUSS_SEIDEL
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:Parallel-Gauss-Seidel"
-
-\end_inset
-
-Parallel Gauss-Seidel algorithm.
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Standard
-The parallel Gauss-Seidel scheme is summarised in Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:Parallel-Gauss-Seidel"
-
-\end_inset
-
-.
- The presented version is simplified in the respect, that alternate forward
- and backward runs are not accounted for (in terms of constraints ordering).
- We first process the 
+We first process the 
 \begin_inset Formula $Top_{i}$
 \end_inset
 
  set: a single sweep over the corresponding diagonal block problems is performed
- in line 3.
+ in line 4.
  Then we send the computed top reactions to the processors with lower colors.
  We try to overlap communication and computation, hence we sweep over the
  
 \begin_inset Formula $Inner2_{i}$
 \end_inset
 
- set (line 5) while sending.
+ set (line 6) while sending.
  We then receive the top reactions.
  It should be noted that all communication is asynchronous - we only wait
  to receive reactions immediately necessary for computations.
- In line 7 we enter the loop processing the 
+ In line 8 we enter the loop processing the 
 \begin_inset Formula $Middle_{i}$
 \end_inset
 
@@ -972,8 +880,8 @@ reference "alg:Parallel-Gauss-Seidel"
  And so on.
  At the end (line 8), we need to receive all remaining reactions that have
  been sent in line 7 of LOOP.
- Coming back to PARALLEL_GAUSS_SEIDEL, after the bottleneck of the LOOP,
- in lines 8-11 we process the 
+ Coming back to PARALLEL_GS, after the bottleneck of the LOOP, in lines
+ 9-12 we process the 
 \begin_inset Formula $Bottom_{i}$
 \end_inset
 
@@ -1008,40 +916,21 @@ n (e.g.
 \end_inset
 
  set becomes).
- It should be noted that the convergence criterion in line 12 is global
+ It should be noted that the convergence criterion in line 13 is global
  across all processors.
  
 \end_layout
 
 \begin_layout Standard
-In Section 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "subsec:GAUSS_SEIDEL_SOLVER"
-
-\end_inset
-
- several variants of the parallel algorithm are listed.
- Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:Parallel-Gauss-Seidel"
-
-\end_inset
-
- corresponds to the FULL variant.
- We might like to relax the bottleneck of LOOP in line 7 of Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:Parallel-Gauss-Seidel"
-
-\end_inset
-
+In :ref:`User Manual Solvers Section <solfec-user-solvers>` several variants
+ of the parallel Gauss--Seidel algorithm are listed.
+ Algorithm PARALLEL_GS corresponds to the FULL variant.
+ We might like to relax the bottleneck of LOOP in line 8 of PARALLEL_GS
  by replacing it with
 \end_layout
 
 \begin_layout LyX-Code
-7.1   SWEEP 
+8.1   SWEEP 
 \begin_inset Formula $\left(Middle_{i}\right)$
 \end_inset
 
@@ -1049,7 +938,7 @@ reference "alg:Parallel-Gauss-Seidel"
 \end_layout
 
 \begin_layout LyX-Code
-7.2   send 
+8.2   send 
 \begin_inset Formula $\left(Middle_{i}\right)$
 \end_inset
 
@@ -1057,7 +946,7 @@ reference "alg:Parallel-Gauss-Seidel"
 \end_layout
 
 \begin_layout LyX-Code
-7.3   receive 
+8.3   receive 
 \begin_inset Formula $\left(Middle_{i}\right)$
 \end_inset
 
@@ -1086,7 +975,7 @@ sor information corresponds to the previous iteration (just like in the
 \begin_inset Quotes eld
 \end_inset
 
-a processor Gauss-Seidel method
+a processor Gauss--Seidel method
 \begin_inset Quotes erd
 \end_inset
 
@@ -1102,14 +991,7 @@ All_{i}=Top_{i}\cup Bottom_{i}\cup Middle_{i}\cup Inner_{i}
 
 \end_inset
 
-In this case, lines 3-11 of PARALLEL_GAUSS_SEIDEL from Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:Parallel-Gauss-Seidel"
-
-\end_inset
-
- need to be replaced with
+In this case, lines 4-12 of PARALLEL_GS need to be replaced with
 \end_layout
 
 \begin_layout LyX-Code
@@ -1138,24 +1020,18 @@ reference "alg:Parallel-Gauss-Seidel"
 
 \begin_layout Standard
 \noindent
-Although this kind of approach does work as a multi-grid smoother, it has
+Although this kind of approach does work as a multigrid smoother, it has
  little use in our context.
  Nevertheless, we use it for illustration sake and name the BOUNDARY_JACOBI.
 \end_layout
 
 \begin_layout Section
-Projected (quasi) Newton Solver
+Projected Newton Solver
 \end_layout
 
 \begin_layout Standard
-Let us rewrite the frictional contact problem (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:C1"
-
-\end_inset
-
-) once again
+Using the :ref:`non--smooth velocity equation formulation <solfec-theory-conform
+-nsveq>` let us rewrite the frictional contact problem as
 \end_layout
 
 \begin_layout Standard
@@ -1181,13 +1057,22 @@ where
 
  we generalize the approach from 
 \begin_inset CommandInset citation
-LatexCommand citep
-key "Fukushima2002"
+LatexCommand cite
+key "Fukushima,Hayashi"
 
 \end_inset
 
-, where only the self-dual case (friction coefficient equal to 1) was considered.
- Our idea is to employ the following projected quasi-Newton step
+ and use a smoothed 
+\begin_inset Formula $\nabla_{\omega}\mathbf{C}$
+\end_inset
+
+ with 
+\begin_inset Formula $\omega>0$
+\end_inset
+
+ (we skip the details here), where only the self-dual case was considered
+ (friction coefficient equal to 1).
+ Our idea is to employ the following projected quasi--Newton step
 \end_layout
 
 \begin_layout Standard
@@ -1202,27 +1087,23 @@ so that, as required, the iterates remain within the friction cone and where
  
 \begin_inset Formula 
 \begin{equation}
-\mathbf{A}\simeq\nabla\mathbf{C}
+\mathbf{A}\simeq\nabla_{\omega}\mathbf{C}
 \end{equation}
 
 \end_inset
 
 is an easy to invert approximation of 
-\begin_inset Formula $\nabla\mathbf{C}$
+\begin_inset Formula $\nabla_{\omega}\mathbf{C}$
 \end_inset
 
 .
  Since in many practical situations 
-\begin_inset Formula $\nabla\mathbf{C}$
+\begin_inset Formula $\nabla_{\omega}\mathbf{C}$
 \end_inset
 
- is singular, we cannot hope to employ 
-\begin_inset Formula $\nabla\mathbf{C}$
-\end_inset
-
-.
- We then employ two variants of 
-\begin_inset Formula $\mathbf{A}\simeq\nabla\mathbf{C}$
+ is near singular, we do not to employ it directly.
+ Instead, we employ two variants of 
+\begin_inset Formula $\mathbf{A}\simeq\nabla_{\omega}\mathbf{C}$
 \end_inset
 
 .
@@ -1232,7 +1113,7 @@ is an easy to invert approximation of
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{A}_{1}=\nabla\mathbf{C}+\delta\mathbf{I},\mbox{ combined with GMRES.}
+\mathbf{A}_{1}=\nabla_{\omega}\mathbf{C}+\delta\mathbf{I},\mbox{ combined with GMRES.}
 \end{equation}
 
 \end_inset
@@ -1288,7 +1169,7 @@ pseudo-transient continuation
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{A}_{2}=\mbox{diag}_{3\times3}\left[\nabla\mathbf{C}\right],\mbox{ combined with direct inversion.}
+\mathbf{A}_{2}=\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}\right],\mbox{ combined with direct inversion.}
 \end{equation}
 
 \end_inset
@@ -1315,141 +1196,20 @@ where
 
 \end_inset
 
-
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Description
-PQN1(
-\begin_inset Formula $\mathbf{R},\gamma,n,\omega,\delta,m,\epsilon$
-\end_inset
-
-):
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $\triangle\mathbf{R}^{0}=\mathbf{0}$
-\end_inset
-
-, 
-\begin_inset Formula $k=0$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Do
-\begin_inset Separator latexpar
-\end_inset
-
-
-\end_layout
-
-\begin_deeper
-\begin_layout Enumerate
-\begin_inset Formula $\mathbf{U}^{k}=\mathbf{W}\mathbf{R}^{k}+\mathbf{B}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-Compute 
-\begin_inset Formula $\mathbf{C}^{k}$
-\end_inset
-
- and 
-\begin_inset Formula $\mathbf{A}^{k}=\nabla\mathbf{C}_{\alpha\alpha}^{k}+\delta\mathbf{I}$
-\end_inset
-
- using smoothing 
-\begin_inset Formula $\omega$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $\triangle\mathbf{R}^{k+1}=-\left(\mathbf{A}^{k}\right)_{\mbox{GMRES}\left(\epsilon\left\Vert \mathbf{C}^{k}\right\Vert ,m\right)}^{-1}\mathbf{C}^{k}$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\triangle\mathbf{R}^{k+1}\right]$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Enumerate
-\begin_inset Formula $k=k+1$
-\end_inset
-
-.
-\end_layout
-
-\begin_layout Plain Layout
-while 
-\begin_inset Formula $g\left(\mathbf{R}^{k}\right)\ge\gamma$
-\end_inset
-
- and 
-\begin_inset Formula $k<n$
-\end_inset
-
-.
-\end_layout
-
-\end_deeper
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:PQN1"
-
-\end_inset
-
-The projected quasi-Newton method with GMRES.
- Use linver = 'GMRES' in NEWTON_SOLVER to enable this variant (this is the
- default).
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
 We then have two variants of the projected quasi-Newton step:
 \end_layout
 
 \begin_layout Enumerate
-PQN1 (cf.
- Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:PQN1"
-
-\end_inset
-
-): 
+PQN1: 
 \begin_inset Formula 
 \[
-\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\left(\nabla\mathbf{C}^{k}+\delta\mathbf{I}\right)_{\mbox{GMRES}\left(\epsilon\left\Vert \mathbf{C}^{k}\right\Vert ,m\right)}^{-1}\mathbf{C}^{k}\right]
+\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}-\left(\nabla_{\omega}\mathbf{C}^{k}+\delta\mathbf{I}\right)_{\mbox{GMRES}\left(\epsilon\left\Vert \mathbf{C}^{k}\right\Vert ,m\right)}^{-1}\mathbf{C}^{k}\right]
 \]
 
 \end_inset
 
 where GMRES is preconditioned with 
-\begin_inset Formula $\left[\mbox{diag}_{3\times3}\left(\nabla\mathbf{C}_{\alpha\alpha}^{k}+\delta\mathbf{I}\right)\right]^{-1}$
+\begin_inset Formula $\left[\mbox{diag}_{3\times3}\left(\nabla_{\omega}\mathbf{C}_{\alpha\alpha}^{k}+\delta\mathbf{I}\right)\right]^{-1}$
 \end_inset
 
  and 
@@ -1529,20 +1289,12 @@ Since rigorous analysis is still missing for these parameters, please experiment
  before settling on specific values for a specific problem.
 
 \emph default
- Use linver = 'GMRES' in NEWTON_SOLVER to enable this variant (this is the
- default).
+ Use linver = 'GMRES' in :ref:`NEWTON_SOLVER <projected-newton>` to enable
+ this variant (this is also the default).
 \end_layout
 
 \begin_layout Enumerate
-PQN2 (cf.
- Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:PQN2"
-
-\end_inset
-
-): 
+PQN2: 
 \family roman
 \series medium
 \shape up
@@ -1554,7 +1306,7 @@ reference "alg:PQN2"
 
 \begin_inset Formula 
 \[
-\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]
+\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]
 \]
 
 \end_inset
@@ -1568,7 +1320,7 @@ where
 \end_inset
 
  blocks of 
-\begin_inset Formula $\nabla\mathbf{C}^{k}$
+\begin_inset Formula $\nabla_{\omega}\mathbf{C}^{k}$
 \end_inset
 
  are directly inverted.
@@ -1587,24 +1339,28 @@ where
 \bar default
 \noun default
 \color inherit
-Use linver = 'DIAG' in NEWTON_SOLVER to enable this variant.
+Use linver = 'DIAG' in :ref:`NEWTON_SOLVER <projected-newton>` to enable
+ this variant.
 \end_layout
 
 \begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
-\begin_layout Description
-PQN2(
-\begin_inset Formula $\mathbf{R},\theta,\gamma,n,\omega$
-\end_inset
-
-):
+Both variants are summarized as algorithms below.
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout LyX-Code
+
+\series bold
+PQN1
+\series default
+
+\begin_inset Formula $\left(\mathbf{R},\gamma,n,\omega,\delta,m,\epsilon\right)$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+1 
 \begin_inset Formula $\triangle\mathbf{R}^{0}=\mathbf{0}$
 \end_inset
 
@@ -1612,64 +1368,63 @@ PQN2(
 \begin_inset Formula $k=0$
 \end_inset
 
-.
-\end_layout
-
-\begin_layout Enumerate
-Do
-\begin_inset Separator latexpar
-\end_inset
-
 
 \end_layout
 
-\begin_deeper
-\begin_layout Enumerate
+\begin_layout LyX-Code
+2 Do
+\end_layout
+
+\begin_layout LyX-Code
+3   
 \begin_inset Formula $\mathbf{U}^{k}=\mathbf{W}\mathbf{R}^{k}+\mathbf{B}$
 \end_inset
 
-.
+
 \end_layout
 
-\begin_layout Enumerate
-Compute 
+\begin_layout LyX-Code
+4   Compute 
 \begin_inset Formula $\mathbf{C}^{k}$
 \end_inset
 
  and 
-\begin_inset Formula $\mathbf{A}^{k}=\mbox{diag}_{3\times3}\left[\nabla\mathbf{C}_{\alpha\alpha}^{k}\right]$
+\begin_inset Formula $\mathbf{A}^{k}=\nabla_{\omega}\mathbf{C}_{\alpha\alpha}^{k}+\delta\mathbf{I}$
 \end_inset
 
  using smoothing 
 \begin_inset Formula $\omega$
 \end_inset
 
-.
+
 \end_layout
 
-\begin_layout Enumerate
-\begin_inset Formula $\triangle\mathbf{R}^{k+1}=\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mathbf{A}^{k}\right)^{-1}\mathbf{C}^{k}$
+\begin_layout LyX-Code
+5   
+\begin_inset Formula $\triangle\mathbf{R}^{k+1}=-\left(\mathbf{A}^{k}\right)_{\mbox{GMRES}\left(\epsilon\left\Vert \mathbf{C}^{k}\right\Vert ,m\right)}^{-1}\mathbf{C}^{k}$
 \end_inset
 
-.
+
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout LyX-Code
+6   
 \begin_inset Formula $\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\triangle\mathbf{R}^{k+1}\right]$
 \end_inset
 
-.
+
 \end_layout
 
-\begin_layout Enumerate
+\begin_layout LyX-Code
+7   
 \begin_inset Formula $k=k+1$
 \end_inset
 
-.
+
 \end_layout
 
-\begin_layout Plain Layout
-while 
+\begin_layout LyX-Code
+8   while 
 \begin_inset Formula $g\left(\mathbf{R}^{k}\right)\ge\gamma$
 \end_inset
 
@@ -1677,29 +1432,96 @@ while
 \begin_inset Formula $k<n$
 \end_inset
 
-.
+
 \end_layout
 
-\end_deeper
-\begin_layout Plain Layout
-\begin_inset Caption Standard
+\begin_layout LyX-Code
 
-\begin_layout Plain Layout
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:PQN2"
-
-\end_inset
-
-The projected quasi-Newton method with diagonal direct solve and averaging.
- Use linver = 'DIAG' in NEWTON_SOLVER to enable this variant.
 \end_layout
 
+\begin_layout LyX-Code
+
+\series bold
+PQN2
+\series default
+
+\begin_inset Formula $\left(\mathbf{R},\theta,\gamma,n,\omega\right)$
 \end_inset
 
 
 \end_layout
 
+\begin_layout LyX-Code
+1 
+\begin_inset Formula $\triangle\mathbf{R}^{0}=\mathbf{0}$
+\end_inset
+
+, 
+\begin_inset Formula $k=0$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+2 Do
+\end_layout
+
+\begin_layout LyX-Code
+3   
+\begin_inset Formula $\mathbf{U}^{k}=\mathbf{W}\mathbf{R}^{k}+\mathbf{B}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+4   Compute 
+\begin_inset Formula $\mathbf{C}^{k}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{A}^{k}=\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}_{\alpha\alpha}^{k}\right]$
+\end_inset
+
+ using smoothing 
+\begin_inset Formula $\omega$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+5   
+\begin_inset Formula $\triangle\mathbf{R}^{k+1}=\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mathbf{A}^{k}\right)^{-1}\mathbf{C}^{k}$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+6   
+\begin_inset Formula $\mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\triangle\mathbf{R}^{k+1}\right]$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+7   
+\begin_inset Formula $k=k+1$
+\end_inset
+
+
+\end_layout
+
+\begin_layout LyX-Code
+8 while 
+\begin_inset Formula $g\left(\mathbf{R}^{k}\right)\ge\gamma$
+\end_inset
+
+ and 
+\begin_inset Formula $k<n$
 \end_inset
 
 
@@ -1728,26 +1550,13 @@ The penalty solver is quite straightforward.
 
  is used).
  We use the Gauss-Seidel approach for non-contacts because in this case
- it is quite fast, while it avoids issues related to penalisation of bilateral
+ it is quite fast, while it avoids issues related to penalization of bilateral
  constraints.
- Algorithm 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "alg:Parallel-explicit-solver"
-
-\end_inset
-
- summarises the method.
+ 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Float algorithm
-wide false
-sideways false
-status open
-
 \begin_layout LyX-Code
-PARALLEL_PENALTY_SOLVER 
+PENALTY_SOLVER 
 \begin_inset Formula $\left(\right)$
 \end_inset
 
@@ -1767,7 +1576,7 @@ PARALLEL_PENALTY_SOLVER
 \end_layout
 
 \begin_layout LyX-Code
-2    SPRING_DASHPOT 
+2    SPRING_DASHPOT_CONTACT 
 \begin_inset Formula $\left(h,gap_{\alpha},spring_{\alpha},dashpot_{\alpha},friction_{\alpha},cohesion_{\alpha},cohesive_{\alpha}\right)$
 \end_inset
 
@@ -1791,38 +1600,39 @@ PARALLEL_PENALTY_SOLVER
 \end_layout
 
 \begin_layout LyX-Code
-5  GAUSS_SEIDEL 
+5  PARALLEL_GS 
 \begin_inset Formula $\left(Others_{i}\right)$
 \end_inset
 
 
 \end_layout
 
-\begin_layout Plain Layout
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-
-\lang british
-\begin_inset CommandInset label
-LatexCommand label
-name "alg:Parallel-explicit-solver"
-
-\end_inset
-
-
-\lang english
-Parallel penalty solver.
+\begin_layout Standard
+Algorithm PENALTY_SOLVER summarizes the method.
+ First all contact forces are calculated using the :ref:`SPRING_DASHPOT_CONTACT
+ algorithm <spring-dashpot-contact>`.
+ In lines 3 and 4 contact domain boundary contact forces are sent to and
+ received on the neighboring processors.
+ Finally, the parallel Gauss--Seidel algorithm is executed to calculate
+ the reactions of the bilateral constraints.
+ In the serial mode lines 3 and 4 are skipped, while SERIAL_GS is used instead
+ of the parallel one.
 \end_layout
 
-\end_inset
-
-
+\begin_layout Section
+Implementation
 \end_layout
 
-\end_inset
-
-
+\begin_layout Standard
+The Gauss--Seidel solver is implemented in `bgs.c <https://github.com/tkoziara/sol
+fec/blob/master/bgs.c>`_ and `bgs.h <https://github.com/tkoziara/solfec/blob/master
+/bgs.h>`_.
+ The projected Newton solver is implemented in `nts.c <https://github.com/tkoziara
+/solfec/blob/master/nts.c>`_ and `nts.h <https://github.com/tkoziara/solfec/blob/ma
+ster/nts.h>`_.
+ The penalty solver is implemented in `pes.c <https://github.com/tkoziara/solfec/b
+lob/master/pes.c>`_ and `pes.h <https://github.com/tkoziara/solfec/blob/master/pes.h
+>`_.
 \end_layout
 
 \begin_layout Bibliography
@@ -1833,12 +1643,9 @@ key "Adams"
 \end_inset
 
 ￼￼￼￼Mark F.
- Adams.
- A distributed memory unstructured Gauss-Seidel algorithm for multigrid
- smoothers.
- In Supercomputing ’01: Proceedings of the 2001 ACM/IEEE conference on Supercomp
-uting, pages 4–4, New York, USA, 2001.
- ACM Press.
+ Adams, A distributed memory unstructured Gauss--Seidel algorithm for multigrid
+ smoothers, In Supercomputing 01: Proceedings of the 2001 ACM/IEEE conference
+ on Supercomputing, pages 4-4, New York, USA, 2001.
 \end_layout
 
 \begin_layout Bibliography
@@ -1848,9 +1655,9 @@ key "Fukushima"
 
 \end_inset
 
-Masao Fukushima, Zhi-Quan Luo, and Paul Tseng.
- Smoothing functions for second-order-cone complementarity problems.
- SIAM Journal on Optimization, 12(2):436–460, 2002.
+Masao Fukushima, Zhi-Quan Luo, and Paul Tseng, Smoothing functions for second-or
+der-cone complementarity problems, SIAM Journal on Optimization, 12(2):436–460,
+ 2002.
  
 \end_layout
 
@@ -1862,7 +1669,7 @@ key "Hayashi"
 \end_inset
 
 Shunsuke Hayashi, Nobuo Yamashita, and Masao Fukushima, A Combined Smoothing
- and Regularization Method for Monotone Second-Order Cone Complementarity
+ and Regularization Method for Monotone Second--Order Cone Complementarity
  Problems, SIAM J.
  Optim., 15(2), 593–615, 2005.
 \end_layout

@@ -1,7 +1,13 @@
 
-* On Oct 28 2016 :ref:`solfec-theory-conform`
+* On Oct 31 2016 :ref:`solfec-theory`
 
-* On Oct 28 2016 :ref:`solfec-theory-solvers`
+* On Oct 31 2016 :ref:`solfec-theory-bulkmat`
+
+* On Oct 31 2016 :ref:`solfec-theory-conform`
+
+* On Oct 31 2016 :ref:`solfec-theory-solvers`
+
+* On Oct 31 2016 :ref:`solfec-user-materials`
 
 * On Oct 10 2016 :ref:`solfec-user-results`
 
@@ -12,9 +18,3 @@
 * On Oct 3 2016 :ref:`solfec-applications`
 
 * On Oct 3 2016 :ref:`solfec-examples`
-
-* On Oct 3 2016 :ref:`solfec-examples-hybrid_modelling`
-
-* On Oct 3 2016 :ref:`solfec-validation`
-
-* On Aug 23 2016 :ref:`solfec-user-constraints`

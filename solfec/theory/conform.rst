@@ -309,6 +309,8 @@ and :math:`m` is the “Hertz power”).
 
   <br />
 
+.. _spring-dashpot-contact:
+
 **SPRING_DASHPOT_CONTACT** :math:`\left(h,g,s,d,\mu,cohesion,cohesive\right)` |br|
 1  :math:`\,\,` :math:`\bar{B}_{N}=B_{N}+\mathbf{W}_{NT}\mathbf{R}_{T}` |br|
 2  :math:`\,\,` if semi--explicit then |br|
