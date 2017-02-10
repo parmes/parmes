@@ -1,11 +1,11 @@
-.. _solfec-applications-suspended_sedminent_propagation:
+.. _solfec-applications-suspended_sediment_propagation:
+
+Suspended sediment propagation
+==============================
 
 .. |br| raw:: html
 
   <br />
-
-Suspended sediment propagation
-==============================
 
 Solfec was utilised by Žic et al. [1]_ in the context of suspended sediment propagation.
 The abstract and figures below quote directly from reference [1]_.
@@ -23,25 +23,25 @@ used to develop a computer code written in the Python programming language that 
 of suspended sediment propagation. The paper also provides graphical representations of the Mud Flow simulation in the
 hypothetical example inside of the Salt Creek stream erosional base in Croatia.
 
-.. _suspended_sedminent_propagation-1:
+.. _suspended_sediment_propagation-1:
 
-.. figure:: suspended_sedminent_propagation-1.png
+.. figure:: suspended_sediment_propagation-1.png
    :width: 70%
    :align: center
 
    Fig. a) Salt Creek stream (winter period), fig. b) erosion base of the Salt Creek stream (Photo: Elvis Žic) (cf. Figure 6 in [1]_)
 
-.. _suspended_sedminent_propagation-2:
+.. _suspended_sediment_propagation-2:
 
-.. figure:: suspended_sedminent_propagation-2.png
+.. figure:: suspended_sediment_propagation-2.png
    :width: 70%
    :align: center
    
    Digital elevation model of the Salt Creek erosional base created in the SOLFEC program. (cf. Figure 9 in [1]_)
 
-.. _suspended_sedminent_propagation-3:
+.. _suspended_sediment_propagation-3:
 
-.. figure:: suspended_sedminent_propagation-3.png
+.. figure:: suspended_sediment_propagation-3.png
    :width: 70%
    :align: center
 

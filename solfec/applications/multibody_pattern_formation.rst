@@ -1,11 +1,11 @@
 .. _solfec-applications-multibody_pattern_formation:
 
+Multibody pattern formation
+===========================
+
 .. |br| raw:: html
 
   <br />
-
-Multibody pattern formation
-===========================
 
 Solfec was utilised by Bićanić et al. [1]_ in the context of multibody pattern formation.
 The abstract and figures below quote directly from reference [1]_.

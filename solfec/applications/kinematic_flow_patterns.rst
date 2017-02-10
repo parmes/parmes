@@ -1,11 +1,11 @@
 .. _solfec-applications-kinematic_flow_patterns:
 
+Kinematic flow patterns
+=======================
+
 .. |br| raw:: html
 
   <br />
-
-Kinematic flow patterns
-=======================
 
 Solfec was utilised by Viswanathan et al. [1]_ in the context of modeling of granular flow patterns.
 The abstract and figures below quote directly from reference [1]_.
