@@ -1,4 +1,8 @@
 
+* On Feb 10 2017 :ref:`solfec-validation`
+
+* On Feb 10 2017 :ref:`solfec-validation-heavy_symmetrical_top`
+
 * On Feb 10 2017 :ref:`solfec-applications-kinematic_flow_patterns`
 
 * On Feb 10 2017 :ref:`solfec-applications-multibody_pattern_formation`
@@ -14,7 +18,3 @@
 * On Feb 9 2017 :ref:`solfec-theory-solvers`
 
 * On Oct 31 2016 :ref:`solfec-theory`
-
-* On Oct 31 2016 :ref:`solfec-theory-bulkmat`
-
-* On Oct 31 2016 :ref:`solfec-user-materials`

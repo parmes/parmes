@@ -10,4 +10,5 @@ Solfec Validation Manual contains individual examples with known solutions.
    :maxdepth: 1
 
    validation/heavy_symmetrical_top
- 
+   validation/projectile
+   validation/pinned_bar

@@ -26,10 +26,10 @@ More details can be found in:
    User Manual <user>
    Theory Manual <theory>
    Validation Manual <validation>
-   ABAQUS import <abaqus>
    XDMF export <xdmf>
    Applications <applications>
-   Examples <examples>
+..   ABAQUS import <abaqus>
+..   Examples <examples>
 
 References:
 
