@@ -12,3 +12,4 @@ Solfec Validation Manual contains individual examples with known solutions.
    validation/heavy_symmetrical_top
    validation/projectile
    validation/pinned_bar
+   validation/pendulum
