@@ -14,3 +14,4 @@ Solfec Validation Manual contains individual examples with known solutions.
    validation/pinned_bar
    validation/pendulum
    validation/double_pendulum
+   validation/block_sliding
