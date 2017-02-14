@@ -1,11 +1,13 @@
 
+* On Feb 13 2017 :ref:`solfec-validation`
+
+* On Feb 13 2017 :ref:`solfec-validation-pendulum`
+
 * On Feb 13 2017 :ref:`solfec-abaqus`
 
 * On Feb 13 2017 :ref:`solfec-about`
 
 * On Feb 13 2017 :ref:`solfec-examples`
-
-* On Feb 13 2017 :ref:`solfec-validation`
 
 * On Feb 13 2017 :ref:`solfec-validation-pinned_bar`
 
@@ -16,5 +18,3 @@
 * On Feb 10 2017 :ref:`solfec-applications-kinematic_flow_patterns`
 
 * On Feb 10 2017 :ref:`solfec-applications-multibody_pattern_formation`
-
-* On Feb 10 2017 :ref:`solfec-applications-suspended_sediment_propagation`
