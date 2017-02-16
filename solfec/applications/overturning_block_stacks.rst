@@ -1,7 +1,7 @@
 .. _solfec-applications-overturning_block_stacks:
 
-Overturning of multiple-block stacks
-====================================
+Overturning of multiple--block stacks
+=====================================
 
 .. |br| raw:: html
 

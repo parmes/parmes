@@ -15,3 +15,4 @@ Solfec Validation Manual contains individual examples with known solutions.
    validation/pendulum
    validation/double_pendulum
    validation/block_sliding
+   validation/masonry_arch

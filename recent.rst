@@ -1,4 +1,8 @@
 
+* On Feb 15 2017 :ref:`solfec-applications`
+
+* On Feb 15 2017 :ref:`solfec-applications-overturning_block_stacks`
+
 * On Feb 14 2017 :ref:`solfec-validation`
 
 * On Feb 14 2017 :ref:`solfec-validation-block_sliding`
@@ -14,7 +18,3 @@
 * On Feb 13 2017 :ref:`solfec-examples`
 
 * On Feb 13 2017 :ref:`solfec-validation-pinned_bar`
-
-* On Feb 13 2017 :ref:`solfec-validation-projectile`
-
-* On Feb 10 2017 :ref:`solfec-validation-heavy_symmetrical_top`
