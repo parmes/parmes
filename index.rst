@@ -10,6 +10,7 @@ Recent blog posts:
 
 .. postlist:: 5
    :excerpts:
+   :date: %B %d, %Y
 
 .. toctree::
     :hidden:
