@@ -1,7 +1,7 @@
 
-* On Mar 16 2017 :ref:`dynlb-index`
-
 * On Mar 16 2017 :ref:`parmec-implementation_status`
+
+* On Mar 16 2017 :ref:`dynlb-index`
 
 * On Mar 16 2017 :ref:`parmec-index`
 

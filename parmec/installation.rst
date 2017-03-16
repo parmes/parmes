@@ -19,7 +19,7 @@ Edit Makefile variables:
 
 ::
 
-  # C++ compiler (ISPC is assumed to be in the PATH; \ http://ispc.github.io)
+  # C++ compiler (ISPC is assumed to be in the PATH; http://ispc.github.io)
   CXX=g++
 
   # Python paths
