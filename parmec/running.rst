@@ -10,7 +10,7 @@ PARMEC is a command line program. Typical usage:
 #. Create a directory where your input/output files will be stored (e.g. *mkdir test*).
 
 #. Edit your `Python <http://www.python.org/>`__ input file in this
-   directory (e.g. *test.py*); See :ref:`parmec-input-commands`.
+   directory (e.g. *test.py*); See :ref:`input commands <parmec-input_commands>`.
 
 #. Run PARMEC (e.g. *parmec4 path/to/test/test.py*, or *parmec8
    path/to/test/test.py*).

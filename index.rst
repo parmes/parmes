@@ -16,6 +16,6 @@ Recent blog posts:
     :hidden:
     :glob:
 
-    solfec/about
-    dynlb/about
-    parmec/about
+    solfec/index
+    dynlb/index
+    parmec/index

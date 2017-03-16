@@ -1,4 +1,4 @@
-.. _parmec-implementation-status:
+.. _parmec-implementation_status:
 
 Parmec Implementation Status
 ============================

@@ -1,4 +1,4 @@
-.. _parmec-input-commands:
+.. _parmec-input_commands:
 
 Parmec Input Commands
 =====================

@@ -1,4 +1,4 @@
-.. _solfec-about:
+.. _solfec-index:
 
 SOLFEC
 ======

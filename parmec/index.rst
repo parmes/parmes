@@ -1,4 +1,4 @@
-.. _parmec-about:
+.. _parmec-index:
 
 PARMEC
 ======
@@ -11,7 +11,7 @@ PARMEC
 
 Parmec is a prototype of a vectorized and task based discrete element software, implemented using
 `ISPC <http://ispc.github.io>`_ and C++. This code is at an early stage of development and it is
-only partially functional (see :ref:`implementation status <parmec-implementation-status>`). Parmec
+only partially functional (see :ref:`implementation status <parmec-implementation_status>`). Parmec
 can be used as a blueprint of a `DEM <https://en.wikipedia.org/wiki/Discrete_element_method>`_ code
 implemented predominately in `ISPC <http://ispc.github.io>`_.
 
