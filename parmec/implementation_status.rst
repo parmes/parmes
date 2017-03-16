@@ -7,11 +7,11 @@ Parmec Implementation Status
 
 Individual features of parmec which are not implemented yet are marked as :red:`(under development)`.
 Relatively complex features that have seen little testing are marked as :red:`(experimental)`.
-:numref:`limitations-of-contact-detection` summarizes current limitations of automatic contact detection.
+:numref:`status-of-contact-detection` summarizes current status of automatic contact detection.
 
-.. _limitations-of-contact-detection:
+.. _status-of-contact-detection:
 
-.. table:: Current limitations of automatic contact detection.
+.. table:: Current status of automatic contact detection.
 
   +------------+----------+--------+------------+
   |            | SPHERE   | MESH   | OBSTACLE   |
