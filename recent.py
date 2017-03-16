@@ -1,4 +1,5 @@
 import subprocess
+import os.path
 
 nrecent = 10
 
@@ -20,7 +21,7 @@ for line in output.splitlines():
       date[2] = items[5]
     if items[0] in ['A', 'M'] and items[1].endswith('.rst') and \
       not items[1].startswith('blog') and items[1] not in exclude \
-      and items[1] not in recorded:
+      and items[1] not in recorded and os.path.isfile(items[1]):
       recorded.add (items[1])
       recent.append ((list(date), items[1]))
 
