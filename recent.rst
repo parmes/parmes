@@ -1,4 +1,6 @@
 
+* On Mar 16 2017 :ref:`parmec-installation`
+
 * On Mar 16 2017 :ref:`parmec-implementation_status`
 
 * On Mar 16 2017 :ref:`dynlb-index`
@@ -10,8 +12,6 @@
 * On Mar 16 2017 :ref:`parmec-running`
 
 * On Mar 16 2017 :ref:`solfec-index`
-
-* On Mar 16 2017 :ref:`parmec-installation`
 
 * On Feb 20 2017 :ref:`solfec-abaqus`
 

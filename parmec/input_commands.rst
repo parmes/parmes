@@ -569,7 +569,7 @@ Run DEM simulation.
      used to indicate different output frequencies of output files and
      time histories, respectively; callback functions or TSERIES numbers
      can also be used, e.g.
-     :math:`dt_{\text{files}}=\text{dt\_fiels}\left(t\right)` and
+     :math:`dt_{\text{files}}=\text{dt_fiels}\left(t\right)` and
      :math:`dt_{\text{history}}=\text{tmsnum}`, prescribing variable
      interval frequencies, depending on current time;
 
