@@ -5,11 +5,12 @@
 Solfec Examples
 ===============
 
-Solfec Examples ...
+Examples documented here can be found in the `solfec/examples <https://github.com/tkoziara/solfec/tree/master/examples>`_ directory. [*]_
+Currently available examples include:
 
-..  
-  Examples documented here can be found in the `solfec/examples <https://github.com/tkoziara/solfec/tree/master/examples>`_ directory.
-  Currently available examples include:
-  .. toctree::
-    :maxdepth: 1
-    xamples/hybrid_modelling
+.. toctree::
+  :maxdepth: 1
+
+  examples/hybrid_modelling
+
+.. [*] Undocumented input files are located in the `solfec/inp <https://github.com/tkoziara/solfec/tree/master/inp>`_ directory.

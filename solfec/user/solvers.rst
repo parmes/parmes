@@ -230,6 +230,8 @@ Some parameters can also be accessed as members of a SICONOS_SOLVER object, cf. 
   | *obj.epsilon, obj.maxiter*                                                                              |
   +---------------------------------------------------------------------------------------------------------+
 
+.. _hybrid-solver:
+
 Hybrid solver
 -------------
 
