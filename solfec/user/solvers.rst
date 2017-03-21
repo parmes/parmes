@@ -229,3 +229,40 @@ Some parameters can also be accessed as members of a SICONOS_SOLVER object, cf. 
   +---------------------------------------------------------------------------------------------------------+
   | *obj.epsilon, obj.maxiter*                                                                              |
   +---------------------------------------------------------------------------------------------------------+
+
+Hybrid solver
+-------------
+
+.. role:: red
+
+Hybrid solver allows to combine smooth rigid body nonlinear spring based :ref:`PARMEC <parmec-index>` models with non--smooth SOLFEC models.
+
+.. topic:: obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver) :red:`(Under development)`
+
+  * obj -- created HYBRID_SOLVER object
+
+  * parmec_step -- an upper bound of the PARMEC time step
+
+  * parmec2solfec -- Python dictionary based mapping of PARMEC particle numbers to SOLFEC body identifiers
+
+  * solfec_solver -- SOLFEC constraint solver (e.g. NEWTON_SOLVER) 
+
+Some parameters can also be accessed as members of a HYBRID_SOLVER object, cf. :numref:`hybrid-params`.
+
+.. _hybrid-params:
+
+.. table:: HYBRID_SOLVER object parameters.
+
+  +---------------------------------------------------------------------------------------------------------+
+  | **Read/write members:**                                                                                 |
+  +---------------------------------------------------------------------------------------------------------+
+  | *obj.parmec_interval* -- PARMEC output interval specification (as in :ref:`parmec’s DEM command         |
+  | <parmec-command-DEM>`); when not specified PARMEC will not write output files; the read value is        |
+  | [(d,d), (O,O), (i, i)], where the first tuple contains floating point intervals, the second tuple       |
+  | contains Python callbacks, the third tuple contains TSERIES numbers                                     |
+  +---------------------------------------------------------------------------------------------------------+
+  | *obj.parmec_prefix* -- PARMEC output file name prefix (as in :ref:`parmec’s DEM command                 |
+  | <parmec-command-DEM>`)                                                                                  |
+  +---------------------------------------------------------------------------------------------------------+
+
+

@@ -191,11 +191,11 @@ where
 
   \text{direction}\left(t\right)=\left(\text{point2}\left(t\right)-\text{point1}
   \left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)
-  \right|\text{ \textbf{or} constant}\left(d_{x},d_{y},d_{z}\right)\text{ \textbf{or} tangent}
+  \right|\textbf{ or } \text{constant}\left(d_{x},d_{y},d_{z}\right)\textbf{ or }\text{tangent}
 
 .. math::
 
-  \text{stroke}\left(t\right)=\text{direction\ensuremath{\left(t\right)}}\cdot\left[
+  \text{stroke}\left(t\right)=\text{direction}\left(t\right)\cdot\left[
   \text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-\text{direction}\left(
   0\right)\cdot\left[\text{point2}\left(0\right)-\text{point1}\left(0\right)\right]
 
@@ -549,6 +549,8 @@ included into the output file(s). PARMEC outputs:
      ’XDMF’ is the HDF5/XML based `XDMF
      format <http://www.xdmf.org/index.php/XDMF_Model_and_Format>`__;
      default: ’XDMF’
+
+.. _parmec-command-DEM:
 
 DEM
 ---
