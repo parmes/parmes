@@ -116,6 +116,8 @@ This routine applies bulk material to a subset of geometric objects with the giv
 
   * material -- MATERIAL object or material label
 
+.. _solfec-user-material-surface:
+
 SURFACE_MATERIAL
 ----------------
 

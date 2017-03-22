@@ -6,6 +6,8 @@ Simulation
 Routines listed in this section control the solution process.
 A simulation can be run be invoking the RUN command, documented below.
 
+.. _solfec-user-run:
+
 .. topic:: RUN (solfec, solver, duration)
 
   This routine runs a simulation.
@@ -66,6 +68,8 @@ Runtime utilities
 
 Routines below help control runtime behaviour.
 
+.. _solfec-user-output:
+
 .. topic:: OUTPUT (solfec, interval | compression)
 
   This routine specifies the frequency of writing to the output file.
@@ -84,6 +88,8 @@ Routines below help control runtime behaviour.
   * solfec -- SOLFEC object
 
   * extents -- (xmin, ymin, zmin, xmax, ymax, zmax) tuple
+
+.. _solfec-user-callback:
 
 .. topic:: CALLBACK (solfec, interval, data, callback)
 

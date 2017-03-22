@@ -5,6 +5,8 @@ Loads
 
 Routines listed in this section apply loads.
 
+.. _solfec-user-gravity:
+
 GRAVITY
 -------
 

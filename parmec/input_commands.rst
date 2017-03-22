@@ -21,6 +21,8 @@ Erase all data.
 
   *(Can be used to run multiple simulations using one input file)*
 
+.. _parmec-command-TSERIES:
+
 TSERIES
 -------
 

@@ -76,6 +76,8 @@ another background mesh defining deformability
 
   * mesh -- input mesh
 
+.. _solfec-user-mesh:
+
 MESH
 ----
 
