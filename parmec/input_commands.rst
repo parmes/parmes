@@ -44,6 +44,8 @@ Create time series: a linear spline based on series of 2-points.
   t2 v2 |br|
   ...
 
+.. _parmec-command-MATERIAL:
+
 MATERIAL
 --------
 
@@ -75,6 +77,8 @@ Create a spherical particle.
   -  **material** - material number
 
   -  **color** - positive integer surface color
+
+.. _parmec-command-MESH:
 
 MESH
 ----
@@ -172,6 +176,8 @@ Create an obstacle.
   -  **angular** - spatial angular velocity history callback:
      :math:`\left(\omega_{x},\omega_{y},\omega_{z}\right)=` **angular**
      :math:`\left(t\right)`
+
+.. _parmec-command-SPRING:
 
 SPRING
 ------
@@ -287,6 +293,8 @@ Define surface pairing for the granular contact interaction model.
   -  **kskn** - optional ratio of normal to tangential spring and dashpot
      parameters; default: 0.5
 
+.. _parmec-command-CONSTRAIN:
+
 CONSTRAIN
 ---------
 
@@ -348,6 +356,8 @@ Set particle velocity.
   -  **angular** - angular velocity tuple
      :math:`\left(\omega_{x},\omega_{y},\omega_{z}\right)`; default:
      :math:`\left(0,0,0\right)` at :math:`t=0`
+
+.. _parmec-command-GRAVITY:
 
 GRAVITY
 -------

@@ -238,6 +238,8 @@ Hybrid solver
 .. role:: red
 
 Hybrid solver allows to combine smooth rigid body nonlinear spring based :ref:`PARMEC <parmec-index>` models with non--smooth SOLFEC models.
+The solver is supported both in the serial and MPI version of Solfec. The Parmec library is shared memory parallel and in the MPI mode this
+part of modeling is executed on MPI rank 0 process, employing maximum available shared memory parallelism.
 
 .. topic:: obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver) :red:`(Under development)`
 

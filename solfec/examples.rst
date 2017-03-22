@@ -1,5 +1,3 @@
-:orphan:
-
 .. _solfec-examples:
 
 Solfec Examples

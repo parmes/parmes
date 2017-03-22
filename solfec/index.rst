@@ -28,8 +28,8 @@ More details can be found in:
    Validation Manual <validation>
    XDMF export <xdmf>
    Applications <applications>
+   Examples <examples>
 ..   ABAQUS import <abaqus>
-..   Examples <examples>
 
 References:
 

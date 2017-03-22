@@ -1,5 +1,3 @@
-:orphan:
-
 .. _solfec-examples-hybrid_modelling:
 
 Hybrid modeling
@@ -15,11 +13,8 @@ in a simplified manner (using rigid bodies and springs).
 
 Hybrid modeling is available in Solfec via the :ref:`HYBRID_SOLVER <hybrid-solver>` interface.
 In this case :ref:`Parmec <parmec-index>` is used as a software library facilitating modeling
-of the rigid body -- spring systems. :ref:`HYBRID_SOLVER <hybrid-solver>` is supported both in the serial
-and MPI version of Solfec. The Parmec library is shared memory parallel and in the MPI mode this part of
-modeling is executed on MPI rank 0 process, employing maximum available shared memory parallelism.
-
-Currently available examples of the hybrid modelling functionality include:
+of the rigid body -- spring systems. Currently available examples of the hybrid modelling
+functionality include:
 
 .. toctree::
   :maxdepth: 1
