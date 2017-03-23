@@ -219,6 +219,8 @@ Routines listed below are related to prallel runtime and performance.
 
   * solfec -- SOLFEC object
 
+.. _solfec-user-here:
+
 .. topic:: ret = HERE (solfec, object)
 
   This routine tests whether an object is located on the current processor. During parallel runs

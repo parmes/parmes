@@ -1,4 +1,8 @@
 
+* On Mar 23 2017 :ref:`solfec-examples-hybrid_modelling`
+
+* On Mar 23 2017 :ref:`solfec-examples-hybrid_modelling-hs123`
+
 * On Mar 22 2017 :ref:`parmec-input_commands`
 
 * On Mar 22 2017 :ref:`solfec-examples-hybrid_modelling-hs0`
@@ -13,8 +17,4 @@
 
 * On Mar 22 2017 :ref:`solfec-examples`
 
-* On Mar 22 2017 :ref:`solfec-examples-hybrid_modelling`
-
 * On Mar 22 2017 :ref:`solfec-index`
-
-* On Mar 22 2017 :ref:`solfec-user-solvers`

@@ -49,11 +49,76 @@ An actual array geometry is depicted in :numref:`hs2-fig2`, where the color codi
    :width: 60%
    :align: center
 
-   Example hybrid-solver2_: the array initial geometry.
+   Example hybrid-solver2_: initial geometry.
 
 :numref:`hs2-lst1` includes the Parmec file `hs2--parmec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py>`_.
+Lines 1--8 define basic parameters of the model. We note, that it is possible to transform the current example into a sine sweep test by changing
+the "hifq" variable to a value greater than "lofq". Also the size of the problem can be modified by altering the "N" and "M" parameters.
+Lines 10--25 are Python specific and help to find the path to the parmec source directory, in order to include the acceleration sweep generation
+script into the current system path. This is then used in line 30, and further until line 38, to set up the linear motion excitation vector,
+where the velocity time history, associated with the sine dwell signal, is used. Following definition of a translate cube creation function,
+in lines 43--58, the array of cubes is generated in lines 60--68. Then the prescribed motion is applied to the outer shell of cubes in lines 70--76.
+Finally, between the lines 78 and 98 contact spring--dashpot elements are defined and inserted into the model. For information, the critical time
+step estimation for the model is printed out in line 101.
 
 .. literalinclude:: ../../../../solfec/examples/hybrid-solver2/hs2-parmec.py
    :linenos:
    :caption: Listing of hs2--parmec.py
    :name: hs2-lst1
+
+:numref:`hs2-lst2` includes the Solfec file `hs2--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py>`_.
+Lines 1--5 define the global model parameters. Lines 7--24 set up the :ref:`SOLFEC object <solfec-user-solfec>`,
+:ref:`bulk <solfec-user-material-bulkmat>` and :ref:`surface <solfec-user-material-surface>` materials, and a unit
+cube template. Lines 26--56 contain code creating the array of Solfec bodies as well as the mapping between the
+Parmec and the Solfec body numbers. The double loop starting in line 30 of :numref:`hs2-lst2` mimics the double loop
+starting in line 62 of :numref:`hs2-lst1`. This way, it is easy to recreate the exact sequence of creation of Parmec
+bodies within the Solfec input file. Hence, it is easy to construct the *parmec2solfec* dictionary mapping of body numbers,
+on the fly, while creating the Solfec model. The inner Solfec bodies (grey in :numref:`hs2-fig2`) are created in lines 33--45.
+This same range of i, j indices is skipped in the Parmec input file (line 65 in :numref:`hs2-lst1`). Here, finite element
+bodies are created, based on a 2x2x2 :ref:`hexahedral mesh <solfec-user-hex>`. The z--direction of the bodies is :ref:`fixed <fix_direction>`
+to keep them in plane. The rigid "boundary" bodies for the Solfec--Parmec overlap interface are created in lines 50--53. We note,
+that when a Solfec input file is run in parallel (using *solfec-mpi*) some of the bodies that are created in the loop may actually
+reside on other processor ranks. Hence we test this using the :ref:`HERE command <solfec-user-here>` and accordingly create
+valid fragments of the parmec2solfec mapping on each MPI rank. Such fragmentary mappings are brought together during initialization
+of the :ref:`HYBRID_SOLVER <hybrid-solver>`. In line 56 the Parmec body index is advanced, as this line corresponds to line 67 in :numref:`hs2-lst1`,
+where Parmec bodies are created. The rest of the file is similar to that already detailed in the description of :numref:`hs0-lst3`, in the context
+of the :ref:`two body impact example <solfec-examples-hybrid_modelling-hs0>`.
+
+.. literalinclude:: ../../../../solfec/examples/hybrid-solver2/hs2-solfec.py
+   :linenos:
+   :caption: Listing of hs2--solfec.py
+   :name: hs2-lst2
+
+The example is run by invoking
+
+::
+
+  solfec examples/hybrid-solfec2/hs2-solfec.py
+
+which needs to be followed by a repeated call
+
+::
+
+  solfec examples/hybrid-solfec2/hs2-solfec.py
+
+in order to produce the XDMF--exported Solfec results. These will be located in the 'out/hybrid--solver2/hs2--solfec' directory,
+relative to the solfec source directory, from where this example is conveniently called. The Parmec output files are located
+in the 'out/hybrid--solver2' directory. While Solfec viewer can be used to view and post--process the Solfec part of the results
+without depending on the exported XDMF files, `ParaView <http://www.paraview.org>`_ can be used to post--process the generated .xmf files.
+The application of ParaView can be simplified by utilising the two state .pvsm files distributed with the example: by selecting
+"File/Load State..." menu choice in ParaView one can load a pre--set post--processing state. The videos included below depict the
+forced motion of the hybrid system, visualised using the two enclosed states files.
+
+`ParaView <http://www.paraview.org>`_ animation based on the state file 
+`hs2--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm>`_.
+
+.. youtube:: https://www.youtube.com/watch?v=Eg_Qm2tOtIY
+  :width: 648
+  :height: 432
+
+`ParaView <http://www.paraview.org>`_ animation based on the state file 
+`hs2--state--2.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm>`_.
+
+.. youtube:: https://www.youtube.com/watch?v=EzyFSkX7lLM
+  :width: 648
+  :height: 432
