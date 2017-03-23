@@ -20,3 +20,4 @@ functionality include:
   :maxdepth: 1
 
   hybrid_modelling/hs0
+  hybrid_modelling/hs123
