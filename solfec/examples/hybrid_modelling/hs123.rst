@@ -122,3 +122,23 @@ forced motion of the hybrid system, visualised using the two enclosed states fil
 .. youtube:: https://www.youtube.com/watch?v=EzyFSkX7lLM
   :width: 648
   :height: 432
+
+:numref:`hs2-fig3` and :numref:`hs2-fig4` respectively show the linear velocity magnitude time history and the displacement magnitude
+time history, at points A (Parmec) and B (Solfec), marked out in :numref:`hs2-fig2`. These plots were generated using ParaView's "Plot
+Selection Over Time" feature.
+
+.. _hs2-fig3:
+
+.. figure:: hs2-linvel-mag.png
+   :width: 100%
+   :align: center
+
+   Example hybrid-solver2_: Linear velocity magnitude history at points A and B (:numref:`hs2-fig2`).
+
+.. _hs2-fig4:
+
+.. figure:: hs2-disp-mag.png
+   :width: 100%
+   :align: center
+
+   Example hybrid-solver2_: Displacement magnitude history at points A and B (:numref:`hs2-fig2`).
