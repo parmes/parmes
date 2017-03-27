@@ -20,9 +20,13 @@ We focus on the 2--dimensional example, leaving the 1-- and 3--dimensional cases
 
 - `hs2--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py>`_ -- including the :ref:`Solfec <solfec-index>` input code
 
-- `hs2--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state file for post--processing
+- `hs2--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for animation [1]_
 
-- `hs2--state--2.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm>`_ -- another `ParaView <http://www.paraview.org>`_ state file
+- `hs2--state--2.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for animation [2]_
+
+- `hs2--state--3.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-3.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for :numref:`hs2-fig3`
+
+- `hs2--state--4.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-4.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for :numref:`hs2-fig4`
 
 .. _hybrid-solver2: https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2
 
@@ -109,15 +113,15 @@ The application of ParaView can be simplified by utilising the two state .pvsm f
 "File/Load State..." menu choice in ParaView one can load a pre--set post--processing state. The videos included below depict the
 forced motion of the hybrid system, visualised using the two enclosed states files.
 
-`ParaView <http://www.paraview.org>`_ animation based on the state file 
-`hs2--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm>`_.
+.. [1] `ParaView <http://www.paraview.org>`_ animation based on the state file 
+  `hs2--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm>`_.
 
 .. youtube:: https://www.youtube.com/watch?v=Eg_Qm2tOtIY
   :width: 648
   :height: 432
 
-`ParaView <http://www.paraview.org>`_ animation based on the state file 
-`hs2--state--2.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm>`_.
+.. [2] `ParaView <http://www.paraview.org>`_ animation based on the state file 
+  `hs2--state--2.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm>`_.
 
 .. youtube:: https://www.youtube.com/watch?v=EzyFSkX7lLM
   :width: 648

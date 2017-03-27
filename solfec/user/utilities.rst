@@ -14,6 +14,16 @@ This routine tests whether the viewer is enabled.
 
   * obj -- True or False depending on whether the viewer (--v command line option) was enabled
 
+
+SUBDIR
+------
+
+This routine returns the optional output subdirectory.
+
+.. topic:: obj = SUBDIR ()
+
+  * obj -- None object or subdirectory string depending on whether the --s command line option was used
+
 BODY_CHARS
 ----------
 

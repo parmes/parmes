@@ -1,5 +1,5 @@
 
-* On Mar 23 2017 :ref:`solfec-examples-hybrid_modelling-hs123`
+* On Mar 24 2017 :ref:`solfec-examples-hybrid_modelling-hs123`
 
 * On Mar 23 2017 :ref:`solfec-user-geometry`
 
