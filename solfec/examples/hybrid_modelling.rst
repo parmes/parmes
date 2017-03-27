@@ -21,3 +21,4 @@ functionality include:
 
   hybrid_modelling/hs0
   hybrid_modelling/hs123
+  hybrid_modelling/hs3_scaling
