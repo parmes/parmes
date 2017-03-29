@@ -1,7 +1,7 @@
 
-* On Mar 27 2017 :ref:`solfec-examples-hybrid_modelling`
+* On Mar 28 2017 :ref:`solfec-examples-hybrid_modelling-hs3_scaling`
 
-* On Mar 27 2017 :ref:`solfec-examples-hybrid_modelling-hs3_scaling`
+* On Mar 27 2017 :ref:`solfec-examples-hybrid_modelling`
 
 * On Mar 27 2017 :ref:`solfec-examples-hybrid_modelling-hs123`
 

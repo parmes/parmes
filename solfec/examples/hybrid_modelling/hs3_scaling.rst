@@ -28,7 +28,7 @@ The `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/ma
   are insered at the centres of faces of neighbouring cubes. The solid 3x3 inner arrays is modeled in Solfec: hexahedral
   finite elements are used and contact interactions are modelled via :ref:`a non--smooth Signorini--Coulomb law <solfec-theory-conform>`
 
-.. youtube:: https://www.youtube.com/watch?v=L4ylaXQTQsY
+.. youtube:: https://www.youtube.com/watch?v=7ED5jDdhrtI
   :width: 648
   :height: 364
 

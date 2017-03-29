@@ -39,6 +39,9 @@ The above configuration works on Mac OS X. To recap, what you need is:
 
 * either `Zoltan <http://www.cs.sandia.gov/Zoltan/>`_ or `dynlb <https://github.com/tkoziara/dynlb>`_ load balancing library
 
+* (optional) :ref:`Parmec <parmec-index>` source path if you wish to use the :ref:`HYBRID_SOLVER <hybrid-solver>`
+  and :ref:`hybrid modelling <solfec-examples-hybrid_modelling>`
+
 * (optional) `Siconos <http://siconos.gforge.inria.fr>`_ contact solvers library
 
 To compile Solfec, after editing the Config.mak file, the first compilation may look like this
