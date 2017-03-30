@@ -295,34 +295,34 @@ Define surface pairing for the granular contact interaction model.
   -  **kskn** - optional ratio of normal to tangential spring and dashpot
      parameters; default: 0.5
 
-.. _parmec-command-CONSTRAIN:
+.. _parmec-command-RESTRAIN:
 
-CONSTRAIN
----------
+RESTRAIN
+--------
 
-Constrain particle motion.
+Restrain particle motion.
 
-.. topic:: CONSTRAIN (parnum \| linear, angular)
+.. topic:: RESTRAIN (parnum \| linear, angular)
 
   -  **parnum** - particle number
 
   -  **linear** - list :math:`\left[x_{1},y_{1},z_{1}\right]`,
      :math:`\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]`, or
      :math:`\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]`
-     defining directions of constrained linear motion; default:
+     defining directions of restrained linear motion; default:
      :math:`\left[0,0,0\right]`
 
   -  **angular** - list :math:`\left[x_{1},y_{1},z_{1}\right]`,
      :math:`\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2}\right]`, or
      :math:`\left[x_{1},y_{1},z_{1},x_{2},y_{2},z_{2},x_{3},y_{3},z_{3}\right]`
-     defining directions of constrained spatial rotation; default:
+     defining directions of restrained spatial rotation; default:
      :math:`\left[0,0,0\right]`
 
 PRESCRIBE
 ---------
 
 Prescribe particle motion. Prescribed motion overwrites this resulting
-from dynamics and constraints.
+from dynamics and restraints.
 
 .. topic:: PRESCRIBE (parnum \| linear, angular, kind)
 

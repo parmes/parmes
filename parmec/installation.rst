@@ -28,7 +28,7 @@ Edit Makefile variables:
 
   # HDF5 paths
   HDF5INC=-I/usr/include
-  HDF5LIB=-L/usr/lib -lhdf5 -lhdf5\_hl
+  HDF5LIB=-L/usr/lib -lhdf5 -lhdf5_hl
 
   # Debug version
   DEBUG=no

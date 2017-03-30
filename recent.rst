@@ -1,5 +1,7 @@
 
-* On Mar 28 2017 :ref:`solfec-examples-hybrid_modelling-hs3_scaling`
+* On Mar 29 2017 :ref:`solfec-examples-hybrid_modelling-hs3_scaling`
+
+* On Mar 29 2017 :ref:`solfec-installation`
 
 * On Mar 27 2017 :ref:`solfec-examples-hybrid_modelling`
 
@@ -16,5 +18,3 @@
 * On Mar 22 2017 :ref:`solfec-examples-hybrid_modelling-hs0`
 
 * On Mar 22 2017 :ref:`solfec-user-loads`
-
-* On Mar 22 2017 :ref:`solfec-user-materials`

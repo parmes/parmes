@@ -10,7 +10,7 @@ Multibody pattern formation
 Solfec was utilised by Bićanić et al. [1]_ in the context of multibody pattern formation.
 The abstract and figures below quote directly from reference [1]_.
 
-.. [1] Nenad Bićanić, Jean-Francois Camenen, Nina Čeh, Tomasz Koziara, Characterisation of pattern formation
+.. [1] Nenad Bićanić, Jean--Francois Camenen, Nina Čeh, Tomasz Koziara, Characterisation of pattern formation
   in constrained multiblock assembly subjected to horizontal harmonic excitation, Int. J. Masonry Research and
   Innovation, Vol. 1, No. 4, 2016. `Journal link <http://www.inderscienceonline.com/doi/abs/10.1504/IJMRI.2016.081271>`_.
 

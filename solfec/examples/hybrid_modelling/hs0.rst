@@ -32,7 +32,7 @@ to illustrate the methodology of creating a hybrid model.
 
 :numref:`hs0-lst1` includes the Parmec file `hs0--parmec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-parmec.py>`_.
 The :ref:`material <parmec-command-MATERIAL>` is created in line 1 and the :ref:`meshed <parmec-command-MESH>` lower cube is created in line 16.
-The cube's motion is :ref:`restrained <parmec-command-CONSTRAIN>` along x, y translations and x, y, z rotations in line 18. The :ref:`elastic spring
+The cube's motion is :ref:`restrained <parmec-command-RESTRAIN>` along x, y translations and x, y, z rotations in line 18. The :ref:`elastic spring
 <parmec-command-SPRING>` is created in line 20. We note, that no damping is applied and that the spring direction is fixed along z.
 :ref:`Gravity <parmec-command-GRAVITY>` is applied in line 23. This concludes the input file.
 
