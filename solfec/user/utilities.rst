@@ -272,6 +272,8 @@ as valid Solfec arguments. This way the user can pass some arguments to the inpu
 
   * argv -- list of non--solfec specific arguments passed to 'solfec' or 'solfec--mpi' command
 
+.. _solfec-user-utilities-MODAL_ANALYSIS:
+
 MODAL_ANALYSIS
 --------------
 
@@ -280,8 +282,8 @@ The modal analysis results are stored with bodies and can be viewed.
 
 .. topic:: obj = MODAL_ANALYSIS (body, num, path | abstol, maxiter, verbose)
 
-  * obj = (val, vec) -- the returned tuple of: val = obj[0] eigenvalues and
-    vec = obj[1] eigen vectors (stored contiguously one after another)
+  * obj = (val, vec) -- the returned tuple of: val = obj[0] list of eigenvalues and
+    vec = obj[1] list of eigen vectors (stored contiguously one after another)
 
   * body -- input FEM body; the model analysis results are stored with this body
 

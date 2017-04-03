@@ -5,7 +5,7 @@ BODY object
 
 An object of type BODY represents a solid body.
 
-.. topic:: obj = BODY (solfec, kind, shape, material | label, form, mesh, modal)
+.. topic:: obj = BODY (solfec, kind, shape, material | label, form, mesh, base)
 
   This routine creates a body.
 
@@ -40,9 +40,9 @@ An object of type BODY represents a solid body.
     the 'FINITE_ELEMENT' model allows to handle complicated shapes with less finite elements,
     e.g. an arbitrary shape could be contained in just one hexahedron.
 
-  * modal - the modal analysis results outputed by the MODAL_ANALYSIS command
-    (or user results in the same format). This argument must be passed if form = 'RO',
-    see Table :numref:`fem-form`.
+  * base -- optional modal or reduced order base, depending on the formulation; when **form** = 'BC--MODAL', results
+    of :ref:`the MODAL_ANALYSIS command <solfec-user-utilities-MODAL_ANALYSIS>`, or equivalent user data, can be used;
+    This argument must be passed if **form** = 'BC--MODAL' or 'BC--RO', see Table :numref:`fem-form`.
 
 Some parameters can also be accessed as members of a BODY object, cf. :numref:`body-params`.
 
@@ -73,7 +73,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   +---------------------------------------------------------------------------------------------------------+
   | **obj.id** -- unique identifier                                                                         |
   +---------------------------------------------------------------------------------------------------------+
-  | **obj.display_points** - list of tuples of display point labels and coordinates:                        |
+  | **obj.display_points** -- list of tuples of display point labels and coordinates:                       |
   | [('label', (x, y, z)), ('label', (x, y, z)), ...]                                                       |
   +---------------------------------------------------------------------------------------------------------+
   | **Read/write members:**                                                                                 |
@@ -91,7 +91,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   | (ignored for rigid bodies).                                                                             |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.fracturecheck** -- check fracture criterion for FEM bodies ('ON' or default: 'OFF').              |
-  | :red:`Under development`                                                                                |
+  | :red:`(Under development)`                                                                              |
   +---------------------------------------------------------------------------------------------------------+
 
 |
@@ -123,18 +123,22 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
 
 .. table:: Finite element formulations.
 
-  +-------------+-------------------------------------------------------------------------------------------+
-  | Formulation | Remarks                                                                                   |
-  +-------------+-------------------------------------------------------------------------------------------+
-  | 'TL'        | Total Lagrangian (default)                                                                |
-  +-------------+-------------------------------------------------------------------------------------------+
-  | 'BC'        | Body co--rotational (one co--rotated frame per body, suitable for stiff bodies)           |
-  +-------------+-------------------------------------------------------------------------------------------+
-  | 'RO'        | Reduced order, modal, co--rotational approach. The 'DEF_LIM' integration scheme is always |
-  |             | used for this formulation (there would be no computational advantage in using 'DEF_EXP'   |
-  |             | since the system matrix is diagonal anyway). :red:`Under development`                     |
-  +-------------+-------------------------------------------------------------------------------------------+
-
+  +------------------------+-------------------------------------------------------------------------------------+
+  | Formulation            | Remarks                                                                             |
+  +------------------------+-------------------------------------------------------------------------------------+
+  | 'TL'                   | Total Lagrangian (default)                                                          |
+  +------------------------+-------------------------------------------------------------------------------------+
+  | 'BC'                   | Body co--rotational (one co--rotated frame per body, suitable for stiff bodies)     |
+  +------------------------+-------------------------------------------------------------------------------------+
+  | 'BC--MODAL'            | Body co-rotational, modal approach; The 'DEF_LIM' integration scheme is always used |
+  |                        | for this formulation (there would be no computational advantage in using 'DEF_EXP'  |
+  |                        | since the system matrix is diagonal anyway); *Note:* the **base** argument must be  |
+  |                        | passed; :red:`(Under development)`                                                  |
+  +------------------------+-------------------------------------------------------------------------------------+
+  | 'BC--RO '              | Body co-rotational, reduced order approach; *Note:** the **base** argument must be  |
+  |                        | passed; :red:`(Under development)`                                                  |
+  +------------------------+-------------------------------------------------------------------------------------+
+ 
 |
 
 .. _body-conf:
