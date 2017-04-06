@@ -1,4 +1,8 @@
 
+* On Apr 3 2017 :ref:`solfec-user-body`
+
+* On Apr 3 2017 :ref:`solfec-user-utilities`
+
 * On Mar 30 2017 :ref:`parmec-input_commands`
 
 * On Mar 30 2017 :ref:`parmec-installation`
@@ -14,7 +18,3 @@
 * On Mar 29 2017 :ref:`solfec-installation`
 
 * On Mar 27 2017 :ref:`solfec-examples-hybrid_modelling`
-
-* On Mar 27 2017 :ref:`solfec-examples-hybrid_modelling-hs123`
-
-* On Mar 27 2017 :ref:`solfec-user-utilities`
