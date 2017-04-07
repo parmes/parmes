@@ -1,0 +1,3260 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass scrartcl
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_title "1"
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks true
+\pdf_backref false
+\pdf_pdfusetitle true
+\pdf_quoted_options "linkcolor=blue, urlcolor=blue, citecolor=blue"
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine natbib
+\cite_engine_type authoryear
+\biblio_style plainnat
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2cm
+\topmargin 2cm
+\rightmargin 2cm
+\bottommargin 2cm
+\headheight 1cm
+\headsep 1cm
+\footskip 1cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Titlehead
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+date{}
+\end_layout
+
+\end_inset
+
+April, 2017
+\end_layout
+
+\begin_layout Subject
+\begin_inset CommandInset href
+LatexCommand href
+name "parmes.org"
+target "http://parmes.org"
+
+\end_inset
+
+ - tr -1
+\end_layout
+
+\begin_layout Title
+Co-rotated and reduced order
+\begin_inset Newline newline
+\end_inset
+
+finite element time integrators
+\begin_inset Newline newline
+\end_inset
+
+for multibody contact dynamics
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+Summary
+\end_layout
+
+\begin_layout Standard
+In this work we present two linearly implicit time integration methods,
+ suitable for deformable multibody dynamic contact problems.
+ The first approach co-rotates the initial linearized dynamic system which
+ is therefore factorized only once.
+ The second approach employs a reduced order base and produces a small dense
+ system, efficient to deal with in the context of multibody dynamics.
+ We compare the two approaches with the Total Lagrangian finite element
+ formulation and with the rigid body model.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: brief conclusions here
+\end_layout
+
+\end_inset
+
+ An implementation of presented methods is available at 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace bigskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\size larger
+Contributors
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="1">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Tomasz Koziara, t.koziara@gmail.com
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Steve Brasier, steve.brasier@atkinsglobal.com
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Łukasz Kaczmarczyk, lukasz.kaczmarczyk@glasgow.ac.uk
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset VSpace defskip
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\align center
+
+\emph on
+This report is dedicated to Nenad:)
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO:
+\end_layout
+
+\begin_layout Itemize
+rotation extraction as an appendix
+\end_layout
+
+\begin_layout Itemize
+modal approach as an appendix
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Standard
+Rigid kinematics is commonly used in multibody simulations (e.g.
+ in robotics or to simulate granular flow).
+ This level of kinematic description is often sufficient when dynamic effects
+ corresponding to the deformable behavior of bodies can be neglected.
+ Whenever this is not the case though, one runs into the computational bottlenec
+k of processing many interacting bodies, discretized with fine finite element
+ meshes.
+ For robustness reasons explicit codes are usually picked to process such
+ problems, although typically the dynamics on the length scale of a time
+ step is not of interest.
+ On the other hand, general implicit FE codes usually struggle to process
+ multibody contact/impact problems with more then few dozens of bodies.
+ For larger problems, with thousands of bodies, there is little choice left
+ (but explicit codes) in the realm of off the shelf approaches.
+\end_layout
+
+\begin_layout Standard
+In this paper we are in the context of multibody contact/impact problems,
+ solved by means of implicit formulations.
+ We address one of the building blocks of such frameworks, namely time integrati
+on of deformable kinematics.
+ We assume that the bodies are stiff, but undergo large rotations, as it
+ is common for machines, blocky structures or granular flows.
+ We reuse ideas from 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kaczmarczyk2012"
+
+\end_inset
+
+ (cf.
+ Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Updating-rotation"
+
+\end_inset
+
+) and formulate two time integration methods, loosely based upon the scheme
+ suggested by Zhang and Skeel 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Zhang1997"
+
+\end_inset
+
+.
+ The first approach only co-rotates the initial linearized dynamic system.
+ The computational gain stems from the fact that the system is factorized
+ only once.
+ The second approach employs a reduced order base and hence it produces
+ a smaller, dense system.
+ This approach is computationally efficient to deal with.
+ Specifically in the context of implicit multibody dynamics the small and
+ dense momentum balance is well suited for the derivation of the algebraic
+ constraint equations.
+ Our approach is well suited for deformable multi-impact problems where
+ the gross rigid motion is of interest in collective dynamics, while the
+ dynamic effects cannot be captured by means of rigid body modeling alone.
+\end_layout
+
+\begin_layout Standard
+The paper is organized as follows.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Basic ideas"
+
+\end_inset
+
+ introduces some basic ides.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Total-Lagrangian"
+
+\end_inset
+
+ briefly outlines the Total Lagrangian time integrator.
+ Two simplifications follow: Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Co-rotated-stepping"
+
+\end_inset
+
+ describes the co-rotated time stepping approach without order reduction,
+ while Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BC-RO"
+
+\end_inset
+
+ details the reduced order approach.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Handling-constraints"
+
+\end_inset
+
+ contains some remarks about the treatment of constraints.
+ Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Impacts"
+
+\end_inset
+
+ briefly introduces the impact and friction models and discusses energetic
+ consistency.
+ The examples follow in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Examples"
+
+\end_inset
+
+.
+ The paper is concluded in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Conclusions"
+
+\end_inset
+
+.
+ This paper include three appendices: Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Updating-rotation"
+
+\end_inset
+
+ outlines the method of updating rotation; Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BC-MODAL"
+
+\end_inset
+
+ shows how to replace the reduced order base with a modal one; Appendix
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Implementation"
+
+\end_inset
+
+ provides links to source code and examples files.
+\end_layout
+
+\begin_layout Section
+Basic ideas
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Basic ideas"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In this paper we work with stiff bodies capable of large rigid motion and
+ small elastic deformations (e.g.
+ blocks of concrete or graphite).
+ Bodies are discretized by means of finite elements, with 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+ denoting nodal displacements and 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ denoting nodal velocities, 
+\begin_inset Formula $\mathbf{u}=\dot{\mathbf{q}}$
+\end_inset
+
+.
+ Taking a single body, we parametrize its motion as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{x}\left(\mathbf{X},t\right)=\mathbf{X}+\mathbf{S}\left(\mathbf{X}\right)\mathbf{q}\left(t\right)
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{x}$
+\end_inset
+
+ is a spatial point, 
+\begin_inset Formula $\mathbf{X}$
+\end_inset
+
+ is a referential point, 
+\begin_inset Formula $t$
+\end_inset
+
+ is time, and 
+\begin_inset Formula $\mathbf{S}$
+\end_inset
+
+ stores finite element shape functions.
+ Further derivations are motivated by a simple reasoning.
+ We would like to model bodies interacting through frictional contact in
+ dynamic situations.
+ We decide to use the implicit in time Contact Dynamics method 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jean01,Moreau01"
+
+\end_inset
+
+, where nonlinearity is located both at the level of the per-body momentum
+ balance (e.g.
+ finite elasticity) and on the level of individual constraints (e.g.
+ contact and friction).
+ We wish to simplify computations and only deal with the nonlinearity at
+ the constraints.
+ Hence, we are interested in a linearly implicit time integration scheme.
+ We start from the Total Lagrangian formulation 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BLM00"
+
+\end_inset
+
+, which produces a constant mass matrix 
+\begin_inset Formula $\mathbf{M}$
+\end_inset
+
+ and a stiffness matrix 
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+ that depends on the nodal displacements 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+.
+ For simplicity we diagonalize the mass matrix 
+\begin_inset Formula $\mathbf{M}$
+\end_inset
+
+ by summing up its rows.
+ For the Total Lagrangian formulation, in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Total-Lagrangian"
+
+\end_inset
+
+, we employ a linearly implicit integration scheme proposed by Zhang and
+ Skeel 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Zhang1997"
+
+\end_inset
+
+, where an operator employed in the discrete momentum balance has the following
+ form
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}_{1}\left(t\right)=\mathbf{M}+\gamma\mathbf{K}\left(\mathbf{q}\left(t\right)\right)
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+with 
+\begin_inset Formula $\gamma>0$
+\end_inset
+
+.
+ Having to deal with this operator is expensive: it needs to be recomputed
+ and inverted at every time step.
+ Realizing that our bodies are roughly rigid we then ask: what if the above
+ operator could be approximated by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}_{2}\left(t\right)=\mathbf{M}+\gamma\underline{\mathbf{\Lambda}}\left(t\right)\mathbf{K}_{0}\underline{\mathbf{\Lambda}}\left(t\right)^{T}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{\Lambda}$
+\end_inset
+
+ is a 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ rotation operator and 
+\begin_inset Formula $\underline{\mathbf{\Lambda}}$
+\end_inset
+
+ denotes a block-diagonal square matrix composed of 
+\begin_inset Formula $\mathbf{\Lambda}$
+\end_inset
+
+ and matching the dimension of 
+\begin_inset Formula $\mathbf{K}_{0}=\mathbf{K}\left(\mathbf{q}\left(0\right)\right)$
+\end_inset
+
+.
+ Because 
+\begin_inset Formula $\mathbf{M}$
+\end_inset
+
+ is diagonal and for each node has the same 
+\begin_inset Formula $x,y,z$
+\end_inset
+
+ components, we can write
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}_{2}\left(t\right)=\underline{\mathbf{\Lambda}}\left(t\right)\left(\mathbf{M}+\gamma\mathbf{K}_{0}\right)\underline{\mathbf{\Lambda}}\left(t\right)^{T}=\underline{\mathbf{\Lambda}}\left(t\right)\mathbf{A}_{0}\underline{\mathbf{\Lambda}}\left(t\right)^{T}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{A}_{0}=\mathbf{M}+\gamma\mathbf{K}_{0}$
+\end_inset
+
+ needs to be computed and inverted only once.
+ In Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Co-rotated-stepping"
+
+\end_inset
+
+ we simply rewrite the Total Lagrangian time stepping with this idea in
+ mind.
+ Finally, in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BC-RO"
+
+\end_inset
+
+, we investigate whether a further saving would be possible by assuming
+ that 
+\begin_inset Formula $\mathbf{A}_{0}=\mathbf{E}^{T}\left(\mathbf{M}+\gamma\mathbf{K}_{0}\right)\mathbf{E}=\mbox{diag}\left(1+\lambda_{i}\right)$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ collects selected eigenmodes and 
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ store the corresponding eigenvalues.
+ In all three cases the linearly implicit scheme is essentially the same:
+\end_layout
+
+\begin_layout Enumerate
+Compute the first explicit forward half-step.
+\end_layout
+
+\begin_layout Enumerate
+At this half-step write down a discrete form of the momentum balance.
+\end_layout
+
+\begin_layout Enumerate
+Compute the final implicit backward half-step.
+\end_layout
+
+\begin_layout Standard
+To a large degree, the algorithmic details of what follows are a consequence
+ of the fact that we are able to compute 
+\begin_inset Formula $\mathbf{\Lambda}\left(t\right)$
+\end_inset
+
+ in a robust way (Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Updating-rotation"
+
+\end_inset
+
+).
+ Because we consider infinitesimal deformations about a possibly translated
+ and rotated shape, it makes sense to talk about the gross rigid motion
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{x}_{r}\left(\mathbf{X},t\right)=\mathbf{\Lambda}\left(t\right)\left(\mathbf{X}-\mathbf{A}\right)+\mathbf{a}\left(t\right)
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{\Lambda}$
+\end_inset
+
+ is the rotation operator, 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ is a referential point, and 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ is a spatial image of 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+.
+ These two motions differ by the amount of deformation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{d}\left(\mathbf{X},t\right)=\mathbf{x}\left(\mathbf{X},t\right)-\mathbf{x}_{r}\left(\mathbf{X},t\right)\mbox{.}\label{eq:defo}
+\end{equation}
+
+\end_inset
+
+Assuming that 
+\begin_inset Formula $\mathbf{Z}_{i}$
+\end_inset
+
+ are coordinates of mesh nodes, we can collect 
+\begin_inset Formula $\mathbf{d}\left(\mathbf{Z}_{i},t\right)$
+\end_inset
+
+ into a vector
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{d}=\left[\begin{array}{c}
+...\\
+\mathbf{Z}_{i}+\mathbf{q}_{i}-\mathbf{\Lambda}\left(\mathbf{Z}_{i}-\mathbf{A}\right)-\mathbf{a}\\
+...
+\end{array}\right]\label{eq:d}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{q}_{i}$
+\end_inset
+
+ represent displacements at node 
+\begin_inset Formula $i$
+\end_inset
+
+.
+ In the following sections 
+\begin_inset Formula $\mathbf{d}$
+\end_inset
+
+ will be multiplied by a symmetric and semi-positive definite stiffness
+ matrix 
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+ whose six zero eigenvalues correspond to the rigid modes (translations
+ and infinitesimal rotations).
+ Since any product of 
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+ with a displacement field corresponding to a rigid translation produces
+ a zero vector, 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ can be skipped in the above formula.
+ Hence, we can redefine 
+\begin_inset Formula $\mathbf{d}$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{d}=\left[\begin{array}{c}
+...\\
+\left(\mathbf{I}-\mathbf{\Lambda}\right)\mathbf{Z}_{i}+\mathbf{q}_{i}\\
+...
+\end{array}\right]=\left(\underline{\mathbf{I}-\mathbf{\Lambda}}\right)\mathbf{Z}+\mathbf{q}\label{eq:d1}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{I}$
+\end_inset
+
+ is the 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ identity and 
+\begin_inset Formula $\underline{\mathbf{I}-\mathbf{\Lambda}}$
+\end_inset
+
+ denotes a block-diagonal square matrix composed of 
+\begin_inset Formula $\left(\mathbf{I}-\mathbf{\Lambda}\right)$
+\end_inset
+
+.
+ Equation (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:d1"
+
+\end_inset
+
+) corresponds to the below deformation evaluated at mesh nodes 
+\begin_inset Formula 
+\begin{equation}
+\mathbf{d}\left(\mathbf{X},t\right)=\mathbf{x}\left(\mathbf{X},t\right)-\mathbf{\Lambda}\left(t\right)\mathbf{X}\label{eq:defo1}
+\end{equation}
+
+\end_inset
+
+which, as a difference between the current deformed position and the current
+ rotated position (without translation), superposes the rigid translation
+ and the small deformations of the body.
+ As a result antisymmetric part of the gradient of 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+(
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:defo1"
+
+\end_inset
+
+)
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ equals to the antisymmetric part of the gradient of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:defo"
+
+\end_inset
+
+).
+ This fact will be used in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Updating-rotation"
+
+\end_inset
+
+.
+ We should note, that simplification (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:d1"
+
+\end_inset
+
+) is not necessary in general and it would make no difference if 
+\begin_inset Formula $\mathbf{A}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{a}$
+\end_inset
+
+ were maintained throughout our derivations.
+ The simplification stems from our implementation 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Koziara2010"
+
+\end_inset
+
+, where kinematic models are combined with Lagrange multipliers imposing
+ boundary conditions, and hence all bodies are nominally unconstrained.
+\end_layout
+
+\begin_layout Section
+Total Lagrangian time stepping (TL)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Total-Lagrangian"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Consider a multi-body domain with constraints.
+ Let the constraint reactions be denoted by 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ and the relative constraints velocities be denoted by 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+.
+ Let also the constraints equations be denoted by 
+\begin_inset Formula $\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}$
+\end_inset
+
+.
+ 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ can be pictured as column vectors comprising 3-component sub-vectors, denoting
+ reactions and velocities at individual constraint points.
+ When talking about 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ etc.
+ we mean suitable collections of per-body entities.
+ In order to integrate in time, a half-step configuration is extrapolated
+ first
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h/2}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\label{eq:qhalf1}
+\end{equation}
+
+\end_inset
+
+A global 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ to local 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ velocity transformation operator is computed next
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{H}=\mathbf{H}\left(\mathbf{q}^{t+h/2}\right)
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ is a global to local coordinates transformation of the shape functions
+ values nonzero at constraint points.
+ The number of rows of 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ depends on the number of constraints, while its rank is related to their
+ linear independence.
+ For example if we think about a relative velocity between two material
+ points of two bodies 
+\begin_inset Formula $i$
+\end_inset
+
+ and 
+\begin_inset Formula $j$
+\end_inset
+
+ being in contact at a spatial point 
+\begin_inset Formula $\mathbf{x}_{\alpha}$
+\end_inset
+
+, we can express 
+\begin_inset Formula $\mathbf{H}\left(\mathbf{q}^{t+h/2}\right)$
+\end_inset
+
+ as 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{H}\left(\mathbf{q}^{t+h/2}\right)=\left\{ \mathbf{e}\right\} ^{T}\left[\begin{array}{ccccc}
+\mbox{zeros} & \mathbf{S}_{i}\left(\mathbf{X}\left(\mathbf{q}_{i}^{t+h/2},\mathbf{x}_{\alpha}\right)\right) & \mbox{zeros} & -\mathbf{S}_{j}\left(\mathbf{X}\left(\mathbf{q}_{j}^{t+h/2},\mathbf{x}_{\alpha}\right)\right) & \mbox{zeros}\end{array}\right]
+\end{equation}
+
+\end_inset
+
+where in addition 
+\begin_inset Formula $\left\{ \mathbf{e}\right\} =\left\{ \mathbf{e}_{T1},\mathbf{e}_{T2},\mathbf{e}_{N}\right\} $
+\end_inset
+
+ is a local orthonormal coordinate system with two tangential and one normal
+ direction, that we may wish to use.
+ In cases with many constraints (e.g.
+ contact points) 
+\begin_inset Formula $\mathbf{H}$
+\end_inset
+
+ will be composed from multiple rows similar to the three-row operator above.
+ In the next step, the momentum balance
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{b}=h\mathbf{f}_{ext}^{t+h/2}-h\mathbf{f}_{int}\left(\mathbf{q}^{t+h/2}\right)-h\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\eta\mathbf{u}^{t}\label{eq:b1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\left(\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\right)\left(\mathbf{u}^{t+h}-\mathbf{u}^{t}\right)=\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\label{eq:mbc1}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+together with the transformation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\mathbf{u}^{t+h}
+\end{equation}
+
+\end_inset
+
+and the constraints equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}
+\end{equation}
+
+\end_inset
+
+are used to evaluate the velocity 
+\begin_inset Formula $\mathbf{u}^{t+h}$
+\end_inset
+
+ and the constraint reactions 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+.
+ This is further commented on in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Handling-constraints"
+
+\end_inset
+
+.
+ The stiffness-proportional damping in the form of 
+\begin_inset Formula $\eta\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\left(\mathbf{u}^{t+h}+\mathbf{u}^{t}\right)/2$
+\end_inset
+
+ contributes on the left and right hand side of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mbc1"
+
+\end_inset
+
+).
+ This is a pragmatic device: it allows to avoid uninteresting oscillations
+ as well as, to some extent, drive a post-impact behavior.
+ While will be said about this in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Impacts"
+
+\end_inset
+
+, for the time being let us assume that this term is going to be useful
+ and preserve it in the following two sections.
+ Finally, the end-step configuration is updated
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h}=\mathbf{q}^{t+h/2}+\frac{h}{2}\mathbf{u}^{t+h}\mbox{.}\label{eq:qfull1}
+\end{equation}
+
+\end_inset
+
+The above scheme is linearly implicit: as far as unconstrained motion is
+ concerned only one linear system needs to be solved per time step.
+ Without damping and constraints it amounts to the time-reversible scheme
+ by Zhang and Skeel 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Zhang1997"
+
+\end_inset
+
+, with the choice of 
+\begin_inset Formula $\alpha=1/4$
+\end_inset
+
+ in their algorithm.
+ The most general, fully implicit scheme in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Zhang1997"
+
+\end_inset
+
+ can be rewritten as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h/2}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\label{eq:qhalf2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{f}^{t+h/2}=\mathbf{M}^{-1}\left(\mathbf{f}_{ext}^{t+h/2}-\mathbf{f}_{int}\left(\mathbf{q}^{t+h/2}+\alpha h^{2}\mathbf{f}^{t+h/2}\right)\right)\label{eq:fhalf2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{u}^{t+h}=\mathbf{u}^{t}+h\mathbf{f}^{t+h/2}\label{eq:uful2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h}=\mathbf{q}^{t+h/2}+\frac{h}{2}\mathbf{u}^{t+h}\label{eq:qfull2}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\alpha=1/4$
+\end_inset
+
+ produces the implicit mid-point rule, exactly conserving energy for linear
+ problems 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Zhang1997"
+
+\end_inset
+
+.
+ Nonlinear systems integrated with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:qhalf2"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:qfull2"
+
+\end_inset
+
+) experience a positive energy drift, visible in the long term.
+ This however is of lesser concern in short simulations, where in addition
+ frictional and viscous effects are purposely introduced.
+ We should note, that exact energy conservation in finite elastodynamics
+ has been achieved algorithmically on the stress integration level 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Simo1992,Laursen2001"
+
+\end_inset
+
+, something which is not possible if one aims at the kind of simplifications
+ pursued here.
+ As our scheme is akin to the mid-point rule, second order accuracy should
+ be expected for smooth, unconstrained problems.
+ This is indeed the case, as demonstrated numerically in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Examples"
+
+\end_inset
+
+.
+ The linearly implicit scheme (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:qhalf1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:qfull1"
+
+\end_inset
+
+) follows from (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:qhalf2"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:qfull2"
+
+\end_inset
+
+) by starting from 
+\begin_inset Formula $\mathbf{f}^{t+h/2}=\mathbf{0}$
+\end_inset
+
+ and taking one Newton step
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{M}\left(\mathbf{0}+\triangle\mathbf{f}^{t+h/2}\right)=\mathbf{f}_{ext}^{t+h/2}-\mathbf{f}_{int}\left(\mathbf{q}^{t+h/2}+\alpha h^{2}\mathbf{0}\right)-\alpha h^{2}\mathbf{K}\left(\mathbf{q}^{t+h/2}+\alpha h^{2}\mathbf{0}\right)\triangle\mathbf{f}^{t+h/2}
+\end{equation}
+
+\end_inset
+
+which for 
+\begin_inset Formula $\alpha=1/4$
+\end_inset
+
+ yields
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(\mathbf{M}+\frac{h^{2}}{4}\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\right)\triangle\mathbf{f}^{t+h/2}=\mathbf{f}_{ext}^{t+h/2}-\mathbf{f}_{int}\left(\mathbf{q}^{t+h/2}\right)
+\end{equation}
+
+\end_inset
+
+and combined with (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:uful2"
+
+\end_inset
+
+) results in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:qhalf1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:qfull1"
+
+\end_inset
+
+), without the constraints and viscous damping.
+\end_layout
+
+\begin_layout Section
+Body co-rotated time stepping (BC)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Co-rotated-stepping"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Once again, consider a multi-body domain with constraints.
+ Let 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}$
+\end_inset
+
+ retain their meaning from the previous section.
+ When talking about 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ 
+\emph on
+and
+\emph default
+ 
+\begin_inset Formula $\mathbf{\Lambda}$
+\end_inset
+
+, etc.
+ we now again mean suitable collections of per-body entities.
+ In order to integrate in time, a half-step configuration is extrapolated
+ first
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h/2}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{\Lambda}_{1}=\hat{\mathbf{\Lambda}}\left(\mathbf{q}^{t+h/2},\mathbf{\Lambda}^{t}\right)\mbox{.}\label{eq:L1}
+\end{equation}
+
+\end_inset
+
+Function 
+\begin_inset Formula $\hat{\mathbf{\Lambda}}\left(\cdot,\cdot\right)$
+\end_inset
+
+ is detailed Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Updating-rotation"
+
+\end_inset
+
+ and until then we shall treat it as a 
+\begin_inset Quotes eld
+\end_inset
+
+black-box
+\begin_inset Quotes erd
+\end_inset
+
+.
+ A global 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ to local 
+\begin_inset Formula $\mathbf{U}$
+\end_inset
+
+ velocity transformation operator is computed next
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{H}=\mathbf{H}\left(\mathbf{q}^{t+h/2}\right)
+\end{equation}
+
+\end_inset
+
+the same way as in the previous section.
+ The momentum balance
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{b}=h\mathbf{f}^{t+h/2}-h\underline{\mathbf{\Lambda}_{1}}\mathbf{K}_{0}\underline{\mathbf{\Lambda}_{1}}^{T}\left[\left(\underline{\mathbf{I}-\mathbf{\Lambda}_{1}}\right)\mathbf{Z}+\mathbf{q}^{t+h/2}+\eta\mathbf{u}^{t}\right]\label{eq:b}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\underline{\mathbf{\Lambda}_{1}}\left(\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}_{0}\right)\underline{\mathbf{\Lambda}_{1}}^{T}\left(\mathbf{u}^{t+h}-\mathbf{u}^{t}\right)=\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\label{eq:mbc}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+together with the transformation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\mathbf{u}^{t+h}
+\end{equation}
+
+\end_inset
+
+and the constraints equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}
+\end{equation}
+
+\end_inset
+
+are now used to evaluate the velocity 
+\begin_inset Formula $\mathbf{u}^{t+h}$
+\end_inset
+
+ and the constraint reactions 
+\begin_inset Formula $\mathbf{R}$
+\end_inset
+
+.
+ Here the stiffness-proportional damping in the form of 
+\begin_inset Formula $\eta\underline{\mathbf{\Lambda}_{1}}\mathbf{K}\underline{\mathbf{\Lambda}_{1}}^{T}\left(\mathbf{u}^{t+h}+\mathbf{u}^{t}\right)/2$
+\end_inset
+
+ contributes on the left and right hand side of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mbc"
+
+\end_inset
+
+).
+ Finally, the end-step configuration is updated
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h}=\mathbf{q}^{t+h/2}+\frac{h}{2}\mathbf{u}^{t+h}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{\Lambda}^{t+h}=\hat{\mathbf{\Lambda}}\left(\mathbf{q}^{t+h},\mathbf{\Lambda}_{1}\right)\mbox{.}\label{eq:L2}
+\end{equation}
+
+\end_inset
+
+Without the constraints, the above scheme is again linearly implicit.
+ Combined with a set of nonlinear constraints, it constitutes a fully implicit
+ time-stepping, where the nonlinearity is pushed solely to the constraints.
+ Of course, the whole point of using the co-rotated formulation is in the
+ ease of inverting
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}=\underline{\mathbf{\Lambda}_{1}}\left(\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\right)\underline{\mathbf{\Lambda}_{1}}^{T}=\underline{\mathbf{\Lambda}_{1}}\mathbf{A}_{0}\underline{\mathbf{\Lambda}_{1}}^{T}
+\end{equation}
+
+\end_inset
+
+since it is enough to invert 
+\begin_inset Formula $\mathbf{A}_{0}$
+\end_inset
+
+ only once
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}^{-1}=\left[\underline{\mathbf{\Lambda}_{1}}\mathbf{A}_{0}\underline{\mathbf{\Lambda}_{1}}^{T}\right]^{-1}=\underline{\mathbf{\Lambda}_{1}}\left[\underline{\mathbf{\Lambda}_{1}}\mathbf{A}_{0}\right]^{-1}=\underline{\mathbf{\Lambda}_{1}}\mathbf{A}_{0}^{-1}\underline{\mathbf{\Lambda}_{1}}^{T}\mbox{.}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Body co-rotated, reduced order approach (BC-RO)
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:BC-RO"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The BC time stepping described in the previous section may be useful in
+ some situations.
+ Nevertheless, we can still aim at optimizing the runtime by employing a
+ reduced order base.
+ Let such reduced base be spanned by the columns of matrix 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ so that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{E}^{T}\mathbf{E}=\mbox{diag}\left(1\right)
+\end{equation}
+
+\end_inset
+
+and hence 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ stores orthogonal 
+\begin_inset Quotes eld
+\end_inset
+
+eigenvectors
+\begin_inset Quotes erd
+\end_inset
+
+.
+ System matrices can be projected onto this basis to produce
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\strikeout off
+\uuline off
+\uwave off
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{M}}=\mathbf{E}^{T}\mathbf{M}\mathbf{E}\mbox{ and }\bar{\mathbf{K}}=\mathbf{E}^{T}\mathbf{K}\mathbf{E}\text{,}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\strikeout default
+\uuline default
+\uwave default
+\noun default
+\color inherit
+which are symmetrical and dense.
+ We shall work with two sets of variables, the full (space) configuration
+ and velocity 
+\begin_inset Formula $\mathbf{q}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+, and the reduced (space) configuration and velocity 
+\begin_inset Formula $\bar{\mathbf{q}}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mathbf{u}}$
+\end_inset
+
+.
+ As before we also use the rotation operator 
+\begin_inset Formula $\mathbf{\Lambda}$
+\end_inset
+
+ representing the gross rigid rotation of the entire body.
+ Our intention is to work out a time stepping that closely mimics the co-rotated
+ approach from the previous section, but employs the momentum balance only
+ in the reduced space.
+ We start in the usual way
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h/2}=\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}\label{eq:qhalf}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{\Lambda}_{1}=\hat{\mathbf{\Lambda}}\left(\mathbf{q}^{t+h/2},\mathbf{\Lambda}^{t}\right)\mbox{.}
+\end{equation}
+
+\end_inset
+
+Function 
+\begin_inset Formula $\hat{\mathbf{\Lambda}}\left(\cdot,\cdot\right)$
+\end_inset
+
+ is detailed Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Updating-rotation"
+
+\end_inset
+
+.
+ The full mid-step configuration 
+\begin_inset Formula $\mathbf{q}^{t+h/2}$
+\end_inset
+
+ contains some rigid and some deformable motion extrapolated from the initial
+ state 
+\begin_inset Formula $\mathbf{q}^{t}$
+\end_inset
+
+.
+ It may have components along all of the possible deformation modes.
+ The current amount of deformation is
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{d}=\left(\underline{\mathbf{I}-\mathbf{\Lambda}_{1}}\right)\mathbf{Z}+\mathbf{q}^{t+h/2}
+\end{equation}
+
+\end_inset
+
+in the full space.
+ After rotating it back to the reference configuration, it is projected
+ onto the reduced base
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{q}}^{t+h/2}=\mathbf{E}^{T}\mathbf{\Lambda}_{1}^{T}\mathbf{d}\label{eq:q-proj}
+\end{equation}
+
+\end_inset
+
+We use the full space half-step in order to produce the needed coupling
+ between the rigid and deformable motions.
+ This gives us the reduced configuration 
+\begin_inset Formula $\bar{\mathbf{q}}^{t+h/2}$
+\end_inset
+
+ and the reduced internal force can now be computed as 
+\begin_inset Formula $\bar{\mathbf{f}}_{int}^{t+h/2}=\bar{\mathbf{K}}\bar{\mathbf{q}}^{t+h/2}$
+\end_inset
+
+.
+ We then write down the discrete momentum balance
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\underline{\mathbf{\Lambda}}_{1}\left(\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\right)\underline{\mathbf{\Lambda}}_{1}^{T}\left(\mathbf{u}^{t+h}-\mathbf{u}^{t}\right)=\mathbf{b}+\mathbf{H}^{T}\mathbf{R}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+and transform it as follows
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\mathbf{E}^{T}\left(\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\right)\mathbf{E}\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)=\mathbf{E}^{T}\underline{\mathbf{\Lambda}}_{1}^{T}\left(\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\right)
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+to produce a reduced system
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left(\bar{\mathbf{M}}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\bar{\mathbf{K}}\right)\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)=\mathbf{E}^{T}\underline{\mathbf{\Lambda}}_{1}^{T}\left(\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\right)\mbox{.}\label{eq:redsys}
+\end{equation}
+
+\end_inset
+
+As a result the reduced momentum balance reads
+\end_layout
+
+\begin_layout Standard
+
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{A}}\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)=\bar{\mathbf{b}}+\bar{\mathbf{H}}^{T}\mathbf{R}\label{eq:mbr}
+\end{equation}
+
+\end_inset
+
+
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{A}}=\bar{\mathbf{M}}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\bar{\mathbf{K}}\label{eq:Ared}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{H}}=\mathbf{H}\underline{\mathbf{\Lambda}_{1}}\mathbf{E}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{b}}=h\left(\mathbf{E}^{T}\underline{\mathbf{\Lambda}_{1}}^{T}\mathbf{f}^{t+h/2}-\bar{\mathbf{K}}\left(\bar{\mathbf{q}}^{t+h/2}+\eta\bar{\mathbf{v}}^{t}\right)\right)\label{eq:bred}
+\end{equation}
+
+\end_inset
+
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{v}}^{t}=\mathbf{E}^{T}\underline{\mathbf{\Lambda}_{1}}^{T}\mathbf{u}^{t}\mbox{.}\label{eq:v0-proj}
+\end{equation}
+
+\end_inset
+
+Note, that for the damping contribution to 
+\begin_inset Formula $\bar{\mathbf{b}}$
+\end_inset
+
+ we use 
+\begin_inset Formula $\bar{\mathbf{v}}^{t}$
+\end_inset
+
+ rather than 
+\begin_inset Formula $\bar{\mathbf{u}}^{t}$
+\end_inset
+
+, following precisely the time integrator from the previous section.
+ As before (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:mbr"
+
+\end_inset
+
+) is solved together with the transformation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\bar{\mathbf{H}}\bar{\mathbf{u}}^{t+h}
+\end{equation}
+
+\end_inset
+
+and the constraints equations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\mbox{.}
+\end{equation}
+
+\end_inset
+
+Once 
+\begin_inset Formula $\bar{\mathbf{u}}^{t+h}$
+\end_inset
+
+ is known, the next full velocity and configuration read
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{u}^{t+h}=\underline{\mathbf{\Lambda}_{1}}\mathbf{E}\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)+\mathbf{u}^{t}\label{eq:u1red}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h}=\mathbf{q}^{t+h/2}+\frac{h}{2}\mathbf{u}^{t+h}\mbox{.}
+\end{equation}
+
+\end_inset
+
+We use this configuration to update the rotation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{\Lambda}^{t+h}=\hat{\mathbf{\Lambda}}\left(\mathbf{q}^{t+h},\mathbf{\Lambda}_{1}\right)\mbox{.}\label{eq:r1red}
+\end{equation}
+
+\end_inset
+
+Up until (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:r1red"
+
+\end_inset
+
+) the above scheme mimics the time integrator from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Co-rotated-stepping"
+
+\end_inset
+
+.
+ By experimentation we notice that, when 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ includes only the rigid modes though, the above scheme becomes strongly
+ dissipative in rotational motion.
+ This is not desirable: if 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ is reduced to rigid modes only, we should be falling back on an acceptable
+ rigid integrator.
+ We offer a simple remedy for this: we use the above scheme for the deformable
+ components and employ the non-incremental velocity update, 
+\begin_inset Formula $\mathbf{u}^{t+h}=\underline{\mathbf{\Lambda}}^{t+h}\mathbf{E}\bar{\mathbf{u}}^{t+h}$
+\end_inset
+
+, for the rigid components.
+ Hence below, we first project 
+\begin_inset Formula $\mathbf{u}^{t+h}$
+\end_inset
+
+ onto the reduced 
+\begin_inset Formula $\bar{\mathbf{v}}^{t+h}$
+\end_inset
+
+, then overwrite the deformational components of 
+\begin_inset Formula $\bar{\mathbf{u}}^{t+h}$
+\end_inset
+
+ with those of 
+\begin_inset Formula $\bar{\mathbf{v}}^{t+h}$
+\end_inset
+
+, and finally resolve 
+\begin_inset Formula $\mathbf{u}^{t+h}$
+\end_inset
+
+ back according to the non-incremental formula.
+ This results in correct approximate representation of both rigid and deformable
+ motions.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{\bar{v}}^{t+h}=\mathbf{E}^{T}\left(\underline{\mathbf{\Lambda}}^{t+h}\right)^{T}\mathbf{u}^{t+h}\label{eq:v1-proj}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \bar{u}_{7},\bar{u}_{8},...,\bar{u}_{n}\right\} ^{t+h}=\left\{ \bar{v}_{7},\bar{v}_{8},...,\bar{v}_{n}\right\} ^{t+h}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{u}^{t+h}=\underline{\mathbf{\Lambda}}^{t+h}\mathbf{E}\mathbf{\bar{u}^{t+h}}\mbox{.}
+\end{equation}
+
+\end_inset
+
+We then compute the final full space and reduced space configurations
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+h}=\mathbf{q}^{t+h/2}+\frac{h}{2}\mathbf{u}^{t+h}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{q}}^{t+h}=\mathbf{E}^{T}\left(\underline{\mathbf{\Lambda}}^{t+h}\right)^{T}\left[\left(\underline{\mathbf{I}-\mathbf{\Lambda}^{t+h}}\right)\mathbf{Z}+\mathbf{q}^{t+h}\right]\mbox{.}\label{eq:q1red}
+\end{equation}
+
+\end_inset
+
+Although the primary merit of developing reduced order models is in reducing
+ the computational time, the smaller storage size is also a welcome consequence.
+ From the above we can see that by storing 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{\Lambda}^{t}$
+\end_inset
+
+, 
+\begin_inset Formula $\bar{\mathbf{u}}^{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mathbf{q}}^{t}$
+\end_inset
+
+ one can reproduce 
+\begin_inset Formula $\mathbf{u}^{t}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{q}^{t}$
+\end_inset
+
+.
+ Hence the storage size is significantly reduced.
+ Although restoring 
+\begin_inset Formula $\mathbf{q}^{t}$
+\end_inset
+
+ from 
+\begin_inset Formula $\bar{\mathbf{q}}^{t}$
+\end_inset
+
+ is not used in the above scheme, when reading data the following procedure
+ is used
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t}=\underline{\mathbf{\Lambda}}^{t}\mathbf{E}\bar{\mathbf{q}}^{t}-\left(\underline{\mathbf{I}-\mathbf{\Lambda}^{t}}\right)\mathbf{Z}\mbox{.}
+\end{equation}
+
+\end_inset
+
+This is acceptable for the case of small co-rotated strains where in the
+ initial (not co-rotated) configuration the velocities and the displacements
+ belong to the same linear space.
+\end_layout
+
+\begin_layout Section
+Handling constraints
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Handling-constraints"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In order to compute the next velocity and the constraints reactions a nonlinear
+ system needs to be solved
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{A}\left(\mathbf{u}^{t+h}-\mathbf{u}^{t}\right)=\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\label{eq:eq1}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\mathbf{u}^{t+h}\label{eq:eq2}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}\mbox{.}\label{eq:eq3}
+\end{equation}
+
+\end_inset
+
+A variety of constraints can be described in the form (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eq3"
+
+\end_inset
+
+).
+ These include frictional contact and a range of common equality constraints.
+ A fixed point constraint will for example read
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}_{\alpha}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{U_{\alpha}}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{U}_{\alpha}$
+\end_inset
+
+ is the 3-component local velocity of a point indexed by 
+\begin_inset Formula $\alpha$
+\end_inset
+
+.
+ An example of solving the system (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eq1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eq3"
+
+\end_inset
+
+) in case of frictional contact constraints can be found in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jean01,Moreau01,Koziara2008"
+
+\end_inset
+
+, while a broader overview can be found in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "BrogliatoBook,Acary2008"
+
+\end_inset
+
+.
+ In the examples section below we use the frictional contact formulation
+ detailed in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jean01,Koziara2010"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+In practice it is sometimes convenient to reformulate the algebra of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eq1"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:eq2"
+
+\end_inset
+
+) so that only constraints space variables are used.
+ This is done by eliminating 
+\begin_inset Formula $\mathbf{u}^{t+h}$
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{H}\mathbf{A}^{-1}\left(\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\right)
+\end{equation}
+
+\end_inset
+
+or
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{U}=\mathbf{WR}+\mathbf{B}\mbox{.}
+\end{equation}
+
+\end_inset
+
+
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+ is a symmetric semi-positive definite operator composed of dense 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ blocks.
+ It's sparsity structure depends on topological connectivity of constraints.
+ For typical multibody problems the number of constraints usually exceeds
+ the number of available kinematic freedom.
+ In such cases constraint solvers usually require hundreds of iterations
+ (e.g.
+ nonlinear Gauss-Seidel) to achieve reasonable accuracy.
+ In many such cases it is more efficient to explicitly compute 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+.
+ In our case we have either
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{W}=\mathbf{H}\underline{\mathbf{\Lambda}_{1}}\mathbf{A}_{0}^{-1}\underline{\mathbf{\Lambda}_{1}}^{T}\mathbf{H}^{T}\label{eq:W1}
+\end{equation}
+
+\end_inset
+
+where we should first compute 
+\begin_inset Formula $\mathbf{H}_{1}=\mathbf{H}\underline{\mathbf{\Lambda}_{1}}$
+\end_inset
+
+ and then 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\mathbf{H}_{1}^{T}\mathbf{A}_{0}^{-1}\mathbf{H}_{1}^{T}$
+\end_inset
+
+, using a fixed factorization of 
+\begin_inset Formula $\mathbf{A}_{0}^{-1}$
+\end_inset
+
+.
+ Or we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{W}=\bar{\mathbf{H}}\bar{\mathbf{A}}^{-1}\bar{\mathbf{H}}^{T}\label{eq:W2}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\bar{\mathbf{H}}=\mathbf{H}\underline{\mathbf{\Lambda}_{1}}\mathbf{E}$
+\end_inset
+
+ and 
+\begin_inset Formula $\bar{\mathbf{A}}^{-1}$
+\end_inset
+
+ can be precomputed and stored as an explicit inverse.
+\end_layout
+
+\begin_layout Section
+Impacts, friction and energy 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Impacts"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the next section we present several examples involving impacts and friction.
+ To model impacts we use the velocity level Signorini condition
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+U_{N}^{t+h}\ge0,\,R_{N}\ge0,\,U_{N}^{t+h}R_{N}=0\label{eq:Signorini}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $U_{N}^{t+h}$
+\end_inset
+
+ is the normal component of the relative contact point velocity, and 
+\begin_inset Formula $R_{N}$
+\end_inset
+
+ is the normal component of the reaction impulse.
+ To model friction we use Coulomb's law
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \begin{array}{ll}
+\left\Vert \mathbf{R}_{T}\right\Vert \le\mu R_{N}\\
+\left\Vert \mathbf{R}_{T}\right\Vert <\mu R_{N} & \Rightarrow\mathbf{U}_{T}^{t+h}=\mathbf{0}\\
+\left\Vert \mathbf{R}_{T}\right\Vert =\mu R_{N} & \Rightarrow\exists_{\lambda\ge0}\mathbf{U}_{T}^{t+h}=-\lambda\mathbf{R}_{T}
+\end{array}\right.\label{eq:Coulomb}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{U}_{T}$
+\end_inset
+
+ is the tangential component of the relative contact point velocity, 
+\begin_inset Formula $\mathbf{R}_{T}$
+\end_inset
+
+ is the tangential component of the reaction impulse, and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ is the Coulomb's coefficient of friction.
+ The above two laws can be rewritten as 
+\begin_inset Formula $\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}$
+\end_inset
+
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jean01"
+
+\end_inset
+
+, as used in the previous sections.
+ Such combined interface law should not inject energy into a multibody system.
+ An analysis of energetic consistency aims at ensuring that the increment
+ of the total system energy is semi-negative 
+\begin_inset Formula 
+\begin{equation}
+\mathbf{E}_{tot}^{t+h}-\mathbf{E}_{tot}^{t}\le0\mbox{.}
+\end{equation}
+
+\end_inset
+
+As already mentioned in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Total-Lagrangian"
+
+\end_inset
+
+, our integration schemes do not guarantee energy conservation and hence
+ ensuring the above is not possible.
+ At most we can show that conditions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Signorini"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Coulomb"
+
+\end_inset
+
+) do not additionally inject energy into the integrated system.
+ Assuming no external loading, in the presence of contacts the total energy
+ increment can be approximated as
+\begin_inset Formula 
+\begin{equation}
+\mathbf{E}_{tot}^{t+h}-\mathbf{E}_{tot}^{t}\simeq\triangle W
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\triangle W$
+\end_inset
+
+ is an increment of the work of the contact reactions.
+ In our time integration we can start by making the first half-step
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{0+h/2}=\mathbf{q}^{0}+\frac{h}{2}\mathbf{u}^{0}
+\end{equation}
+
+\end_inset
+
+and then continue with updates
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{q}^{t+3h/2}=\mathbf{q}^{t+h/2}+h\mathbf{u}^{t+h}\mbox{.}
+\end{equation}
+
+\end_inset
+
+A configuration increment reads then
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\triangle\mathbf{q}=\mathbf{q}^{t+3h/2}-\mathbf{q}^{t+h/2}=h\mathbf{u}^{t+h}\mbox{.}
+\end{equation}
+
+\end_inset
+
+If we transform this increment into the contact points space
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\triangle\mathbf{Q}=\mathbf{H}\triangle\mathbf{q}=h\mathbf{U}^{t+h}
+\end{equation}
+
+\end_inset
+
+we are able to see that contact forces produce the following work increment
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\triangle W=h\left\langle \mathbf{U}^{t+h},\mathbf{R}\right\rangle =\triangle W_{T}+\triangle W_{N}=h\left\langle \mathbf{U}_{T}^{t+h},\mathbf{R}_{T}\right\rangle +h\left\langle U_{N}^{t+h},R_{N}\right\rangle \mbox{.}
+\end{equation}
+
+\end_inset
+
+Since 
+\begin_inset Formula $\triangle W_{T}\le0$
+\end_inset
+
+ due to the Coulomb's law, and 
+\begin_inset Formula $\triangle W_{N}=0$
+\end_inset
+
+ due to  the Signorini condition, we end up with 
+\begin_inset Formula $\triangle W\le0$
+\end_inset
+
+.
+ Thus, conditions (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Signorini"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Coulomb"
+
+\end_inset
+
+) are dissipative.
+\end_layout
+
+\begin_layout Section
+Examples
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Examples"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Conclusions
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Conclusions"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+\start_of_appendix
+Appendix - Updating rotation 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Updating-rotation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Kaczmarczyk et al.
+ 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kaczmarczyk2012"
+
+\end_inset
+
+ developed a convenient way of updating rotation, as needed in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:L1"
+
+\end_inset
+
+), and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:L2"
+
+\end_inset
+
+).
+ Because the antisymmetric part of the gradient of the deformational displacemen
+t (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:defo1"
+
+\end_inset
+
+) corresponds to an infinitesimal rotation at a point, a sum
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\overline{\nabla\mathbf{d}}=\int_{\Omega}\nabla\mathbf{d}\left(\mathbf{X},t\right)-\nabla\mathbf{d}^{T}\left(\mathbf{X},t\right)d\Omega
+\end{equation}
+
+\end_inset
+
+represents the resultant infinitesimal rotation of the body, where the 
+\begin_inset Formula $1/2$
+\end_inset
+
+ term, being non-consequential to our derivation, has been skipped.
+ For every 
+\begin_inset Formula $\mathbf{d}$
+\end_inset
+
+, 
+\begin_inset Formula $\mathbf{\Lambda}$
+\end_inset
+
+ is incremented in such a way so to minimise 
+\begin_inset Formula $\overline{\nabla\mathbf{d}}$
+\end_inset
+
+.
+ The divergence theorem is exploited in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Kaczmarczyk2012"
+
+\end_inset
+
+ in order to obtain
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mbox{vec}\left[\int_{\Omega}\nabla\mathbf{d}-\nabla\mathbf{d}^{T}d\Omega\right]=\int_{\Gamma}\mathbf{n}\times\mathbf{d}d\Gamma
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mbox{vec\left[\cdot\right]}$
+\end_inset
+
+ makes a pseudo-vector out of an antisymmetric matrix, and 
+\begin_inset Formula $\mathbf{n}$
+\end_inset
+
+ is the spatial outward normal to the surface 
+\begin_inset Formula $\Gamma$
+\end_inset
+
+ of the body 
+\begin_inset Formula $\Omega$
+\end_inset
+
+.
+ The surface integral can be further resolved
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\mathbf{h} & = & \int_{\Gamma}\mathbf{n}\times\mathbf{d}d\Gamma=\int_{\Gamma}\mbox{skew}\left[\mathbf{n}\right]\mathbf{d}d\Gamma\nonumber \\
+ & = & \int_{\Gamma}\mbox{skew}\left[\mathbf{\Lambda}\mathbf{N}\right]\mathbf{d}d\Gamma=\int_{\Gamma}\mbox{skew}\left[\mathbf{N}\right]\mathbf{\Lambda}^{T}\mathbf{d}d\Gamma\nonumber \\
+ & = & \int_{\Gamma}\mbox{skew}\left[\mathbf{N}\right]\mathbf{\Lambda}^{T}\left[\mathbf{X}+\mathbf{S}\left(\mathbf{X}\right)\mathbf{q}-\mathbf{\Lambda}\mathbf{X}\right]d\Gamma\nonumber \\
+ & \simeq & \int_{\Gamma_{0}}\mbox{skew}\left[\mathbf{N}\right]\mathbf{X}d\Gamma_{0}+\int_{\Gamma}\mbox{skew}\left[\mathbf{N}\right]\mathbf{\Lambda}^{T}\left[\mathbf{X}+\mathbf{S}\left(\mathbf{X}\right)\mathbf{q}\right]d\Gamma\nonumber \\
+ & = & \int_{\Gamma}\mbox{skew}\left[\mathbf{N}\right]\mathbf{\Lambda}^{T}\mathbf{x}d\Gamma\label{eq:h}
+\end{eqnarray}
+
+\end_inset
+
+where the simplification to the last line follows from the assumption 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\int_{\Gamma}fd\Gamma\simeq\int_{\Gamma_{0}}fd\Gamma_{0}$
+\end_inset
+
+ and from the
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+ fact that 
+\begin_inset Formula $\int_{\Gamma}\mbox{skew}\left[\mathbf{N}\right]\mathbf{X}d\Gamma=\mbox{vec}\left[\int_{\Omega}\nabla\mathbf{X}-\nabla\mathbf{X}^{T}d\Omega\right]=\mathbf{0}$
+\end_inset
+
+, where 
+\begin_inset Formula $\mathbf{N}$
+\end_inset
+
+ is the surface normal field in the reference configuration and 
+\family roman
+\series medium
+\shape up
+\size normal
+\emph off
+\bar no
+\noun off
+\color none
+
+\begin_inset Formula $\Gamma_{0}$
+\end_inset
+
+ is the referential surface
+\family default
+\series default
+\shape default
+\size default
+\emph default
+\bar default
+\noun default
+\color inherit
+.
+ The operator 
+\begin_inset Formula $\mbox{skew}\left[\cdot\right]$
+\end_inset
+
+ furnishes a skew symmetric matrix out of a vector so that 
+\begin_inset Formula $\mbox{skew}\left[\mathbf{n}\right]\mathbf{d}=\mathbf{n}\times\mathbf{d}$
+\end_inset
+
+.
+ The following functional is then defined
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{J}\left(\mathbf{q},\mathbf{\Lambda}\right)=\frac{1}{2}\mathbf{h}^{T}\left(\mathbf{q},\mathbf{\Lambda}\right)\mathbf{h}\left(\mathbf{q},\mathbf{\Lambda}\right)
+\end{equation}
+
+\end_inset
+
+and the 
+\begin_inset Formula $\hat{\mathbf{\Lambda}}$
+\end_inset
+
+ mapping employed in the previous section takes form
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\hat{\mathbf{\Lambda}}\left(\mathbf{q},\mathbf{\Lambda}\right)=\exp\left(\mathbf{\Phi}\right)\mathbf{\Lambda}\mbox{, where }\mathbf{\Phi}=\arg\min\mathbf{J}\left(\mathbf{q},\exp\left(\mathbf{\Phi}\right)\mathbf{\Lambda}\right)
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\exp\left[\cdot\right]$
+\end_inset
+
+ is the exponential map.
+ Gauss-Newton iterations are exploited in order to compute the minimiser
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{\Phi}^{i+1}=\mathbf{\Phi}^{i}-\left\{ \partial^{2}\mathbf{J}/\partial\mathbf{\Phi}\partial\mathbf{\Phi}\right\} ^{-1}\left\{ \partial\mathbf{J}/\partial\mathbf{\Phi}\right\} \label{eq:newton}
+\end{equation}
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\partial\mathbf{J}/\partial\mathbf{\Phi} & = & \mathbf{h}^{T}\left[\partial\mathbf{h}/\partial\mathbf{\Phi}\right]\nonumber \\
+ & = & \mathbf{h}^{T}\left[\int_{\Gamma}\mbox{skew}\left[\mathbf{N}\right]\mathbf{\Lambda}^{T}\frac{\partial\exp\left(-\mathbf{\Phi}\right)}{\partial\mathbf{\Phi}}\mathbf{x}d\Gamma\right]\label{eq:dJdf}
+\end{eqnarray}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{eqnarray}
+\partial^{2}\mathbf{J}/\partial\mathbf{\Phi}\partial\mathbf{\Phi} & = & \left[\partial\mathbf{h}/\partial\mathbf{\Phi}\right]^{T}\left[\partial\mathbf{h}/\partial\mathbf{\Phi}\right]+\mathbf{h}^{T}\left[\partial^{2}\mathbf{h}/\partial\mathbf{\Phi}\partial\mathbf{\Phi}\right]\nonumber \\
+ & \simeq & \left[\partial\mathbf{h}/\partial\mathbf{\Phi}\right]^{T}\left[\partial\mathbf{h}/\partial\mathbf{\Phi}\right]+\delta\mathbf{I}\label{eq:ddJdfdf}
+\end{eqnarray}
+
+\end_inset
+
+and 
+\begin_inset Formula $\delta$
+\end_inset
+
+ is large enough to make 
+\begin_inset Formula $\partial^{2}\mathbf{J}/\partial\mathbf{\Phi}\partial\mathbf{\Phi}$
+\end_inset
+
+ positive definite, ensuring a descent direction in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:newton"
+
+\end_inset
+
+).
+ In practice, for this 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ problem, 
+\begin_inset Formula $\delta=0$
+\end_inset
+
+ works well.
+\end_layout
+
+\begin_layout Section
+Appendix - Body co-rotated, modal approach (BC-MODAL) 
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:BC-MODAL"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Let such reduced base be spanned by the columns of matrix 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+ so that
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{E}^{T}\mathbf{M}\mathbf{E}=\mbox{diag}\left(1\right)\mbox{ and }\mathbf{E}^{T}\mathbf{K}\mathbf{E}=\mbox{diag}\left(\lambda_{i}\right)
+\end{equation}
+
+\end_inset
+
+and hence 
+\begin_inset Formula $\mathbf{E}$
+\end_inset
+
+,
+\begin_inset Formula $\lambda_{i}$
+\end_inset
+
+ store eigenvectors and eigenvalues of the initial linearized dynamic system.
+ The scheme from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BC-RO"
+
+\end_inset
+
+ remains almost unchanged.
+ The projection formula (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:q-proj"
+
+\end_inset
+
+) becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{q}}^{t+h/2}=\mathbf{E}^{T}\mathbf{M}\mathbf{\Lambda}_{1}^{T}\mathbf{d}\label{eq:q-proj-modal}
+\end{equation}
+
+\end_inset
+
+where the 
+\begin_inset Formula $\mathbf{M}$
+\end_inset
+
+-scaling ensures 
+\begin_inset Formula $\left\langle \bar{\mathbf{q}},\bar{\mathbf{q}}\right\rangle =\left\langle \mathbf{E}\bar{\mathbf{q}},\mathbf{M}\mathbf{E}\bar{\mathbf{q}}\right\rangle $
+\end_inset
+
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+check this and do work a bit on this aspect
+\end_layout
+
+\end_inset
+
+, and the reduced internal force becomes 
+\begin_inset Formula $\bar{\mathbf{f}}_{int}^{t+h/2}=\mbox{diag}\left(\lambda_{i}\right)\bar{\mathbf{q}}^{t+h/2}\mbox{.}$
+\end_inset
+
+ Further, the reduced system (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:redsys"
+
+\end_inset
+
+) is replaced by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mbox{diag}\left(1+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\lambda_{i}\right)\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)=\mathbf{E}^{T}\underline{\mathbf{\Lambda}}_{1}^{T}\left(\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\right)\mbox{.}\label{eq:redsys-modal}
+\end{equation}
+
+\end_inset
+
+and the system matrix (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Ared"
+
+\end_inset
+
+) becomes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{A}}=\mbox{diag}\left(1+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\lambda_{i}\right)\label{eq:Ared-modal}
+\end{equation}
+
+\end_inset
+
+Also, instead of (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:bred"
+
+\end_inset
+
+) we have
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{b}}=h\left(\mathbf{E}^{T}\underline{\mathbf{\Lambda}_{1}}^{T}\mathbf{f}^{t+h/2}-\mbox{diag}\left(\lambda_{i}\right)\left(\bar{\mathbf{q}}^{t+h/2}+\eta\bar{\mathbf{v}}^{t}\right)\right)\label{eq:bred-modal}
+\end{equation}
+
+\end_inset
+
+and projection (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:v0-proj"
+
+\end_inset
+
+) is replaced by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{v}}^{t}=\mathbf{E}^{T}\mathbf{M}\underline{\mathbf{\Lambda}_{1}}^{T}\mathbf{u}^{t}\mbox{.}\label{eq:v0-proj-modal}
+\end{equation}
+
+\end_inset
+
+Similarly, projections (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:v1-proj"
+
+\end_inset
+
+) and (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:q1red"
+
+\end_inset
+
+) are replaced by
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{\bar{v}}^{t+h}=\mathbf{E}^{T}\mathbf{M}\left(\underline{\mathbf{\Lambda}}^{t+h}\right)^{T}\mathbf{u}^{t+h}\label{eq:v1-proj-modal}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\bar{\mathbf{q}}^{t+h}=\mathbf{E}^{T}\mathbf{M}\left(\underline{\mathbf{\Lambda}}^{t+h}\right)^{T}\left[\left(\underline{\mathbf{I}-\mathbf{\Lambda}^{t+h}}\right)\mathbf{Z}+\mathbf{q}^{t+h}\right]\mbox{.}\label{eq:q1red-modal}
+\end{equation}
+
+\end_inset
+
+The remaining formulas remain as in Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BC-RO"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Section
+Appendix - Implementation
+\begin_inset CommandInset label
+LatexCommand label
+name "sec:Implementation"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Methods presented here are a part of Solfec; Solfec source code and documentatio
+n are available at:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "http://parmes.org/solfec"
+
+\end_inset
+
+ 
+\end_layout
+
+\begin_layout Standard
+Implementation of presented here is included with:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/blob/master/fem.c"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The approach from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Total-Lagrangian"
+
+\end_inset
+
+ is implemented in functions starting with TL_, e.g.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/blob/master/fem.c#L1757"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+The approach from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Co-rotated-stepping"
+
+\end_inset
+
+ is implemented in functions starting with BC_, e.g.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/blob/master/fem.c#L2007"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The approach from Section 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BC-RO"
+
+\end_inset
+
+ and Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BC-MODAL"
+
+\end_inset
+
+ is implemented in functions starting with RO_, e.g.
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/blob/master/fem.c#L2354"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+The examples can respectively be found at:
+\end_layout
+
+\begin_layout Itemize
+...
+\end_layout
+
+\begin_layout Itemize
+...
+\end_layout
+
+\begin_layout Itemize
+...
+\end_layout
+
+\begin_layout Itemize
+...
+\end_layout
+
+\begin_layout Section*
+Acknowledgements
+\end_layout
+
+\begin_layout Standard
+The support from EDF Energy is gratefully acknowledged.
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "../../bib/contact,../../bib/stepping,../../bib/tk,../../bib/fem,../../bib/flexible,../../bib/books,../../bib/constitutive"
+options "plain"
+
+\end_inset
+
+
+\end_layout
+
+\end_body
+\end_document
