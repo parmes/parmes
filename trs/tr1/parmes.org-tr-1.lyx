@@ -272,12 +272,12 @@ Rigid kinematics is commonly used in multibody simulations (e.g.
 k of processing many interacting bodies, discretized with fine finite element
  meshes.
  For robustness reasons explicit codes are usually picked to process such
- problems, although typically the dynamics on the length scale of a time
- step is not of interest.
+ problems, although typically the dynamics on the time step scale is not
+ of interest.
  On the other hand, general implicit FE codes usually struggle to process
- multibody contact/impact problems with more then few dozens of bodies.
- For larger problems, with thousands of bodies, there is little choice left
- (but explicit codes) in the realm of off the shelf approaches.
+ multibody contact/impact problems with many interacting bodies.
+ For problems involving 100s, 1000s and more bodies, there is still little
+ choice left (but explicit codes) in the realm of the off the shelf approaches.
 \end_layout
 
 \begin_layout Standard
@@ -314,15 +314,20 @@ key "Zhang1997"
  The first approach only co-rotates the initial linearized dynamic system.
  The computational gain stems from the fact that the system is factorized
  only once.
- The second approach employs a reduced order base and hence it produces
- a smaller, dense system.
- This approach is computationally efficient to deal with.
- Specifically in the context of implicit multibody dynamics the small and
- dense momentum balance is well suited for the derivation of the algebraic
- constraint equations.
- Our approach is well suited for deformable multi-impact problems where
- the gross rigid motion is of interest in collective dynamics, while the
- dynamic effects cannot be captured by means of rigid body modeling alone.
+ The second approach additionally employs a reduced order base and hence
+ it produces a smaller, dense system.
+ This approach is efficient in the context of implicit multibody dynamics
+ involving impacts, where its small/dense algebra facilitates fast updates
+ of the evolving and often rapidly changing system of constraint equations.
+ An implementation of the presented approaches is include into an MPI-parallel
+ code, Solfec, available at 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -374,7 +379,7 @@ reference "sec:Impacts"
 
 \end_inset
 
- briefly introduces the impact and friction models and discusses energetic
+ briefly introduces the impact/friction model and comments on energetic
  consistency.
  The examples follow in Section 
 \begin_inset CommandInset ref
@@ -391,8 +396,8 @@ reference "sec:Conclusions"
 
 \end_inset
 
-.
- This paper include three appendices: Appendix 
+, followed by appendices.
+ Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Updating-rotation"
@@ -429,9 +434,9 @@ name "sec:Basic ideas"
 \end_layout
 
 \begin_layout Standard
-In this paper we work with stiff bodies capable of large rigid motion and
- small elastic deformations (e.g.
- blocks of concrete or graphite).
+In this paper we work with bodies capable of large rigid motion and small
+ elastic deformations (e.g.
+ blocks of wood, metal or rock).
  Bodies are discretized by means of finite elements, with 
 \begin_inset Formula $\mathbf{q}$
 \end_inset
@@ -648,18 +653,22 @@ reference "sec:BC-RO"
 
 , we investigate whether a further saving would be possible by assuming
  that 
-\begin_inset Formula $\mathbf{A}_{0}=\mathbf{E}^{T}\left(\mathbf{M}+\gamma\mathbf{K}_{0}\right)\mathbf{E}=\mbox{diag}\left(1+\lambda_{i}\right)$
+\begin_inset Formula $\mathbf{A}_{0}=\mathbf{E}^{T}\left(\mathbf{M}+\gamma\mathbf{K}_{0}\right)\mathbf{E}$
 \end_inset
 
 , where 
 \begin_inset Formula $\mathbf{E}$
 \end_inset
 
- collects selected eigenmodes and 
-\begin_inset Formula $\lambda_{i}$
+ collects selected 
+\begin_inset Quotes eld
 \end_inset
 
- store the corresponding eigenvalues.
+eigenmodes
+\begin_inset Quotes erd
+\end_inset
+
+.
  In all three cases the linearly implicit scheme is essentially the same:
 \end_layout
 
@@ -681,7 +690,7 @@ To a large degree, the algorithmic details of what follows are a consequence
 \begin_inset Formula $\mathbf{\Lambda}\left(t\right)$
 \end_inset
 
- in a robust way (Section 
+ in a robust way (Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Updating-rotation"
@@ -689,8 +698,8 @@ reference "sec:Updating-rotation"
 \end_inset
 
 ).
- Because we consider infinitesimal deformations about a possibly translated
- and rotated shape, it makes sense to talk about the gross rigid motion
+ Because we consider small deformations about a possibly translated and
+ rotated shape, it makes sense to talk about the gross rigid motion
 \end_layout
 
 \begin_layout Standard
@@ -873,7 +882,7 @@ reference "eq:defo"
 \end_inset
 
 ).
- This fact will be used in Section 
+ This fact is used in Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Updating-rotation"
@@ -1129,10 +1138,10 @@ reference "eq:mbc1"
 ).
  This is a pragmatic device: it allows to avoid uninteresting oscillations
  as well as, to some extent, drive a post-impact behavior.
- While will be said about this in Section 
+ While more will be said about this in Section 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Impacts"
+reference "sec:Examples"
 
 \end_inset
 
@@ -1355,7 +1364,7 @@ name "sec:Co-rotated-stepping"
 
 \end_inset
 
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -1415,14 +1424,14 @@ Function
 \begin_inset Formula $\hat{\mathbf{\Lambda}}\left(\cdot,\cdot\right)$
 \end_inset
 
- is detailed Section 
+ is detailed Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Updating-rotation"
 
 \end_inset
 
- and until then we shall treat it as a 
+; here we treat it as a 
 \begin_inset Quotes eld
 \end_inset
 
@@ -1605,7 +1614,7 @@ The BC time stepping described in the previous section may be useful in
  some situations.
  Nevertheless, we can still aim at optimizing the runtime by employing a
  reduced order base.
- Let such reduced base be spanned by the columns of matrix 
+ Let such base be spanned by columns of a matrix 
 \begin_inset Formula $\mathbf{E}$
 \end_inset
 
@@ -1721,7 +1730,7 @@ Function
 \begin_inset Formula $\hat{\mathbf{\Lambda}}\left(\cdot,\cdot\right)$
 \end_inset
 
- is detailed Section 
+ is detailed Appendix 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "sec:Updating-rotation"
@@ -1819,7 +1828,7 @@ and transform it as follows
 \color none
 \begin_inset Formula 
 \begin{equation}
-\mathbf{E}^{T}\left(\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\right)\mathbf{E}\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)=\mathbf{E}^{T}\underline{\mathbf{\Lambda}}_{1}^{T}\left(\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\right)
+\mathbf{E}^{T}\left(\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\right)\mathbf{E}\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)=\mathbf{E}^{T}\underline{\mathbf{\Lambda}}_{1}^{T}\left(\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\right)\label{eq:momproj}
 \end{equation}
 
 \end_inset
@@ -1844,7 +1853,23 @@ to produce a reduced system
 
 \end_inset
 
-As a result the reduced momentum balance reads
+Above, (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:momproj"
+
+\end_inset
+
+) is obtained by left multiplication by 
+\begin_inset Formula $\mathbf{E}^{T}\underline{\mathbf{\Lambda}}_{1}^{T}$
+\end_inset
+
+, combined with an assumption that 
+\begin_inset Formula $\mathbf{u}^{t+h}-\mathbf{u}^{t}=\underline{\mathbf{\Lambda}_{1}}\mathbf{E}\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)$
+\end_inset
+
+.
+ As a result the reduced momentum balance reads
 \end_layout
 
 \begin_layout Standard
@@ -2015,16 +2040,26 @@ reference "sec:Co-rotated-stepping"
 \begin_inset Formula $\mathbf{E}$
 \end_inset
 
- includes only the rigid modes though, the above scheme becomes strongly
- dissipative in rotational motion.
+ includes only the rigid modes, the above scheme becomes strongly dissipative
+ in rotational motion.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+perhaps test this again using the rotating bar example
+\end_layout
+
+\end_inset
+
  This is not desirable: if 
 \begin_inset Formula $\mathbf{E}$
 \end_inset
 
- is reduced to rigid modes only, we should be falling back on an acceptable
+ is reduced to rigid modes only, we should be falling back onto an acceptable
  rigid integrator.
  We offer a simple remedy for this: we use the above scheme for the deformable
- components and employ the non-incremental velocity update, 
+ components and employ a non-incremental velocity update, 
 \begin_inset Formula $\mathbf{u}^{t+h}=\underline{\mathbf{\Lambda}}^{t+h}\mathbf{E}\bar{\mathbf{u}}^{t+h}$
 \end_inset
 
@@ -2171,8 +2206,8 @@ name "sec:Handling-constraints"
 \end_layout
 
 \begin_layout Standard
-In order to compute the next velocity and the constraints reactions a nonlinear
- system needs to be solved
+In order to compute the next step velocity a nonlinear system needs to be
+ solved
 \end_layout
 
 \begin_layout Standard
@@ -2213,8 +2248,8 @@ reference "eq:eq3"
 \end_inset
 
 ).
- These include frictional contact and a range of common equality constraints.
- A fixed point constraint will for example read
+ These include frictional contact and a range of equality constraints.
+ A fixed point constraint for example reads
 \begin_inset Formula 
 \begin{equation}
 \mathbf{C}_{\alpha}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{U_{\alpha}}
@@ -2325,9 +2360,8 @@ or
  It's sparsity structure depends on topological connectivity of constraints.
  For typical multibody problems the number of constraints usually exceeds
  the number of available kinematic freedom.
- In such cases constraint solvers usually require hundreds of iterations
- (e.g.
- nonlinear Gauss-Seidel) to achieve reasonable accuracy.
+ In such cases constraint solvers usually require many iterations (e.g.
+ of a nonlinear Gauss-Seidel scheme) to achieve reasonable accuracy.
  In many such cases it is more efficient to explicitly compute 
 \begin_inset Formula $\mathbf{W}$
 \end_inset
@@ -2365,8 +2399,7 @@ where we should first compute
 \begin_inset Formula $\mathbf{A}_{0}^{-1}$
 \end_inset
 
-.
- Or we have
+; or we have
 \end_layout
 
 \begin_layout Standard
@@ -2381,7 +2414,7 @@ where
 \begin_inset Formula $\bar{\mathbf{H}}=\mathbf{H}\underline{\mathbf{\Lambda}_{1}}\mathbf{E}$
 \end_inset
 
- and 
+ is small and dense, while 
 \begin_inset Formula $\bar{\mathbf{A}}^{-1}$
 \end_inset
 
@@ -2564,20 +2597,19 @@ we are able to see that contact forces produce the following work increment
 
 \end_inset
 
-Since 
+Since the Coulomb's law ensures 
 \begin_inset Formula $\triangle W_{T}\le0$
 \end_inset
 
- due to the Coulomb's law, and 
+ and the Signorini condition gives 
 \begin_inset Formula $\triangle W_{N}=0$
 \end_inset
 
- due to  the Signorini condition, we end up with 
+ , we and up with 
 \begin_inset Formula $\triangle W\le0$
 \end_inset
 
-.
- Thus, conditions (
+, so that conditions (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:Signorini"
@@ -2599,6 +2631,152 @@ Examples
 \begin_inset CommandInset label
 LatexCommand label
 name "sec:Examples"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Rotating bar
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO:
+\end_layout
+
+\begin_layout Itemize
+TL, BC, BC-RO, BC-MODAL, rigid
+\end_layout
+
+\begin_layout Itemize
+numerical dissipation without the fix when using rigid modes only; then
+ with the fix
+\end_layout
+
+\begin_layout Itemize
+convergence rate
+\end_layout
+
+\begin_layout Itemize
+runtimes
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Pipe impact
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO:
+\end_layout
+
+\begin_layout Itemize
+TL, BC, BC-RO
+\end_layout
+
+\begin_layout Itemize
+compare displacement time histories at characteristic points (capture deformatio
+n, rotation)
+\end_layout
+
+\begin_layout Itemize
+the effect of damping
+\end_layout
+
+\begin_layout Itemize
+the effect of time step
+\end_layout
+
+\begin_layout Itemize
+the effect of mesh density
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Array excitation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO:
+\end_layout
+
+\begin_layout Itemize
+BC, BC-RO, rigid
+\end_layout
+
+\begin_layout Itemize
+BC –> modes for BC-RO
+\end_layout
+
+\begin_layout Itemize
+compare response profiles
+\end_layout
+
+\begin_layout Itemize
+runtime and storage
+\end_layout
+
+\begin_layout Itemize
+REGISTER_BASE () - may be helpful
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Ellipsoids compaction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO:
+\end_layout
+
+\begin_layout Itemize
+BC, BC-RO
+\end_layout
+
+\begin_layout Itemize
+BC –> modes for BC-RO
+\end_layout
+
+\begin_layout Itemize
+compare collective response profiles (displacements; stress; cross-sections)
+\end_layout
+
+\begin_layout Itemize
+thousands of bodies; exemplify parallel scaling
+\end_layout
+
+\begin_layout Itemize
+REGISTER_BASE () - will definitely be helpful
+\end_layout
 
 \end_inset
 
@@ -2903,10 +3081,20 @@ name "sec:BC-MODAL"
 \end_inset
 
 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Review from here
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
-Let such reduced base be spanned by the columns of matrix 
+Let a modal, reduced order base be spanned by the columns of matrix 
 \begin_inset Formula $\mathbf{E}$
 \end_inset
 
@@ -2929,7 +3117,8 @@ and hence
 \begin_inset Formula $\lambda_{i}$
 \end_inset
 
- store eigenvectors and eigenvalues of the initial linearized dynamic system.
+ store selected eigenvectors and eigenvalues of the initial linearized dynamic
+ system.
  The scheme from Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2969,7 +3158,7 @@ where the
 status open
 
 \begin_layout Plain Layout
-check this and do work a bit on this aspect
+perhaps look more into this aspect
 \end_layout
 
 \end_inset
@@ -2991,7 +3180,7 @@ reference "eq:redsys"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mbox{diag}\left(1+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\lambda_{i}\right)\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)=\mathbf{E}^{T}\underline{\mathbf{\Lambda}}_{1}^{T}\left(\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\right)\mbox{.}\label{eq:redsys-modal}
+\mbox{diag}\left(1+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\lambda_{i}\right)\left(\bar{\mathbf{u}}^{t+h}-\bar{\mathbf{u}}^{t}\right)=\mathbf{E}^{T}\underline{\mathbf{\Lambda}}_{1}^{T}\left(\mathbf{b}+\mathbf{H}^{T}\mathbf{R}\right)\label{eq:redsys-modal}
 \end{equation}
 
 \end_inset
@@ -3009,7 +3198,7 @@ reference "eq:Ared"
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\bar{\mathbf{A}}=\mbox{diag}\left(1+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\lambda_{i}\right)\label{eq:Ared-modal}
+\bar{\mathbf{A}}=\mbox{diag}\left(1+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\lambda_{i}\right)\text{.}\label{eq:Ared-modal}
 \end{equation}
 
 \end_inset
