@@ -141,9 +141,10 @@ In this work we present two linearly implicit time integration methods,
  The first approach co-rotates the initial linearized dynamic system which
  is therefore factorized only once.
  The second approach employs a reduced order base and produces a small dense
- system, efficient to deal with in the context of multibody dynamics.
- We compare the two approaches with the Total Lagrangian finite element
- formulation and with the rigid body model.
+ system, efficient to deal with in the context of multibody dynamics; a
+ modal base can also be used.
+ We compare the proposed approaches with the Total Lagrangian finite element
+ formulation and, where appropriate, with the rigid body model.
  
 \begin_inset Note Note
 status open
@@ -2068,23 +2069,15 @@ perhaps test this again using the rotating bar example
 \begin_inset Formula $\mathbf{u}^{t+h}$
 \end_inset
 
- onto the reduced 
-\begin_inset Formula $\bar{\mathbf{v}}^{t+h}$
-\end_inset
-
-, then overwrite the deformational components of 
+ onto reduced 
 \begin_inset Formula $\bar{\mathbf{u}}^{t+h}$
 \end_inset
 
- with those of 
-\begin_inset Formula $\bar{\mathbf{v}}^{t+h}$
-\end_inset
-
-, and finally resolve 
+ (overwrite it), and then resolve it back into 
 \begin_inset Formula $\mathbf{u}^{t+h}$
 \end_inset
 
- back according to the non-incremental formula.
+ according to the non-incremental formula.
  This results in correct approximate representation of both rigid and deformable
  motions.
 \end_layout
@@ -2092,7 +2085,7 @@ perhaps test this again using the rotating bar example
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\mathbf{\bar{v}}^{t+h}=\mathbf{E}^{T}\left(\underline{\mathbf{\Lambda}}^{t+h}\right)^{T}\mathbf{u}^{t+h}\label{eq:v1-proj}
+\mathbf{\bar{u}}^{t+h}=\mathbf{E}^{T}\left(\underline{\mathbf{\Lambda}}^{t+h}\right)^{T}\mathbf{u}^{t+h}\label{eq:v1-proj}
 \end{equation}
 
 \end_inset
@@ -2103,18 +2096,7 @@ perhaps test this again using the rotating bar example
 \begin_layout Standard
 \begin_inset Formula 
 \begin{equation}
-\left\{ \bar{u}_{7},\bar{u}_{8},...,\bar{u}_{n}\right\} ^{t+h}=\left\{ \bar{v}_{7},\bar{v}_{8},...,\bar{v}_{n}\right\} ^{t+h}
-\end{equation}
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\begin{equation}
-\mathbf{u}^{t+h}=\underline{\mathbf{\Lambda}}^{t+h}\mathbf{E}\mathbf{\bar{u}^{t+h}}\mbox{.}
+\mathbf{u}^{t+h}=\underline{\mathbf{\Lambda}}^{t+h}\mathbf{E}\mathbf{\bar{u}}^{t+h}\mbox{.}
 \end{equation}
 
 \end_inset
@@ -2650,20 +2632,298 @@ TODO:
 \end_layout
 
 \begin_layout Itemize
-TL, BC, BC-RO, BC-MODAL, rigid
+TL, BC, BC-RO, BC-MODAL
 \end_layout
 
 \begin_layout Itemize
-numerical dissipation without the fix when using rigid modes only; then
- with the fix
+elongation: step 1/64s, 1/256s damping 0; step 1/64s, damping 0.01, 0.05;
+ soft Young
 \end_layout
 
 \begin_layout Itemize
-convergence rate
+energy step 1/64s, 1/256s, damping 0, duration 100s; soft Young
 \end_layout
 
 \begin_layout Itemize
-runtimes
+convergence rate; soft Young, stiff Young
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename rb0_mesh.png
+	lyxscale 50
+	height 18pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RB1"
+
+\end_inset
+
+Rotating bar: geometry of the 
+\begin_inset Formula $2\times2\times20$
+\end_inset
+
+ mesh.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro0_elongation_h64_d0.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro0_elongation_h256_d0.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RB2"
+
+\end_inset
+
+Undamped rotating bar: time history of the elongation for 
+\begin_inset Formula $h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $1\mbox{s}$
+\end_inset
+
+ runs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro0_elongation_h64_d0.01.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro0_elongation_h64_d0.05.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RB3"
+
+\end_inset
+
+Damped rotating bar: time history of the elongation for 
+\begin_inset Formula $h=1/64\mbox{s}$
+\end_inset
+
+, 
+\begin_inset Formula $\eta\in\left\{ 0.01,0.05\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $1\mbox{s}$
+\end_inset
+
+ runs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro0_energy_h64_d0_100s.png
+	lyxscale 30
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro0_energy_h256_d0_100s.png
+	lyxscale 30
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RB4"
+
+\end_inset
+
+Rotating bar: time history of total energy for 
+\begin_inset Formula $h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\} $
+\end_inset
+
+ and 
+\begin_inset Formula $100\mbox{s}$
+\end_inset
+
+ runs.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro0_convtest_undamped_E200E4.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro0_convtest_damped_E200E9.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:RB5"
+
+\end_inset
+
+Rotating bar: second order convergence of displacements for soft undamped
+ (
+\begin_inset Formula $E=200\mbox{E4, }\eta=0$
+\end_inset
+
+) and stiff damped (
+\begin_inset Formula $E=200\mbox{E9, }\eta=1/10^{6}$
+\end_inset
+
+) materials.
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -2693,15 +2953,15 @@ n, rotation)
 \end_layout
 
 \begin_layout Itemize
-the effect of damping
+effect of damping
 \end_layout
 
 \begin_layout Itemize
-the effect of time step
+effect of time step size
 \end_layout
 
 \begin_layout Itemize
-the effect of mesh density
+runtimes and storage
 \end_layout
 
 \end_inset
