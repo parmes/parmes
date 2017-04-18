@@ -9,7 +9,7 @@ print 'Generating up to %d recently updated pages list...' % nrecent
 p = subprocess.Popen(['git', 'log',  '--name-status', '-%d' % nrecent], stdout=subprocess.PIPE, stderr=subprocess.STDOUT);
 output = p.communicate()[0]
 date = ['','','']
-exclude = ['recent.rst', 'index.rst']
+exclude = ['recent.rst', 'index.rst', 'contact.rst', 'thankyou.rst', 'patreon.rst']
 recorded = set()
 recent = []
 for line in output.splitlines():
