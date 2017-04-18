@@ -1,4 +1,6 @@
 
+* On Apr 11 2017 :ref:`solfec-user-solfec`
+
 * On Apr 6 2017 :ref:`solfec-user-body`
 
 * On Apr 3 2017 :ref:`solfec-user-utilities`
@@ -16,5 +18,3 @@
 * On Mar 29 2017 :ref:`solfec-examples-hybrid_modelling-hs3_scaling`
 
 * On Mar 29 2017 :ref:`solfec-installation`
-
-* On Mar 27 2017 :ref:`solfec-examples-hybrid_modelling`

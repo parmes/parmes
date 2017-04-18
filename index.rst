@@ -19,3 +19,6 @@ Recent blog posts:
     solfec/index
     dynlb/index
     parmec/index
+    About <blog/about>
+    contact
+    patreon
