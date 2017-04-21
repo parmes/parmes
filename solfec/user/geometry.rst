@@ -124,6 +124,14 @@ Some parameters can also be accessed as members and methods of a MESH object, cf
   | **obj.get_data()** -- return a tuple (nodes, elements, surfids), in the same format as for MESH().      |
   | Note these are read-only - changing the returned lists does not affect the mesh.                        |
   +---------------------------------------------------------------------------------------------------------+
+  | **obj.surface_integration_points( | surfid)** -- returns surface integration points as a list of tuples |
+  | [(x0, y0, z0), (x1, y1, z1), ...]; if **surfid** is passed, integration points only fort that surface   |
+  | identifier are returned                                                                                 |
+  +---------------------------------------------------------------------------------------------------------+
+  | **obj.volume_integration_points( | volid)** -- returns volume integration points as a list of tuples    |
+  | [(x0, y0, z0), (x1, y1, z1), ...]; if **volid** is passed, integration points only fort that volume     |
+  | identifier are returned                                                                                 |
+  +---------------------------------------------------------------------------------------------------------+
   | **Read-write members and methods:**                                                                     |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.node (n | x, y, z)** -- returns a (x, y, z) tuple storing coordinates of nth node;                |
