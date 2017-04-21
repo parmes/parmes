@@ -14,7 +14,3 @@
 * On Mar 30 2017 :ref:`solfec-applications-overturning_block_stacks`
 
 * On Mar 30 2017 :ref:`solfec-examples-hybrid_modelling-hs0`
-
-* On Mar 29 2017 :ref:`solfec-examples-hybrid_modelling-hs3_scaling`
-
-* On Mar 29 2017 :ref:`solfec-installation`

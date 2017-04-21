@@ -76,6 +76,9 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   | **obj.display_points** -- list of tuples of display point labels and coordinates:                       |
   | [('label', (x, y, z)), ('label', (x, y, z)), ...]                                                       |
   +---------------------------------------------------------------------------------------------------------+
+  | **obj.mesh** -- returns computational MESH associated with a 'FINITE_ELEMENT' body; for other body      |
+  | kinds a MESH or a list of MESH objects is returned if such are present as components of the body shape  |
+  +---------------------------------------------------------------------------------------------------------+
   | **Read/write members:**                                                                                 |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.conf** -- tuple (q1, q2, ..., qN) storing configuration of the body. See :numref:`body-conf`.     |
