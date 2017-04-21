@@ -1,12 +1,13 @@
 import subprocess
 import os.path
 
+nlog = 100
 nrecent = 10
 
-print 'Generating up to %d recently updated pages list...' % nrecent
+print 'Generating up to %d recently updated pages list...' % nlog
 
 # Browse git logs and find recent pages commits
-p = subprocess.Popen(['git', 'log',  '--name-status', '-%d' % nrecent], stdout=subprocess.PIPE, stderr=subprocess.STDOUT);
+p = subprocess.Popen(['git', 'log',  '--name-status', '-%d' % nlog], stdout=subprocess.PIPE, stderr=subprocess.STDOUT);
 output = p.communicate()[0]
 date = ['','','']
 exclude = ['recent.rst', 'index.rst', 'contact.rst', 'thankyou.rst', 'patreon.rst']
