@@ -113,7 +113,7 @@ target "http://parmes.org"
 
 \end_inset
 
- - tr -1
+ - technical report - 1 - revision - 1
 \end_layout
 
 \begin_layout Title
@@ -2953,6 +2953,10 @@ n, rotation)
 \end_layout
 
 \begin_layout Itemize
+compare energy
+\end_layout
+
+\begin_layout Itemize
 effect of damping
 \end_layout
 
@@ -3692,6 +3696,18 @@ Acknowledgements
 
 \begin_layout Standard
 The support from EDF Energy is gratefully acknowledged.
+\end_layout
+
+\begin_layout Section*
+Revision notes
+\end_layout
+
+\begin_layout Description
+Rev.
+\begin_inset space ~
+\end_inset
+
+1 Initial revision;
 \end_layout
 
 \begin_layout Standard
