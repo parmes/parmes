@@ -2936,36 +2936,376 @@ Pipe impact
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-TODO:
+\align center
+\begin_inset Graphics
+	filename ro1_kin_energy.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro1_int_energy.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-TL, BC, BC-RO
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PI1"
+
+\end_inset
+
+Pipe impact: kinetic (left), and internal energy between 
+\begin_inset Formula $t=0.05\text{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $t=0.1\text{s}$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Itemize
-compare displacement time histories at characteristic points (capture deformatio
-n, rotation)
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-compare energy
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro1_p4z_p5z.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro1_rotation.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-effect of damping
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PI2"
+
+\end_inset
+
+Pipe impact: z-coordinates of points p4, p5 (left), and pipe rotation angle
+ between 
+\begin_inset Formula $t=0.05\text{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $t=0.1\text{s}$
+\end_inset
+
+.
 \end_layout
 
-\begin_layout Itemize
-effect of time step size
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-runtimes and storage
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro1_inner_diameter.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro1_outer_diameter.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PI3"
+
+\end_inset
+
+Pipe impact: inner (left), and outer pipe diameter in the contact area between
+ 
+\begin_inset Formula $t=0.05\text{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $t=0.1\text{s}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro1_p0mises.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro1_p2mises.png
+	lyxscale 35
+	width 50text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PI4"
+
+\end_inset
+
+Pipe impact: inner point p0 (left), and outer point p2 MISES stress between
+ 
+\begin_inset Formula $t=0.05\text{s}$
+\end_inset
+
+ and 
+\begin_inset Formula $t=0.1\text{s}$
+\end_inset
+
+.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Formulation
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+TL
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BC-RO
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Runtime [s]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+101
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+16.7
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3.9
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Storage [MB]
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+13
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.264
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:PI1"
+
+\end_inset
+
+Pipe impact: runtime and storage comparison
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
