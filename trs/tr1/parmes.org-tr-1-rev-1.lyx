@@ -2048,7 +2048,8 @@ reference "sec:Co-rotated-stepping"
 status open
 
 \begin_layout Plain Layout
-perhaps test this again using the rotating bar example
+there is a room for refinement here: both understanding and the way of describin
+g
 \end_layout
 
 \end_inset
@@ -3744,6 +3745,8 @@ and hence
 
  store selected eigenvectors and eigenvalues of the initial linearized dynamic
  system.
+ Let the eigenvectors and eigenvalues be sorted, so that the initial six
+ vectors represent purely rigid motion and are accompanied by zero eigenvalues.
  The scheme from Section 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -3864,21 +3867,14 @@ reference "eq:v0-proj"
 
 \end_inset
 
-Similarly, projections (
+Projection (
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "eq:v1-proj"
 
 \end_inset
 
-) and (
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "eq:q1red"
-
-\end_inset
-
-) are replaced by
+) is replaced by
 \end_layout
 
 \begin_layout Standard
@@ -3889,7 +3885,30 @@ reference "eq:q1red"
 
 \end_inset
 
+and
+\end_layout
 
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\left\{ \bar{u}_{7},\bar{u}_{8},...,\bar{u}_{n}\right\} ^{t+h}=\left\{ \bar{v}_{7},\bar{v}_{8},...,\bar{v}_{n}\right\} ^{t+h}\label{eq:v1-proj-modal-subst}
+\end{equation}
+
+\end_inset
+
+so that only deformable components of 
+\begin_inset Formula $\bar{\mathbf{u}}^{t+h}$
+\end_inset
+
+ are substituted.
+ Finally, projection (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:q1red"
+
+\end_inset
+
+) is replaced by
 \end_layout
 
 \begin_layout Standard
