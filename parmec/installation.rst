@@ -15,7 +15,7 @@ Enter parmec directory:
 
   cd parmec
 
-Edit Makefile variables:
+Edit Config.mak file variables:
 
 ::
 
