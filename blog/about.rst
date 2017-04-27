@@ -1,6 +1,6 @@
 .. post:: Jun 13, 2016
    :tags: parmes
-   :author: TK
+   :author: Tomek
 
 .. _about-parmes:
 

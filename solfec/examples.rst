@@ -9,6 +9,6 @@ Currently available examples include:
 .. toctree::
   :maxdepth: 1
 
-  examples/hybrid_modelling
+  examples/hybrid_modeling
 
 .. [*] Undocumented input files are located in the `solfec/inp <https://github.com/tkoziara/solfec/tree/master/inp>`_ directory.

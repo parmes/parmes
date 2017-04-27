@@ -1,4 +1,4 @@
-.. _solfec-examples-hybrid_modelling-hs123:
+.. _solfec-examples-hybrid_modeling-hs123:
 
 1,2,3--dimensional cube array acceleration dwell
 ================================================
@@ -44,7 +44,7 @@ An actual array geometry is depicted in :numref:`hs2-fig2`, where the color codi
 
 - blue -- the outer Parmec bodies where acceleration sweep signal is applied
 - yellow -- the inner Parmec bodies interacting via spring--dashpot elements
-- green -- the boundary Parmec--Solfec bodies, modelled in both codes
+- green -- the boundary Parmec--Solfec bodies, modeled in both codes
 - grey -- the inner Solfec bodies, interacting via a non--smooth contact law
 
 .. _hs2-fig2:
@@ -86,7 +86,7 @@ reside on other processor ranks. Hence we test this using the :ref:`HERE command
 valid fragments of the parmec2solfec mapping on each MPI rank. Such fragmentary mappings are brought together during initialization
 of the :ref:`HYBRID_SOLVER <hybrid-solver>`. In line 56 the Parmec body index is advanced, as this line corresponds to line 67 in :numref:`hs2-lst1`,
 where Parmec bodies are created. The rest of the file is similar to that already detailed in the description of :numref:`hs0-lst3`, in the context
-of the :ref:`two body impact example <solfec-examples-hybrid_modelling-hs0>`.
+of the :ref:`two body impact example <solfec-examples-hybrid_modeling-hs0>`.
 
 .. literalinclude:: ../../../../solfec/examples/hybrid-solver2/hs2-solfec.py
    :linenos:

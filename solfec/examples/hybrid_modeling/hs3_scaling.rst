@@ -1,13 +1,13 @@
-.. _solfec-examples-hybrid_modelling-hs3_scaling:
+.. _solfec-examples-hybrid_modeling-hs3_scaling:
 
 3--dimensional cube array parallel scaling
 ==========================================
 
 This is a 3--dimensional case, `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_,
-of the family of :ref:`1,2 and 3--dismenional examples <solfec-examples-hybrid_modelling-hs123>`, demonstrating applications of
+of the family of :ref:`1,2 and 3--dismenional examples <solfec-examples-hybrid_modeling-hs123>`, demonstrating applications of
 the :ref:`HYBRID_SOLVER <hybrid-solver>` to hybrid, :ref:`Parmec <parmec-index>`--:ref:`Solfec <solfec-index>` based, arrays of cubes
 subject to an acceleration sine dwell signal. The specifcation of geomery and material data are exactly generalized from
-:ref:`the 2--dimensional counterpart <solfec-examples-hybrid_modelling-hs123>`.
+:ref:`the 2--dimensional counterpart <solfec-examples-hybrid_modeling-hs123>`.
 The `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_ directory contains:
 
 - `README <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/README>`_ -- a text based specification of the problem
@@ -26,7 +26,7 @@ The `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/ma
   `hs3--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm>`_.
   The see--through array is modeled in Parmec: rotations are restrained and spring--dashpot elements, emulating contact,
   are insered at the centres of faces of neighbouring cubes. The solid 3x3 inner arrays is modeled in Solfec: hexahedral
-  finite elements are used and contact interactions are modelled via :ref:`a non--smooth Signorini--Coulomb law <solfec-theory-conform>`
+  finite elements are used and contact interactions are modeled via :ref:`a non--smooth Signorini--Coulomb law <solfec-theory-conform>`
 
 .. youtube:: https://www.youtube.com/watch?v=7ED5jDdhrtI
   :width: 648

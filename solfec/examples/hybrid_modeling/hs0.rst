@@ -1,4 +1,4 @@
-.. _solfec-examples-hybrid_modelling-hs0:
+.. _solfec-examples-hybrid_modeling-hs0:
 
 A two--body impact problem
 ==========================
@@ -25,7 +25,7 @@ These are:
 
    Example hybrid-solver0_: a two body impact problem
 
-:numref:`hs0-fig1` states the problem. Both, the upper "Solfec" body and the lower "Parmec" body are modelled as rigid.
+:numref:`hs0-fig1` states the problem. Both, the upper "Solfec" body and the lower "Parmec" body are modeled as rigid.
 The upper body falls under gravity and hits the lower body, initiating vibrations. There is no impact restitution between
 the two bodies, hence the two bodies stay and vibrate together, following the initial impact. We use this simple example
 to illustrate the methodology of creating a hybrid model.
@@ -109,7 +109,7 @@ This input file demonstrates several more elaborate features of the :ref:`HYBRID
    :caption: Listing of hs0--solfec--2.py
    :name: hs0-lst3
 
-When the hybrid modelling is used, the Parmec library will generate output files if the Parmec output interval has been set.
+When the hybrid modeling is used, the Parmec library will generate output files if the Parmec output interval has been set.
 Enabling this feature is demonstrated in lines 32--36, where the "parmec_interval" parameter of the hybrid solver is set to
 value "(tms0, 0.03)". The "tms0" object is Parmec's :ref:`TSERIES <parmec-command-TSERIES>` number, which in this case defines
 a variable output frequency for the Parmec output files. The second number, "0.03", defines a constant time interval, at which
