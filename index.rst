@@ -19,6 +19,7 @@ Recent blog posts:
     solfec/index
     dynlb/index
     parmec/index
+    VBOX <vbox/index>
     About <blog/about>
     contact
     patreon
