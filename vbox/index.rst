@@ -125,4 +125,4 @@ are available at the command prompt.
     make
 
   This will update the entire source code tree and recompile all software. **Note, that all local changes inside of $HOME/parmes will be lost.**
-  Serial, shared memory parallel, and MPI parallel versions of `parmes.org <../>`_ software are all compiled by default.
+  Serial, shared memory parallel, and MPI parallel versions of the software are all compiled by default.
