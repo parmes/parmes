@@ -10,7 +10,7 @@ You can download:
 and use below guidance in order to set up a `VirtualBox <https://www.virtualbox.org>`_ installation
 of `Linux Lite <https://www.linuxliteos.com/>`_ with `parmes.org <../>`_ software pre--installed.
 
-After downloading unzip the Parmes.zip into **Parmes.vdi**. Then start VirtualBox and press "New" to create a new virtual machine (:numref:`vbox1`).
+After downloading unzip the Parmes.zip file into Parmes.vdi. Then start VirtualBox and press "New" to create a new virtual machine (:numref:`vbox1`).
 
 .. _vbox1:
 
