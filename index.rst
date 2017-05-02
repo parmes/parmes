@@ -20,6 +20,7 @@ Recent blog posts:
     dynlb/index
     parmec/index
     VBOX <vbox/index>
+    TGZ <tgz/index>
     About <blog/about>
     contact
     patreon
