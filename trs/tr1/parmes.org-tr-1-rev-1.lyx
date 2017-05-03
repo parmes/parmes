@@ -3385,19 +3385,24 @@ TODO:
 \end_layout
 
 \begin_layout Itemize
-BC, BC-RO
+quasi-static: zero 
+\begin_inset Formula $\mathbf{u}^{t+h}$
+\end_inset
+
+ velocity after every step
 \end_layout
 
 \begin_layout Itemize
-BC –> modes for BC-RO
+100 ellipsoids BC: modes for BC-RO (1 friction level)
 \end_layout
 
 \begin_layout Itemize
-compare collective response profiles (displacements; stress; cross-sections)
+100 ellipsoids BC, BC-RO: stress and displacement Eulerian cross-sections
+ (1 friction level)
 \end_layout
 
 \begin_layout Itemize
-thousands of bodies; exemplify parallel scaling
+10k ellipsoids: parallel scaling, stress cross-sections for 3 friction levels
 \end_layout
 
 \begin_layout Itemize

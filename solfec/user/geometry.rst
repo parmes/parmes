@@ -211,6 +211,27 @@ This routine creates a MESH object corresponding to a pipe (hexahedral elements 
 
   * surfids -- list of four surface identifiers [s1, s2, s3, s4] corresponding to the faces of the pipe
 
+ELLIP_MESH
+----------
+
+.. role:: red
+
+This routine creates a MESH object corresponding to an ellipsoid (tetrahedral elements are used).
+
+.. topic:: obj = ELLIP_MESH (center, radii, size, volid, surfid) :red:`(Under development)`
+
+  * obj -- created MESH object
+
+  * center -- tuple (x, y, z) defining the center
+
+  * radii -- tuple (rx, ry, rz) of ellipsoid radii
+
+  * size -- mesh edge size
+
+  * volid -- volume identifier
+
+  * surfid -- surface identifier
+
 TETRAHEDRALIZE
 --------------
 

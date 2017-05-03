@@ -1,5 +1,7 @@
 
-* On May 1 2017 :ref:`vbox-index`
+* On May 2 2017 :ref:`tgz-index`
+
+* On May 2 2017 :ref:`vbox-index`
 
 * On Apr 27 2017 :ref:`parmec-installation`
 
@@ -16,5 +18,3 @@
 * On Apr 27 2017 :ref:`solfec-installation`
 
 * On Apr 21 2017 :ref:`solfec-user-geometry`
-
-* On Apr 21 2017 :ref:`solfec-user-body`
