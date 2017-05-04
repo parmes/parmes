@@ -40,9 +40,10 @@ An object of type BODY represents a solid body.
     the 'FINITE_ELEMENT' model allows to handle complicated shapes with less finite elements,
     e.g. an arbitrary shape could be contained in just one hexahedron.
 
-  * base -- optional modal or reduced order base, depending on the formulation; when **form** = 'BC--MODAL', results
-    of :ref:`the MODAL_ANALYSIS command <solfec-user-utilities-MODAL_ANALYSIS>`, or equivalent user data, can be used;
-    This argument must be passed if **form** = 'BC--MODAL' or 'BC--RO', see Table :numref:`fem-form`.
+  * base -- optional reduced order or modal base definition, or a string label of a :ref:`registered base <solfec-user-utilities-REGISTER_BASE>`;
+    when **form** = 'BC--MODAL', results of :ref:`the MODAL_ANALYSIS command <solfec-user-utilities-MODAL_ANALYSIS>`, or equivalent user data,
+    can be used; the same format is used for the 'BC--RO' formulation; This argument must be passed if **form** = 'BC--MODAL' or 'BC--RO',
+    see Table :numref:`fem-form`.
 
 Some parameters can also be accessed as members of a BODY object, cf. :numref:`body-params`.
 

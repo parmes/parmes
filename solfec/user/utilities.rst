@@ -346,3 +346,18 @@ but only from a Viewer script by selecting 'run python script' in the 'tools' vi
 
   * object -- BODY object or a list of BODY objects
 
+.. _solfec-user-utilities-REGISTER_BASE:
+
+REGISTER_BASE
+-------------
+
+Register 'BC--RO' or 'BC--MODAL' base for the finite element :ref:`BODY formulation <solfec-user-body>`. Registering
+a reduced order or modal base saves memory when multiple instances of bodies employing the same base are used.
+
+.. topic:: REGISTER_BASE (solfec, base, label) :red:`(Under development)`
+
+  * solfec -- SOLFEC object
+
+  * base -- base definition: *(val, vec)* where *val* is a list of eigenvalues and *vec* is a list of eigenvectors (stored contiguously one after another)
+
+  * label -- unique string label
