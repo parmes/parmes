@@ -76,7 +76,7 @@ another background mesh defining deformability
 
   * mesh -- input mesh
 
-.. _solfec-user-mesh:
+.. _solfec-command-MESH:
 
 MESH
 ----
@@ -145,7 +145,7 @@ Some parameters can also be accessed as members and methods of a MESH object, cf
   | menu :math:`\to` kinds of :math:`\to` volumes. Note that materials are also assigned by volume id.      |
   +---------------------------------------------------------------------------------------------------------+
 
-.. _solfec-user-hex:
+.. _solfec-command-HEX:
 
 HEX
 ---

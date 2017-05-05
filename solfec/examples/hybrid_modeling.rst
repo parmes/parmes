@@ -11,9 +11,9 @@ frequency response of a large scale multi--body structure, a fraction of it (an 
 could be modeled using the NSCD approach, while the remaining (predominate) part could be modeled
 in a simplified manner (using rigid bodies and springs).
 
-Hybrid modeling is available in Solfec via the :ref:`HYBRID_SOLVER <hybrid-solver>` interface.
-In this case :ref:`Parmec <parmec-index>` is used as a software library facilitating modeling
-of the rigid body -- spring systems. Currently available examples of the hybrid modeling
+Hybrid modeling is available in Solfec via the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`
+interface.  In this case :ref:`Parmec <parmec-index>` is used as a software library facilitating
+modeling of the rigid body -- spring systems. Currently available examples of the hybrid modeling
 functionality include:
 
 .. toctree::

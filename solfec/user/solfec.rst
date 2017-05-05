@@ -50,7 +50,7 @@ Some parameters can be accessed as members of a SOLFEC object, cf. :numref:`solf
   | *obj.step*                                                                                              |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.verbose** -- 'ON' or 'OFF' enabling or disabling writing to standard output (default: 'ON');      |
-  | '%' can also be used to enable plain percentage printout per individual :ref:`RUN <solfec-user-run>`    |
+  | '%' can also be used to enable plain percentage printout per individual :ref:`RUN <solfec-command-RUN>` |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.cleanup** -- either 'ON' or 'OFF' enabling or disabling removal of the output directory in 'WRITE'|
   | mode if none results were saved (default: 'OFF' in which case the initial geometry is saved as a        |

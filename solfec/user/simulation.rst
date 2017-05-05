@@ -6,7 +6,7 @@ Simulation
 Routines listed in this section control the solution process.
 A simulation can be run be invoking the RUN command, documented below.
 
-.. _solfec-user-run:
+.. _solfec-command-RUN:
 
 .. topic:: RUN (solfec, solver, duration)
 
@@ -68,7 +68,7 @@ Runtime utilities
 
 Routines below help control runtime behaviour.
 
-.. _solfec-user-output:
+.. _solfec-command-OUTPUT:
 
 .. topic:: OUTPUT (solfec, interval | compression)
 
@@ -89,7 +89,7 @@ Routines below help control runtime behaviour.
 
   * extents -- (xmin, ymin, zmin, xmax, ymax, zmax) tuple
 
-.. _solfec-user-callback:
+.. _solfec-command-CALLBACK:
 
 .. topic:: CALLBACK (solfec, interval, data, callback)
 
@@ -116,7 +116,7 @@ Contact handling
 
 Routines listed below affect contact detection and contact handling.
 
-.. _geometric_epsilon:
+.. _solfec-command-GEOMETRIC_EPSILON:
 
 .. topic:: GEOMETRIC_EPSILON (epsilon)
 
@@ -157,7 +157,7 @@ Routines listed below affect contact detection and contact handling.
 
   * surf2 -- second BODY object
 
-.. _contact_sparsify:
+.. _solfec-command-CONTACT_SPARSIFY:
 
 .. topic:: CONTACT_SPARSIFY (solfec, threshold | minarea, mindist)
 
@@ -219,7 +219,7 @@ Routines listed below are related to prallel runtime and performance.
 
   * solfec -- SOLFEC object
 
-.. _solfec-user-here:
+.. _solfec-command-HERE:
 
 .. topic:: ret = HERE (solfec, object)
 

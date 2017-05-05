@@ -7,8 +7,8 @@
 Hybrid solver in Solfec
 =======================
 
-:ref:`Solfec's hybrid solver <hybrid-solver>` is now ready for testing. This solver combines the ability of modeling
-non--smooth multi--body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
+:ref:`Solfec's hybrid solver <solfec-command-HYBRID_SOLVER>` is now ready for testing. This solver combines the ability
+of modeling non--smooth multi--body structures in Solfec (e.g. as fully resolved FE models) in conjunction with a lightweight
 rigid--body/nonlinear--spring approach implemented in :ref:`PARMEC <parmec-index>`. A simple example of that can be
 seen in the video below:
 

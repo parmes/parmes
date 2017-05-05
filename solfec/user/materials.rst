@@ -42,7 +42,7 @@ Some parameters can also be accessed as members of a FIELD object, cf. :numref:`
   | *obj.label*                                                                                             |
   +---------------------------------------------------------------------------------------------------------+
 
-.. _solfec-user-material-bulkmat:
+.. _solfec-command-BULK_MATERIAL:
 
 BULK_MATERIAL
 -------------
@@ -116,7 +116,7 @@ This routine applies bulk material to a subset of geometric objects with the giv
 
   * material -- MATERIAL object or material label
 
-.. _solfec-user-material-surface:
+.. _solfec-command-SURFACE_MATERIAL:
 
 SURFACE_MATERIAL
 ----------------

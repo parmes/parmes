@@ -3,8 +3,8 @@
 1,2,3--dimensional cube array acceleration dwell
 ================================================
 
-This is a family of 1,2 and 3--dismenional examples demonstrating applications of the :ref:`HYBRID_SOLVER <hybrid-solver>` on
-an array of cubes subject to a constant amplitude and frequency acceleration since dwell signal. The input files for these examples
+This is a family of 1,2 and 3--dismenional examples demonstrating applications of the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`
+on an array of cubes subject to a constant amplitude and frequency acceleration since dwell signal. The input files for these examples
 are located in:
 
 - `solfec/examples/hybrid--solver1 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver1>`_ for the 1--dimensional array.
@@ -72,21 +72,21 @@ step estimation for the model is printed out in line 101.
 
 :numref:`hs2-lst2` includes the Solfec file `hs2--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py>`_.
 Lines 1--5 define the global model parameters. Lines 7--24 set up the :ref:`SOLFEC object <solfec-user-solfec>`,
-:ref:`bulk <solfec-user-material-bulkmat>` and :ref:`surface <solfec-user-material-surface>` materials, and a unit
+:ref:`bulk <solfec-command-BULK_MATERIAL>` and :ref:`surface <solfec-command-SURFACE_MATERIAL>` materials, and a unit
 cube template. Lines 26--56 contain code creating the array of Solfec bodies as well as the mapping between the
 Parmec and the Solfec body numbers. The double loop starting in line 30 of :numref:`hs2-lst2` mimics the double loop
 starting in line 62 of :numref:`hs2-lst1`. This way, it is easy to recreate the exact sequence of creation of Parmec
 bodies within the Solfec input file. Hence, it is easy to construct the *parmec2solfec* dictionary mapping of body numbers,
 on the fly, while creating the Solfec model. The inner Solfec bodies (grey in :numref:`hs2-fig2`) are created in lines 33--45.
 This same range of i, j indices is skipped in the Parmec input file (line 65 in :numref:`hs2-lst1`). Here, finite element
-bodies are created, based on a 2x2x2 :ref:`hexahedral mesh <solfec-user-hex>`. The z--direction of the bodies is :ref:`fixed <fix_direction>`
+bodies are created, based on a 2x2x2 :ref:`hexahedral mesh <solfec-command-HEX>`. The z--direction of the bodies is :ref:`fixed <solfec-command-FIX_DIRECTION>`
 to keep them in plane. The rigid "boundary" bodies for the Solfec--Parmec overlap interface are created in lines 50--53. We note,
 that when a Solfec input file is run in parallel (using *solfec-mpi*) some of the bodies that are created in the loop may actually
-reside on other processor ranks. Hence we test this using the :ref:`HERE command <solfec-user-here>` and accordingly create
+reside on other processor ranks. Hence we test this using the :ref:`HERE command <solfec-command-HERE>` and accordingly create
 valid fragments of the parmec2solfec mapping on each MPI rank. Such fragmentary mappings are brought together during initialization
-of the :ref:`HYBRID_SOLVER <hybrid-solver>`. In line 56 the Parmec body index is advanced, as this line corresponds to line 67 in :numref:`hs2-lst1`,
-where Parmec bodies are created. The rest of the file is similar to that already detailed in the description of :numref:`hs0-lst3`, in the context
-of the :ref:`two body impact example <solfec-examples-hybrid_modeling-hs0>`.
+of the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`. In line 56 the Parmec body index is advanced, as this line corresponds
+to line 67 in :numref:`hs2-lst1`, where Parmec bodies are created. The rest of the file is similar to that already detailed in the
+description of :numref:`hs0-lst3`, in the context of the :ref:`two body impact example <solfec-examples-hybrid_modeling-hs0>`.
 
 .. literalinclude:: ../../../../solfec/examples/hybrid-solver2/hs2-solfec.py
    :linenos:

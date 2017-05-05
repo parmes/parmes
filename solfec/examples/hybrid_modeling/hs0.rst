@@ -3,7 +3,7 @@
 A two--body impact problem
 ==========================
 
-This is a simplest application of the :ref:`HYBRID_SOLVER <hybrid-solver>`. The input files for this example are
+This is a simplest application of the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`. The input files for this example are
 located in the `solfec/examples/hybrid--solver0 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver0>`_ directory.
 These are:
 
@@ -51,32 +51,33 @@ The "DEM" command in line 25 can be uncommented to run parmec standalone and tes
 This is useful at a stage of creating and testing of an input file: the output files generated into the hybrid--solver0
 directory and be viewed using `ParaView <http://www.paraview.org>`_. 
 
-.. note:: For the sake of using hs0--parmec.py as Parmec input in Solfec's :ref:`HYBRID_SOLVER <hybrid-solver>`,
+.. note:: For the sake of using hs0--parmec.py as Parmec input in Solfec's :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`,
           the "DEM" command in line 25 should remain commented out.
 
 
 :numref:`hs0-lst2` includes the Solfec file `hs0--solfec--1.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-1.py>`_.
 :ref:`SOLFEC object <solfec-user-solfec>` is created in line 3, specifying the output directory as 'out/hybrid--solver0' (relative where *solfec* is run from).
-:ref:`Gravity <solfec-user-gravity>` is applied in line 5. Volumetric :ref:`"bulk" material <solfec-user-material-bulkmat>` is created in line 7
-and :ref:`"suraface material" <solfec-user-material-surface>` for contact interactions is created in line 10. Then the lower :ref:`body <solfec-user-body>` "bod1"
+:ref:`Gravity <solfec-command-GRAVITY>` is applied in line 5. Volumetric :ref:`"bulk" material <solfec-command-BULK_MATERIAL>` is created in line 7
+and :ref:`"suraface material" <solfec-command-SURFACE_MATERIAL>` for contact interactions is created in line 10. Then the lower :ref:`body <solfec-user-body>` "bod1"
 is created in line 22. This is a *boundary body*, coinciding with the Parmec body defined in line 16 of :numref:`hs0-lst1`. *This body will be used to transfer
 forces between Solfec and Parmec, and its motion will be driven by the Parmec model.*  The upper body "bod2" is created in line 26. In both cases Solfec's
-:ref:`MESH <solfec-user-mesh>` object is used to define geometry. 
+:ref:`MESH <solfec-command-MESH>` object is used to define geometry. 
 
 .. literalinclude:: ../../../../solfec/examples/hybrid-solver0/hs0-solfec-1.py
    :linenos:
    :caption: Listing of hs0--solfec--1.py
    :name: hs0-lst2
 
-The :ref:`Newton solver <projected-newton>` is created next in line 28. It will be used internally by the :ref:`hybrid solver <hybrid-solver>` in order to resolve
-(non--smooth) contact interactions between the two bodies. The :ref:`HYBRID_SOLVER <hybrid-solver>` itself is created further, in line 32. We pass the full relative
-path to the parmec input file 'examples/hybrid-solver0/hs0-parmec.py', which implies that the example will be run from the solfec source directory. The Solfec time
-step is used as the upper bound for the Parmec step. Knowing that Parmec numbers bodies starting from zero, we create a simple dictionary mapping, {0 : bod1.id},
-to define the "boundary bodies" through which forces are passed between the two codes. Finally, we pass the Newton solver object "ns" as the last argument.
+The :ref:`Newton solver <solfec-command-NEWTON_SOLVER>` is created next in line 28. It will be used internally by the :ref:`hybrid solver <solfec-command-HYBRID_SOLVER>`
+in order to resolve (non--smooth) contact interactions between the two bodies. The :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>` itself is created further, in line 32.
+We pass the full relative path to the parmec input file 'examples/hybrid-solver0/hs0-parmec.py', which implies that the example will be run from the solfec
+source directory. The Solfec time step is used as the upper bound for the Parmec step. Knowing that Parmec numbers bodies starting from zero, we create a simple
+dictionary mapping, {0 : bod1.id}, to define the "boundary bodies" through which forces are passed between the two codes. Finally, we pass the Newton solver
+object "ns" as the last argument.
 
 We note, that Parmec output intervals are not specified in this invocation of the hybrid solver. This means that Parmec will not create output files during the
-simulation. In lines 35 and 36 we define the Solfec output interval. Because the :ref:`"OUTPUT" <solfec-user-output>` commands :ref:`coincide <parmec-command-OUTPUT>`
-in both codes, we need to explicitly call the Solfec command in this case. The input file is concluded with the :ref:`"RUN" command <solfec-user-run>` (line 38),
+simulation. In lines 35 and 36 we define the Solfec output interval. Because the :ref:`"OUTPUT" <solfec-command-OUTPUT>` commands :ref:`coincide <parmec-command-OUTPUT>`
+in both codes, we need to explicitly call the Solfec command in this case. The input file is concluded with the :ref:`"RUN" command <solfec-command-RUN>` (line 38),
 which executes a 10 second long simulation of the hybrid model.
 
 The example is run by calling
@@ -96,7 +97,7 @@ An example animation is included below:
 .. youtube:: https://www.youtube.com/watch?v=osRepFXukDo
 
 :numref:`hs0-lst3` includes the second Solfec file `hs0--solfec--2.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-2.py>`_.
-This input file demonstrates several more elaborate features of the :ref:`HYBRID_SOLVER <hybrid-solver>` and of Solfec input usage in general:
+This input file demonstrates several more elaborate features of the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>` and of Solfec input usage in general:
 
  - creation of Parmec output files (lines 32--36)
  - creation of Parmec time histories (lines 38--40)
@@ -115,7 +116,7 @@ value "(tms0, 0.03)". The "tms0" object is Parmec's :ref:`TSERIES <parmec-comman
 a variable output frequency for the Parmec output files. The second number, "0.03", defines a constant time interval, at which
 :ref:`Parmec time histories <parmec-command-HISTORY>` will be generated. These are requested in the following lines 38--40.
 This functionality (runtime generation of time histories) is matched in Solfec via application of a :ref:`callback function
-<solfec-user-callback>`, as demonstrated in lines 42--51. These time histories are later used, in lines 59--73, in order to
+<solfec-command-CALLBACK>`, as demonstrated in lines 42--51. These time histories are later used, in lines 59--73, in order to
 create a plot of the vertical displacement versus time, for the lower and the upper body. The result is seen in :numref:`hs0-fig2`.
 
 .. note:: Although there is no damping in the model, some dissipative behaviour is seen in :numref:`hs0-fig2`.

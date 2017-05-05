@@ -292,7 +292,7 @@ needs to be adjusted “by hand”. The automatic update formulas that can be fo
 For ill--conditioned problems one should pick :math:`\delta` that delivers an overall best convergence behavior. Large values will slow down convergence, but stabilize it;
 small values may destabilize convergence for ill--conditioned problems; :math:`\delta` (typically :math:`\ll1`) should be tuned together with :math:`\epsilon` and :math:`m`
 (e.g. find a suitably small :math:`\delta` first, then tweak :math:`\epsilon`). Since rigorous analysis is still missing for these parameters, please experiment before settling
-on specific values for a specific problem. Use linver = 'GMRES' in :ref:`NEWTON_SOLVER <projected-newton>` to enable this variant (this is also the default).
+on specific values for a specific problem. Use linver = 'GMRES' in :ref:`NEWTON_SOLVER <solfec-command-NEWTON_SOLVER>` to enable this variant (this is also the default).
 
 2. PQN2:
 
@@ -301,7 +301,7 @@ on specific values for a specific problem. Use linver = 'GMRES' in :ref:`NEWTON_
   \mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]
   
 where :math:`\theta\in\left[0,1\right]` and the diagonal :math:`3\times3` blocks of :math:`\nabla_{\omega}\mathbf{C}^{k}` are directly inverted. This simple scheme is interesting
-because it converges for a sufficiently small :math:`\theta`, while it is essentially a nonlinear Jacobi--type method. Use linver = 'DIAG' in :ref:`NEWTON_SOLVER <projected-newton>`
+because it converges for a sufficiently small :math:`\theta`, while it is essentially a nonlinear Jacobi--type method. Use linver = 'DIAG' in :ref:`NEWTON_SOLVER <solfec-command-NEWTON_SOLVER>`
 to enable this variant.
 
 Both variants are summarized as algorithms below.

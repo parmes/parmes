@@ -7,7 +7,7 @@ Solver objects represent a constraint solution scheme applied at every time step
 of a simulation in order to resolve the equality and inequality constraints. User defined
 constraints and contact constraints are handled together as one nonlinear root finding problem.
 
-.. _gauss-seidel:
+.. _solfec-command-GAUSS_SEIDEL_SOLVER:
 
 Gauss--Seidel
 -------------
@@ -114,7 +114,7 @@ Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object,
   |                          | most cases. It servers as illustration.                                      |
   +--------------------------+------------------------------------------------------------------------------+
 
-.. _projected-newton:
+.. _solfec-command-NEWTON_SOLVER:
 
 Projected Newton
 ----------------
@@ -230,7 +230,7 @@ Some parameters can also be accessed as members of a SICONOS_SOLVER object, cf. 
   | *obj.epsilon, obj.maxiter*                                                                              |
   +---------------------------------------------------------------------------------------------------------+
 
-.. _hybrid-solver:
+.. _solfec-command-HYBRID_SOLVER:
 
 Hybrid solver
 -------------

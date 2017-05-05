@@ -7,7 +7,7 @@ An object of type CONSTRAINT represents a constraint and its associated data (e.
 Both, user prescribed constraints (routines below) and contact constraints (detected automatically) are
 represented by an object of the same type. See also, the :ref:`Joints section <solfec-theory-joints>`.
 
-.. _fix_point:
+.. _solfec-command-FIX_POINT:
 
 FIX_POINT
 ---------
@@ -24,7 +24,7 @@ This routine creates a :ref:`fixed point constraint <fixed-point>`.
 
   * strength - optionally an ultimate magnitude of the reaction force, beyond which the constraint will be deleted (default: infinity)
 
-.. _fix_direction:
+.. _solfec-command-FIX_DIRECTION:
 
 FIX_DIRECTION 
 -------------
@@ -47,7 +47,7 @@ See also, formulation of the :ref:`fixed direction constraint <fixed-direction>`
 
   * point2 -- (x, y, z) tuple with referential point on body2
 
-.. _set_displacement: 
+.. _solfec-command-SET_DISPLACEMENT: 
 
 SET_DISPLACEMENT 
 ----------------
@@ -67,7 +67,7 @@ See also, formulation of the :ref:`prescribed displacement constraint <prescribe
 
   * tms -- TIME_SERIES object with the displacement history
 
-.. _set_velocity: 
+.. _solfec-command-SET_VELOCITY: 
 
 SET_VELOCITY 
 ------------
@@ -87,7 +87,7 @@ See also, formulation of the :ref:`prescribed velocity constraint <prescribed-ve
 
   * value -- a constant value or a TIME_SERIES object with the velocity history
 
-.. _set_acceleration: 
+.. _solfec-command-SET_ACCELERATION: 
 
 SET_ACCELERATION 
 ----------------
@@ -107,7 +107,7 @@ See also, formulation of the :ref:`prescribed acceleration constraint <prescribe
 
   * tms -- TIME_SERIES object with the acceleration history
 
-.. _put_rigid_link: 
+.. _solfec-command-PUT_RIGID_LINK: 
 
 PUT_RIGID_LINK 
 --------------
@@ -132,7 +132,7 @@ See also, formulation of the :ref:`rigid link constraint <rigid-link>`.
 
 .. role:: red
 
-.. _put_spring:
+.. _solfec-command-PUT_SPRING:
 
 PUT_SPRING 
 ----------

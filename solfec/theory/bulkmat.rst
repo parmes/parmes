@@ -4,7 +4,7 @@ Bulk materials
 ==============
 
 A bulk material model is assigned to a volume and defines its deformable characteristic. Available materials are summarized
-in the sections below. See also the :ref:`BULK_MATERIAL input command <solfec-user-material-bulkmat>`.
+in the sections below. See also the :ref:`BULK_MATERIAL input command <solfec-command-BULK_MATERIAL>`.
 
 Kirchhoff -- Saint Venant
 -------------------------

@@ -39,7 +39,7 @@ The above configuration works on Mac OS X. To recap, what you need is:
 
 * either `Zoltan <http://www.cs.sandia.gov/Zoltan/>`_ or `dynlb <https://github.com/tkoziara/dynlb>`_ load balancing library
 
-* (optional) :ref:`Parmec <parmec-index>` source path if you wish to use the :ref:`HYBRID_SOLVER <hybrid-solver>`
+* (optional) :ref:`Parmec <parmec-index>` source path if you wish to use the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`
   and :ref:`hybrid modeling <solfec-examples-hybrid_modeling>`
 
 * (optional) `Siconos <http://siconos.gforge.inria.fr>`_ contact solvers library

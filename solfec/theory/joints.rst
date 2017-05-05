@@ -3,9 +3,10 @@
 Joints
 ======
 
-Joints in  Solfec are defined by :ref:`FIX_POINT`, :ref:`FIX_DIRECTION`,
-:ref:`SET_DISPLACEMENT`, :ref:`SET_VELOCITY`, :ref:`SET_ACCELERATION`, :ref:`PUT_RIGID_LINK`, and
-:ref:`PUT_SPRING` commands. Joints are also called bilateral constraints. They restrain absolute motion
+Joints in  Solfec are defined by :ref:`FIX_POINT <solfec-command-FIX_POINT>`, :ref:`FIX_DIRECTION <solfec-command-FIX_DIRECTION>`,
+:ref:`SET_DISPLACEMENT <solfec-command-SET_DISPLACEMENT>`, :ref:`SET_VELOCITY <solfec-command-SET_VELOCITY>`,
+:ref:`SET_ACCELERATION <solfec-command-SET_ACCELERATION>`, :ref:`PUT_RIGID_LINK <solfec-command-PUT_RIGID_LINK>`, and
+:ref:`PUT_SPRING <solfec-command-PUT_SPRING>` commands. Joints are also called bilateral constraints. They restrain absolute motion
 of individual points of individual bodies, or relative motion of pairs of points between two bodies.
 
 Joints are implemented via suitably setting values of components of relative constraint velocities or
@@ -28,7 +29,7 @@ With this convenetion at hand, below we define particular versions of relation :
 Fixed point
 -----------
 
-Joint corresponding to the :ref:`FIX_POINT` command is realized by defining
+Joint corresponding to the :ref:`FIX_POINT <solfec-command-FIX_POINT>` command is realized by defining
 
 .. math::
 
@@ -47,7 +48,7 @@ imposes the fixed point constraint.
 Fixed direction
 ---------------
 
-Joint corresponding to the :ref:`FIX_DIRECTION` command is realized by defining
+Joint corresponding to the :ref:`FIX_DIRECTION <solfec-command-FIX_DIRECTION>` command is realized by defining
 
 .. math::
 
@@ -72,7 +73,7 @@ while the tangential plane is unused (hence zero tangential reaction,
 Prescribed displacement
 -----------------------
 
-Joint corresponding to the :ref:`SET_DISPLACEMENT` command is realized by defining
+Joint corresponding to the :ref:`SET_DISPLACEMENT <solfec-command-SET_DISPLACEMENT>` command is realized by defining
 
 .. math::
 
@@ -96,7 +97,7 @@ differentiated numerically to obtain velocity. The tangential plane is unused, h
 Prescribed velocity
 -------------------
 
-Joint corresponding to the :ref:`SET_VELOCITY` command is realized by defining
+Joint corresponding to the :ref:`SET_VELOCITY <solfec-command-SET_VELOCITY>` command is realized by defining
 
 .. math::
 
@@ -120,7 +121,7 @@ The tangential plane is unused, hence zero tangential reaction.
 Prescribed acceleration
 -----------------------
 
-Joint corresponding to the :ref:`SET_ACCELERATION` command is realized by defining
+Joint corresponding to the :ref:`SET_ACCELERATION <solfec-command-SET_ACCELERATION>` command is realized by defining
 
 .. math::
 
@@ -144,7 +145,7 @@ integrated numerically to obtain velocity. The tangential plane is unused, hence
 Rigid link constraint
 ---------------------
 
-Joint corresponding to the :ref:`PUT_RIGID_LINK` command is realized by defining a normal direction
+Joint corresponding to the :ref:`PUT_RIGID_LINK <solfec-command-PUT_RIGID_LINK>` command is realized by defining a normal direction
 
 .. math::
 
@@ -174,7 +175,7 @@ The tangential plane is unused, hence zero tangential reaction.
 Spring constraint
 -----------------
 
-Joint corresponding to the :ref:`PUT_SPRING` command is realized by defining a stretch
+Joint corresponding to the :ref:`PUT_SPRING <solfec-command-PUT_SPRING>` command is realized by defining a stretch
 
 .. math::
 
@@ -210,7 +211,7 @@ Implementation
 
 Joints are implemented as a part of constraint solvers. For example, function
 `dbs.c:DIAGONAL_BLOCK_Solver <https://github.com/tkoziara/solfec/blob/master/dbs.c#L483>`_ is a driver
-routine for all joint types solved within the :ref:`gauss-seidel` solver, invoked from within
-`bgs.c:GAUSS_SEIDEL_Solve <https://github.com/tkoziara/solfec/blob/master/bgs.c#L901>`_.
-Within the :ref:`projected-newton` solver the routine
+routine for all joint types solved within the :ref:`Gauss--Seidel <solfec-command-GAUSS_SEIDEL_SOLVER>` solver,
+invoked from within `bgs.c:GAUSS_SEIDEL_Solve <https://github.com/tkoziara/solfec/blob/master/bgs.c#L901>`_.
+Within the :ref:`Projected Newton <solfec-command-NEWTON_SOLVER>` solver the routine
 `nts.c:solve <https://github.com/tkoziara/solfec/blob/master/nts.c#L939>`_ implements all joint types.

@@ -17,16 +17,22 @@ This routine returns the duration of a simulation in SOLFEC's 'READ' mode, or so
 
   * solfec -- SOLFEC object
 
+.. _solfec-command-FORWARD:
+
 FORWARD
 -------
 
 This routine steps forward within the simulation output file. Ignored in SOLFEC's 'WRITE' mode.
 
-.. topic:: FORWARD (solfec, steps)
+.. topic:: FORWARD (solfec, steps | corotated_displacements)
 
   * solfec -- SOLFEC object
 
   * steps -- numbers of steps forward
+
+  * corotated_displacements -- optional co--rotated displacements sampling flag; if 'TRUE' and a call or multiple
+    calls to :ref:`COROTATED_DISPLACEMENTS <solfec-command-COROTATED_DISPLACEMENTS>` was/were made prior to FORWARD,
+    sampling of co--rotated displacements will be enabled; default: 'FALSE'
 
 BACKWARD
 --------

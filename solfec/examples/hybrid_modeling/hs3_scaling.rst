@@ -5,7 +5,7 @@
 
 This is a 3--dimensional case, `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_,
 of the family of :ref:`1,2 and 3--dismenional examples <solfec-examples-hybrid_modeling-hs123>`, demonstrating applications of
-the :ref:`HYBRID_SOLVER <hybrid-solver>` to hybrid, :ref:`Parmec <parmec-index>`--:ref:`Solfec <solfec-index>` based, arrays of cubes
+the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>` to hybrid, :ref:`Parmec <parmec-index>`--:ref:`Solfec <solfec-index>` based, arrays of cubes
 subject to an acceleration sine dwell signal. The specifcation of geomery and material data are exactly generalized from
 :ref:`the 2--dimensional counterpart <solfec-examples-hybrid_modeling-hs123>`.
 The `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_ directory contains:
