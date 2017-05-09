@@ -1,20 +1,20 @@
 
-* On May 4 2017 :ref:`solfec-user-body`
+* On May 5 2017 :ref:`solfec-examples-hybrid_modeling`
 
-* On May 4 2017 :ref:`solfec-user-utilities`
+* On May 5 2017 :ref:`solfec-examples-hybrid_modeling-hs0`
 
-* On May 3 2017 :ref:`solfec-user-geometry`
+* On May 5 2017 :ref:`solfec-examples-hybrid_modeling-hs123`
 
-* On May 2 2017 :ref:`tgz-index`
+* On May 5 2017 :ref:`solfec-examples-hybrid_modeling-hs3_scaling`
 
-* On May 2 2017 :ref:`vbox-index`
+* On May 5 2017 :ref:`solfec-installation`
 
-* On Apr 27 2017 :ref:`parmec-installation`
+* On May 5 2017 :ref:`solfec-theory-bulkmat`
 
-* On Apr 27 2017 :ref:`solfec-examples`
+* On May 5 2017 :ref:`solfec-theory-conpnt`
 
-* On Apr 27 2017 :ref:`solfec-examples-hybrid_modeling`
+* On May 5 2017 :ref:`solfec-theory-joints`
 
-* On Apr 27 2017 :ref:`solfec-examples-hybrid_modeling-hs0`
+* On May 5 2017 :ref:`solfec-theory-solvers`
 
-* On Apr 27 2017 :ref:`solfec-examples-hybrid_modeling-hs123`
+* On May 5 2017 :ref:`solfec-user-body`

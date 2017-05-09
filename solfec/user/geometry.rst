@@ -218,7 +218,7 @@ ELLIP_MESH
 
 This routine creates a MESH object corresponding to an ellipsoid (tetrahedral elements are used).
 
-.. topic:: obj = ELLIP_MESH (center, radii, size, volid, surfid) :red:`(Under development)`
+.. topic:: obj = ELLIP_MESH (center, radii, error, volid, surfid) :red:`(Under development)`
 
   * obj -- created MESH object
 
@@ -226,7 +226,7 @@ This routine creates a MESH object corresponding to an ellipsoid (tetrahedral el
 
   * radii -- tuple (rx, ry, rz) of ellipsoid radii
 
-  * size -- mesh edge size
+  * error -- surface mesh error size (measured as distance from ellipsoid)
 
   * volid -- volume identifier
 
