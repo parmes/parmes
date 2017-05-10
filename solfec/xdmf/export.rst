@@ -47,4 +47,4 @@ Currently missing features:
 
 In the :ref:`following section <solfec-xdmf-example>` we give an example of an application of the above command.
 
-.. [1] `POSIX regular expressions <http://www.boost.org/doc/libs/1_61_0/libs/regex/doc/html/boost_regex/syntax/basic_syntax.html>`_
+.. [1] `POSIX regular expressions <https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions>`_

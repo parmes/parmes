@@ -3312,9 +3312,6 @@ Pipe impact: runtime and storage comparison
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Note Note
 status open
 
@@ -3333,18 +3330,19 @@ effect of time step
 \end_inset
 
 
-\end_layout
+\begin_inset Note Note
+status open
 
 \begin_layout Subsection
 Array excitation
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
 \begin_layout Plain Layout
 TODO:
+\end_layout
+
+\begin_layout Itemize
+Revision 2 example
 \end_layout
 
 \begin_layout Itemize
@@ -3370,18 +3368,19 @@ REGISTER_BASE () - may be helpful
 \end_inset
 
 
-\end_layout
+\begin_inset Note Note
+status open
 
 \begin_layout Subsection
 Ellipsoids compaction
 \end_layout
 
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
 \begin_layout Plain Layout
 TODO:
+\end_layout
+
+\begin_layout Itemize
+Revision 2 example
 \end_layout
 
 \begin_layout Itemize
