@@ -32,7 +32,8 @@ This routine steps forward within the simulation output file. Ignored in SOLFEC'
 
   * corotated_displacements -- optional co--rotated displacements sampling flag; if 'TRUE' and a call or multiple
     calls to :ref:`COROTATED_DISPLACEMENTS <solfec-command-COROTATED_DISPLACEMENTS>` was/were made prior to FORWARD,
-    sampling of co--rotated displacements will be enabled; default: 'FALSE'
+    co-rotated displacements will be sampled for every time instant visited by FORWARD (the original sampling interval
+    will be ignored); default: 'FALSE'
 
 BACKWARD
 --------

@@ -3732,6 +3732,20 @@ Array excitation
 \end_layout
 
 \begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Meshed figures here possibly need to be updated since the coarsest mesh
+ seems to be producing OK results
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3768,6 +3782,17 @@ name "fig:81bricks1"
 \end_inset
 
 81 brick array: experimental setup (left) and meshed model (right).
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: possibly update mesh figures
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
@@ -3876,6 +3901,17 @@ name "fig:81bricks2"
 \end_inset
 
 81 brick array: array module closeup (left) and the binary impact test (right).
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: possibly update mesh figures
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \end_inset
