@@ -142,19 +142,10 @@ In this work we present two linearly implicit time integration methods,
  is therefore factorized only once.
  The second approach employs a reduced order base and produces a small dense
  system, efficient to deal with in the context of multibody dynamics; a
- modal base can also be used.
- We compare the proposed approaches with the Total Lagrangian finite element
- formulation and, where appropriate, with the rigid body model.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: brief conclusions here
-\end_layout
-
-\end_inset
-
+ modal base can also be used rendering the reduces system diagonal.
+ We compare the proposed approaches with the unmodified Total Lagrangian
+ finite element formulation, and where appropriate, with the rigid body
+ approach.
  An implementation of presented methods is available at 
 \begin_inset CommandInset href
 LatexCommand href
@@ -237,27 +228,6 @@ Steve Brasier, steve.brasier@atkinsglobal.com
 
 \emph on
 This report is dedicated to Nenad:)
-\end_layout
-
-\begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO:
-\end_layout
-
-\begin_layout Itemize
-rotation extraction as an appendix
-\end_layout
-
-\begin_layout Itemize
-modal approach as an appendix
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Section
@@ -2058,15 +2028,9 @@ g
 \begin_inset Formula $\mathbf{E}$
 \end_inset
 
- is reduced to rigid modes only, we should be falling back onto an acceptable
+ is reduced to rigid modes only, we would like to fall back onto an acceptable
  rigid integrator.
- We offer a simple remedy for this: we use the above scheme for the deformable
- components and employ a non-incremental velocity update, 
-\begin_inset Formula $\mathbf{u}^{t+h}=\underline{\mathbf{\Lambda}}^{t+h}\mathbf{E}\bar{\mathbf{u}}^{t+h}$
-\end_inset
-
-, for the rigid components.
- Hence below, we first project 
+ We offer a simple remedy for this: we first project 
 \begin_inset Formula $\mathbf{u}^{t+h}$
 \end_inset
 
@@ -2620,38 +2584,110 @@ name "sec:Examples"
 
 \end_layout
 
+\begin_layout Standard
+We present three examples.
+ The first example (Rotating bar) overviews the most basic properties of
+ the proposed formulations.
+ The second example (Pipe impact) demonstrates performance on a simple impact
+ problem.
+ The third example (Array excitation) applies the proposed schemes to a
+ structural multi-body setup where some experimental results are available.
+\end_layout
+
 \begin_layout Subsection
 Rotating bar
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
+A prismatic bar with 
+\begin_inset Formula $x,y,z$
+\end_inset
 
-\begin_layout Plain Layout
-TODO:
+ dimensions 
+\begin_inset Formula $0.1\times0.1\times1\mbox{ m}$
+\end_inset
+
+ and material parameters 
+\begin_inset Formula $E\in\left\{ 200\mbox{E4 Pa},200\mbox{E9 Pa}\right\} $
+\end_inset
+
+, 
+\begin_inset Formula $\nu=0.26,\rho=7.8\mbox{E3 kg /}\mbox{m}^{3}$
+\end_inset
+
+ is rotating about the 
+\begin_inset Formula $x$
+\end_inset
+
+-axis with an initial angular velocity of 
+\begin_inset Formula $1\mbox{ rad/s}$
+\end_inset
+
+.
+ We use the smaller Young's modulus in most demonstrations since in this
+ case the time scales of the rigid and deformable motions are not far apart.
+ For 
+\begin_inset Formula $E=200\mbox{E9 Pa}$
+\end_inset
+
+ the material parameters correspond to steel.
+ In this case the time scale of elastic deformations is much faster then
+ that of the rigid rotation.
+ We use this material to test performance of the proposed integrators when
+ applied with very large time steps.
+ In what follows, unless stated otherwise, the value 
+\begin_inset Formula $E=200\mbox{E4}$
+\end_inset
+
+ is used by default.
 \end_layout
 
-\begin_layout Itemize
-TL, BC, BC-RO, BC-MODAL
-\end_layout
+\begin_layout Standard
+The bar is discretized with 
+\begin_inset Formula $2\times2\times20$
+\end_inset
 
-\begin_layout Itemize
-elongation: step 1/64s, 1/256s damping 0; step 1/64s, damping 0.01, 0.05;
- soft Young
-\end_layout
-
-\begin_layout Itemize
-energy step 1/64s, 1/256s, damping 0, duration 100s; soft Young
-\end_layout
-
-\begin_layout Itemize
-convergence rate; soft Young, stiff Young
-\end_layout
+ fully integrated trilinear hexahedral elements, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RB1"
 
 \end_inset
 
+.
+ This results in 
+\begin_inset Formula $576$
+\end_inset
 
+ degrees of freedom for the full order model.
+ For the reduced order BC-RO approach we used 100 co-rotated displacement
+ samples from the Total Lagrangian solution (with rigid rotation factored
+ out) and 6 rigid motion modes (generated algebraically) as input for the
+ 
+\begin_inset CommandInset href
+LatexCommand href
+name "Python modred package"
+target "http://pythonhosted.org/modred/"
+
+\end_inset
+
+, and calculated 11 Proper Orthogonal Decomposition modes.
+ In the current example, we also include the approach from Appendix 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:BC-MODAL"
+
+\end_inset
+
+, for which the 6 rigid modes where combined with deformable modes 14, 19,
+ 26, 34, 39 (of the initial linearized system), picked by hand as visually
+ corresponding to the predominantly longitudinal deformation of the bar.
+ Hence, the BC-MODAL case also had 
+\begin_inset Formula $11$
+\end_inset
+
+ degrees of freedom.
+ 
 \end_layout
 
 \begin_layout Standard
@@ -2663,7 +2699,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename rb0_mesh.png
+	filename ro0_mesh.png
 	lyxscale 50
 	height 18pheight%
 
@@ -2696,7 +2732,45 @@ Rotating bar: geometry of the
 
 \end_inset
 
+We first compare the solutions for damped and undamped cases.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RB2"
 
+\end_inset
+
+ illustrates the time history of the elongation of the bar, measured between
+ the top and bottom center nodes, for undamped 
+\begin_inset Formula $1\mbox{s}$
+\end_inset
+
+ runs with time steps 
+\begin_inset Formula $h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\} $
+\end_inset
+
+.
+ It can be seen that the results compare well between the formulations proposed
+ here and the Total Lagrangian approach integrated in an analogous manner.
+ A damped case is illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RB3"
+
+\end_inset
+
+ for the large time step of 
+\begin_inset Formula $h=1/64\mbox{s}$
+\end_inset
+
+.
+ Also in this case the agreement is good.
+ The Total Lagrangian based solution deviates from the co-rotational solution
+ since for the TL the stiffness matrix magnitude changes with configuration,
+ which affects the stiffness proportional damping.
+ We can conclude the the 5 deformable modes used by the BC-RO and BC-MODAL
+ approaches represent well the longitudinal oscillation accompanying the
+ rotational motion of the bar.
 \end_layout
 
 \begin_layout Standard
@@ -2814,7 +2888,36 @@ Damped rotating bar: time history of the elongation for
 
 \end_inset
 
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RB4"
 
+\end_inset
+
+ illustrates the time history of the total energy of the bar for 100s runs
+ with time steps 
+\begin_inset Formula $h\in\left\{ 1/64\mbox{s},1/256\mbox{s}\right\} $
+\end_inset
+
+.
+ For all but the BC-RO approach, the small oscillation of energy remains
+ bounded with time.
+ The full space co-rotational BC approach is better behaved than BC-MODAL:
+ in nearly coincides with the Total Lagrangian approach.
+ The relatively small oscillation of energy, present in TL, BC, and BC-MODAL
+ cases, is characteristic for the adopted time stepping and it has been
+ already demonstrated by Zhang and Skeel 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Zhang1997"
+
+\end_inset
+
+ on simpler model problems.
+ The larger oscillation and dissipation of energy, clear in case of the
+ BC-RO approach, remains a shortcoming and it may be addressed in future
+ revisions of this paper.
 \end_layout
 
 \begin_layout Standard
@@ -2871,7 +2974,47 @@ Rotating bar: time history of total energy for
 
 \end_inset
 
+The second order convergence rate is illustrated in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:RB5"
 
+\end_inset
+
+.
+ Two cases are considered: undamped motion of a soft bar 
+\begin_inset Formula $E=200\mbox{E4}$
+\end_inset
+
+ and damped motion of stiff bar 
+\begin_inset Formula $E=200\mbox{E9}$
+\end_inset
+
+.
+ In both cases the reference solution 
+\begin_inset Formula $q_{ref}$
+\end_inset
+
+ was obtained at time 
+\begin_inset Formula $t=1/2^{4}\mbox{s}$
+\end_inset
+
+ with time step 
+\begin_inset Formula $h=1/2^{16}\mbox{s}$
+\end_inset
+
+.
+ For the softer material the time scales of the rigid and deformable motion
+ are not far apart and hence it is easier to observe the second order convergenc
+e for larger time steps.
+ For the stiffer model we used damping 
+\begin_inset Formula $\eta=1/10^{6}$
+\end_inset
+
+ in order to damp out the high frequency oscillations that could not be
+ well represented for the large time steps used here.
+ This perhaps represents a typical analysis case where realistic material
+ parameters need to be used with large time steps.
 \end_layout
 
 \begin_layout Standard
@@ -2934,6 +3077,243 @@ Rotating bar: second order convergence of displacements for soft undamped
 
 \begin_layout Subsection
 Pipe impact
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro1_pipe0.png
+	lyxscale 20
+	width 29text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro1_pipe1.png
+	lyxscale 20
+	width 29text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename ro1_pipe2.png
+	lyxscale 20
+	width 29text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PI0A"
+
+\end_inset
+
+Pipe impact: initial, impact, and final configurations (left to right).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+An elastic pipe free falls onto a block obstacle.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PI0A"
+
+\end_inset
+
+ illustrates the initial, impact and final configurations.
+ The inner pipe radius is 0.01 m, its thickness is 0.005 m, and its length
+ is 0.1 m.
+ The pipe lowest point is initially located 0.025 m above the top surface
+ of the block.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PI0B"
+
+\end_inset
+
+ shows the characteristic points, used to extract results.
+ Point p0 impacts the geometrical center of the block.
+ Points p0, p1, p2, p3 are 0.025 m away from p4, when measuring along the
+ pipe length.
+ The pipe is made of 
+\begin_inset Formula $4\times32\times32$
+\end_inset
+
+ fully integrated trilinear hexahedral elements.
+ The elastic properties of the pipe are 
+\begin_inset Formula $E=1\mbox{E7 Pa}$
+\end_inset
+
+, 
+\begin_inset Formula $\nu=0.25$
+\end_inset
+
+ and its density is 
+\begin_inset Formula $\rho=1\mbox{E3 kg /}\mbox{m}^{3}$
+\end_inset
+
+.
+ The obstacle has dimensions 
+\begin_inset Formula $0.01\times0.1\times0.01\mbox{ m}$
+\end_inset
+
+ and it is modeled as a geometrical boundary which does not contribute mass.
+ The gravity along the 
+\begin_inset Formula $z$
+\end_inset
+
+-direction is 
+\begin_inset Formula $-10\text{ m/s}^{2}$
+\end_inset
+
+.
+ The simulation time step is 0.001 s, the duration is 0.1 s, and the amount
+ of damping is 
+\begin_inset Formula $\eta=1\text{E-4}$
+\end_inset
+
+.
+ Schemes TL, BC, and BC-RO are compared.
+ 100 co-rotated displacement samples from the Total Lagrangian solution
+ and 6 rigid motion modes are used as input for the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Python modred package"
+target "http://pythonhosted.org/modred/"
+
+\end_inset
+
+, to produce 18 Proper Orthogonal Decomposition modes for the BC-RO approach.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename ro1_points.png
+	lyxscale 20
+	width 45text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:PI0B"
+
+\end_inset
+
+Pipe impact: mesh characteristic points.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PI1"
+
+\end_inset
+
+ illustrates the energy balance: in all cases the graphs coincide relatively
+ well.
+ While the BC approach closely follows the Total Lagrangian approach (TL),
+ the reduced order BC-RO approach slightly deviates in its post-impact response.
+ Similar general response characteristic can be seen in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PI2"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PI3"
+
+\end_inset
+
+, 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PI4"
+
+\end_inset
+
+ where other types of results are compared: we have some variation in the
+ post-impact response, while overall the results match.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:PI1"
+
+\end_inset
+
+ illustrates the runtime and storage statistics.
+ The body co-rotational (BC) approach is about 6 times faster than TL; the
+ reduced order (BC-RO) approach is about 50 time faster and requires about
+ 50 times less storage.
+ We note, that the rotation angle in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PI2"
+
+\end_inset
+
+ was calculated as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{angle}=\arcsin\left(\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right)
+\]
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3027,7 +3407,11 @@ name "fig:PI2"
 \end_inset
 
 Pipe impact: z-coordinates of points p4, p5 (left), and pipe rotation angle
- between 
+ (about 
+\begin_inset Formula $y$
+\end_inset
+
+) between 
 \begin_inset Formula $t=0.05\text{s}$
 \end_inset
 
@@ -3081,8 +3465,15 @@ name "fig:PI3"
 
 \end_inset
 
-Pipe impact: inner (left), and outer pipe diameter in the contact area between
- 
+Pipe impact: inner 
+\begin_inset Formula $\left|\text{p2}-\text{p3}\right|$
+\end_inset
+
+ (left), and outer 
+\begin_inset Formula $\left|\text{p0}-\text{p1}\right|$
+\end_inset
+
+ pipe diameter in the contact area between 
 \begin_inset Formula $t=0.05\text{s}$
 \end_inset
 
@@ -3327,22 +3718,321 @@ effect of damping
 effect of time step
 \end_layout
 
+\begin_layout Itemize
+these could be studied in a separate technical report
+\end_layout
+
 \end_inset
 
 
-\begin_inset Note Note
-status open
+\end_layout
 
 \begin_layout Subsection
 Array excitation
 \end_layout
 
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
 \begin_layout Plain Layout
-TODO:
+\align center
+\begin_inset Graphics
+	filename 81rig.png
+	lyxscale 40
+	height 25page%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename 81mesh.png
+	lyxscale 35
+	height 25pheight%
+
+\end_inset
+
+
 \end_layout
 
-\begin_layout Itemize
-Revision 2 example
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:81bricks1"
+
+\end_inset
+
+81 brick array: experimental setup (left) and meshed model (right).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+The experiment behind this example comes from the context of the civil nuclear
+ power generation in the UK.
+ A series of dynamic tests were carried out by National Nuclear Corporation
+ in 1985 as part of the seismic endorsement of the Heysham II / Torness
+ AGR
+\begin_inset Foot
+status open
+
+\begin_layout Plain Layout
+AGR stands for an Advanced Gass-cooled Reactor
+\end_layout
+
+\end_inset
+
+ core design.
+ These tests used an array of 81 graphite bricks as shown in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81bricks1"
+
+\end_inset
+
+ (left), consisting of alternating ‘fuel’ and ‘interstitial’ bricks.
+ The array was mounted in a rigid frame on a shaker table.
+ The boundary frame was driven in the horizontal plane with synthesised
+ seismic or swept-sine input motions in either one or both axes simultaneously.
+ Measurements were taken of the resulting velocities of certain bricks in
+ the array (determined from accelerometer data) and also of the forces within
+ the keying system (using load cells built into some components).
+ Some details of the experimental setup has been described in 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Ahmed1987a,Ahmed1987b"
+
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Fuel-fuel bricks coefficients of restitution are in C33-C34-PSD-213-086
+ report, page 59.
+ CS grade graphite used in the binary test (what is 
+\begin_inset Quotes eld
+\end_inset
+
+CS
+\begin_inset Quotes erd
+\end_inset
+
+?) and the full array sweeps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 81module.png
+	lyxscale 40
+	height 20pheight%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename 81fbi.png
+	lyxscale 42
+	height 20pheight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:81bricks2"
+
+\end_inset
+
+81 brick array: array module closeup (left) and the binary impact test (right).
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the current demonstration we bypass many of the details of our mechanical
+ model (this is expected to be the subject of a separate paper).
+ The ultimate aim is modeling the entire AGR core (
+\begin_inset Formula $\sim5\text{K}$
+\end_inset
+
+ fuel bricks), hence we are in the search for the lowest possible resolution
+ model.
+ The meshed model is presented in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81bricks1"
+
+\end_inset
+
+ (right).
+ As in the experiment all bodies are vertically restrained so that they
+ move in a frictionless manner in the horizontal plane.
+ Since the behavior of the assembly is essentially two dimensional the number
+ of elements along the height is kept to minimum.
+ In Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81bricks2"
+
+\end_inset
+
+ one can see that the number of elements used in the horizontal brick sections
+ is also small.
+ For fuel brick meshes the error in the lowest eigenmodes corresponding
+ to planar squeezing is below 35% (as compared with finer meshes), which
+ we tentatively accept in the quest for a lowest possible resolution model.
+\end_layout
+
+\begin_layout Standard
+The following material parameters were assumed for the graphite used in
+ the experiment: 1.18E10Pa for Young's modulus, 0.21 for Poisson's ratio,
+ and for mass density 1688kg/
+\begin_inset Formula $\mbox{m}^{3}$
+\end_inset
+
+, 1637kg/
+\begin_inset Formula $\mbox{m}^{3}$
+\end_inset
+
+, 1740kg/
+\begin_inset Formula $\mbox{m}^{3}$
+\end_inset
+
+ for respectively fuel bricks, interstitial bricks and loose keys (the mass
+ densities were tuned to obtain the total brick weights reported in the
+ experiment).
+ The coefficient of Coulomb's friction was assumed 0.1.
+ Among several simple impact tests performed in the preliminary experimental
+ work, a binary impact between fuel bricks was pursued: Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81bricks2"
+
+\end_inset
+
+ (right).
+ A range of relative input velocities was used (5-35 cm/s) for which the
+ ratio of the output velocity to the input velocity remained consistently
+ in the area of 0.9.
+ It should be noted that due to geometrical setup, this particular type
+ of impact is not present in our full array model.
+ We then have two independent experiments, which we try to validate simultaneous
+ly.
+\end_layout
+
+\begin_layout Standard
+We use three families of models: solely rigid (RG), body co-rotational (BC),
+ and reduced order (BC-RO).
+ In all cases the time step is 0.0001s.
+ For the deformable models we used damping 
+\begin_inset Formula $\eta=\mbox{1E-7}$
+\end_inset
+
+, which produced the required macroscopic velocity restitution of 0.9 for
+ the binary impact test from Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81bricks2"
+
+\end_inset
+
+ (right).
+ In case of the rigid body model the impact restitution was zero, resulting
+ in a totally passive response.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: comment on displacement sample and mode selection for BC-RO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+In the initial validation of the entire array model we aimed at reproducing
+ a swept-sine constant amplitude acceleration test.
+ In the experiment the array was subject to a 3s 3Hz settling dwell at start,
+ followed by a 3Hz to 10Hz sweep with 0.1Hz/s buildup rate and constant amplitude
+ of 0.3g, all this amounting to the total duration of 72s.
+ The sweep direction was aligned with one of the sides of the array.
+ Linear velocity histories of the centre points of several bricks were recorded
+ at 500Hz.
+ Magnitudes of these velocities were then averaged using 0.1Hz window and
+ plotted as time series normalized by the corresponding magnitudes of the
+ input velocity.
+\end_layout
+
+\begin_layout Standard
+The input acceleration signal produces a smoothly decaying envelope of displacem
+ent, which given a fixed amount of clearance between bricks, initially builds
+ up their 
+\begin_inset Quotes eld
+\end_inset
+
+rattling
+\begin_inset Quotes erd
+\end_inset
+
+ interactions and then passes a threshold beyond which interactions cease.
+ Initially the displacements are much larger than the clearance and the
+ entire array is swept back and forth.
+ When the boundary displacements reach the level of the clearance (few mm)
+ the kinetic energy starts being injected into higher modes of the system.
+ This builds up a peak in the velocity response.
+ When the input displacements fall below the clearance distance the bricks
+ disengage and there is a drop in the velocity response.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO:
 \end_layout
 
 \begin_layout Itemize
@@ -3904,7 +4594,7 @@ so that only deformable components of
 \begin_inset Formula $\bar{\mathbf{u}}^{t+h}$
 \end_inset
 
- are substituted.
+ are substituted: this improves the long-term energy behavior.
  Finally, projection (
 \begin_inset CommandInset ref
 LatexCommand ref
