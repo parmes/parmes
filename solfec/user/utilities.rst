@@ -292,7 +292,8 @@ The modal analysis results are stored with bodies and can be viewed.
   * path -- path to file where the results will be stored (to avoid recomputing if possible).
     Note, that if previous modal analysis results are found they are used rather then recomputed
     if the number of modes and num are the same. If num is different from the previous modes count,
-    then new num modes is computed from scratch.
+    then new num modes is computed from scratch. *Note:* “.h5” extension is automatically added to
+    the stored path;
 
   * abstol -- residual tolerance for the eigenvalue solver (default: 1E-11)
 

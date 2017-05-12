@@ -1,5 +1,5 @@
 
-* On May 10 2017 :ref:`solfec-user-results`
+* On May 11 2017 :ref:`solfec-user-results`
 
 * On May 10 2017 :ref:`solfec-user-utilities`
 
