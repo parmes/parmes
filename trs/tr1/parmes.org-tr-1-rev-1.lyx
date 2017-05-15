@@ -2634,7 +2634,7 @@ A prismatic bar with
  In this case the time scale of elastic deformations is much faster then
  that of the rigid rotation.
  We use this material to test performance of the proposed integrators when
- applied with very large time steps.
+ applied with large time steps.
  In what follows, unless stated otherwise, the value 
 \begin_inset Formula $E=200\mbox{E4}$
 \end_inset
@@ -2768,9 +2768,9 @@ reference "fig:RB3"
  The Total Lagrangian based solution deviates from the co-rotational solution
  since for the TL the stiffness matrix magnitude changes with configuration,
  which affects the stiffness proportional damping.
- We can conclude the the 5 deformable modes used by the BC-RO and BC-MODAL
- approaches represent well the longitudinal oscillation accompanying the
- rotational motion of the bar.
+ We can conclude the 5 deformable modes used by the BC-RO and BC-MODAL approache
+s represent well the longitudinal oscillation accompanying the rotational
+ motion of the bar.
 \end_layout
 
 \begin_layout Standard
@@ -2907,7 +2907,7 @@ reference "fig:RB4"
  in nearly coincides with the Total Lagrangian approach.
  The relatively small oscillation of energy, present in TL, BC, and BC-MODAL
  cases, is characteristic for the adopted time stepping and it has been
- already demonstrated by Zhang and Skeel 
+ also demonstrated by Zhang and Skeel 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Zhang1997"
@@ -3013,8 +3013,6 @@ e for larger time steps.
 
  in order to damp out the high frequency oscillations that could not be
  well represented for the large time steps used here.
- This perhaps represents a typical analysis case where realistic material
- parameters need to be used with large time steps.
 \end_layout
 
 \begin_layout Standard
@@ -3158,7 +3156,7 @@ reference "fig:PI0B"
  Points p0, p1, p2, p3 are 0.025 m away from p4, when measuring along the
  pipe length.
  The pipe is made of 
-\begin_inset Formula $4\times32\times32$
+\begin_inset Formula $36\times36\times4$
 \end_inset
 
  fully integrated trilinear hexahedral elements.
@@ -3284,7 +3282,25 @@ reference "fig:PI4"
 
  where other types of results are compared: we have some variation in the
  post-impact response, while overall the results match.
- Table 
+ We note, that the rotation angle in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:PI2"
+
+\end_inset
+
+ was calculated using
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\text{angle}=\arcsin\left(\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right)\text{.}
+\]
+
+\end_inset
+
+Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:PI1"
@@ -3295,25 +3311,7 @@ reference "tab:PI1"
  The body co-rotational (BC) approach is about 6 times faster than TL; the
  reduced order (BC-RO) approach is about 50 time faster and requires about
  50 times less storage.
- We note, that the rotation angle in Figure 
-\begin_inset CommandInset ref
-LatexCommand ref
-reference "fig:PI2"
-
-\end_inset
-
- was calculated as follows
-\end_layout
-
-\begin_layout Standard
-\begin_inset Formula 
-\[
-\text{angle}=\arcsin\left(\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right)
-\]
-
-\end_inset
-
-
+ 
 \end_layout
 
 \begin_layout Standard
@@ -3763,7 +3761,7 @@ status open
 
 \begin_inset Graphics
 	filename 81mesh.png
-	lyxscale 35
+	lyxscale 20
 	height 25pheight%
 
 \end_inset
@@ -3874,7 +3872,7 @@ status open
 \align center
 \begin_inset Graphics
 	filename 81module.png
-	lyxscale 40
+	lyxscale 33
 	height 20pheight%
 
 \end_inset
