@@ -102,7 +102,7 @@ date{}
 
 \end_inset
 
-April, 2017
+May, 2017
 \end_layout
 
 \begin_layout Subject
@@ -3702,7 +3702,7 @@ Pipe impact: runtime and storage comparison
 
 
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Plain Layout
 TODO:
@@ -3730,20 +3730,6 @@ Array excitation
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-Meshed figures here possibly need to be updated since the coarsest mesh
- seems to be producing OK results
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3754,7 +3740,7 @@ status open
 \begin_inset Graphics
 	filename 81rig.png
 	lyxscale 40
-	height 25page%
+	height 39text%
 
 \end_inset
 
@@ -3762,7 +3748,7 @@ status open
 \begin_inset Graphics
 	filename 81mesh.png
 	lyxscale 20
-	height 25pheight%
+	height 49text%
 
 \end_inset
 
@@ -3779,18 +3765,8 @@ name "fig:81bricks1"
 
 \end_inset
 
-81 brick array: experimental setup (left) and meshed model (right).
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: possibly update mesh figures
-\end_layout
-
-\end_inset
-
-
+81 brick array: experimental setup (left) and meshed model (right: base
+ mesh).
 \end_layout
 
 \end_inset
@@ -3824,7 +3800,7 @@ reference "fig:81bricks1"
 
  (left), consisting of alternating ‘fuel’ and ‘interstitial’ bricks.
  The array was mounted in a rigid frame on a shaker table.
- The boundary frame was driven in the horizontal plane with synthesised
+ The boundary frame was driven in the horizontal plane with synthesized
  seismic or swept-sine input motions in either one or both axes simultaneously.
  Measurements were taken of the resulting velocities of certain bricks in
  the array (determined from accelerometer data) and also of the forces within
@@ -3898,18 +3874,8 @@ name "fig:81bricks2"
 
 \end_inset
 
-81 brick array: array module closeup (left) and the binary impact test (right).
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: possibly update mesh figures
-\end_layout
-
-\end_inset
-
-
+81 brick array: array module closeup (left: base mesh) and the binary impact
+ test (right: fine mesh).
 \end_layout
 
 \end_inset
@@ -3924,14 +3890,40 @@ TODO: possibly update mesh figures
 
 \begin_layout Standard
 In the current demonstration we bypass many of the details of our mechanical
- model (this is expected to be the subject of a separate paper).
+ model.
  The ultimate aim is modeling the entire AGR core (
 \begin_inset Formula $\sim5\text{K}$
 \end_inset
 
  fuel bricks), hence we are in the search for the lowest possible resolution
  model.
- The meshed model is presented in Figure 
+ We are going to demonstrate some results for two mesh densities: denoted
+ as a 
+\begin_inset Quotes eld
+\end_inset
+
+basic mesh
+\begin_inset Quotes erd
+\end_inset
+
+ and a 
+\begin_inset Quotes eld
+\end_inset
+
+fine mesh
+\begin_inset Quotes erd
+\end_inset
+
+, cf.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:81stats"
+
+\end_inset
+
+.
+ The basic meshed model is presented in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:81bricks1"
@@ -3955,6 +3947,384 @@ reference "fig:81bricks2"
  For fuel brick meshes the error in the lowest eigenmodes corresponding
  to planar squeezing is below 35% (as compared with finer meshes), which
  we tentatively accept in the quest for a lowest possible resolution model.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="5" columns="7">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Fuel brick
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Interstitial brick
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Loose key
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Model total
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BC
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+base mesh
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+DOFs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+432
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+456
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+56112
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fine mesh
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1512
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+456
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+121992
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BC-RO
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+base mesh
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10144
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+fine mesh
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+64
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10144
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:81stats"
+
+\end_inset
+
+Base and fine mesh statistics: there are 61 fuel bricks, 60 interstitial
+ bricks, and 100 loose keys in each case.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3998,32 +4368,47 @@ ly.
 We use three families of models: solely rigid (RG), body co-rotational (BC),
  and reduced order (BC-RO).
  In all cases the time step is 0.0001s.
+ Co-rotated displacements from the BC simulation were sampled at 0.02s intervals
+ and together with the 6 algebraically generated rigid modes, for each distinct
+ mesh instance, served as an input for the 
+\begin_inset CommandInset href
+LatexCommand href
+name "Python modred package"
+target "http://pythonhosted.org/modred/"
+
+\end_inset
+
+, to produce POD bases for the BC-RO approach: 64 modes were used for both
+ the fuel and the interstitial bricks.
+ The loose keys were modeled as single elements based on the co-rotated
+ BC approach.
  For the deformable models we used damping 
 \begin_inset Formula $\eta=\mbox{1E-7}$
 \end_inset
 
-, which produced the required macroscopic velocity restitution of 0.9 for
- the binary impact test from Figure 
+, which, for the finer mesh, roughly reproduced the required macroscopic
+ velocity restitution of 0.9 for the binary impact test from Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "fig:81bricks2"
 
 \end_inset
 
- (right).
- In case of the rigid body model the impact restitution was zero, resulting
- in a totally passive response.
- 
+ (right): restitution of 0.91 was produced by the BC approach, and ???
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-TODO: comment on displacement sample and mode selection for BC-RO
+XXX
 \end_layout
 
 \end_inset
 
-
+ by BC-RO.
+ For the basic mesh, the reproduced coefficient of restitution was 0.85 for
+ the BC approach, and 0.82 for BC-RO.
+ In case of the rigid body model the impact restitution was zero, resulting
+ in a totally passive response.
 \end_layout
 
 \begin_layout Standard
@@ -4034,7 +4419,17 @@ In the initial validation of the entire array model we aimed at reproducing
  of 0.3g, all this amounting to the total duration of 72s.
  The sweep direction was aligned with one of the sides of the array.
  Linear velocity histories of the centre points of several bricks were recorded
- at 500Hz.
+ at 50Hz
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+500Hz originally: too large output files
+\end_layout
+
+\end_inset
+
+.
  Magnitudes of these velocities were then averaged using 0.1Hz window and
  plotted as time series normalized by the corresponding magnitudes of the
  input velocity.
