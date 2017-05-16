@@ -3813,6 +3813,24 @@ key "Ahmed1987a,Ahmed1987b"
 \end_inset
 
 .
+ We note, that this example is also called the 
+\begin_inset Quotes eld
+\end_inset
+
+81 brick array
+\begin_inset Quotes erd
+\end_inset
+
+, or simply the 
+\begin_inset Quotes eld
+\end_inset
+
+81 array
+\begin_inset Quotes erd
+\end_inset
+
+, because the total number of unconstrained fuel and interstitial bricks
+ is 81.
 \end_layout
 
 \begin_layout Standard
@@ -4394,17 +4412,8 @@ reference "fig:81bricks2"
 
 \end_inset
 
- (right): restitution of 0.91 was produced by the BC approach, and ???
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-XXX
-\end_layout
-
-\end_inset
-
- by BC-RO.
+ (right): restitution of 0.91 was produced by the BC approach, and 0.86 by
+ BC-RO.
  For the basic mesh, the reproduced coefficient of restitution was 0.85 for
  the BC approach, and 0.82 for BC-RO.
  In case of the rigid body model the impact restitution was zero, resulting
@@ -4454,6 +4463,92 @@ rattling
  This builds up a peak in the velocity response.
  When the input displacements fall below the clearance distance the bricks
  disengage and there is a drop in the velocity response.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 81velo_BC.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:81bricks3"
+
+\end_inset
+
+81 brick array: frequency histories of normalized output velocity magnitudes.
+ EXP is the experiment.
+ BC-base and BC-fine denote the body co-rotational formulation using respectivel
+y the base and the fine mesh.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 81velo_BC_RO_base.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:81bricks4"
+
+\end_inset
+
+81 brick array: frequency histories of normalized output velocity magnitudes.
+ EXP is the experiment.
+ BC-base and RO-base are respectively the BC and the BC-RO formulations,
+ both using the base mesh.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
