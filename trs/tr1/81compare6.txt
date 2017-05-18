@@ -1,0 +1,70 @@
+-------------------------------
+81BC4_2@6 --> Run time: 21.18 h
+-------------------------------
+Computation statistics in hours:
+TIMINT --> min:  1.7 avg:  4.6 max:  5.9
+CONUPD --> min:  0.0 avg:  0.3 max:  0.6
+CONDET --> min:  0.2 avg:  0.6 max:  0.8
+LOCDYN --> min:  4.9 avg: 13.7 max: 15.7
+CONSOL --> min:  0.2 avg:  0.7 max: 13.6
+PARBAL --> min:  0.2 avg:  1.3 max:  3.4
+----------------------------------------
+BODIES --> min:   33 avg:   36 max:   42
+CONSTRAINTS --> min:  104 avg:  108 max:  113
+EXTERNAL CONSTRAINTS --> min:   15 avg:   25 max:   40
+--------------------------
+81BC6 --> Run time: 9.92 h
+--------------------------
+Computation statistics in hours:
+TIMINT --> min:  0.5 avg:  2.1 max:  2.8
+CONUPD --> min:  0.1 avg:  0.2 max:  0.5
+CONDET --> min:  0.1 avg:  0.3 max:  0.4
+LOCDYN --> min:  1.5 avg:  5.7 max:  6.4
+CONSOL --> min:  0.3 avg:  0.9 max:  7.6
+PARBAL --> min:  0.0 avg:  0.7 max:  1.4
+----------------------------------------
+BODIES --> min:   32 avg:   36 max:   43
+CONSTRAINTS --> min:  103 avg:  107 max:  112
+EXTERNAL CONSTRAINTS --> min:   15 avg:   24 max:   39
+-------------------------------
+81RO4_2@6 --> Run time: 10.53 h
+-------------------------------
+Computation statistics in hours:
+TIMINT --> min:  0.4 avg:  3.4 max:  4.4
+CONUPD --> min:  0.1 avg:  0.2 max:  0.5
+CONDET --> min:  0.1 avg:  0.6 max:  0.8
+LOCDYN --> min:  0.8 avg:  4.0 max:  5.7
+CONSOL --> min:  0.3 avg:  1.2 max:  9.1
+PARBAL --> min:  0.1 avg:  1.0 max:  1.8
+----------------------------------------
+BODIES --> min:   32 avg:   36 max:   42
+CONSTRAINTS --> min:  104 avg:  108 max:  113
+EXTERNAL CONSTRAINTS --> min:   15 avg:   25 max:   39
+--------------------------
+81RO6 --> Run time: 7.15 h
+--------------------------
+Computation statistics in hours:
+TIMINT --> min:  0.2 avg:  1.7 max:  2.4
+CONUPD --> min:  0.0 avg:  0.2 max:  0.6
+CONDET --> min:  0.1 avg:  0.3 max:  0.4
+LOCDYN --> min:  0.4 avg:  2.9 max:  3.7
+CONSOL --> min:  0.4 avg:  1.3 max:  6.3
+PARBAL --> min:  0.0 avg:  0.7 max:  1.2
+----------------------------------------
+BODIES --> min:   33 avg:   36 max:   42
+CONSTRAINTS --> min:  104 avg:  108 max:  112
+EXTERNAL CONSTRAINTS --> min:   15 avg:   25 max:   39
+--------------------------
+81RG6 --> Run time: 4.37 h
+--------------------------
+Computation statistics in hours:
+TIMINT --> min:  0.0 avg:  0.1 max:  0.5
+CONUPD --> min:  0.0 avg:  0.2 max:  0.9
+CONDET --> min:  0.0 avg:  0.2 max:  1.0
+LOCDYN --> min:  0.0 avg:  0.2 max:  1.6
+CONSOL --> min:  1.1 avg:  3.4 max:  4.3
+PARBAL --> min:  0.0 avg:  0.3 max:  1.5
+----------------------------------------
+BODIES --> min:   34 avg:   36 max:   40
+CONSTRAINTS --> min:  131 avg:  135 max:  140
+EXTERNAL CONSTRAINTS --> min:   20 avg:   37 max:   60

@@ -4518,6 +4518,49 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
+	filename 81velo_RO.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:81RO"
+
+\end_inset
+
+81 bricks array: frequency histories of normalized output velocity magnitudes.
+ EXP is the experiment.
+ RO-base and RO-fine denote the reduced order formulation using respectively
+ the base and the fine mesh.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
 	filename 81velo_BC_RO_base.png
 	width 80text%
 
@@ -4550,6 +4593,118 @@ name "fig:81BCRObase"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename 81velo_BC_RO_fine.png
+	width 80text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:81BCROfine"
+
+\end_inset
+
+81 bricks array: frequency histories of normalized output velocity magnitudes.
+ EXP is the experiment.
+ BC-fine and RO-fine are respectively the BC and the BC-RO formulations,
+ both using the fine mesh.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81RO"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81BCROfine"
+
+\end_inset
+
+ show time histories of normalized output velocity magnitudes for selected
+ fuel and interstitial bricks, compared with those obtained in the experiment.
+ One can see that relatively good agreement is obtained for all combinations
+ of base and fine FE meshes combined with the body co-rotational (BC) and
+ reduced order BC-RO (dented as RO in the figures) formulations.
+ The best overall match seems to be obtained in case of the BC-fine model:
+ combining the body co-rotational formulation (BC) and the fine mesh (where
+ only the fuel bricks are refined).
+ This is specifically visible in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81BC"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81BCROfine"
+
+\end_inset
+
+ where the performance of the BC-fine model for the FB2(2)(2) fuel brick
+ is better than of the BC-base and RO-fine models.
+ There seems to be some correlation between the ability to reproduce the
+ 0.9 binary impact velocity restitution from the experiment, and the ability
+ to match most of the experimental curves in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81RO"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81BCROfine"
+
+\end_inset
+
+.
+ On the other hand, Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:81RGBC"
+
+\end_inset
+
+ compares the performance of the BC-base approach with that of the purely
+ rigid body model (RG).
+ Clearly, the rigid body approach is not able to reproduce the experimentally
+ observed peaks.
 \end_layout
 
 \begin_layout Standard
@@ -4596,6 +4751,40 @@ name "fig:81RGBC"
 \end_layout
 
 \begin_layout Standard
+Statistics of total runtimes and average time shares of computational stages
+ are included in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:81runs"
+
+\end_inset
+
+.
+ These are collected for BC-fine/base, RO-fine/base and the rigid body models,
+ all run using 6 MPI ranks on a single compute node, equipped with Intel
+ Xeon E5–2600 processing units.
+ There is some 
+\begin_inset Quotes eld
+\end_inset
+
+give and take
+\begin_inset Quotes erd
+\end_inset
+
+ happening in terms of the share of the computational time taken by various
+ operations.
+ The time integration runtime, which is significant for the deformable models,
+ for RO-fine/base takes less compared to the fully resolved BC-fine/base
+ models.
+ Assembling of constraint equations, which dominates the computational time,
+ also takes less time in case of RO-fine/base, when compared to BC-fine/base.
+ In the deformable model cases, contact solution does not dominate the total
+ runtime.
+ This reversed in case of the solely rigid model, where solving the ill-conditio
+ned constraint equations dominates.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float table
 wide false
 sideways false
@@ -4604,7 +4793,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Tabular
-<lyxtabular version="3" rows="7" columns="6">
+<lyxtabular version="3" rows="7" columns="8">
 <features tabularvalignment="middle">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
@@ -4612,8 +4801,10 @@ status open
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
 <column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
 <row>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4622,11 +4813,20 @@ Formulation
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-BC-base
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -4644,7 +4844,7 @@ BC-fine
 \begin_inset Text
 
 \begin_layout Plain Layout
-RO-base
+BC-base
 \end_layout
 
 \end_inset
@@ -4654,6 +4854,15 @@ RO-base
 
 \begin_layout Plain Layout
 RO-fine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RO-base
 \end_layout
 
 \end_inset
@@ -4669,11 +4878,30 @@ Rigid body
 </cell>
 </row>
 <row>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" leftline="true" rotate="90" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Comp.
+ stage
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Time integration
+Time integration 
+\end_layout
+
+\end_inset
+</cell>
+<cell multirow="3" alignment="center" valignment="middle" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+(h)
 \end_layout
 
 \end_inset
@@ -4682,7 +4910,7 @@ Time integration
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+4.6
 \end_layout
 
 \end_inset
@@ -4691,7 +4919,7 @@ Time integration
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.1
 \end_layout
 
 \end_inset
@@ -4700,7 +4928,7 @@ Time integration
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3.4
 \end_layout
 
 \end_inset
@@ -4709,7 +4937,7 @@ Time integration
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.7
 \end_layout
 
 \end_inset
@@ -4718,23 +4946,32 @@ Time integration
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.1
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Contact detection
+Contact detection 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4747,7 +4984,7 @@ Contact detection
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.9
 \end_layout
 
 \end_inset
@@ -4756,7 +4993,7 @@ Contact detection
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.5
 \end_layout
 
 \end_inset
@@ -4765,7 +5002,16 @@ Contact detection
 \begin_inset Text
 
 \begin_layout Plain Layout
+0.8
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.5
 \end_layout
 
 \end_inset
@@ -4774,23 +5020,32 @@ Contact detection
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.4
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Constraint equations
+Constraint equations 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4803,7 +5058,7 @@ Constraint equations
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+13.7
 \end_layout
 
 \end_inset
@@ -4812,7 +5067,7 @@ Constraint equations
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5.7
 \end_layout
 
 \end_inset
@@ -4821,7 +5076,16 @@ Constraint equations
 \begin_inset Text
 
 \begin_layout Plain Layout
+4.0
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2.9
 \end_layout
 
 \end_inset
@@ -4830,23 +5094,32 @@ Constraint equations
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.2
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Constraint solution
+Constraint solution 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4859,7 +5132,7 @@ Constraint solution
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.7
 \end_layout
 
 \end_inset
@@ -4868,7 +5141,7 @@ Constraint solution
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.9
 \end_layout
 
 \end_inset
@@ -4877,7 +5150,16 @@ Constraint solution
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.2
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.3
 \end_layout
 
 \end_inset
@@ -4886,23 +5168,32 @@ Constraint solution
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3.4
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
 <cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Load balancing
+Load balancing 
 \end_layout
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+<cell multirow="4" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
@@ -4915,7 +5206,7 @@ Load balancing
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.3
 \end_layout
 
 \end_inset
@@ -4924,7 +5215,7 @@ Load balancing
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.7
 \end_layout
 
 \end_inset
@@ -4933,7 +5224,16 @@ Load balancing
 \begin_inset Text
 
 \begin_layout Plain Layout
+1.0
+\end_layout
 
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.7
 \end_layout
 
 \end_inset
@@ -4942,18 +5242,36 @@ Load balancing
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.3
 \end_layout
 
 \end_inset
 </cell>
 </row>
 <row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-Total runtime
+Total runtime (h)
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -4962,7 +5280,7 @@ Total runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+21.18
 \end_layout
 
 \end_inset
@@ -4971,7 +5289,7 @@ Total runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+9.92
 \end_layout
 
 \end_inset
@@ -4980,7 +5298,7 @@ Total runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+10.53
 \end_layout
 
 \end_inset
@@ -4989,7 +5307,7 @@ Total runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+7.15
 \end_layout
 
 \end_inset
@@ -4998,7 +5316,7 @@ Total runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+4.37
 \end_layout
 
 \end_inset
@@ -5107,7 +5425,101 @@ MPI ranks
 \begin_inset Text
 
 \begin_layout Plain Layout
-BC-base-72s runtime
+BC-base-72s runtime (h)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+17.81
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9.92
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+6.90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RO-base-72s runtime (h)
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+11.94
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+7.15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+BC-fine-7.2s runtime (h)
 \end_layout
 
 \end_inset
@@ -5154,101 +5566,7 @@ BC-base-72s runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-RO-base-72s runtime
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-BC-fine-7.2s runtime
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-
-\end_layout
-
-\end_inset
-</cell>
-</row>
-<row>
-<cell alignment="center" valignment="top" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-RO-fine-7.2s runtime
+RO-fine-7.2s runtime (h)
 \end_layout
 
 \end_inset
@@ -5257,7 +5575,7 @@ RO-fine-7.2s runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.03
 \end_layout
 
 \end_inset
@@ -5266,7 +5584,7 @@ RO-fine-7.2s runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.19
 \end_layout
 
 \end_inset
@@ -5275,7 +5593,7 @@ RO-fine-7.2s runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.97
 \end_layout
 
 \end_inset
@@ -5284,7 +5602,7 @@ RO-fine-7.2s runtime
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.79
 \end_layout
 
 \end_inset
@@ -5355,15 +5673,6 @@ Formulation
 \begin_inset Text
 
 \begin_layout Plain Layout
-BC-base
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 BC-fine
 \end_layout
 
@@ -5373,7 +5682,7 @@ BC-fine
 \begin_inset Text
 
 \begin_layout Plain Layout
-RO-base
+BC-base
 \end_layout
 
 \end_inset
@@ -5383,6 +5692,15 @@ RO-base
 
 \begin_layout Plain Layout
 RO-fine
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+RO-base
 \end_layout
 
 \end_inset
@@ -5411,7 +5729,7 @@ Storage size
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+7.2GB
 \end_layout
 
 \end_inset
@@ -5420,7 +5738,7 @@ Storage size
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+3.7GB
 \end_layout
 
 \end_inset
@@ -5429,7 +5747,7 @@ Storage size
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.2GB
 \end_layout
 
 \end_inset
@@ -5438,7 +5756,7 @@ Storage size
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.2GB
 \end_layout
 
 \end_inset
@@ -5447,7 +5765,7 @@ Storage size
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.84GB
 \end_layout
 
 \end_inset
@@ -5522,7 +5840,7 @@ quasi-static: zero
 \end_layout
 
 \begin_layout Itemize
-REGISTER_BASE () - will definitely be helpful
+REGISTER_BASE () - may be helpful
 \end_layout
 
 \end_inset
@@ -5539,6 +5857,70 @@ name "sec:Conclusions"
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+This paper describes the finite element formulations and time integrators,
+ implemented in 
+\begin_inset CommandInset href
+LatexCommand href
+name "Solfec"
+target "https://github.com/tkoziara/solfec"
+
+\end_inset
+
+ and available as 
+\begin_inset Quotes eld
+\end_inset
+
+DEF_LIM
+\begin_inset Quotes erd
+\end_inset
+
+ integrator choice, and 
+\begin_inset Quotes eld
+\end_inset
+
+TL
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+BC
+\begin_inset Quotes erd
+\end_inset
+
+, 
+\begin_inset Quotes eld
+\end_inset
+
+BC-RO
+\begin_inset Quotes erd
+\end_inset
+
+ and 
+\begin_inset Quotes eld
+\end_inset
+
+BC-MODAL
+\begin_inset Quotes erd
+\end_inset
+
+ formulation choice, for the Solfec's input 
+\begin_inset CommandInset href
+LatexCommand href
+name "BODY object"
+target "http://parmes.github.io/solfec/user/body.html"
+
+\end_inset
+
+.
+ These formulations allow to vary the amount of deformation expressed by
+ a finite element mesh and facilitate saving computational time and storage.
+ This may be helpful in the context of multibody modeling.
 \end_layout
 
 \begin_layout Section
@@ -6176,21 +6558,98 @@ The examples can respectively be found at:
 \end_layout
 
 \begin_layout Itemize
-...
+Rotating bar:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Source: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-...
+Online: N/A
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Pipe impact:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Source: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-...
+Online: N/A
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+Array excitation:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Source: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://github.com/tkoziara/solfec/tree/master/examples/81array"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Itemize
-...
+Online: N/A
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\end_deeper
 \begin_layout Section*
 Acknowledgements
 \end_layout
