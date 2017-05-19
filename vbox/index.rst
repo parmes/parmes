@@ -8,7 +8,7 @@ You can download:
 * `a zipped VirtualBox image Parmes.zip <https://drive.google.com/uc?export=download&id=0B0lQ6Rj8GeMVSXE3OUk3QzV6dTA>`_
 
 and use below guidance in order to set up a `VirtualBox <https://www.virtualbox.org>`_ installation
-of `Linux Lite <https://www.linuxliteos.com/>`_ with `parmes.org <../>`_ software pre--installed.
+of `Linux Lite <https://www.linuxliteos.com/>`_ with `PARMES <../>`_ software pre--installed.
 
 After downloading unzip the Parmes.zip file into Parmes.vdi. Then start VirtualBox and press "New" to create a new virtual machine (:numref:`vbox1`).
 
@@ -76,9 +76,9 @@ The provided `Linux Lite <https://www.linuxliteos.com/>`_ system is set up as fo
 
 * the *parmes* user password and the *root* password are "**parmes**"
 
-* directory */home/parmes/parmes* contains all `parmes.org <../>`_ software
+* directory */home/parmes/parmes* contains all `PARMES <../>`_ software
 
-* file */home/parmes/.bashrc* extends the PATH variable to include `parmes.org <../>`_ executables
+* file */home/parmes/.bashrc* extends the PATH variable to include `PARMES <../>`_ executables
 
 **Disk capacity**
 
@@ -116,9 +116,9 @@ are available at the command prompt.
 
    :ref:`Solfec <solfec-index>` viewer session of a domino toppling example.
 
-.. topic:: Updating `parmes.org <../>`_ software
+.. topic:: Updating `PARMES <../>`_ software
 
-  File $HOME/parmes/Makefile facilitates update of `parmes.org <../>`_ software. Enter the $HOME/parmes directory and type:
+  File $HOME/parmes/Makefile facilitates update of `PARMES <../>`_ software. Enter the $HOME/parmes directory and type:
 
   ::
 

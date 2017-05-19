@@ -1,0 +1,56 @@
+---------------------------
+81BC3 --> Run time: 17.81 h
+---------------------------
+Computation statistics in hours:
+TIMINT --> min:  0.9 avg:  3.9 max:  4.8
+CONUPD --> min:  0.0 avg:  0.3 max:  0.7
+CONDET --> min:  0.2 avg:  0.5 max:  0.7
+LOCDYN --> min:  2.5 avg: 10.9 max: 11.9
+CONSOL --> min:  0.5 avg:  1.4 max: 13.9
+PARBAL --> min:  0.0 avg:  0.7 max:  1.2
+----------------------------------------
+BODIES --> min:   64 avg:   73 max:   80
+CONSTRAINTS --> min:  210 avg:  215 max:  220
+EXTERNAL CONSTRAINTS --> min:   20 avg:   26 max:   32
+--------------------------
+81BC6 --> Run time: 9.92 h
+--------------------------
+Computation statistics in hours:
+TIMINT --> min:  0.5 avg:  2.1 max:  2.8
+CONUPD --> min:  0.1 avg:  0.2 max:  0.5
+CONDET --> min:  0.1 avg:  0.3 max:  0.4
+LOCDYN --> min:  1.5 avg:  5.7 max:  6.4
+CONSOL --> min:  0.3 avg:  0.9 max:  7.6
+PARBAL --> min:  0.0 avg:  0.7 max:  1.4
+----------------------------------------
+BODIES --> min:   32 avg:   36 max:   43
+CONSTRAINTS --> min:  103 avg:  107 max:  112
+EXTERNAL CONSTRAINTS --> min:   15 avg:   24 max:   39
+---------------------------
+81BC12 --> Run time: 6.90 h
+---------------------------
+Computation statistics in hours:
+TIMINT --> min:  0.5 avg:  1.2 max:  2.5
+CONUPD --> min:  0.1 avg:  0.1 max:  0.4
+CONDET --> min:  0.1 avg:  0.1 max:  0.7
+LOCDYN --> min:  1.1 avg:  3.2 max:  4.3
+CONSOL --> min:  0.3 avg:  0.7 max:  5.0
+PARBAL --> min:  0.2 avg:  1.6 max:  2.5
+----------------------------------------
+BODIES --> min:   13 avg:   18 max:   25
+CONSTRAINTS --> min:   49 avg:   53 max:   58
+EXTERNAL CONSTRAINTS --> min:   10 avg:   23 max:   36
+---------------------------
+81BC24 --> Run time: 5.20 h
+---------------------------
+Computation statistics in hours:
+TIMINT --> min:  0.2 avg:  0.7 max:  2.2
+CONUPD --> min:  0.0 avg:  0.1 max:  0.7
+CONDET --> min:  0.0 avg:  0.1 max:  0.9
+LOCDYN --> min:  0.4 avg:  1.8 max:  2.9
+CONSOL --> min:  0.2 avg:  0.6 max:  4.5
+PARBAL --> min:  0.2 avg:  1.9 max:  3.5
+----------------------------------------
+BODIES --> min:    5 avg:    9 max:   15
+CONSTRAINTS --> min:   22 avg:   26 max:   31
+EXTERNAL CONSTRAINTS --> min:    6 avg:   18 max:   32

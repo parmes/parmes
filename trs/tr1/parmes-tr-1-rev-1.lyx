@@ -108,8 +108,8 @@ May, 2017
 \begin_layout Subject
 \begin_inset CommandInset href
 LatexCommand href
-name "parmes.org"
-target "http://parmes.org"
+name "PARMES"
+target "http://parmes.github.io"
 
 \end_inset
 
@@ -140,12 +140,11 @@ In this work we present two linearly implicit time integration methods,
  suitable for deformable multibody dynamic contact problems.
  The first approach co-rotates the initial linearized dynamic system which
  is therefore factorized only once.
- The second approach employs a reduced order base and produces a small dense
- system, efficient to deal with in the context of multibody dynamics; a
- modal base can also be used rendering the reduces system diagonal.
- We compare the proposed approaches with the unmodified Total Lagrangian
- finite element formulation, and where appropriate, with the rigid body
- approach.
+ The second approach employs a reduced order base and produces a smaller,
+ dense algebraic system; a modal base can also be used rendering the reduces
+ system diagonal.
+ We cross-compare the proposed approaches with the unmodified Total Lagrangian
+ finite element formulation and with the rigid body approach.
  An implementation of presented methods is available at 
 \begin_inset CommandInset href
 LatexCommand href
@@ -4774,14 +4773,39 @@ give and take
  happening in terms of the share of the computational time taken by various
  operations.
  The time integration runtime, which is significant for the deformable models,
- for RO-fine/base takes less compared to the fully resolved BC-fine/base
+ for RO-fine/base is shorter compared to the fully resolved BC-fine/base
  models.
  Assembling of constraint equations, which dominates the computational time,
  also takes less time in case of RO-fine/base, when compared to BC-fine/base.
- In the deformable model cases, contact solution does not dominate the total
+ In the deformable model cases contact solution does not dominate the total
  runtime.
  This reversed in case of the solely rigid model, where solving the ill-conditio
 ned constraint equations dominates.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:81scal"
+
+\end_inset
+
+ illustrates parallel scaling, from 3 to 24 MPI-ranks, on a 24 core cluster
+ node equipped with two Intel Xeon E5–2600 CPUs.
+ Maximum speedups are 3.43/2.49 for the BC/RO-base models and 3.99/2.57 for
+ the BC/RO-fine models.
+ We note that currently Solfec does not exploit shared memory parallelism.
+ The domain decomposition based load balancing may not be a most suitable
+ parallelization strategy for a problem of this size, run on a single cluster
+ node.
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:81store"
+
+\end_inset
+
+ illustrates the size of the output storage for the tested approaches.
+ Naturally, the reduced order models output less, compared to the fully
+ resolved models.
 \end_layout
 
 \begin_layout Standard
@@ -5461,7 +5485,7 @@ BC-base-72s runtime (h)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5.20
 \end_layout
 
 \end_inset
@@ -5499,7 +5523,7 @@ RO-base-72s runtime (h)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5.56
 \end_layout
 
 \end_inset
@@ -5508,7 +5532,7 @@ RO-base-72s runtime (h)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+4.79
 \end_layout
 
 \end_inset
@@ -5528,7 +5552,7 @@ BC-fine-7.2s runtime (h)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+4.31
 \end_layout
 
 \end_inset
@@ -5537,7 +5561,7 @@ BC-fine-7.2s runtime (h)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+2.31
 \end_layout
 
 \end_inset
@@ -5546,7 +5570,7 @@ BC-fine-7.2s runtime (h)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.52
 \end_layout
 
 \end_inset
@@ -5555,7 +5579,7 @@ BC-fine-7.2s runtime (h)
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+1.08
 \end_layout
 
 \end_inset
@@ -5804,7 +5828,7 @@ name "tab:81store"
 
 \begin_layout Standard
 \begin_inset Note Note
-status open
+status collapsed
 
 \begin_layout Subsection
 Ellipsoids compaction
@@ -5869,7 +5893,7 @@ target "https://github.com/tkoziara/solfec"
 
 \end_inset
 
- and available as 
+, and available as 
 \begin_inset Quotes eld
 \end_inset
 
@@ -5912,7 +5936,7 @@ BC-MODAL
  formulation choice, for the Solfec's input 
 \begin_inset CommandInset href
 LatexCommand href
-name "BODY object"
+name "BODY command"
 target "http://parmes.github.io/solfec/user/body.html"
 
 \end_inset
@@ -5920,7 +5944,7 @@ target "http://parmes.github.io/solfec/user/body.html"
 .
  These formulations allow to vary the amount of deformation expressed by
  a finite element mesh and facilitate saving computational time and storage.
- This may be helpful in the context of multibody modeling.
+ They may be helpful in the context of multibody modeling.
 \end_layout
 
 \begin_layout Section
@@ -6461,7 +6485,7 @@ target "https://github.com/tkoziara/solfec/"
 \begin_layout Itemize
 \begin_inset CommandInset href
 LatexCommand href
-target "http://parmes.org/solfec"
+target "http://parmes.github.io/solfec"
 
 \end_inset
 
