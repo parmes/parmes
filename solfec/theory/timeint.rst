@@ -15,7 +15,7 @@ And two variants of time integration for pseudo–rigid and finite–element kin
 
 * DEF_EXP -- an explicit leap--frog scheme, cf. Section 5.1 in [2]_
 
-* DEF_LIM -- a linearly implicit leap--frog scheme, [3]_
+* DEF_LIM -- a linearly implicit leap--frog scheme, [3]_ and :ref:`TR1 <tr1>`
 
 A time integration scheme is selected by modifying the *scheme* parameter of the :ref:`BODY object <solfec-user-body>`.
 
@@ -117,7 +117,7 @@ and in the linearly implicit case
 
   \mathbf{A}=\mathbf{M}+\left(\frac{\eta h}{2}+\frac{h^{2}}{4}\right)\mathbf{K}\left(\mathbf{q}^{t+h/2}\right)\text{ for DEF_LIM}
 
-The time step is denoted as :math:`h`.
+The time step is denoted as :math:`h`. See :ref:`TR1 <tr1>` for technical details.
 
 Implementation
 --------------

@@ -1,4 +1,8 @@
 
+* On May 19 2017 :ref:`trs-index`
+
+* On May 19 2017 :ref:`vbox-index`
+
 * On May 12 2017 :ref:`solfec-user-utilities`
 
 * On May 11 2017 :ref:`solfec-user-results`
@@ -14,7 +18,3 @@
 * On May 5 2017 :ref:`solfec-examples-hybrid_modeling-hs123`
 
 * On May 5 2017 :ref:`solfec-examples-hybrid_modeling-hs3_scaling`
-
-* On May 5 2017 :ref:`solfec-installation`
-
-* On May 5 2017 :ref:`solfec-theory-bulkmat`

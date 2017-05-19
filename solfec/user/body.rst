@@ -132,17 +132,18 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   +------------------------+-------------------------------------------------------------------------------------+
   | 'TL'                   | Total Lagrangian (default)                                                          |
   +------------------------+-------------------------------------------------------------------------------------+
-  | 'BC'                   | Body co--rotational (one co--rotated frame per body, suitable for stiff bodies)     |
+  | 'BC'                   | Body co--rotational (one co--rotated frame per body, suitable for stiff bodies);    |
+  |                        | See :ref:`TR1 <tr1>` for technical details                                          |
   +------------------------+-------------------------------------------------------------------------------------+
   | 'BC--MODAL'            | Body co--rotational, modal approach; 'DEF_LIM' integration scheme is always used for|
   |                        | this formulation (there is no computational advantage in using 'DEF_EXP' since all  |
   |                        | system matrices are diagonal); *Note:* the **base** argument must be passed;        |
-  |                        | :red:`(Under development)`                                                          |
+  |                        | See :ref:`TR1 <tr1>` for technical details; :red:`(Under development)`              | 
   +------------------------+-------------------------------------------------------------------------------------+
   | 'BC--RO '              | Body co--rotational, reduced order approach; 'DEF_LIM' integration scheme is always |
   |                        | used for this formulation (there is no computational advantage in using 'DEF_EXP'   |
   |                        | since all system matrices are dense); *Note:** the **base** argument must be        |
-  |                        | passed; :red:`(Under development)`                                                  |
+  |                        | passed; See :ref:`TR1 <tr1>` for technical details; :red:`(Under development)`      |
   +------------------------+-------------------------------------------------------------------------------------+
  
 |
@@ -204,9 +205,8 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   |           | finite element | kinematics, energy and momentum conserving, conditionally stable           |
   +-----------+----------------+----------------------------------------------------------------------------+
   | 'DEF_LIM' | pseudo--rigid, | Linearly implicit scheme similar to [3]_; energy and momentum conserving,  |
-  |           | finite element | stable for moderate to large steps; *NOTE:* if the time step is too large, |
-  |           |                | artificial negative internal energy increments may be produced in          |
-  |           |                | the event of impacts                                                       |
+  |           | finite element | stable for moderate to large steps; See :ref:`TR1 <tr1>` for technical     |
+  |           |                | details                                                                    |
   +-----------+----------------+----------------------------------------------------------------------------+
 
 References:
