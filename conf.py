@@ -7,6 +7,8 @@ extensions = ['youtube', 'ablog', 'sphinx.ext.mathjax']
 numfig = True
 import ablog
 blog_path = 'blog'
+blog_baseurl = 'http://parmes.org'
+disqus_shortname = 'parmes'
 
 templates_path = ['_templates', ablog.get_html_templates_path()]
 source_suffix = '.rst'

@@ -1,6 +1,7 @@
 .. post:: Jun 13, 2016
    :tags: parmes
    :author: Tomek
+   :nocomments:
 
 .. _about-parmes:
 

@@ -89,7 +89,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   | **obj.selfcontact** -- self-contact detection flag (default: 'OFF”) taking values 'ON' or 'OFF'         |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.scheme** -- time integration scheme (default: 'DEFAULT') used to integrate motion.                |
-  | See :numref:`body-scheme` and the :ref:`Time integration manual page <solfec-theory-timeint>`.          |
+  | See :numref:`solfec-body-scheme` and the :ref:`Time integration manual page <solfec-theory-timeint>`.   |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.damping** -- stiffness proportional damping coefficient (default: 0.0) for the dynamic case       |
   | (ignored for rigid bodies).                                                                             |
@@ -184,7 +184,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
 
 |
 
-.. _body-scheme:
+.. _solfec-body-scheme:
 
 .. table:: Time integration schema. See also the :ref:`Time integration manual page <solfec-theory-timeint>`.
 

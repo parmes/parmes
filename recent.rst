@@ -1,4 +1,8 @@
 
+* On May 19 2017 :ref:`solfec-theory-timeint`
+
+* On May 19 2017 :ref:`solfec-user-body`
+
 * On May 19 2017 :ref:`trs-index`
 
 * On May 19 2017 :ref:`vbox-index`
@@ -14,7 +18,3 @@
 * On May 5 2017 :ref:`solfec-examples-hybrid_modeling`
 
 * On May 5 2017 :ref:`solfec-examples-hybrid_modeling-hs0`
-
-* On May 5 2017 :ref:`solfec-examples-hybrid_modeling-hs123`
-
-* On May 5 2017 :ref:`solfec-examples-hybrid_modeling-hs3_scaling`
