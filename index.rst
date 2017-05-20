@@ -1,6 +1,10 @@
-============================================================================
-Parallel mechanics and particulate media software :ref:`blog <about-parmes>`
-============================================================================
+.. |feed| raw:: html
+
+  <a href="blog/atom.xml"><img src="_static/feed.png" title="Atom feeds" width="17" height="17" /></a>
+
+===================================================================================
+Parallel mechanics and particulate media software :ref:`blog <about-parmes>` |feed|
+===================================================================================
 
 Recently modified pages:
 
