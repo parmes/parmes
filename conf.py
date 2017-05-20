@@ -9,6 +9,7 @@ import ablog
 blog_path = 'blog'
 blog_baseurl = 'http://parmes.org'
 disqus_shortname = 'parmes'
+blog_title = 'PARMES/blog'
 blog_feed_length = 5
 
 templates_path = ['_templates', ablog.get_html_templates_path()]
