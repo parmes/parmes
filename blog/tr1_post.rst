@@ -57,8 +57,8 @@ displacements and generate a reduced base using `Python's modred package <https:
 Input decks for the rotating bar, pipe impact, and array excitation examples from :ref:`TR1 <tr1>`
 can be respectively found in
 
-* `examples/reduced--ordero0 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0>`_
-* `example/reduced--order1 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1>`_
-* `example/81array <https://github.com/tkoziara/solfec/tree/master/examples/81array>`_
+* `solfec/examples/reduced--ordero0 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0>`_
+* `solfec/example/reduced--order1 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1>`_
+* `solfec/example/81array <https://github.com/tkoziara/solfec/tree/master/examples/81array>`_
 
 directories.

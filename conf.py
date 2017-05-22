@@ -3,7 +3,7 @@ import sys
 import os
 
 sys.path.insert(0, os.path.abspath('.'))
-extensions = ['youtube', 'ablog', 'sphinx.ext.mathjax']
+extensions = ['runpy', 'youtube', 'ablog', 'sphinx.ext.mathjax']
 numfig = True
 import ablog
 blog_path = 'blog'

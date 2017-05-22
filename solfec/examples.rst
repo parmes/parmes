@@ -10,5 +10,6 @@ Currently available examples include:
   :maxdepth: 1
 
   examples/hybrid_modeling
+..  examples/reduced_order
 
 .. [*] Undocumented input files are located in the `solfec/inp <https://github.com/tkoziara/solfec/tree/master/inp>`_ directory.
