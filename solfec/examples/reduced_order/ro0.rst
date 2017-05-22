@@ -3,6 +3,8 @@
 Rotating bar
 ============
 
+.. warning:: Under construction
+
 This is a simplest application of the reduced order modeling functionality. This example is also included in :ref:`TR1 <tr1>`. The input files for
 this example are located in the `solfec/examples/reduced--order0 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0>`_ directory.
 These are:

@@ -3,6 +3,8 @@
 Pipe impact
 ===========
 
+.. warning:: Under construction
+
 This example, also included in :ref:`TR1 <tr1>`, illustrates the reduced order modeling functionality on a pipe impact problem. The input files for
 this example are located in the `solfec/examples/reduced--order1 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1>`_ directory.
 These are:

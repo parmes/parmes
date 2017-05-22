@@ -1,5 +1,3 @@
-:orphan:
-
 .. _solfec-examples-reduced_order:
 
 Reduced order modeling
