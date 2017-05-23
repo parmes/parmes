@@ -2,7 +2,7 @@
    :tags: reports
    :author: Tomek
 
-.. _blog-tr1:
+.. _tr1-post:
 
 TR1: Co-rotated and reduced order time integrators
 ==================================================

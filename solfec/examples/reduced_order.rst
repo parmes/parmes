@@ -8,7 +8,7 @@ algebraic systems by applying `reduced order <https://en.wikipedia.org/wiki/Mode
 or `modal <https://en.wikipedia.org/wiki/Modal_analysis_using_FEM>`_ simplifications. Both of these
 are combined with a body--level co--rotational approach in order to incorporate large rigid body
 rotations -- relevant in the multibody context. The details of this can be found in the technical
-report :ref:`TR1 <tr1>` and in :ref:`this blog post <blog-tr1>`. Currently available examples of
+report :ref:`TR1 <tr1>` and in :ref:`this blog post <tr1-post>`. Currently available examples of
 this functionality include:
 
 .. toctree::

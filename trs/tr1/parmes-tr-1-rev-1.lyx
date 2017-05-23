@@ -385,7 +385,7 @@ reference "sec:BC-MODAL"
  
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "sec:Implementation"
+reference "sec:Links"
 
 \end_inset
 
@@ -6457,10 +6457,10 @@ reference "sec:BC-RO"
 \end_layout
 
 \begin_layout Section
-Appendix - Implementation
+Appendix - Links
 \begin_inset CommandInset label
 LatexCommand label
-name "sec:Implementation"
+name "sec:Links"
 
 \end_inset
 
@@ -6598,13 +6598,10 @@ target "https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0"
 \end_layout
 
 \begin_layout Itemize
-Online: N/A
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
+Online: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://parmes.github.io/solfec/examples/reduced_order/ro0.html"
 
 \end_inset
 
@@ -6629,13 +6626,10 @@ target "https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1"
 \end_layout
 
 \begin_layout Itemize
-Online: N/A
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
+Online: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://parmes.github.io/solfec/examples/reduced_order/ro1.html"
 
 \end_inset
 
@@ -6660,13 +6654,10 @@ target "https://github.com/tkoziara/solfec/tree/master/examples/81array"
 \end_layout
 
 \begin_layout Itemize
-Online: N/A
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
+Online: 
+\begin_inset CommandInset href
+LatexCommand href
+target "http://parmes.github.io/solfec/examples/81array.html"
 
 \end_inset
 
