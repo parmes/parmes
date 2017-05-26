@@ -1,4 +1,6 @@
 
+* On May 24 2017 :ref:`solfec-examples-reduced_order-ro1`
+
 * On May 23 2017 :ref:`solfec-examples-81array`
 
 * On May 23 2017 :ref:`solfec-examples-reduced_order`
@@ -6,8 +8,6 @@
 * On May 23 2017 :ref:`solfec-examples-reduced_order-ro0`
 
 * On May 22 2017 :ref:`solfec-examples`
-
-* On May 22 2017 :ref:`solfec-examples-reduced_order-ro1`
 
 * On May 20 2017 :ref:`solfec-user-body`
 

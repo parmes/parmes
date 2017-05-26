@@ -149,3 +149,53 @@ example can be seen in video [1]_.
 .. [1] An animation of the reduced-order1_ pipe impact example.
 
 .. youtube:: https://www.youtube.com/watch?v=RoSfE7-7ZH8
+
+.. literalinclude:: ../../../../solfec/examples/reduced-order1/ro1-fem-tl.py
+   :linenos:
+   :caption: Listing of ro1--fem--tl.py
+   :name: ro1-lst1
+
+:numref:`ro1-lst1` exemplifies the Total Lagrangian analysis input file. The simulation creation code
+is hidden inside of the library subroutine `ro1_simulation <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L10>`_,
+which returns the :ref:`SOLFEC object <solfec-user-solfec>`, the pipe :ref:`BODY object <solfec-user-body>`
+and the duration of the analysis, ``stop``, in line 6. When Solfec is opened in ``'WIRITE'`` mode (no results exist)
+and without the graphical viewer (--v switch not used), we sample co--rotated deformable and rigid displacements in lines 10 and 11.
+:ref:`COROTATED_DISPLACEMENTS <solfec-command-COROTATED_DISPLACEMENTS>` and :ref:`RIGID_DISPLACEMENTS <solfec-command-RIGID_DISPLACEMENTS>`
+commands are respectively used. Further, the simulation is run and the sampled displacements saved in lines 14--24. In case Solfec is opened
+in ``'READ'`` mode, in line 28, existing results are processed and time histories are extracted using a library routine
+`ro1_read_histories <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L61>`_. For comparison
+:numref:`ro1-lst2` includes the BC--RO analysis input code. Since most of the input code is inside
+`ro1--lib.py <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py>`_ this file is even shorter.
+The sampled displacements are used by `ro1--modred.py <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-modred.py>`_,
+invoked internally from within `ro1_simulation <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L10>`_,
+when creating the reduced order model of the pipe body. This is depicted in lines 34--49 of :numref:`ro1-lst3`.
+
+.. literalinclude:: ../../../../solfec/examples/reduced-order1/ro1-reduced.py
+   :linenos:
+   :caption: Listing of ro1--reduced.py
+   :name: ro1-lst2
+
+.. literalinclude:: ../../../../solfec/examples/reduced-order1/ro1-lib.py
+   :lines: 30-49
+   :lineno-match:
+   :caption: Listing of a portion of ro1--lib.py responsible for creation of the pipe body.
+   :name: ro1-lst3
+
+To run this example and generate figures presented here, enter Solfec source directory and type
+
+::
+
+  solfec examples/reduced-order1/ro1-run-all.py 
+
+After all progress messages cease, figures are saved as ``out/reduced-order1/*.png`` files.
+To interactively view the animated bar, as in video [1]_, call
+
+::
+
+  solfec -v examples/reduced-order1/ro1-view.py 
+
+You can type ``o`` in order to highlight the output path in the viewer and see which model you are currently looking at.
+You can switch between models using ``<`` and ``>``. Right--click the mouse button to activate a drop--down menu and see
+other available options and keyboard shortcuts.
+
+
