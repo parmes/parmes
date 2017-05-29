@@ -201,7 +201,8 @@ the total runtime. This reversed in case of the solely rigid model, where solvin
 E5--2600 CPUs. Maximum speedups are 3.43/2.49 for the BC/RO--base models and 3.99/2.57 for the BC/RO--fine models. We note that currently
 Solfec does not exploit shared memory parallelism. The domain decomposition based load balancing may not be a most suitable parallelization
 strategy for a problem of this size, run on a single cluster node. :numref:`81array-tab4` illustrates the size of the output storage for
-the tested approaches. Naturally, the reduced order models output less, compared to the fully resolved models.
+the tested approaches. Naturally, the reduced order models output less, compared to the fully resolved models. Finally, video [YT0]_ shows
+an animated output.
 
 .. _81array-tab2:
 
@@ -255,6 +256,24 @@ the tested approaches. Naturally, the reduced order models output less, compared
   +-----------------+----------+----------+----------+----------+------------+
   | Storage size    | 7.2GB    | 3.7GB    | 1.2GB    | 1.2GB    | 0.84GB     |
   +-----------------+----------+----------+----------+----------+------------+
+
+|
+
+.. [YT0] An animation of the 81array_ example DX displacement time history.
+
+.. youtube:: https://www.youtube.com/watch?v=oDxQesw2Jco
+  :width: 648
+  :height: 364
+
+Running 81 array
+----------------
+
+.. warning:: TODO
+
+Running brick impact test
+-------------------------
+
+.. warning:: TODO
 
 .. [*] AGR stands for an `Advanced Gass-cooled Reactor <https://en.wikipedia.org/wiki/Advanced_gas-cooled_reactor>`_.
 
