@@ -4641,7 +4641,7 @@ name "fig:81BCROfine"
 Figures 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:81RO"
+reference "fig:81BC"
 
 \end_inset
 
@@ -4681,7 +4681,7 @@ reference "fig:81BCROfine"
  to match most of the experimental curves in Figures 
 \begin_inset CommandInset ref
 LatexCommand ref
-reference "fig:81RO"
+reference "fig:81BC"
 
 \end_inset
 
@@ -5064,7 +5064,7 @@ Contact detection
 \begin_inset Text
 
 \begin_layout Plain Layout
-Constraint equations 
+Constraints equations 
 \end_layout
 
 \end_inset
@@ -5138,7 +5138,7 @@ Constraint equations
 \begin_inset Text
 
 \begin_layout Plain Layout
-Constraint solution 
+Constraints solution 
 \end_layout
 
 \end_inset
