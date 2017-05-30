@@ -61,4 +61,4 @@ can be respectively found in
 * `solfec/example/reduced--order1 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1>`_
 * `solfec/example/81array <https://github.com/tkoziara/solfec/tree/master/examples/81array>`_
 
-directories.
+directories. See also :ref:`the online version of these examples <solfec-examples-reduced_order>`.
