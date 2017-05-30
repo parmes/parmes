@@ -103,7 +103,7 @@ The following material parameters were assumed for the graphite used in the expe
 for respectively fuel bricks, interstitial bricks and loose keys (the mass densities were tuned to obtain the total brick
 weights reported in the experiment). The coefficient of Coulomb's friction was assumed 0.1. Among several simple impact tests
 performed in the preliminary experimental work, a binary impact between fuel bricks was :numref:`81array-fig3` (right). A range
-of relative input velocities was used (5-35 cm/s) for which the ratio of the output velocity to the input velocity remained
+of relative input velocities was used (5--35 cm/s) for which the ratio of the output velocity to the input velocity remained
 consistently in the area of 0.9. It should be noted that due to geometrical setup, this particular type of impact is not present
 in our full array model. We then have two independent experiments, which we try to validate simultaneously.
 
@@ -324,19 +324,25 @@ add ``-form TL`` after ``solfec`` or ``solfec-mpi`` and run
 Note, that the order of arguments after the Solfec command does not matter. This example comes equipped with reduced order bases
 made of 64 modes for both fuel and interstitial bricks. These are saved as
 `81array[*]base.pikle.gz files <https://github.com/tkoziara/solfec/blob/master/examples/81array>`_ files and they corepond to
-`81array[*].inp files <https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.inp>`_ input decks: 81array.inp
-(base mesh) and 81array_4_2.inp (fine mesh). If you would like to generate your own reduced base, you first need to run BC--based
+`81array[*].inp files <https://github.com/tkoziara/solfec/blob/master/examples/81array/81array.inp>`_ input decks: ``81array.inp``
+(base mesh) and ``81array_4_2.inp`` (fine mesh). If you would like to generate your own reduced base, you first need to run BC--based
 or a TL--based analysis. Once it has terminated, you then need to run it again, **in serial mode**, using the ``-genbase`` switch, e.g.
 
 ::
 
-  solfec -form TL examples/81array/81array.py -genbase -fbbod 96 -ibmod 32
+  solfec examples/81array/81array.py -genbase -fbbod 96 -ibmod 32
 
-This will read the results and generate a reduced order base made of 96 modes for fuel bricks and 32 modes for interstitial bricks.
-Note, that this will also overwrite the default bases saved in the ``examples/81array`` directory. You may want to make a copy of
-this directory when investigating various reduced bases like that.
+This will read the results and generate a reduced order base made of 96 modes for fuel bricks and 32 modes for interstitial bricks,
+for the default body co--rotated finite element formulation employing the base mesh. Note, that this will also overwrite the default
+bases stored in the ``examples/81array`` directory. You may want to make a copy of this directory when investigating various reduced
+bases, e.g.
 
-The output files are saved inside of ``out/81array[*]`` directories: what goes after the *81array* string depends on the paramters
+::
+
+  cp -r examples/81array path/to/81array_copy
+  solfec path/to/81array_copy/81array.py -genbase -fbbod 96 -ibmod 32
+
+The output files are saved inside of ``out/81array[*]`` directories: what goes after the ``81array`` string depends on the paramters
 used to run the analysis. E.g. the default parameters result in the following outout directory:
 
 ::
