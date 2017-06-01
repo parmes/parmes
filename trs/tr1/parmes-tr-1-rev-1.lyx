@@ -3294,7 +3294,7 @@ reference "fig:PI2"
 \begin_layout Standard
 \begin_inset Formula 
 \[
-\text{angle}=\arcsin\left(\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right)\text{.}
+\text{angle}=\arcsin\left(\left|\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right|\right)\text{.}
 \]
 
 \end_inset

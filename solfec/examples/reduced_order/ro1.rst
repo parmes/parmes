@@ -92,7 +92,7 @@ that the rotation angle in :numref:`ro1-fig4` was calculated using
 
 .. math::
 
-  \text{angle}=\arcsin\left(\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right)\text{.}
+  \text{angle}=\arcsin\left(\left|\frac{\text{p5}-\text{p4}}{\left|\text{p5}-\text{p4}\right|}\times\left(-1,0,0\right)\right|\right)\text{.}
 
 :numref:`ro1-tab1` illustrates the runtime and storage statistics. The body co--rotational (BC) approach is about 6 times faster than
 TL; the reduced order (BC--RO) approach is about 50 time faster and requires about 50 times less storage. The animated output of this
