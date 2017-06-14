@@ -12,6 +12,17 @@ Parmec Input Commands
 PARMEC input language extends `Python <http://www.python.org/>`__.
 Subroutines related to input processing are listed below.
 
+ARGV
+----
+
+List command line arguments.
+
+.. topic:: list = ARGV (| nonparmec)
+
+  - **list** - Python list (possibly empty) of command line arguments
+
+  - **nonparmec** - optional boolean flag enabling filtering out parmec arguments; default: True
+
 RESET
 -----
 
