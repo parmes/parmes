@@ -1,5 +1,5 @@
 
-* On Jun 14 2017 :ref:`parmec-input_commands`
+* On Jun 19 2017 :ref:`parmec-input_commands`
 
 * On Jun 1 2017 :ref:`solfec-examples-reduced_order-ro1`
 

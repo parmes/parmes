@@ -34,7 +34,7 @@ Below we list subroutines providing per--body or per--simulation initialization 
 
   * angular -- angular velocity :math:`(\omega_{x},\omega_{y},\omega_{z} )`
 
-.. topic:: INITIALIZE_STATE (solfec, path, time)
+.. topic:: INITIALIZE_STATE (solfec, path, time | subset)
 
   This routine initializes the state of a Solfec object with the state red from an output
   directory at a given time. It is ignored in the 'READ' mode. *Note*: constraint reactions
@@ -46,7 +46,11 @@ Below we list subroutines providing per--body or per--simulation initialization 
 
   * time -- time at which the state should be red from the output files
 
-.. topic:: RIGID_TO_FEM (path, time, solfec)
+  * subset -- defines a subset of initialized bodies; a string can be used to define a POSIX regular expression [1]_ that will be matched against body labels;
+    a list of such strings can also be passed; e.g. [‘^BOD.*A$’, '^BODY1$', '^BODY2$', '^BOD.*B$'] defines two direct labels 'BODY1' and 'BODY2' and two
+    possible subsets made of labels such as 'BODY123A', 'BODY_anything_B', etc.
+
+.. topic:: RIGID_TO_FEM (path, time, solfec | subset)
 
   This routine initializes the state of FEM bodies within the Solfec object with the state of rigid bodies
   red from an output directory at a given time. It is ignored in the 'READ' mode. *Note:* rigid displacements
@@ -62,6 +66,10 @@ Below we list subroutines providing per--body or per--simulation initialization 
   * time -- time at which the state should be red from the output files
 
   * solfec -- Solfec object in the 'WRITE' mode
+
+  * subset -- defines a subset of initialized bodies; a string can be used to define a POSIX regular expression [1]_ that will be matched against body labels;
+    a list of such strings can also be passed; e.g. [‘^BOD.*A$’, '^BODY1$', '^BODY2$', '^BOD.*B$'] defines two direct labels 'BODY1' and 'BODY2' and two
+    possible subsets made of labels such as 'BODY123A', 'BODY_anything_B', etc.
 
 Runtime utilities
 -----------------
@@ -233,3 +241,5 @@ Routines listed below are related to prallel runtime and performance.
   * solfec -- SOLFEC object
 
   * object -- BODY or CONSTRAINT object
+
+.. [1] `POSIX regular expressions <https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions>`_
