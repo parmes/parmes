@@ -14,6 +14,6 @@ which you will find gradually better documented here. There are also other compu
 that I would like to share and write about. Some of those are included in the Navigation area.
 
 `Here you will find a profile related to my education and work. <http://www.linkedin.com/in/tkoziara>`_
-My other website, about waking up from the experience of separation, `can be found here. <http://m21s.tk>`_
+A blog about waking up from the experience of separation `can be found here. <http://m21s.tk>`_
 Parmes website is written using `Sphinx <http://www.sphinx-doc.org>`_ generator,
 `alabaster <http://alabaster.readthedocs.io>`_ theme, and `ablog <http://ablog.readthedocs.io>`_ extension.

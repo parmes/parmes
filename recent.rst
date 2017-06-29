@@ -1,4 +1,6 @@
 
+* On Jun 19 2017 :ref:`solfec-user-simulation`
+
 * On Jun 19 2017 :ref:`parmec-input_commands`
 
 * On Jun 1 2017 :ref:`solfec-examples-reduced_order-ro1`
@@ -16,5 +18,3 @@
 * On May 19 2017 :ref:`solfec-theory-timeint`
 
 * On May 19 2017 :ref:`trs-index`
-
-* On May 19 2017 :ref:`vbox-index`
