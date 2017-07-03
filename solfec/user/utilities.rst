@@ -146,18 +146,22 @@ may encounter input/output errors.
 MESH_SPLIT
 ----------
 
-This routine splits a mesh object along the internal element boundaries whose nodes belong to the given node set.
+This routine splits a mesh object along internal element boundaries whose nodes belong to the given node or face set.
 Depending on the topological properties of the mesh this may or may not result in splitting of the mesh in multiple parts.
 
-.. topic:: [out1, out2, ...] = MESH_SPLIT (mesh, nodeset | surfid) :red:`(Under development)`
+.. topic:: [out1, out2, ...] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) :red:`(Under development)`
 
   * [out1, out2, ...] -- a list of output meshes (*None* if no internal element boundaries in the input mesh were split)
 
   * mesh -- input MESH object (the input mesh is not modified by this routine)
 
-  * nodeset -- a list of nodes [n0, n1, n2, ...] defining the splitting surface (zero based indexing)
+  * nodeset -- a list of nodes [n0, n1, n2, ...] defining the splitting surface (zero based indexing); ignored when **faceset** is passed
 
-  * surfid -- surface identifier for the newly created surfaces (default: 0)
+  * faceset -- a list of lists face nodes [[n0, n1, n2], [n3, n4, n5, n6], ...] defining the splitting surface (zero based indexing)
+
+  * surfid1 -- surface identifier for the newly created surfaces (default: 0); used with **nodeset** or outward--counter--clockwise--normal aligned with **faceset**
+
+  * surfid2 -- surface identifier for the newly created surfaces (default: 0); inward--counter--clockwise--normal aligned with **faceset**
 
 COPY
 ----
