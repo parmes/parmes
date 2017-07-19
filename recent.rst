@@ -1,5 +1,5 @@
 
-* On Jul 3 2017 :ref:`solfec-user-utilities`
+* On Jul 5 2017 :ref:`solfec-user-utilities`
 
 * On Jun 19 2017 :ref:`solfec-user-simulation`
 

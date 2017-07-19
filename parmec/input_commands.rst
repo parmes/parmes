@@ -266,10 +266,8 @@ spring force is zero.
      :math:`\left(d_{x},d_{y},d_{z}\right)`
 
   -  **planar** - optional planar spring flag; when ’ON’ spring direction
-
-     .. math:: \left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)\right|
-
-      is projected onto a plane orthogonal to :math:`\left(d_{x},d_{y},d_{z}\right)`; default: ’OFF’
+     :math:`\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)\right|`
+     is projected onto a plane orthogonal to :math:`\left(d_{x},d_{y},d_{z}\right)`; default: ’OFF’
 
   -  **unload** - spring unloading lookup table
      :math:`\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]`;
