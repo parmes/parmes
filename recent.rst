@@ -1,7 +1,11 @@
 
-* On Jul 19 2017 :ref:`parmec-input_commands`
+* On Jul 20 2017 :ref:`solfec-user`
 
-* On Jul 5 2017 :ref:`solfec-user-utilities`
+* On Jul 20 2017 :ref:`solfec-user-fragmentation`
+
+* On Jul 20 2017 :ref:`solfec-user-utilities`
+
+* On Jul 19 2017 :ref:`parmec-input_commands`
 
 * On Jun 19 2017 :ref:`solfec-user-simulation`
 
@@ -14,7 +18,3 @@
 * On May 23 2017 :ref:`solfec-examples-reduced_order`
 
 * On May 22 2017 :ref:`solfec-examples`
-
-* On May 20 2017 :ref:`solfec-user-body`
-
-* On May 19 2017 :ref:`solfec-theory-timeint`
