@@ -132,6 +132,9 @@ Some parameters can also be accessed as members and methods of a MESH object, cf
   | [(x0, y0, z0), (x1, y1, z1), ...]; if **volid** is passed, integration points only fort that volume     |
   | identifier are returned                                                                                 |
   +---------------------------------------------------------------------------------------------------------+
+  | **obj.inter_element_faces()** -- returns a list of lists of node indices of inter--element faces,       |
+  | e.g. [[n0, n1, n2], [n0, n1, n2, n3], ...]                                                              |
+  +---------------------------------------------------------------------------------------------------------+
   | **Read-write members and methods:**                                                                     |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.node (n | x, y, z)** -- returns a (x, y, z) tuple storing coordinates of nth node;                |
