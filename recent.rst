@@ -1,7 +1,7 @@
 
-* On Jul 20 2017 :ref:`solfec-user`
-
 * On Jul 20 2017 :ref:`solfec-user-fragmentation`
+
+* On Jul 20 2017 :ref:`solfec-user`
 
 * On Jul 20 2017 :ref:`solfec-user-utilities`
 
