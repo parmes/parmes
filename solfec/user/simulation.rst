@@ -167,7 +167,7 @@ Routines listed below affect contact detection and contact handling.
 
 .. _solfec-command-CONTACT_SPARSIFY:
 
-.. topic:: CONTACT_SPARSIFY (solfec, threshold | minarea, mindist)
+.. topic:: CONTACT_SPARSIFY (solfec | threshold, minarea, mindist)
 
   This routine modifies contact filtering (sparsification) behaviour. Generally speaking, some contact points
   are filtered out in order to avoid unnecessary dense contact point clusters. If a pair of bodies is connected
