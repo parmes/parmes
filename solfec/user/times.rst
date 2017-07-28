@@ -7,9 +7,11 @@
 Time series
 ===========
 
+.. role:: red
+
 An object of type TIME_SERIES is a linear spline based on a series of 2-points.
 
-.. topic:: obj = TIME_SERIES (points | label)
+.. topic:: obj = TIME_SERIES (points | label, cache)
 
   This routine creates a TIME_SERIES object.
 
@@ -29,6 +31,11 @@ An object of type TIME_SERIES is a linear spline based on a series of 2-points.
   * label -- optional label string; if a label is provided than the TIME_SERIES object is stored in
     memory just once; this facilitates more optimal memory usage in cases where many identical
     TIME_SERIES objects are used in multiple constraints (for example); the label should be unique
+
+  * cache -- optional partial cache size; if **points** = file path and **cache** > 0 then only the
+    cache size of points is stored in memory at any given time; this helps to save memory in case of
+    a need for many large time series objects; default: 0 (entire time series is stored in memory)
+    :red:`(Under development)` 
 
 Some parameters can also be accessed as members of a TIME_SERIES object, cf. :numref:`times-params`.
 

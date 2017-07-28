@@ -39,12 +39,10 @@ Properties:
 
 2. **body2** is on the positive side of **surf**, i.e. the normals of **surf** points towards the newly created body.
 
-3. **body1** maintains its ID as long as **body2** == *None*.
+3. ID of **body1** changes every time a split happens (even if **body2** is *None*).
 
-4. ID of **body1** changes when **body2** != *None* (when two fragments are created).
+4. All constraints attached to **body1** are deleted during splitting.
 
-5. All constraints attached to **body1** are deleted during splitting.
+5. All forces applied to **body1** are deleted during splitting.
 
-6. All forces applied to **body1** are deleted during splitting.
-
-7. RT_SPLIT terminates with an error message in case none or more then two mesh fragments were created.
+6. RT_SPLIT terminates with an error message in case none or more then two mesh fragments were created.
