@@ -3,7 +3,7 @@
 Time series
 ===========
 
-This is example illustrates the :ref:`TIME_SERIES <solfec-user-times>` functionality in Solfec. The input files for this example
+This example illustrates the :ref:`TIME_SERIES <solfec-user-times>` functionality in Solfec. The input files for this example
 are located in the `solfec/examples/time--series <https://github.com/tkoziara/solfec/tree/master/examples/time-series>`_ directory.
 These are:
 
