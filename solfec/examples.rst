@@ -11,5 +11,6 @@ Currently available examples include:
 
   examples/hybrid_modeling
   examples/reduced_order
+  examples/time_series
 
 .. [*] Undocumented input files are located in the `solfec/inp <https://github.com/tkoziara/solfec/tree/master/inp>`_ directory.

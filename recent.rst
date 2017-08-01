@@ -1,9 +1,11 @@
 
+* On Jul 28 2017 :ref:`solfec-user-fragmentation`
+
+* On Jul 28 2017 :ref:`solfec-user-times`
+
 * On Jul 25 2017 :ref:`solfec-user-geometry`
 
 * On Jul 25 2017 :ref:`solfec-user-simulation`
-
-* On Jul 20 2017 :ref:`solfec-user-fragmentation`
 
 * On Jul 20 2017 :ref:`solfec-user`
 
@@ -16,5 +18,3 @@
 * On May 30 2017 :ref:`solfec-examples-81array`
 
 * On May 30 2017 :ref:`solfec-examples-reduced_order-ro0`
-
-* On May 23 2017 :ref:`solfec-examples-reduced_order`
