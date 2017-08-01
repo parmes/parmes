@@ -1,7 +1,7 @@
 
-* On Aug 1 2017 :ref:`solfec-examples`
-
 * On Aug 1 2017 :ref:`solfec-examples-time_series`
+
+* On Aug 1 2017 :ref:`solfec-examples`
 
 * On Aug 1 2017 :ref:`solfec-user-times`
 
