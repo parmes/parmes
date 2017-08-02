@@ -135,6 +135,12 @@ Some parameters can also be accessed as members and methods of a MESH object, cf
   | **obj.inter_element_faces()** -- returns a list of lists of node indices of inter--element faces,       |
   | e.g. [[n0, n1, n2], [n0, n1, n2, n3], ...]                                                              |
   +---------------------------------------------------------------------------------------------------------+
+  | **obj.inter_element_faces_on_plane(point, normal | ref, eps)** -- returns a list of lists of node       |
+  | indices of inter--element faces on a plane, e.g. [[n0, n1, n2], [n0, n1, n2, n3], ...], where **point**,|
+  | **normal** define the plane, **ref** can be *True* or *False* and determines whether the plane is in    |
+  | the reference or current configuration (default: *True*), **eps** determines the tolerance for the      |
+  | "on plane" test (default: :ref:`geometric epsilon <solfec-command-GEOMETRIC_EPSILON>`)                  |
+  +---------------------------------------------------------------------------------------------------------+
   | **Read-write members and methods:**                                                                     |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.node (n | x, y, z)** -- returns a (x, y, z) tuple storing coordinates of nth node;                |
