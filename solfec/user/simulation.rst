@@ -219,13 +219,13 @@ Routines listed below are related to prallel runtime and performance.
   This routine sets up a parallel barrier in the MPI mode (all processes need to
   meet at it before they can continue). It is ignored in the serial mode.
 
-.. topic:: num = NCPU (solfec)
+.. topic:: num = NCPU (| solfec)
 
   This routine returns the number CPUs used in the analysis.
 
   * num -- the number of CPUs
 
-  * solfec -- SOLFEC object
+  * solfec -- optional SOLFEC object (useful in 'READ' mode)
 
 .. _solfec-command-HERE:
 
