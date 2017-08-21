@@ -129,5 +129,29 @@ this time Solfec will print:
 
 followed by setting up your model and ignoring all occurrences of the RUN command [2]_.
 
+Output directory as an input path
+---------------------------------
+
+Solfec creates a copy of an input file in the output directory. For example, if the output path is
+
+::
+
+  out/analysis1
+
+the corresponding copy of the input file will be
+
+::
+
+  out/analysis1/analysis1.py
+
+In order to view or post-process the results that have been saved in this directory, one can run
+
+::
+
+  solfec -v out/analysis1
+
+For this approach to be robust, care needs to be taken to ensure that the input file can be correctly run from
+any location (e.g. access to additional data or scripts required by an input file needs to be suitably resolved).
+
 .. [1] *solfec--mpi* always runs in the write mode.
 .. [2] When viewer is used (--v switch), the execution of the input file stops at the first occurrence of the RUN command.
