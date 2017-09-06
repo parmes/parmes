@@ -510,8 +510,8 @@ included into the output file(s). PARMEC outputs:
 .. topic:: OUTPUT (entities \| subset, mode, format)
 
   -  **entities** - list of output entities; default: [’NUMBER’, ’COLOR’,
-     ’DISPL’, ’ORIENT’, ’LINVEL’, ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’,
-     ’FT’, ’SF’, ’AREA’, ’PAIR’] where:
+     ’DISPL’, ’ORIENT’, 'ORIENT1', 'ORIENT2', 'ORIENT3', ’LINVEL’, ’ANGVEL’,
+     ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’AREA’, ’PAIR’] where:
 
      -  ’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
 	’RB’), or scalar field of spring numbers (modes: ’SD’)
@@ -524,9 +524,13 @@ included into the output file(s). PARMEC outputs:
 	’MESH’, ’RB’), or scalar field of contact depths (modes: ’CD’), or
 	scalar field of spring strokes (modes: ’SD’)
 
-     -  ’ORIENT’ - three 3-component vector fields representing columns of
-	rigid rotation matrix (orientation vectors) (modes: ’RB’), or
-	3-component vector field of spring orientations (modes: ’SD’)
+     -  ’ORIENT’ - 9-component tensor field representing rigid rotation
+        matrix (modes: 'RB'), or 3-component vector field of spring
+	orientations (modes: ’SD’)
+
+     -  ’ORIENT1’, 'ORIENT2', 'ORIENT3' - three 3-component vector fields
+        representing columns of rigid rotation matrix (orientation vectors)
+	(modes: ’RB’)
 
      -  ’LINVEL’ - 3-component vector field of linear velocity (modes:
 	’SPH’, ’MESH’, ’RB’)

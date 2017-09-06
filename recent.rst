@@ -1,4 +1,6 @@
 
+* On Aug 21 2017 :ref:`solfec-running`
+
 * On Aug 15 2017 :ref:`solfec-user-simulation`
 
 * On Aug 2 2017 :ref:`solfec-user-geometry`
@@ -16,5 +18,3 @@
 * On Jul 20 2017 :ref:`solfec-user-utilities`
 
 * On Jul 19 2017 :ref:`parmec-input_commands`
-
-* On Jun 1 2017 :ref:`solfec-examples-reduced_order-ro1`
