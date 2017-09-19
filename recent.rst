@@ -1,4 +1,6 @@
 
+* On Sep 6 2017 :ref:`parmec-input_commands`
+
 * On Aug 21 2017 :ref:`solfec-running`
 
 * On Aug 15 2017 :ref:`solfec-user-simulation`
@@ -16,5 +18,3 @@
 * On Jul 20 2017 :ref:`solfec-user`
 
 * On Jul 20 2017 :ref:`solfec-user-utilities`
-
-* On Jul 19 2017 :ref:`parmec-input_commands`

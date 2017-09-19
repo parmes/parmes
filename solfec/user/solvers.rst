@@ -237,9 +237,10 @@ Hybrid solver
 
 .. role:: red
 
-Hybrid solver allows to combine smooth rigid body nonlinear spring based :ref:`PARMEC <parmec-index>` models with non--smooth SOLFEC models.
-The solver is supported both in the serial and MPI version of Solfec. The Parmec library is shared memory parallel and in the MPI mode this
-part of modeling is executed on MPI rank 0 process, employing maximum available shared memory parallelism.
+Hybrid solver allows to combine smooth rigid body nonlinear spring based :ref:`PARMEC <parmec-index>` models with non--smooth SOLFEC models
+(see :ref:`examples <solfec-examples-hybrid_modeling>`). The solver is supported both in the serial and MPI version of Solfec. The Parmec
+library is shared memory parallel and in the MPI mode this part of modeling is executed on MPI rank 0 process, employing maximum available
+shared memory parallelism.
 
 .. topic:: obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver) :red:`(Under development)`
 
@@ -250,6 +251,14 @@ part of modeling is executed on MPI rank 0 process, employing maximum available 
   * parmec2solfec -- Python dictionary based mapping of PARMEC particle numbers to SOLFEC body identifiers
 
   * solfec_solver -- SOLFEC constraint solver (e.g. NEWTON_SOLVER) 
+
+  Notes:
+
+  * motion of the boundary bodies listed in the **parmec2solfec** mapping is driven by the PARMEC model
+
+  * SOLFEC boundary bodies listed in the **parmec2solfec** mapping must be rigid
+
+  * if motion of the boundary bodies is restrained in PARMEC, equivalent kinematic constraints need to applied to the same bodies in SOLFEC
 
 Some parameters can also be accessed as members of a HYBRID_SOLVER object, cf. :numref:`hybrid-params`.
 
