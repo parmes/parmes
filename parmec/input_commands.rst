@@ -511,8 +511,8 @@ included into the output file(s). PARMEC outputs:
 .. topic:: OUTPUT (entities \| subset, mode, format)
 
   -  **entities** - list of output entities; default: [’NUMBER’, ’COLOR’,
-     ’DISPL’, ’ORIENT’, 'ORIENT1', 'ORIENT2', 'ORIENT3', ’LINVEL’, ’ANGVEL’,
-     ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’AREA’, ’PAIR’] where:
+     ’DISPL’, ’LENGTH’, ’ORIENT’, 'ORIENT1', 'ORIENT2', 'ORIENT3', ’LINVEL’,
+     ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’AREA’, ’PAIR’] where:
 
      -  ’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
 	’RB’), or scalar field of spring numbers (modes: ’SD’)
@@ -525,7 +525,7 @@ included into the output file(s). PARMEC outputs:
 	’MESH’, ’RB’), or scalar field of contact depths (modes: ’CD’), or
 	scalar field of spring strokes (modes: ’SD’)
 
-     -  'LENGTH' - scalar field of spring lengths (modes: 'SD')
+     -  ’LENGTH’ - scalar field of spring lengths (modes: 'SD')
 
      -  ’ORIENT’ - 9-component tensor field representing rigid rotation
         matrix (modes: 'RB'), or 3-component vector field of spring

@@ -1,7 +1,7 @@
 
-* On Sep 19 2017 :ref:`solfec-user-solvers`
+* On Sep 21 2017 :ref:`parmec-input_commands`
 
-* On Sep 6 2017 :ref:`parmec-input_commands`
+* On Sep 19 2017 :ref:`solfec-user-solvers`
 
 * On Aug 21 2017 :ref:`solfec-running`
 
