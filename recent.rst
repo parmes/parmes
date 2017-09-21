@@ -1,4 +1,6 @@
 
+* On Sep 19 2017 :ref:`solfec-user-solvers`
+
 * On Sep 6 2017 :ref:`parmec-input_commands`
 
 * On Aug 21 2017 :ref:`solfec-running`
@@ -16,5 +18,3 @@
 * On Jul 28 2017 :ref:`solfec-user-fragmentation`
 
 * On Jul 20 2017 :ref:`solfec-user`
-
-* On Jul 20 2017 :ref:`solfec-user-utilities`

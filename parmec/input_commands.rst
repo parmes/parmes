@@ -447,8 +447,9 @@ Before running a simulation, request time history output.
      (displacement) ’DX’, ’DY’, ’DZ’, ’\|D\|’, (linear velocity) ’VX’,
      ’VY’, ’VZ’, ’\|V\|’, (angular velocity) ’OX’, ’OY’, ’OZ’, ’\|O\|’,
      (body force) ’FX’, ’FY’, ’FZ’, ’\|F\|’, (body torque) ’TX’, ’TY’,
-     ’TZ’, ’\|T\|’; spring entities: (spring stroke) ’STROKE’, (spring
-     total force) ’STF’, (spring force without damping) ’SF’;
+     ’TZ’, ’\|T\|’; spring entities: (spring length) 'LENGTH', (spring
+     stroke) ’STROKE’, (spring total force) ’STF’, (spring force without
+     damping) ’SF’;
 
   -  **source** - particle number *i*, or a list of particle numbers
      [\ *i, j, ...*\ ], or a spatial sphere defined as tuple
@@ -523,6 +524,8 @@ included into the output file(s). PARMEC outputs:
      -  ’DISPL’ - 3-component vector field of displacements (modes: ’SPH’,
 	’MESH’, ’RB’), or scalar field of contact depths (modes: ’CD’), or
 	scalar field of spring strokes (modes: ’SD’)
+
+     -  'LENGTH' - scalar field of spring lengths (modes: 'SD')
 
      -  ’ORIENT’ - 9-component tensor field representing rigid rotation
         matrix (modes: 'RB'), or 3-component vector field of spring
