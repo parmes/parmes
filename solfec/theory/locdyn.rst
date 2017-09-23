@@ -350,7 +350,7 @@ further pointing to singly linked lists of off--diagonal blocks in
   <br />
 
 Symbolic insertion of rows into :math:`\mathbf{W}`, without assembling of the numeric block values,
-is administered by `ldy.c:LOCDYN_Insert <https://github.com/tkoziara/solfec/blob/master/ldy.c#L478>`_. |br|
+is administered by `ldy.c:LOCDYN_Insert <https://github.com/tkoziara/solfec/blob/master/ldy.c#L485>`_. |br|
 Similarly, deletion of rows from :math:`\mathbf{W}` is administered by
-`ldy.c:LOCDYN_Remove <https://github.com/tkoziara/solfec/blob/master/ldy.c#L557>`_. |br|
-Assembling of :math:`\mathbf{W}` and :math:`\mathbf{B}` is invoked by `ldy.c:LOCDYN_Update_Begin <https://github.com/tkoziara/solfec/blob/master/ldy.c#L612>`_.
+`ldy.c:LOCDYN_Remove <https://github.com/tkoziara/solfec/blob/master/ldy.c#L564>`_. |br|
+Assembling of :math:`\mathbf{W}` and :math:`\mathbf{B}` is invoked by `ldy.c:LOCDYN_Update_Begin <https://github.com/tkoziara/solfec/blob/master/ldy.c#L619>`_.
