@@ -278,6 +278,55 @@ spring force is zero.
      limits; the unloading curve begins to be used once either of these
      limits is crossed; default: (0, 0)
 
+UNSPRING
+--------
+
+Undoes user defined selection of springs (**msprings**) based on the value of spring entities experienced by a different user defined
+selection of springs (**tsprings**). Modifications to the spring curves occur during a simulation. Undone springs remain in the simulation
+but generate zero forces.
+
+.. topic:: UNSPRING (tsprings, msprings, limits | entity, operator, abs, nsteps, nfreq, unload) :red:`(under development)`
+
+  - **tsprings** - list of unique spring numbers whose spring entities are assessed against a criteria defined by limits; must be nonempty
+
+  - **msprings** - list of unique spring numbers which are to be modified if **tsprings** meet the limits criteria (springs defined in **tsprings**
+    are not modified unless also specified in **msprings**); must be nonempty
+
+  - **limits** - tuple of (min, max) **tsprings operator entity** limit values which need to be exceeded for **msprings** to be modified; if either
+    value is *None* then no failure limit is assumed e.g. (*None*, max) only has an upper failure limit; also min < max
+
+  - **entity** - scalar spring entity string: (spring stroke) 'STROKE', (spring total force) 'STF', (spring force without damping) 'SF', cf.
+    :ref:`HISTORY <parmec-command-HISTORY>` and :ref:`OUTPUT <parmec-command-OUTPUT>`; default: 'SF'
+
+  - **operator** - collective **tsprings** operator string: 'SUM', 'MIN', 'MAX'; default: 'SUM'
+
+  - **abs** - boolean, if *True* then spring forces are converted to absolute values before summation of the spring forces; default: *False*
+
+  - **nsteps** - int, number of time steps between calls of UNSPRING; default: 1
+
+  - **nfreq** - int, number of **nsteps** for which **tsprings** exceed **limits** before **msprings** are modified; default: 1
+
+  - **unload** - Python dictionary (i.e. **unload** [key] = value), where *key* (int) - unique spring number (must be present in **msprings**)
+    and value (int) - time series number (:ref:`TSERIES <parmec-command-TSERIES>`) defining the unload spring curve; an unloading curve must
+    originate at zero and increase monotonically; once modification is activated, for each spring in **msprings**, the unloading curve is
+    individually applied with a shift specific to the current displacement; both negative and positive displacement increments decrease total
+    spring forces until zero; the spring force remains zero ever after; dashpot force is zero during unloading; default: instantaneous unloading
+    to zero total force
+
+By default, modification of **msprings** is based on the sum of the elastic spring force values across all spring numbers defined in tsprings. This is a sum
+of absolute values if **abs** = *True*. Forces in all **tsprings** must exceed the specific min/max values defined in **limits** for the spring curves to be
+modified (i.e. spring curve modification is an *and* operation, not *or*). For example:
+
+.. code-block:: python
+
+  tsprings = (1,2)
+  msprings = (3,4)
+  limits = (-1.0, 1.0)
+  UNSPRING(tsprings, msprings, limits)
+
+results in the resultant elastic spring force (SF) being assessed against the (-1.0, 1.0) limits. For the spring curves of springs 3 and 4 to be modified,
+the sum of the forces of springs 1 and 2 must be outside of the (-1.0,1.0) limits for **nfreq** (=1) number of **nsteps** (=1).
+
 GRANULAR
 --------
 
@@ -339,15 +388,13 @@ from dynamics and restraints.
 
   -  **parnum** - particle number
 
-  -  **linear** - a tuple :math:`(i,j,k)` of TSERIES numbers, or a
-     callback: :math:`\left(v_{x},v_{y},v_{z}\right)=` **linear**
-     :math:`\left(t\right)`, defining linear velocity or acceleration
-     history; default: *not prescribed*
+  -  **linear** - a tuple :math:`(i,j,k)` of :ref:`TSERIES <parmec-command-TSERIES>` numbers,
+     or a callback: :math:`\left(v_{x},v_{y},v_{z}\right)=` **linear** :math:`\left(t\right)`,
+     defining linear velocity or acceleration history; default: *not prescribed*
 
-  -  **angular** - a tuple :math:`(i,j,k)` of TSERIES numbers, or a
-     callback: :math:`\left(\omega_{x},\omega_{y},\omega_{z}\right)=`
-     **angular** :math:`\left(t\right)`, defining spatial angular velocity
-     or acceleration history; default: *not prescribed*
+  -  **angular** - a tuple :math:`(i,j,k)` of :ref:`TSERIES <parmec-command-TSERIES>` numbers,
+     or a callback: :math:`\left(\omega_{x},\omega_{y},\omega_{z}\right)=` **angular** :math:`\left(t\right)`,
+     defining spatial angular velocity or acceleration history; default: *not prescribed*
 
   -  **kind** - string ’vv’, ’va’, ’av’, or ’aa’ indicating interpretation
      of respectively **linear** and **angular** time histories as either
@@ -380,13 +427,13 @@ Set gravity.
 .. topic:: GRAVITY (gx, gy, gz)
 
   -  **gx** - constant :math:`x` float number, or callback
-     **gx**\ :math:`(t)`, or TSERIES number
+     **gx**\ :math:`(t)`, or :ref:`TSERIES <parmec-command-TSERIES>` number
 
   -  **gy** - constant :math:`y` float number, or callback
-     **gy**\ :math:`(t)`, or TSERIES number
+     **gy**\ :math:`(t)`, or :ref:`TSERIES <parmec-command-TSERIES>` number
 
   -  **gz** - constant :math:`z` float number, or callback
-     **gz**\ :math:`(t)`, or TSERIES number
+     **gz**\ :math:`(t)`, or :ref:`TSERIES <parmec-command-TSERIES>` number
 
 DAMPING
 -------
@@ -412,14 +459,11 @@ velocity.
 
 .. topic:: DAMPING (linear, angular)
 
-  -  **linear** - linear damping curve callback
-     :math:`\left(d_{vx},d_{vy},d_{vz}\right)=` **linear**
-     :math:`\left(t\right)`, or a tuple :math:`(i,j,k)` of TSERIES numbers
+  -  **linear** - linear damping curve callback :math:`\left(d_{vx},d_{vy},d_{vz}\right)=` **linear**
+     :math:`\left(t\right)`, or a tuple :math:`(i,j,k)` of :ref:`TSERIES <parmec-command-TSERIES>` numbers
 
-  -  **angular** - angular damping curve callback
-     :math:`\left(d_{\omega x},d_{\omega y},d_{\omega z}\right)=`
-     **angular** :math:`\left(t\right)`, or a tuple :math:`(i,j,k)` of
-     TSERIES numbers
+  -  **angular** - angular damping curve callback :math:`\left(d_{\omega x},d_{\omega y},d_{\omega z}\right)=`
+     **angular** :math:`\left(t\right)`, or a tuple :math:`(i,j,k)` of :ref:`TSERIES <parmec-command-TSERIES>` numbers
 
 CRITICAL
 --------
@@ -599,8 +643,8 @@ Run DEM simulation.
   -  **interval** - output interval (default: time step); tuple
      :math:`\left(dt_{\text{files}},dt_{\text{history}}\right)` can be
      used to indicate different output frequencies of output files and
-     time histories, respectively; callback functions or TSERIES numbers
-     can also be used, e.g.
+     time histories, respectively; callback functions or :ref:`TSERIES <parmec-command-TSERIES>`
+     numbers can also be used, e.g.
      :math:`dt_{\text{files}}=\text{dt_fiels}\left(t\right)` and
      :math:`dt_{\text{history}}=\text{tmsnum}`, prescribing variable
      interval frequencies, depending on current time;
