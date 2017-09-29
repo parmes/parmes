@@ -1,7 +1,7 @@
 
-* On Sep 23 2017 :ref:`solfec-theory-locdyn`
+* On Sep 28 2017 :ref:`parmec-input_commands`
 
-* On Sep 21 2017 :ref:`parmec-input_commands`
+* On Sep 23 2017 :ref:`solfec-theory-locdyn`
 
 * On Sep 19 2017 :ref:`solfec-user-solvers`
 

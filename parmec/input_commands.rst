@@ -481,7 +481,7 @@ HISTORY
 
 Before running a simulation, request time history output.
 
-.. topic:: list = HISTORY (entity \| source, point)
+.. topic:: list = HISTORY (entity \| source, point, h5file, h5last)
 
   -  **list** - output time history list (empty upon initial request,
      populated during simulation)
@@ -507,6 +507,15 @@ Before running a simulation, request time history output.
 
   -  **point** - optional referential point used in case of a single
      particle source; default: particle mass centre
+
+  - **h5file** :red:`(experimental)` - optional .h5 file storing existing results; in this case the history is retrieved
+    from this file (if found) or an error message is issued; an appropriate output file needs to be picked depending
+    on the entity, cf. :ref:`OUTPUT <parmec-command-OUTPUT>`; the output list is not populated until **h5last** = *True*;
+    default: not specified
+
+  - **h5last** :red:`(experimental)` - optional boolean flag marking a last call to HISTORY for which the **h5file** argument
+    is used; for faster reading all such histories are populated once HISTORY(..., **h5file** = ..., **h5last** = *True*) is
+    called; default: *False*
 
 .. _parmec-command-OUTPUT:
 
