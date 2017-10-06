@@ -20,7 +20,7 @@ There are few general principles to remember:
   z = CREATE2 (x), will cause an abnormal termination. One can create a copy of an object by calling
   z = COPY (x), hence using y = CREATE2 (COPY (x)) leaves x intact.
 
-* Routines marked as :red:`(Under development)` are functional, although they may be unstable.
+* Routines marked as :red:`(Under development)` are functional, although they may be unstable. Routines marked as :red:`(Experimental)` are only moderately tested.
 
 Sections below document Solfec objects and routines used for their manipulation:
 

@@ -1,5 +1,5 @@
 
-* On Sep 28 2017 :ref:`parmec-input_commands`
+* On Sep 29 2017 :ref:`parmec-input_commands`
 
 * On Sep 23 2017 :ref:`solfec-theory-locdyn`
 

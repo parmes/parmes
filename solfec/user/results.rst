@@ -140,9 +140,11 @@ This routine outputs time histories of entities.
 
   * list -- list of objects [object1, object2, ..., objectN] indicating requested values. The valid objects are: 
 
-    * a tuple (body, point, entity) where body is a BODY object, point is a (x, y, z) tuple storing the referential point,
-      and entity is one of: 'CX', 'CY', 'CZ' (current coordinate), 'DX', 'DY', 'DZ' (displacement), 'VX', 'VY', 'VZ' (velocity),
-      'SX', 'SY', 'SZ', 'SXY', 'SXZ', 'SYZ' (stress), 'MISES' (von Mises norm of stress)
+    * a tuple (body, point, entity) where body is a BODY object or a body label string, point is a (x, y, z) tuple storing the
+      referential point, and entity is one of: 'CX', 'CY', 'CZ' (current coordinate), 'DX', 'DY', 'DZ' (displacement), 'VX', 'VY',
+      'VZ' (velocity), 'SX', 'SY', 'SZ', 'SXY', 'SXZ', 'SYZ' (stress), 'MISES' (von Mises norm of stress); **Note:** if body label
+      is used and the body initially did not exist (e.g. it was inserted during simulation or produced as a result of fragmentation)
+      corresponding values for times when it did not exit are NaN;
 
     * a tuple (object, kind) where object is a SOLFEC object, a BODY object or a list of BODY objects,
       and kind is a string 'KINETIC', 'INTERNAL', 'EXTERNAL', 'CONTACT' (included in external),

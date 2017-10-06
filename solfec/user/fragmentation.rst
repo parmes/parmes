@@ -13,7 +13,7 @@ RT_SPLIT
 This routine splits a meshed BODY object along a surface aligned with internal element boundaries. It can be invoked from within a callback function
 -- see the :ref:`CALLBACK command <solfec-command-CALLBACK>` -- and hence “RT” stands for “runtime”.
 
-.. topic:: (body2, lst1, lst2) = RT_SPLIT (body1, surf | sid1, sid2, label1, label2) :red:`(Under development)`
+.. topic:: (body2, lst1, lst2) = RT_SPLIT (body1, surf | sid1, sid2, label1, label2) :red:`(Experimental)`
 
   * body2 -- created BODY object or *None* if the split does not create another body
 
