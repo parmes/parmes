@@ -1,4 +1,12 @@
 
+* On Oct 6 2017 :ref:`solfec-user`
+
+* On Oct 6 2017 :ref:`solfec-user-fragmentation`
+
+* On Oct 6 2017 :ref:`solfec-user-results`
+
+* On Oct 6 2017 :ref:`solfec-user-utilities`
+
 * On Sep 29 2017 :ref:`parmec-input_commands`
 
 * On Sep 23 2017 :ref:`solfec-theory-locdyn`
@@ -10,11 +18,3 @@
 * On Aug 15 2017 :ref:`solfec-user-simulation`
 
 * On Aug 2 2017 :ref:`solfec-user-geometry`
-
-* On Aug 1 2017 :ref:`solfec-examples-time_series`
-
-* On Aug 1 2017 :ref:`solfec-examples`
-
-* On Aug 1 2017 :ref:`solfec-user-times`
-
-* On Jul 28 2017 :ref:`solfec-user-fragmentation`

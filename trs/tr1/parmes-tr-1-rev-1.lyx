@@ -29,7 +29,6 @@
 \paperfontsize default
 \spacing single
 \use_hyperref true
-\pdf_title "1"
 \pdf_bookmarks true
 \pdf_bookmarksnumbered false
 \pdf_bookmarksopen false
