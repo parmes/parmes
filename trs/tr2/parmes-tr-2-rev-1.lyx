@@ -127,9 +127,9 @@ We present a simple projected quasi-Newton approach for dealing with frictional
  rendering the method attractive in the context of parallel computations.
  Our approach performs comparably with the commonly used Gauss-Seidel scheme,
  while having a much lower communication cost in parallel.
- This is illustrated on a range of large problems, run on a distributed
+ We include examples of rigid and deformable problems, run on a distributed
  memory cluster.
- An implementation of presented methods is available at 
+ An implementation of the presented method is available at 
 \begin_inset CommandInset href
 LatexCommand href
 target "https://github.com/tkoziara/solfec/"
@@ -948,7 +948,7 @@ reference "eq:DSF"
 
 \end_inset
 
-a root finding problem defined withing the friction cone.
+a root finding problem defined within the friction cone.
 \end_layout
 
 \begin_layout Section
@@ -1418,7 +1418,7 @@ The smoothing function
 
 \end_inset
 
-mimicking the behaviour of 
+mimicking the behavior of 
 \begin_inset Formula $\max\left(0,\lambda\right)$
 \end_inset
 
@@ -1502,7 +1502,7 @@ Zero friction
 \end_layout
 
 \begin_layout Standard
-It is instructive to investigate the behaviour of 
+It is instructive to investigate the behavior of 
 \begin_inset Formula $\mathbf{m}_{\omega}\left(\mathbf{S}\right)$
 \end_inset
 
@@ -2069,7 +2069,7 @@ reference "eq:C1"
 \end_layout
 
 \begin_layout Standard
-Perhaps the simplest regularisation of 
+Perhaps the simplest regularization of 
 \begin_inset Formula $\nabla\mathbf{C}_{\omega}$
 \end_inset
 
@@ -2316,7 +2316,7 @@ The projected quasi-Newton method.
 \end_layout
 
 \begin_layout Standard
-We do not attempt to analyse the convergence of the presented scheme.
+We do not attempt to analyze the convergence of the presented scheme.
  From our experience, proofs of global convergence for nonmonotone problems
  (
 \begin_inset Formula $\mu>0$
@@ -2329,7 +2329,7 @@ We do not attempt to analyse the convergence of the presented scheme.
 
 ) almost all methods work, be it smooth or nonsmooth.
  For completeness we mention that the globalization strategy adopted here
- has been analysed under the name of pseudo-transient continuation 
+ has been analyzed under the name of pseudo-transient continuation 
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Kelley1998"
