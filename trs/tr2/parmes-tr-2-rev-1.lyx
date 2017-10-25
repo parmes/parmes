@@ -132,7 +132,7 @@ We present a simple projected quasi-Newton approach for dealing with frictional
  An implementation of the presented method is available at 
 \begin_inset CommandInset href
 LatexCommand href
-target "https://github.com/tkoziara/solfec/"
+target "https://parmes.github.io/solfec"
 
 \end_inset
 
@@ -2601,20 +2601,204 @@ reference "alg:PQN"
 \end_layout
 
 \begin_layout Subsection
-Rotating drum of rigid or pseudo-rigid ellipsoids
+Rotating drum of rigid and pseudo-rigid ellipsoids
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
+This example illustrates motion of particles inside of a rotating drum.
+ The drum geometry is depicted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum0"
+
+\end_inset
+
+ (a): the drum is made out of a hollow pipe of inner radius 1.0m and thickness
+ 0.05m, spanned between points 
+\begin_inset Formula $\left(0,0,0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(0,0.5,0\right)$
+\end_inset
+
+, and subdivided into 32 flat pieces.
+ There are two rectilinear blocks, centered at points 
+\begin_inset Formula $\left(-0.9,0.25,0\right)$
+\end_inset
+
+ and 
+\begin_inset Formula $\left(0.9,0.25,0\right)$
+\end_inset
+
+, of size 
+\begin_inset Formula $0.2\times0.5\times0.2$
+\end_inset
+
+ along the x, y, z directions.
+ The drum is modeled as an obstacle - meaning that its mass is not contributing
+ to the simulated physics of the problem.
+ Two side walls are used to prevent falling out of particles (disk shaped
+ obstacles, not shown in the figure).
+ There are two stages of the simulation: dropping down the particles and
+ rotating the drum.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum0"
+
+\end_inset
+
+ (b) illustrates the particle dropping stage: the user specifies the number
+ of particles 
+\begin_inset Formula $N$
+\end_inset
+
+ and the radii of the particles is determined as follows:
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+r_{0}=(0.1/N)^{1/3},\,r_{x}=0.9r_{0},r_{y}=0.5r_{0},r_{z}=r_{0},\,r_{1}=\frac{r_{x}+r_{y}+r_{z}}{3}
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $r_{x}$
+\end_inset
+
+, 
+\begin_inset Formula $r_{y}$
+\end_inset
+
+, 
+\begin_inset Formula $r_{z}$
+\end_inset
+
+ are the radii of ellipsoidal particles and 
+\begin_inset Formula $r_{1}$
+\end_inset
+
+ is a radii of spherical particles (when used below).
+ Particles are first dropped in layers until all 
+\begin_inset Formula $N$
+\end_inset
+
+ of them are inserted into the simulation.
+ Then rotation begins.
+ The total simulation time is 
+\begin_inset Formula $10$
+\end_inset
+
+ seconds and the time step is 
+\begin_inset Formula $0.001$
+\end_inset
+
+ second (unless specified otherwise).
+ The particle material parameters are 
+\begin_inset Formula $E=1\text{E6Pa}$
+\end_inset
+
+, 
+\begin_inset Formula $\mu=0.25$
+\end_inset
+
+, 
+\begin_inset Formula $\rho=100\text{kg}/\text{m}^{3}$
+\end_inset
+
+ for the Young modulus, Poisson ratio and mass density, respectively.
+ Gravity is 
+\begin_inset Formula $\left(0,0,-10\right)$
+\end_inset
+
+.
+ The angular velocity of rotation is 
+\begin_inset Formula $\left(0,1,0\right)\text{rad/s}$
+\end_inset
+
+ (unless specified otherwise).
+ The Signoroni-Coulomb material model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jean01"
+
+\end_inset
+
+ is used and the coefficient of friction is 
+\begin_inset Formula $0.3$
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
 status open
 
 \begin_layout Plain Layout
-TODO
+\align center
+(a)
+\begin_inset Graphics
+	filename drum0a.png
+	lyxscale 20
+	width 30text%
+
+\end_inset
+
+(b)
+\begin_inset Graphics
+	filename drum0b.png
+	lyxscale 20
+	width 30text%
+
+\end_inset
+
+(c)
+\begin_inset Graphics
+	filename drum0c.png
+	lyxscale 20
+	width 30text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum0"
+
+\end_inset
+
+Rotating drum: drum geometry and simulation stages: (a) empty drum, (b)
+ dropping down the particles, (c) rotating the drum.
 \end_layout
 
 \end_inset
 
 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Small scale serial runs
+\end_layout
+
+\begin_layout Subsubsection
+Larger scale parallel runs
 \end_layout
 
 \begin_layout Subsection
