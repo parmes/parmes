@@ -77,6 +77,9 @@ Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object,
   | **obj.innerloops** -- number of inner Gauss--Seidel loops per one global step during a parallel run     |
   | (default: 1). Ignored in sequential mode.                                                               |
   +---------------------------------------------------------------------------------------------------------+
+  | **obj.itershist** -- set to 'ON' before reading; when red returns a Python list storing iterations      |
+  | counts from all solver runs.                                                                            |
+  +---------------------------------------------------------------------------------------------------------+
 
 |
 
@@ -156,7 +159,7 @@ the Gauss--Seidel solver will be invoked, starting from the previous time step s
   * theta -- relaxation parameter greater than 0 and not greater than 1 (used only for linver = 'DIAG',
     default: 0.25); smaller initial theta may improve overall convergence behavior
 
-  * omega -- positive equation smoothing omega (default: \mbox{\textbf{meritval}}\cdot0.01)
+  * omega -- positive equation smoothing omega (default: :math:`\mbox{meritval}\cdot0.01`)
 
   * gsflag -- 'ON' or 'OFF' deciding whether to us Gauss-Seidel iterations in case of failure (default: 'ON')
 
@@ -181,6 +184,9 @@ Some parameters can also be accessed as members of a NEWTON_SOLVER object, cf. :
   +---------------------------------------------------------------------------------------------------------+
   | *obj.meritval, obj.maxiter, obj.locdyn, obj.linver, obj.linmaxiter, obj.maxmatvec, obj.epsilon,*        |
   | *obj.delta, obj.theta, obj.omega, obj.gsflag*                                                           |
+  +---------------------------------------------------------------------------------------------------------+
+  | **obj.itershist** -- set to 'ON' before reading; when red returns a Python list storing iterations      |
+  | counts from all solver runs.                                                                            |
   +---------------------------------------------------------------------------------------------------------+
 
 Penalty based
