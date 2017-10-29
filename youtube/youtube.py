@@ -68,24 +68,23 @@ class YoutubeDirective(rst.Directive):
     }
 
     def run(self):
+      node = self.node_class()
 
-        node = self.node_class()
+      arg = self.arguments[0]
 
-        arg = self.arguments[0]
+      if is_url(arg):
+        node.video_id = get_video_id(arg)
+      else:
+        node.video_id = arg
 
-        if is_url(arg):
-          node.video_id = get_video_id(arg)
-        else:
-          node.video_id = arg
+      if 'width' in self.options:
+        node['width'] = self.options['width']
+      else:
+        node['width'] = 640
 
-        if 'width' in self.options:
-          node['width'] = self.options['width']
-	else:
-	  node['width'] = 640
+      if 'height' in self.options:
+        node['height'] = self.options['height']
+      else:
+        node['height'] = 360
 
-        if 'height' in self.options:
-          node['height'] = self.options['height']
-	else:
-	  node['height'] = 360
-
-        return [node]
+      return [node]
