@@ -210,9 +210,20 @@ where
 
 .. math::
 
-  \text{direction}\left(t\right)=\left(\text{point2}\left(t\right)-\text{point1}
-  \left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)
-  \right|\textbf{ or } \text{constant}\left(d_{x},d_{y},d_{z}\right)\textbf{ or }\text{tangent}
+  \text{direction}\left(t\right)=\left\{ \begin{array}{c}
+  \text{d1}\left(t\right)=\left(\text{geom2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|
+  \text{geom2}\left(t\right)-\text{point1}\left(t\right)\right|\mathbf{\,if\,}\text{geom2 = }\left(x,y,z\right)\\
+  \left(\text{point0}\left(t\right)-\text{point1}\left(t\right)\right)\cdot\text{normal0}\left(t\right)\mathbf{\,if\,}
+  \text{ geom2 =[point0, normal0]}\\\text{constant }\mathbf{direction}=\left(d_{x},d_{y},d_{z}\right)\\
+  \text{d1}\left(t\right)-\text{d1}\left(t\right)\cdot\left(d_{x},d_{y},d_{z}\right)\text{if }\mathbf{planar}\text{ is enabled}
+  \end{array}\right.
+
+.. math::
+
+  \text{point2}\left(t\right)=\left\{ \begin{array}{c}
+  \text{geom2}\left(t\right)\mathbf{\,if\,}\text{geom2 = }\left(x,y,z\right)\\
+  \text{proj}_{\text{geom2}}\left(\text{point1}\right)\mathbf{\,if\,}\text{ geom2 =[point0, normal0]}
+  \end{array}\right.
 
 .. math::
 
@@ -238,7 +249,7 @@ defined by means of lookup tables; :math:`\text{force}\left(t\right)` is applied
 :math:`-\text{force}\left(t\right)` is applied at :math:`\text{point1}\left(t\right)`; dashpot force is not applied when
 spring force is zero.
 
-.. topic:: sprnum = SPRING (part1, point1, part2, point2, spring \| dashpot, direction, planar, unload, ylim)
+.. topic:: sprnum = SPRING (part1, point1, part2, geom2, spring \| dashpot, direction, planar, unload, ylim) :red:`(experimental)`
 
   -  **sprnum** - spring number
 
@@ -250,8 +261,11 @@ spring force is zero.
   -  **part2** - second particle number; :math:`-1` can be used to
      indicate a single-particle constraint
 
-  -  **point2** - tuple :math:`\left(x,y,z\right)` defining a second
-     point, either moving with the second particle, or a spatial point
+  -  **geom2** - tuple :math:`\left(x,y,z\right)` defining a second point, either moving with the second particle, or a spatial point;
+     alternatively a list storing a point and a normal [:math:`\left(p_{x},p_{y},p_{z}\right)`, :math:`\left(n_{x},n_{y},n_{z}\right)`]
+     defining a referential plane, moving with the second particle or spatially fixed; when a plane is defined the spring direction and
+     stroke are calculated from a projection of **point1** onto this plane: in this case the input arguments **direction** and **planar**
+     are ignored
 
   -  **spring** - spring force lookup table
      :math:`\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]`;
