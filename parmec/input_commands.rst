@@ -213,7 +213,7 @@ where
   \text{direction}\left(t\right)=\left\{ \begin{array}{c}
   \text{d1}\left(t\right)=\left(\text{geom2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|
   \text{geom2}\left(t\right)-\text{point1}\left(t\right)\right|\mathbf{\,if\,}\text{geom2 = }\left(x,y,z\right)\\
-  \left(\text{point0}\left(t\right)-\text{point1}\left(t\right)\right)\cdot\text{normal0}\left(t\right)\mathbf{\,if\,}
+  \text{normal0}\left(t\right)\mathbf{\,if\,}
   \text{ geom2 =[point0, normal0]}\\\text{constant }\mathbf{direction}=\left(d_{x},d_{y},d_{z}\right)\\
   \text{d1}\left(t\right)-\text{d1}\left(t\right)\cdot\left(d_{x},d_{y},d_{z}\right)\text{if }\mathbf{planar}\text{ is enabled}
   \end{array}\right.

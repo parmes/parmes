@@ -1,4 +1,6 @@
 
+* On Nov 7 2017 :ref:`parmec-input_commands`
+
 * On Oct 26 2017 :ref:`solfec-user-solvers`
 
 * On Oct 6 2017 :ref:`solfec-user`
@@ -8,8 +10,6 @@
 * On Oct 6 2017 :ref:`solfec-user-results`
 
 * On Oct 6 2017 :ref:`solfec-user-utilities`
-
-* On Sep 29 2017 :ref:`parmec-input_commands`
 
 * On Sep 23 2017 :ref:`solfec-theory-locdyn`
 
