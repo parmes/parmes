@@ -331,7 +331,7 @@ but generate zero forces.
     spring forces until zero; the spring force remains zero ever after; dashpot force is zero during unloading; default: instantaneous unloading
     to zero total force
 
-  - activate - a list of inactive :ref:`SPRING <parmec-command-SPRING>` numbers that will be activated upon complete unloading of all **msprings**; default: empty
+  - **activate** - a list of inactive :ref:`SPRING <parmec-command-SPRING>` numbers that will be activated upon complete unloading of all **msprings**; default: empty
 
 By default, modification of **msprings** is based on the sum of the elastic spring force values across all spring numbers defined in tsprings. This is a sum
 of absolute values if **abs** = *True*. Forces in all **tsprings** must exceed the specific min/max values defined in **limits** for the spring curves to be
