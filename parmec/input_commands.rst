@@ -249,7 +249,7 @@ defined by means of lookup tables; :math:`\text{force}\left(t\right)` is applied
 :math:`-\text{force}\left(t\right)` is applied at :math:`\text{point1}\left(t\right)`; dashpot force is not applied when
 spring force is zero.
 
-.. topic:: sprnum = SPRING (part1, point1, part2, geom2, spring \| dashpot, direction, planar, unload, ylim) :red:`(experimental)`
+.. topic:: sprnum = SPRING (part1, point1, part2, geom2, spring \| dashpot, direction, planar, unload, ylim, inactive) :red:`(experimental)`
 
   -  **sprnum** - spring number
 
@@ -292,6 +292,10 @@ spring force is zero.
      limits; the unloading curve begins to be used once either of these
      limits is crossed; default: (0, 0)
 
+  -  **inactive** - if *True* create an inactive spring, that can be activated by the :ref:`UNSPRING <parmec-command-UNSPRING>` command; default: *False*
+
+.. _parmec-command-UNSPRING:
+
 UNSPRING
 --------
 
@@ -299,7 +303,7 @@ Undoes user defined selection of springs (**msprings**) based on the value of sp
 selection of springs (**tsprings**). Modifications to the spring curves occur during a simulation. Undone springs remain in the simulation
 but generate zero forces.
 
-.. topic:: UNSPRING (tsprings, msprings, limits | entity, operator, abs, nsteps, nfreq, unload) :red:`(under development)`
+.. topic:: UNSPRING (tsprings, msprings, limits | entity, operator, abs, nsteps, nfreq, unload, activate) :red:`(under development)`
 
   - **tsprings** - list of unique spring numbers whose spring entities are assessed against a criteria defined by limits; must be nonempty
 
@@ -326,6 +330,8 @@ but generate zero forces.
     individually applied with a shift specific to the current displacement; both negative and positive displacement increments decrease total
     spring forces until zero; the spring force remains zero ever after; dashpot force is zero during unloading; default: instantaneous unloading
     to zero total force
+
+  - activate - a list of inactive :ref:`SPRING <parmec-command-SPRING>` numbers that will be activated upon complete unloading of all **msprings**; default: empty
 
 By default, modification of **msprings** is based on the sum of the elastic spring force values across all spring numbers defined in tsprings. This is a sum
 of absolute values if **abs** = *True*. Forces in all **tsprings** must exceed the specific min/max values defined in **limits** for the spring curves to be
