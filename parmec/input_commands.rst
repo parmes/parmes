@@ -227,9 +227,16 @@ where
 
 .. math::
 
-  \text{stroke}\left(t\right)=\text{direction}\left(t\right)\cdot\left[
-  \text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-\text{direction}\left(
-  0\right)\cdot\left[\text{point2}\left(0\right)-\text{point1}\left(0\right)\right]
+  \text{stroke0}=\text{direction}\left(0\right)\cdot\left[\text{point2}\left(0\right)-\text{point1}\left(0\right)\right]
+
+.. math::
+
+  \text{stroke}\left(t\right)=\left\{ \begin{array}{c}
+  \text{direction}\left(t\right)\cdot\left[\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-
+  \text{stroke0}\mathbf{\,\,\,if\,}\text{geom2 = }\left(x,y,z\right)\\
+  \text{normal0}\left(t\right)\cdot\left[\text{point1}\left(t\right)-
+  \text{point2}\left(t\right)\right]\mathbf{\,\,\,if\,}\text{ geom2 =[point0, normal0]}
+  \end{array}\right.
 
 .. math::
 
