@@ -310,7 +310,7 @@ Undoes user defined selection of springs (**msprings**) based on the value of sp
 selection of springs (**tsprings**). Modifications to the spring curves occur during a simulation. Undone springs remain in the simulation
 but generate zero forces.
 
-.. topic:: UNSPRING (tsprings, msprings, limits | entity, operator, abs, nsteps, nfreq, unload, activate) :red:`(under development)`
+.. topic:: UNSPRING (tsprings, msprings, limits | entity, operator, abs, nsteps, nfreq, unload, activate) :red:`(experimental)`
 
   - **tsprings** - list of unique spring numbers whose spring entities are assessed against a criteria defined by limits; must be nonempty
 
