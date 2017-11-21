@@ -2853,7 +2853,7 @@ status open
 \align center
 (a)
 \begin_inset Graphics
-	filename dru100_rig_A0.png
+	filename dru100_RG_A0.png
 	lyxscale 33
 	width 33text%
 
@@ -2861,7 +2861,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_A1.png
+	filename dru100_RG_A1.png
 	lyxscale 33
 	width 33text%
 
@@ -2869,7 +2869,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_A2.png
+	filename dru100_RG_A2.png
 	lyxscale 33
 	width 33text%
 
@@ -2882,7 +2882,7 @@ status open
 \align center
 (b)
 \begin_inset Graphics
-	filename dru100_rig_B0.png
+	filename dru100_RG_B0.png
 	lyxscale 33
 	width 33text%
 
@@ -2890,7 +2890,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_B1.png
+	filename dru100_RG_B1.png
 	lyxscale 33
 	width 33text%
 
@@ -2898,7 +2898,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_B2.png
+	filename dru100_RG_B2.png
 	lyxscale 33
 	width 33text%
 
@@ -2911,7 +2911,7 @@ status open
 \align center
 (c)
 \begin_inset Graphics
-	filename dru100_rig_C0.png
+	filename dru100_RG_C0.png
 	lyxscale 33
 	width 33text%
 
@@ -2919,7 +2919,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_C1.png
+	filename dru100_RG_C1.png
 	lyxscale 33
 	width 33text%
 
@@ -2927,7 +2927,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_C2.png
+	filename dru100_RG_C2.png
 	lyxscale 33
 	width 33text%
 
@@ -2940,6 +2940,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum1"
+
+\end_inset
+
 Rotating drum (
 \begin_inset Formula $N=100$
 \end_inset
@@ -2961,15 +2967,40 @@ ell.
 \begin_inset Formula $\epsilon$
 \end_inset
 
-;
+; case (a) is for 
+\begin_inset Formula $m=1000$
+\end_inset
+
+ and varying 
+\begin_inset Formula $\delta,\epsilon$
+\end_inset
+
+; case (b) is for 
+\begin_inset Formula $\epsilon=10^{-3}$
+\end_inset
+
+ and varying 
+\begin_inset Formula $m,\delta;$
+\end_inset
+
+ case (c) is for varying 
+\begin_inset Formula $\left(\epsilon,m\right)$
+\end_inset
+
+ pairs and 
+\begin_inset Formula $\delta$
+\end_inset
+
+; left to right we have: total iterations counts across the entire simulation,
+ average numbers of solver iterations per time step when iterations are
+ converged, and total (per simulation) number of diverged Newton solver
+ runs (when the Gauss-Seidel solver was invoked upon reaching the iteration
+ limit); missing dots in the rightmost figures correspond to no cases of
+ divergence;
 \end_layout
 
 \end_inset
 
-
-\end_layout
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -2988,7 +3019,7 @@ status open
 \align center
 (a)
 \begin_inset Graphics
-	filename dru100_prb_A0.png
+	filename dru100_PR_A0.png
 	lyxscale 33
 	width 33text%
 
@@ -2996,7 +3027,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_A1.png
+	filename dru100_PR_A1.png
 	lyxscale 33
 	width 33text%
 
@@ -3004,7 +3035,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_A2.png
+	filename dru100_PR_A2.png
 	lyxscale 33
 	width 33text%
 
@@ -3017,7 +3048,7 @@ status open
 \align center
 (b)
 \begin_inset Graphics
-	filename dru100_prb_B0.png
+	filename dru100_PR_B0.png
 	lyxscale 33
 	width 33text%
 
@@ -3025,7 +3056,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_B1.png
+	filename dru100_PR_B1.png
 	lyxscale 33
 	width 33text%
 
@@ -3033,7 +3064,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_B2.png
+	filename dru100_PR_B2.png
 	lyxscale 33
 	width 33text%
 
@@ -3046,7 +3077,7 @@ status open
 \align center
 (c)
 \begin_inset Graphics
-	filename dru100_prb_C0.png
+	filename dru100_PR_C0.png
 	lyxscale 33
 	width 33text%
 
@@ -3054,7 +3085,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_C1.png
+	filename dru100_PR_C1.png
 	lyxscale 33
 	width 33text%
 
@@ -3062,7 +3093,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_C2.png
+	filename dru100_PR_C2.png
 	lyxscale 33
 	width 33text%
 
@@ -3075,6 +3106,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum2"
+
+\end_inset
+
 Rotating drum (
 \begin_inset Formula $N=100$
 \end_inset
@@ -3096,7 +3133,48 @@ ell.
 \begin_inset Formula $\epsilon$
 \end_inset
 
-;
+; sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; case (a) is for 
+\begin_inset Formula $m=1000$
+\end_inset
+
+ and varying 
+\begin_inset Formula $\delta,\epsilon$
+\end_inset
+
+; case (b) is for 
+\begin_inset Formula $\epsilon=10^{-3}$
+\end_inset
+
+ and varying 
+\begin_inset Formula $m,\delta;$
+\end_inset
+
+ case (c) is for varying 
+\begin_inset Formula $\left(\epsilon,m\right)$
+\end_inset
+
+ pairs and 
+\begin_inset Formula $\delta$
+\end_inset
+
+; left to right we have: total iterations counts across the entire simulation,
+ average numbers of solver iterations per time step when iterations are
+ converged, and total (per simulation) number of diverged Newton solver
+ runs (when the Gauss-Seidel solver was invoked upon reaching the iteration
+ limit); missing dots in the rightmost figures correspond to no cases of
+ divergence;
 \end_layout
 
 \end_inset
@@ -3117,9 +3195,9 @@ status open
 
 \begin_layout Plain Layout
 \align center
-(a)
+(i)
 \begin_inset Graphics
-	filename dru100_rig_A_runtimes.png
+	filename dru100_RG_A_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -3127,7 +3205,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_B_runtimes.png
+	filename dru100_RG_B_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -3135,7 +3213,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_C_runtimes.png
+	filename dru100_RG_C_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -3146,9 +3224,9 @@ status open
 
 \begin_layout Plain Layout
 \align center
-(b)
+(ii)
 \begin_inset Graphics
-	filename dru100_rig_A_ratios.png
+	filename dru100_RG_A_ratios.png
 	lyxscale 33
 	width 33text%
 
@@ -3156,7 +3234,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_B_ratios.png
+	filename dru100_RG_B_ratios.png
 	lyxscale 33
 	width 33text%
 
@@ -3164,7 +3242,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_rig_C_ratios.png
+	filename dru100_RG_C_ratios.png
 	lyxscale 33
 	width 33text%
 
@@ -3177,6 +3255,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum3"
+
+\end_inset
+
 Rotating drum (
 \begin_inset Formula $N=100$
 \end_inset
@@ -3186,7 +3270,15 @@ Rotating drum (
 ell.
  rigid
 \emph default
-): runtimes (a) and timing ratios (b);
+): runtimes (i) and solver time to runtime ratios (ii); left to right figures
+ correspond to cases (a-c) in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum1"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3207,9 +3299,9 @@ status open
 
 \begin_layout Plain Layout
 \align center
-(a)
+(i)
 \begin_inset Graphics
-	filename dru100_prb_A_runtimes.png
+	filename dru100_PR_A_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -3217,7 +3309,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_B_runtimes.png
+	filename dru100_PR_B_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -3225,7 +3317,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_C_runtimes.png
+	filename dru100_PR_C_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -3236,9 +3328,9 @@ status open
 
 \begin_layout Plain Layout
 \align center
-(b)
+(ii)
 \begin_inset Graphics
-	filename dru100_prb_A_ratios.png
+	filename dru100_PR_A_ratios.png
 	lyxscale 33
 	width 33text%
 
@@ -3246,7 +3338,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_B_ratios.png
+	filename dru100_PR_B_ratios.png
 	lyxscale 33
 	width 33text%
 
@@ -3254,7 +3346,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_prb_C_ratios.png
+	filename dru100_PR_C_ratios.png
 	lyxscale 33
 	width 33text%
 
@@ -3267,6 +3359,12 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum4"
+
+\end_inset
+
 Rotating drum (
 \begin_inset Formula $N=100$
 \end_inset
@@ -3276,7 +3374,15 @@ Rotating drum (
 ell.
  defo
 \emph default
-): runtimes (a) and timing ratios (b);
+): runtimes (i) and solver time to runtime ratios (ii); left to right figures
+ correspond to cases (a-c) in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum2"
+
+\end_inset
+
+.
 \end_layout
 
 \end_inset
@@ -3287,6 +3393,211 @@ ell.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Subsubsection
+Small scale serial runs
+\end_layout
+
+\begin_layout Standard
+In this section the number of particles 
+\begin_inset Formula $N=100$
+\end_inset
+
+.
+ Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum2"
+
+\end_inset
+
+ depict sensitivity of the solver iteration counts to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+ In case (a) the linear solver iterations bound 
+\begin_inset Formula $m=1000$
+\end_inset
+
+ and hence the linear solve accuracy is dictated by the choice of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+ In this case generally, the more inexact the linear solve is the more robust
+ the solver behavior becomes: both the total and average numbers of iterations
+ are lowest for 
+\begin_inset Formula $\epsilon\in\left\{ 0.1,0.25\right\} $
+\end_inset
+
+; for the rigid body case, with 
+\begin_inset Formula $\delta=0.001$
+\end_inset
+
+, the are no cases of divergence for these two values of 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; in the deformable case the entire vertical strip at 
+\begin_inset Formula $\delta=0.001$
+\end_inset
+
+ has this property and also there is no divergence for several other combination
+s of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+.
+ In case (b) the absolute accuracy of the linear solver is kept constant
+ at 
+\begin_inset Formula $\epsilon=0.001$
+\end_inset
+
+ while the number of linear solver iterations 
+\begin_inset Formula $m$
+\end_inset
+
+ is varied.
+ In this case it is also clear that inexact solves are favorable, with lowest
+ total and average numbers of iterations for 
+\begin_inset Formula $m\in\left\{ 10,15\right\} $
+\end_inset
+
+ for both the rigid and deformable case.
+ There are no solver failures for 
+\begin_inset Formula $\delta=0.001$
+\end_inset
+
+ and 
+\begin_inset Formula $m\in\left\{ 3,5\right\} $
+\end_inset
+
+ in the rigid case, while a significantly larger set of parameters 
+\begin_inset Formula $m\in\left\{ 3,5\right\} $
+\end_inset
+
+ 
+\series bold
+or
+\series default
+ 
+\begin_inset Formula $\delta\in\left\{ 0.001,0.01\right\} $
+\end_inset
+
+ is divergence free (with an exception of one data point).
+ Hence clearly inexact linear solves are favored, case (c) samples sensitivity
+ in the space of various 
+\begin_inset Formula $\left(\epsilon,m\right)$
+\end_inset
+
+ choices and the regularization parameter 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ In the rigid case (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum1"
+
+\end_inset
+
+ (c), right) it is seen that the entire 
+\begin_inset Formula $\delta=0.001$
+\end_inset
+
+ is nearly free of solver divergence; a significantly large parameter space
+ has this property in the deformable case (Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum2"
+
+\end_inset
+
+ (c), right).
+ We can also see that for the rigid case the average number of iterations
+ per time step is in the range 10-100, while in the deformable case it is
+ in the range 1-10.
+ Consequently, there is a similar correspondence between the total number
+ of iterations (scaled up by 10000: the number of time steps).
+\end_layout
+
+\begin_layout Standard
+The runtimes and solver time to runtime ratios are depicted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum3"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum4"
+
+\end_inset
+
+.
+ Shortest runtimes and lowest timing ratios correspond to the same parameter
+ set choices as those transpiring in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum1"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum2"
+
+\end_inset
+
+.
+ The choice of 
+\begin_inset Formula $\delta=0.001$
+\end_inset
+
+ gives a best overall performance.
+ Both, for the rigid body and deformable cases, the choice of 
+\begin_inset Formula $\delta=0.001$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon=0.001$
+\end_inset
+
+ and 
+\begin_inset Formula $m=5$
+\end_inset
+
+ results in a most robust solver behavior (no divergence) combined with
+ favorably low ratios of solver time to the total runtime: 
+\emph on
+this will be the recommended choice of parameters for this example
+\emph default
+.
 \end_layout
 
 \begin_layout Standard
@@ -3833,7 +4144,15 @@ Rotating drum
 \end_inset
 
 : comparison of solution statistics for 
-\begin_inset Formula $\delta=0$
+\begin_inset Formula $\delta=0.001$
+\end_inset
+
+, 
+\begin_inset Formula $\epsilon=0.001$
+\end_inset
+
+, 
+\begin_inset Formula $m=5$
 \end_inset
 
  and various simulation setups; cf.
@@ -3853,29 +4172,6 @@ TODO
 \end_inset
 
 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Subsubsection
-Small scale serial runs
-\end_layout
-
-\begin_layout Standard
-In this section the number of particles 
-\begin_inset Formula $N=100$
-\end_inset
-
-.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
 \end_layout
 
 \end_inset

@@ -4,7 +4,7 @@ import numpy as np
 import subprocess
 import ast
 
-kinem = ['rig', 'prb']
+kinem = ['RG', 'PR']
 cases = ['A', 'B', 'C']
 X_label = ['delta', 'delta', 'delta']
 Y_label = ['epsilon', 'm', '(m, eps)']
@@ -14,7 +14,7 @@ X_Y_plots = ['Total ietarations', 'Avg. iter. when converged', 'Diverged solves'
 
 
 print 'Decompressing data files...'
-process = subprocess.Popen('unzip -f data.zip', shell=True)
+process = subprocess.Popen('unzip -o data.zip', shell=True)
 process.wait()
 
 print 'Plotting iterations...'
@@ -24,13 +24,13 @@ for kin in kinem:
     V_Y = {}
     V_X_Y = {}
     ic = cases.index(case)
-    with open('data/tr2-dru100-%s-iters' % kin, 'r') as inp:
+    with open('data/tr2-dru100-iters', 'r') as inp:
       ln = inp.readline()
       ln = ln.split(' = ')
       while ln != ['']:
 	name = ln[0].split('_')
 	data = [int(x) for x in ln[1].split(',')]
-	if name[0] == case:
+	if name[0] == case and name[3] == kin:
 	  x = float(name[X_index[ic]][4:])
 	  yi = Y_index[ic]
 	  if type(yi) is tuple:
@@ -73,13 +73,13 @@ for kin in kinem:
     V_Y = {}
     V_X_Y = {}
     ic = cases.index(case)
-    with open('data/tr2-dru100-%s-runtimes' % kin, 'r') as inp:
+    with open('data/tr2-dru100-runtimes', 'r') as inp:
       ln = inp.readline()
       ln = ln.split(' = ')
       while ln != ['']:
 	name = ln[0].split('_')
 	data = float(ln[1])
-	if name[0] == case:
+	if name[0] == case and name[3] == kin:
 	  x = float(name[X_index[ic]][4:])
 	  yi = Y_index[ic]
 	  if type(yi) is tuple:
@@ -120,13 +120,13 @@ for kin in kinem:
     V_Y = {}
     V_X_Y = {}
     ic = cases.index(case)
-    with open('data/tr2-dru100-%s-timings' % kin, 'r') as inp:
+    with open('data/tr2-dru100-timings', 'r') as inp:
       ln = inp.readline()
       ln = ln.split(' = ')
       while ln != ['']:
 	name = ln[0].split('_')
 	data = ast.literal_eval(ln[1])
-	if name[0] == case:
+	if name[0] == case and name[3] == kin:
 	  x = float(name[X_index[ic]][4:])
 	  yi = Y_index[ic]
 	  if type(yi) is tuple:
