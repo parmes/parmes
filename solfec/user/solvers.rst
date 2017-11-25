@@ -127,7 +127,7 @@ If local dynamics is enabled (locdyn = 'ON') and iterations fail to converge,
 the Gauss--Seidel solver will be invoked, starting from the previous time step solution.
 *WARNING:* NEWTON_SOLVER may not work well for friction > 1.0.
 
-.. topic:: obj = NEWTON_SOLVER (| meritval, maxiter, locdyn, linver, linmaxiter, maxmatvec, epsilon, delta, theta, omega, gsflag)
+.. topic:: obj = NEWTON_SOLVER (| meritval, maxiter, locdyn, linver, linmaxiter, maxmatvec, epsilon, delta, theta, omega, gsflag, reldelta)
 
   This routine creates a NEWTON_SOLVER object.
 
@@ -162,6 +162,11 @@ the Gauss--Seidel solver will be invoked, starting from the previous time step s
   * omega -- positive equation smoothing omega (default: :math:`\mbox{meritval}\cdot0.01`)
 
   * gsflag -- 'ON' or 'OFF' deciding whether to us Gauss-Seidel iterations in case of failure (default: 'ON')
+
+  * reldelta -- make **delta** relative to the :ref:`generalized inverse inertia <solfec-theory-locdyn>` :math:`\mathbf{W}` operator;
+    possible choices are: 'OFF' - delta is regarded as an absolute value, 'avgWii' - delta is relative to the average of the diagonal
+    entries of :math:`\mathbf{W}`, 'minWii' - delta is relative to the minimum of the diagonal entries of :math:`\mathbf{W}`,
+    'maxWii' - delta is relative to the maximum of the diagonal entries of :math:`\mathbf{W}`; (default: 'OFF')
 
 Some parameters can also be accessed as members of a NEWTON_SOLVER object, cf. :numref:`newton-params`.
 

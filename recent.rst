@@ -1,5 +1,5 @@
 
-* On Nov 16 2017 :ref:`parmec-input_commands`
+* On Nov 17 2017 :ref:`parmec-input_commands`
 
 * On Oct 26 2017 :ref:`solfec-user-solvers`
 
