@@ -4289,7 +4289,7 @@ status open
 \align center
 (a)
 \begin_inset Graphics
-	filename dru100_RG_A0_minWii_runtime.png
+	filename dru100_RG_A_minWii_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -4297,7 +4297,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_RG_A1.png
+	filename dru100_RG_A1_minWii.png
 	lyxscale 33
 	width 33text%
 
@@ -4305,7 +4305,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_RG_A2.png
+	filename dru100_RG_A2_minWii.png
 	lyxscale 33
 	width 33text%
 
@@ -4318,7 +4318,7 @@ status open
 \align center
 (b)
 \begin_inset Graphics
-	filename dru100_RG_B0.png
+	filename dru100_RG_B_minWii_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -4326,7 +4326,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_RG_B1.png
+	filename dru100_RG_B1_minWii.png
 	lyxscale 33
 	width 33text%
 
@@ -4334,7 +4334,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_RG_B2.png
+	filename dru100_RG_B2_minWii.png
 	lyxscale 33
 	width 33text%
 
@@ -4347,7 +4347,7 @@ status open
 \align center
 (c)
 \begin_inset Graphics
-	filename dru100_RG_C0.png
+	filename dru100_RG_C_minWii_runtimes.png
 	lyxscale 33
 	width 33text%
 
@@ -4355,7 +4355,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_RG_C1.png
+	filename dru100_RG_C1_minWii.png
 	lyxscale 33
 	width 33text%
 
@@ -4363,7 +4363,7 @@ status open
 
 
 \begin_inset Graphics
-	filename dru100_RG_C2.png
+	filename dru100_RG_C2_minWii.png
 	lyxscale 33
 	width 33text%
 
@@ -4378,7 +4378,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset CommandInset label
 LatexCommand label
-name "fig:drum1-1"
+name "fig:drum1-minWii"
 
 \end_inset
 
@@ -4391,6 +4391,10 @@ Rotating drum (
 ell.
  rigid
 \emph default
+, 
+\begin_inset Formula $\delta_{1}=\delta\cdot\min_{i}W_{ii}$
+\end_inset
+
 ): sensitivity to the choice of 
 \begin_inset Formula $\delta$
 \end_inset
@@ -4427,12 +4431,11 @@ ell.
 \begin_inset Formula $\delta$
 \end_inset
 
-; left to right we have: total iterations counts across the entire simulation,
- average numbers of solver iterations per time step when iterations are
- converged, and total (per simulation) number of diverged Newton solver
- runs (when the Gauss-Seidel solver was invoked upon reaching the iteration
- limit); missing dots in the rightmost figures correspond to no cases of
- divergence;
+; left to right we have: total runtimes, average numbers of solver iterations
+ per time step when iterations are converged, and total (per simulation)
+ number of diverged Newton solver runs (when the Gauss-Seidel solver was
+ invoked upon reaching the iteration limit); missing dots in the rightmost
+ figures correspond to no cases of divergence;
 \end_layout
 
 \end_inset
@@ -4443,6 +4446,1013 @@ ell.
 \end_inset
 
 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+(a)
+\begin_inset Graphics
+	filename dru100_RG_A_avgWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_A1_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_A2_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(b)
+\begin_inset Graphics
+	filename dru100_RG_B_avgWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_B1_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_B2_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(c)
+\begin_inset Graphics
+	filename dru100_RG_C_avgWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_C1_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_C2_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum1-avgWii"
+
+\end_inset
+
+Rotating drum (
+\begin_inset Formula $N=100$
+\end_inset
+
+, 
+\emph on
+ell.
+ rigid
+\emph default
+, 
+\begin_inset Formula $\delta_{1}=\delta\cdot\underset{i}{\text{avg}}W_{ii}$
+\end_inset
+
+): sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; case (a) is for 
+\begin_inset Formula $m=1000$
+\end_inset
+
+ and varying 
+\begin_inset Formula $\delta,\epsilon$
+\end_inset
+
+; case (b) is for 
+\begin_inset Formula $\epsilon=10^{-3}$
+\end_inset
+
+ and varying 
+\begin_inset Formula $m,\delta;$
+\end_inset
+
+ case (c) is for varying 
+\begin_inset Formula $\left(\epsilon,m\right)$
+\end_inset
+
+ pairs and 
+\begin_inset Formula $\delta$
+\end_inset
+
+; left to right we have: total runtimes, average numbers of solver iterations
+ per time step when iterations are converged, and total (per simulation)
+ number of diverged Newton solver runs (when the Gauss-Seidel solver was
+ invoked upon reaching the iteration limit); missing dots in the rightmost
+ figures correspond to no cases of divergence;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+(a)
+\begin_inset Graphics
+	filename dru100_RG_A_maxWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_A1_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_A2_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(b)
+\begin_inset Graphics
+	filename dru100_RG_B_maxWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_B1_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_B2_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(c)
+\begin_inset Graphics
+	filename dru100_RG_C_maxWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_C1_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_C2_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum1-maxWii"
+
+\end_inset
+
+Rotating drum (
+\begin_inset Formula $N=100$
+\end_inset
+
+, 
+\emph on
+ell.
+ rigid
+\emph default
+, 
+\begin_inset Formula $\delta_{1}=\delta\cdot\max_{i}W_{ii}$
+\end_inset
+
+): sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; case (a) is for 
+\begin_inset Formula $m=1000$
+\end_inset
+
+ and varying 
+\begin_inset Formula $\delta,\epsilon$
+\end_inset
+
+; case (b) is for 
+\begin_inset Formula $\epsilon=10^{-3}$
+\end_inset
+
+ and varying 
+\begin_inset Formula $m,\delta;$
+\end_inset
+
+ case (c) is for varying 
+\begin_inset Formula $\left(\epsilon,m\right)$
+\end_inset
+
+ pairs and 
+\begin_inset Formula $\delta$
+\end_inset
+
+; left to right we have: total runtimes, average numbers of solver iterations
+ per time step when iterations are converged, and total (per simulation)
+ number of diverged Newton solver runs (when the Gauss-Seidel solver was
+ invoked upon reaching the iteration limit); missing dots in the rightmost
+ figures correspond to no cases of divergence;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+(a)
+\begin_inset Graphics
+	filename dru100_PR_A_minWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_A1_minWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_A2_minWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(b)
+\begin_inset Graphics
+	filename dru100_PR_B_minWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_B1_minWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_B2_minWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(c)
+\begin_inset Graphics
+	filename dru100_PR_C_minWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_C1_minWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_C2_minWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum2-minWii"
+
+\end_inset
+
+Rotating drum (
+\begin_inset Formula $N=100$
+\end_inset
+
+, 
+\emph on
+ell.
+ defo
+\emph default
+, 
+\begin_inset Formula $\delta_{1}=\delta\cdot\min_{i}W_{ii}$
+\end_inset
+
+): sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; case (a) is for 
+\begin_inset Formula $m=1000$
+\end_inset
+
+ and varying 
+\begin_inset Formula $\delta,\epsilon$
+\end_inset
+
+; case (b) is for 
+\begin_inset Formula $\epsilon=10^{-3}$
+\end_inset
+
+ and varying 
+\begin_inset Formula $m,\delta;$
+\end_inset
+
+ case (c) is for varying 
+\begin_inset Formula $\left(\epsilon,m\right)$
+\end_inset
+
+ pairs and 
+\begin_inset Formula $\delta$
+\end_inset
+
+; left to right we have: total runtimes, average numbers of solver iterations
+ per time step when iterations are converged, and total (per simulation)
+ number of diverged Newton solver runs (when the Gauss-Seidel solver was
+ invoked upon reaching the iteration limit); missing dots in the rightmost
+ figures correspond to no cases of divergence;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+(a)
+\begin_inset Graphics
+	filename dru100_PR_A_avgWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_A1_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_A2_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(b)
+\begin_inset Graphics
+	filename dru100_PR_B_avgWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_B1_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_B2_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(c)
+\begin_inset Graphics
+	filename dru100_PR_C_avgWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_C1_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_C2_avgWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum2-avgWii"
+
+\end_inset
+
+Rotating drum (
+\begin_inset Formula $N=100$
+\end_inset
+
+, 
+\emph on
+ell.
+ defo
+\emph default
+, 
+\begin_inset Formula $\delta_{1}=\delta\cdot\underset{i}{\text{avg}}W_{ii}$
+\end_inset
+
+): sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; case (a) is for 
+\begin_inset Formula $m=1000$
+\end_inset
+
+ and varying 
+\begin_inset Formula $\delta,\epsilon$
+\end_inset
+
+; case (b) is for 
+\begin_inset Formula $\epsilon=10^{-3}$
+\end_inset
+
+ and varying 
+\begin_inset Formula $m,\delta;$
+\end_inset
+
+ case (c) is for varying 
+\begin_inset Formula $\left(\epsilon,m\right)$
+\end_inset
+
+ pairs and 
+\begin_inset Formula $\delta$
+\end_inset
+
+; left to right we have: total runtimes, average numbers of solver iterations
+ per time step when iterations are converged, and total (per simulation)
+ number of diverged Newton solver runs (when the Gauss-Seidel solver was
+ invoked upon reaching the iteration limit); missing dots in the rightmost
+ figures correspond to no cases of divergence;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+(a)
+\begin_inset Graphics
+	filename dru100_PR_A_maxWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_A1_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_A2_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(b)
+\begin_inset Graphics
+	filename dru100_PR_B_maxWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_B1_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_B2_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(c)
+\begin_inset Graphics
+	filename dru100_PR_C_maxWii_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_C1_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_C2_maxWii.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum2-maxWii"
+
+\end_inset
+
+Rotating drum (
+\begin_inset Formula $N=100$
+\end_inset
+
+, 
+\emph on
+ell.
+ defo
+\emph default
+, 
+\begin_inset Formula $\delta_{1}=\delta\cdot\max_{i}W_{ii}$
+\end_inset
+
+): sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; sensitivity to the choice of 
+\begin_inset Formula $\delta$
+\end_inset
+
+, 
+\begin_inset Formula $m$
+\end_inset
+
+, and 
+\begin_inset Formula $\epsilon$
+\end_inset
+
+; case (a) is for 
+\begin_inset Formula $m=1000$
+\end_inset
+
+ and varying 
+\begin_inset Formula $\delta,\epsilon$
+\end_inset
+
+; case (b) is for 
+\begin_inset Formula $\epsilon=10^{-3}$
+\end_inset
+
+ and varying 
+\begin_inset Formula $m,\delta;$
+\end_inset
+
+ case (c) is for varying 
+\begin_inset Formula $\left(\epsilon,m\right)$
+\end_inset
+
+ pairs and 
+\begin_inset Formula $\delta$
+\end_inset
+
+; left to right we have: total runtimes, average numbers of solver iterations
+ per time step when iterations are converged, and total (per simulation)
+ number of diverged Newton solver runs (when the Gauss-Seidel solver was
+ invoked upon reaching the iteration limit); missing dots in the rightmost
+ figures correspond to no cases of divergence;
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+By browsing Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum1-minWii"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum2-maxWii"
+
+\end_inset
+
+ we notice that cases of fully robust runs (without divergence) are significantl
+y more common when the choice of 
+\begin_inset Formula $\delta_{1}$
+\end_inset
+
+ is relative to 
+\begin_inset Formula $\mathbf{W}$
+\end_inset
+
+.
+ As we move from the 
+\begin_inset Formula $\min W_{ii}$
+\end_inset
+
+ norm, through the average 
+\begin_inset Formula $W_{ii}$
+\end_inset
+
+ norm, to the 
+\begin_inset Formula $\max W_{ii}$
+\end_inset
+
+ norm, the region of no solver failures gradually moves from right to left
+ – within the unchanging range of the relative span of 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ This reflects the fact that the absolute range of values of 
+\begin_inset Formula $\delta_{1}$
+\end_inset
+
+ for which no failures occur becomes better represented (within the chosen
+ and fixed range of 
+\begin_inset Formula $\delta$
+\end_inset
+
+) as we shift between 
+\begin_inset Formula $\min W_{ii}\rightarrow\text{avg}W_{ii}\rightarrow\max W_{ii}$
+\end_inset
+
+.
+ Perhaps it does not matter which of those norms we use as long as in our
+ investigation of an optimum value of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ we cover a sufficient range.
+ We can also see, that for rigid ellipsoids this range is narrower when
+ compared with the deformable counterpart: the no failure zone is significantly
+ broader in case of pseudo-rigid ellipsoids.
+ This corresponds to the fact that it is easier to resolve contact reactions
+ with the extra kinematic freedom for the particles themselves to deform.
+\end_layout
+
+\begin_layout Standard
+In all of the Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum1-minWii"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum2-maxWii"
+
+\end_inset
+
+ the areas of shortest runtimes do not necessarily strictly reflect the
+ areas of no solver failure.
+ There are overlap zones where both properties meet, but in general shortest
+ runtimes occur in areas where both, the average number of solver iterations
+ per time step, and the number of solver failures, are simultaneously low.
+ Having only few instances of a fallback on the Gauss-Seidel solver during
+ the entire simulation does not significantly affect the runtime.
+ Nonetheless, it is possible to select parameter sets for which there is
+ no solver failure and the runtime is short.
+ For the rigid body case, the choice of 
+\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,20\right)$
+\end_inset
+
+ for the 
+\begin_inset Formula $\left(\delta_{\text{avg}W_{ii}},\epsilon,m\right)$
+\end_inset
+
+ triad produces the shortest total runtime of 482s (no solver failure occurs
+ in this case).
+ For the pseudo-rigid kinematic case, the choice of 
+\begin_inset Formula $\left(0.025_{\text{avg}W_{ii}},0.025,10\right)$
+\end_inset
+
+ for the 
+\begin_inset Formula $\left(\delta_{\text{avg}W_{ii}},\epsilon,m\right)$
+\end_inset
+
+ triad produces the shortest total runtime of 380s (no solver failure also
+ in this case).
+ These runtimes are well comparable with those produced by the Gauss-Seidel
+ solver based runs and reported in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:drum1"
+
+\end_inset
+
+.
+ 
 \end_layout
 
 \begin_layout Subsubsection

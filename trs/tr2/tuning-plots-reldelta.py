@@ -52,6 +52,7 @@ for rldl in reldelta:
       X, Y = np.meshgrid(xlist, ylist)
       for k in range (0, len(X_Y_plots)):
 	Z = X+Y
+	Z.fill(0)
 	for pnt in V_X_Y:
 	  i = V_X.index(pnt[0])
 	  j = V_Y.index(pnt[1])
@@ -100,6 +101,7 @@ for rldl in reldelta:
       ylist = np.linspace(0, len(V_Y), len(V_Y))
       X, Y = np.meshgrid(xlist, ylist)
       Z = X+Y
+      Z.fill(0)
       for pnt in V_X_Y:
 	i = V_X.index(pnt[0])
 	j = V_Y.index(pnt[1])
@@ -148,6 +150,7 @@ for rldl in reldelta:
       ylist = np.linspace(0, len(V_Y), len(V_Y))
       X, Y = np.meshgrid(xlist, ylist)
       Z = X+Y
+      Z.fill(0)
       for pnt in V_X_Y:
 	i = V_X.index(pnt[0])
 	j = V_Y.index(pnt[1])

@@ -3585,37 +3585,66 @@ reference "fig:drum2"
 \end_inset
 
 .
- The choice of 
-\begin_inset Formula $\delta=0.001$
+ For the rigid body case, the choice of 
+\begin_inset Formula $\left(0.0001,0.1,15\right)$
 \end_inset
 
- gives a best overall performance.
- Both, for the rigid body and deformable cases, the choice of 
-\begin_inset Formula $\delta=0.001$
+ for the 
+\begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
-, 
-\begin_inset Formula $\epsilon=0.001$
+ triad produces the shortest total runtime of 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+452s
+\end_layout
+
 \end_inset
 
- and 
-\begin_inset Formula $m=5$
+ (less then ten solver failures occur in this case).
+ For the pseudo-rigid kinematic case, the choice of 
+\begin_inset Formula $\left(1\text{E-6},0.1,1000\right)$
 \end_inset
 
- results in a most robust solver behavior (no divergence) combined with
- favorably low ratios of solver time to the total runtime: this choice of
- parameters is used in Table 
+ for the 
+\begin_inset Formula $\left(\delta,\epsilon,m\right)$
+\end_inset
+
+ triad produces the shortest total runtime of 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+318s
+\end_layout
+
+\end_inset
+
+ (one solver failure occurs in this case).
+ These runtimes are well comparable with those produced by the Gauss-Seidel
+ solver based runs and reported in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:drum1"
 
 \end_inset
 
-, comparing runtimes and solver statistics between the projected Newton
- and Gauss-Seidel solvers.
- Clearly, the Gauss-Seidel solver typically outperforms the Newton solver
- on this small serial example (with the exception of the Newton based run
- for deformable ellipsoids).
+.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: rerun the study in order to produce consistent runtimes with those
+ in the table (these above are for the previous, gradual way of inserting
+ the particles)
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Standard
@@ -3819,7 +3848,43 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-623
+599
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+526
 \end_layout
 
 \end_inset
@@ -3833,47 +3898,11 @@ ell.
 
 \end_inset
 </cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-19
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-477
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
-0.84
-\end_layout
-
-\end_inset
-</cell>
 <cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
 \begin_inset Text
 
 \begin_layout Plain Layout
-108
+119
 \end_layout
 
 \end_inset
@@ -3882,7 +3911,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-36
+31
 \end_layout
 
 \end_inset
@@ -3903,7 +3932,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-375
+421
 \end_layout
 
 \end_inset
@@ -3912,7 +3941,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.59
+
 \end_layout
 
 \end_inset
@@ -3921,7 +3950,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+
 \end_layout
 
 \end_inset
@@ -3930,7 +3959,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
@@ -3939,7 +3968,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-416
+453
 \end_layout
 
 \end_inset
@@ -3957,7 +3986,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-13
+15
 \end_layout
 
 \end_inset
@@ -3987,7 +4016,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-639
+242
 \end_layout
 
 \end_inset
@@ -3996,7 +4025,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.97
+
 \end_layout
 
 \end_inset
@@ -4005,7 +4034,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-48
+
 \end_layout
 
 \end_inset
@@ -4014,7 +4043,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-2
+
 \end_layout
 
 \end_inset
@@ -4023,7 +4052,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-439
+406
 \end_layout
 
 \end_inset
@@ -4032,7 +4061,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.96
+0.94
 \end_layout
 
 \end_inset
@@ -4041,7 +4070,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-174
+164
 \end_layout
 
 \end_inset
@@ -4050,7 +4079,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-198
+180
 \end_layout
 
 \end_inset
@@ -4071,7 +4100,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-138
+199
 \end_layout
 
 \end_inset
@@ -4080,7 +4109,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.85
+
 \end_layout
 
 \end_inset
@@ -4089,7 +4118,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-6
+
 \end_layout
 
 \end_inset
@@ -4098,7 +4127,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
@@ -4116,7 +4145,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.62
+0.75
 \end_layout
 
 \end_inset
@@ -4125,7 +4154,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-17
+19
 \end_layout
 
 \end_inset
@@ -4162,20 +4191,21 @@ Rotating drum
 \end_inset
 
 : comparison of solution statistics for 
-\begin_inset Formula $\delta=0.001$
+\begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
-, 
-\begin_inset Formula $\epsilon=0.001$
+ choice of 
+\begin_inset Formula $\left(0.0001,0.1,15\right)$
 \end_inset
 
-, 
-\begin_inset Formula $m=5$
+ for the rigid body case and 
+\begin_inset Formula $\left(1\text{E-6},0.1,1000\right)$
 \end_inset
 
- and various simulation setups; respective columns stand for total runtime
- (runtime), solver time to runtime ratio (ratio), average number of iterations
- per step when converged (it/step), and number of diverged steps.
+ for the deformable body case; respective columns stand for total runtime
+ in seconds (runtime), solver time to runtime ratio (ratio), average number
+ of iterations per step when converged (it/step), and number of diverged
+ steps.
 \end_layout
 
 \end_inset
@@ -5354,6 +5384,1185 @@ y more common when the choice of
 \end_inset
 
 .
+ As we move from the 
+\begin_inset Formula $\min W_{ii}$
+\end_inset
+
+ norm, through the average 
+\begin_inset Formula $W_{ii}$
+\end_inset
+
+ norm, to the 
+\begin_inset Formula $\max W_{ii}$
+\end_inset
+
+ norm, the region of no solver failures gradually moves from right to left
+ – within the unchanging range of the relative span of 
+\begin_inset Formula $\delta$
+\end_inset
+
+.
+ This reflects the fact that the absolute range of values of 
+\begin_inset Formula $\delta_{1}$
+\end_inset
+
+ for which no failures occur becomes better represented (within the chosen
+ and fixed range of 
+\begin_inset Formula $\delta$
+\end_inset
+
+) as we shift between 
+\begin_inset Formula $\min W_{ii}\rightarrow\text{avg}W_{ii}\rightarrow\max W_{ii}$
+\end_inset
+
+.
+ Perhaps it does not matter which of those norms we use as long as in our
+ investigation of an optimum value of 
+\begin_inset Formula $\delta$
+\end_inset
+
+ we cover a sufficient range.
+ We can also see, that for rigid ellipsoids this range is narrower when
+ compared with the deformable counterpart: the no failure zone is significantly
+ broader in case of pseudo-rigid ellipsoids.
+ This corresponds to the fact that it is easier to resolve contact reactions
+ with the extra kinematic freedom for the particles themselves to deform.
+\end_layout
+
+\begin_layout Standard
+In all of the Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum1-minWii"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum2-maxWii"
+
+\end_inset
+
+ the areas of shortest runtimes do not necessarily strictly reflect the
+ areas of no solver failure.
+ There are overlap zones where both properties meet, but in general shortest
+ runtimes occur in areas where both, the average number of solver iterations
+ per time step, and the number of solver failures, are simultaneously low.
+ Having only few instances of a fallback on the Gauss-Seidel solver during
+ the entire simulation does not significantly affect the runtime.
+ Nonetheless, it is possible to select parameter sets for which there is
+ no solver failure and the runtime is short.
+ For the rigid body case, the choice of 
+\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,20\right)$
+\end_inset
+
+ for the 
+\begin_inset Formula $\left(\delta_{\text{avg}W_{ii}},\epsilon,m\right)$
+\end_inset
+
+ triad produces the shortest total runtime of 482s (no solver failure occurs
+ in this case).
+ For the pseudo-rigid kinematic case, the choice of 
+\begin_inset Formula $\left(0.025_{\text{avg}W_{ii}},0.025,10\right)$
+\end_inset
+
+ for the 
+\begin_inset Formula $\left(\delta_{\text{avg}W_{ii}},\epsilon,m\right)$
+\end_inset
+
+ triad produces the shortest total runtime of 380s (no solver failure also
+ in this case).
+ These runtimes are well comparable with those produced by the Gauss-Seidel
+ solver based runs and reported in Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:drum1-reldelta"
+
+\end_inset
+
+ (note also the variation of the Newton based runtimes due to test reruns).
+ Table 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "tab:drum1-normtimes"
+
+\end_inset
+
+ juxtaposes shortest runtimes for all three choices of the relative 
+\begin_inset Formula $\delta$
+\end_inset
+
+ norms.
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO: clarity of rerun variation in tables
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="9">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Newton solver based
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="1" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gauss-Seidel solver based
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+runtime
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ratio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+it/step
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+divs
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+runtime
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ratio
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+it/step
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+divs
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ell.
+ rigid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+496
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.73
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+9
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+526
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.83
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+119
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+31
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+ell.
+ defo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+402
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.58
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+453
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.45
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+15
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sph.
+ rigid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+271
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.90
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+14
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+406
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.94
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+164
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+180
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+sph.
+ defo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+123
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.79
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+55
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.75
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+19
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:drum1-reldelta"
+
+\end_inset
+
+Rotating drum 
+\begin_inset Formula $\left(N=100\right)$
+\end_inset
+
+: comparison of solution statistics for 
+\begin_inset Formula $\left(\delta,\epsilon,m\right)$
+\end_inset
+
+ choice of 
+\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,20\right)$
+\end_inset
+
+ for the rigid body case and 
+\begin_inset Formula $\left(0.025_{\text{avg}W_{ii}},0.025,10\right)$
+\end_inset
+
+ for the deformable body case; respective columns stand for total runtime
+ in seconds (runtime), solver time to runtime ratio (ratio), average number
+ of iterations per step when converged (it/step), and number of diverged
+ steps.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="7" columns="6">
+<features tabularvalignment="middle">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<row>
+<cell multicolumn="1" alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell multicolumn="2" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+runtime
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\delta$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\epsilon$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $m$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+rigid
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\min W_{ii}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+486s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{avg}W_{ii}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+482s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.25
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\max$
+\end_inset
+
+
+\begin_inset Formula $W_{ii}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+529s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+5
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="3" alignment="center" valignment="middle" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+defo
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\min W_{ii}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+384s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\text{avg}W_{ii}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+380s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row>
+<cell multirow="4" alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+\begin_inset Formula $\max$
+\end_inset
+
+
+\begin_inset Formula $W_{ii}$
+\end_inset
+
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+385s
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.01
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.025
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" rightline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+10
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "tab:drum1-normtimes"
+
+\end_inset
+
+Rotating drum 
+\begin_inset Formula $\left(N=100\right)$
+\end_inset
+
+: juxtaposition of shortest runtimes and parameter choices for all three
+ relative 
+\begin_inset Formula $\delta$
+\end_inset
+
+ norms.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
