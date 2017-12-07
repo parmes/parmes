@@ -2996,7 +2996,7 @@ ell.
  converged, and total (per simulation) number of diverged Newton solver
  runs (when the Gauss-Seidel solver was invoked upon reaching the iteration
  limit); missing dots in the rightmost figures correspond to no cases of
- divergence;
+ divergence.
 \end_layout
 
 \end_inset
@@ -3174,7 +3174,7 @@ ell.
  converged, and total (per simulation) number of diverged Newton solver
  runs (when the Gauss-Seidel solver was invoked upon reaching the iteration
  limit); missing dots in the rightmost figures correspond to no cases of
- divergence;
+ divergence.
 \end_layout
 
 \end_inset
@@ -4465,7 +4465,7 @@ ell.
  per time step when iterations are converged, and total (per simulation)
  number of diverged Newton solver runs (when the Gauss-Seidel solver was
  invoked upon reaching the iteration limit); missing dots in the rightmost
- figures correspond to no cases of divergence;
+ figures correspond to no cases of divergence.
 \end_layout
 
 \end_inset
@@ -4634,7 +4634,7 @@ ell.
  per time step when iterations are converged, and total (per simulation)
  number of diverged Newton solver runs (when the Gauss-Seidel solver was
  invoked upon reaching the iteration limit); missing dots in the rightmost
- figures correspond to no cases of divergence;
+ figures correspond to no cases of divergence.
 \end_layout
 
 \end_inset
@@ -4803,7 +4803,7 @@ ell.
  per time step when iterations are converged, and total (per simulation)
  number of diverged Newton solver runs (when the Gauss-Seidel solver was
  invoked upon reaching the iteration limit); missing dots in the rightmost
- figures correspond to no cases of divergence;
+ figures correspond to no cases of divergence.
 \end_layout
 
 \end_inset
@@ -4944,18 +4944,6 @@ ell.
 \begin_inset Formula $\epsilon$
 \end_inset
 
-; sensitivity to the choice of 
-\begin_inset Formula $\delta$
-\end_inset
-
-, 
-\begin_inset Formula $m$
-\end_inset
-
-, and 
-\begin_inset Formula $\epsilon$
-\end_inset
-
 ; case (a) is for 
 \begin_inset Formula $m=1000$
 \end_inset
@@ -4984,7 +4972,7 @@ ell.
  per time step when iterations are converged, and total (per simulation)
  number of diverged Newton solver runs (when the Gauss-Seidel solver was
  invoked upon reaching the iteration limit); missing dots in the rightmost
- figures correspond to no cases of divergence;
+ figures correspond to no cases of divergence.
 \end_layout
 
 \end_inset
@@ -5125,18 +5113,6 @@ ell.
 \begin_inset Formula $\epsilon$
 \end_inset
 
-; sensitivity to the choice of 
-\begin_inset Formula $\delta$
-\end_inset
-
-, 
-\begin_inset Formula $m$
-\end_inset
-
-, and 
-\begin_inset Formula $\epsilon$
-\end_inset
-
 ; case (a) is for 
 \begin_inset Formula $m=1000$
 \end_inset
@@ -5165,7 +5141,7 @@ ell.
  per time step when iterations are converged, and total (per simulation)
  number of diverged Newton solver runs (when the Gauss-Seidel solver was
  invoked upon reaching the iteration limit); missing dots in the rightmost
- figures correspond to no cases of divergence;
+ figures correspond to no cases of divergence.
 \end_layout
 
 \end_inset
@@ -5306,18 +5282,6 @@ ell.
 \begin_inset Formula $\epsilon$
 \end_inset
 
-; sensitivity to the choice of 
-\begin_inset Formula $\delta$
-\end_inset
-
-, 
-\begin_inset Formula $m$
-\end_inset
-
-, and 
-\begin_inset Formula $\epsilon$
-\end_inset
-
 ; case (a) is for 
 \begin_inset Formula $m=1000$
 \end_inset
@@ -5346,7 +5310,7 @@ ell.
  per time step when iterations are converged, and total (per simulation)
  number of diverged Newton solver runs (when the Gauss-Seidel solver was
  invoked upon reaching the iteration limit); missing dots in the rightmost
- figures correspond to no cases of divergence;
+ figures correspond to no cases of divergence.
 \end_layout
 
 \end_inset
@@ -6572,6 +6536,234 @@ Sensitivity study: material density vs.
 \end_inset
 
  choices
+\end_layout
+
+\begin_layout Standard
+Small scale simulations like in Sections 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:absdelta"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "subsec:reldelta"
+
+\end_inset
+
+ are suitable for exploring and tuning solver parameters.
+ Nonetheless, in case of large scale simulations, such direct tuning would
+ not be practical - consuming too much resources and time.
+ When modifying aspects of a simulation setup (e.g.
+ material parameters, geometrical dimensions, number of particles) it is
+ useful to have an orientation whether a set of optimal parameters - for
+ a tuned simulation setup - remains approximately optimal for a model that
+ has undergone change.
+ Here, we explore this by varying material density versus the choice of
+ delta for the same model with 100 particles.
+ We hope to verify whether the relative choice of delta is robust enough
+ to be applied for large scale simulations of the rotating drum: in our
+ setup the dimensions of the drum remain unchanged, but particles become
+ smaller as their number grows.
+ Varying the density of the 100 particles algebraically approximates this
+ effect.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+(a)
+\begin_inset Graphics
+	filename dru100_RG_0_dens.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_1_dens.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_RG_2_dens.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\align center
+(b)
+\begin_inset Graphics
+	filename dru100_PR_0_dens.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_1_dens.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename dru100_PR_2_dens.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum100-dens-stats"
+
+\end_inset
+
+Rotating drum (
+\begin_inset Formula $N=100$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\delta_{1},\epsilon,m\right)=\left(\delta_{\text{avg}W_{ii}},0.25,20\right)$
+\end_inset
+
+ for 
+\emph on
+ell.
+ rigid
+\emph default
+, 
+\begin_inset Formula $\left(\delta_{1},\epsilon,m\right)=\left(\delta_{\text{avg}W_{ii}},0.025,10\right)$
+\end_inset
+
+ for 
+\emph on
+ell.
+ defo
+\emph default
+): sensitivity to the choice of material density and 
+\begin_inset Formula $\delta$
+\end_inset
+
+; case (a) is for rigid ellipsoids; case (b) is for pseudo-rigid ellipsoids;
+ left to right we have: total runtimes, average numbers of solver iterations
+ per time step when iterations are converged, and total (per simulation)
+ number of diverged Newton solver runs (when the Gauss-Seidel solver was
+ invoked upon reaching the iteration limit); missing dots in the rightmost
+ figures correspond to no cases of divergence.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+(a)
+\begin_inset Graphics
+	filename dru100_RG_dens_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+ (b)
+\begin_inset Graphics
+	filename dru100_PR_dens_runtimes.png
+	lyxscale 33
+	width 33text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:drum100-dens-stats-1"
+
+\end_inset
+
+Rotating drum (
+\begin_inset Formula $N=100$
+\end_inset
+
+, 
+\begin_inset Formula $\left(\delta_{1},\epsilon,m\right)=\left(\delta_{\text{avg}W_{ii}},0.25,20\right)$
+\end_inset
+
+ for 
+\emph on
+ell.
+ rigid
+\emph default
+, 
+\begin_inset Formula $\left(\delta_{1},\epsilon,m\right)=\left(\delta_{\text{avg}W_{ii}},0.025,10\right)$
+\end_inset
+
+ for 
+\emph on
+ell.
+ defo
+\emph default
+): sensitivity of the total runtime to the choice of material density and
+ 
+\begin_inset Formula $\delta$
+\end_inset
+
+; case (a) is for rigid ellipsoids; case (b) is for pseudo-rigid ellipsoids.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
