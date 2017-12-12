@@ -8,7 +8,7 @@ TR1: Co-rotated and reduced order time integrators
 ==================================================
 
 :ref:`Technical Report 1 <tr1>` describes a linearly implicit time integration method
-combined with a family of finite element formulations:
+combined with a family of finite element formulations: (...)
 
 * Total Lagrangian (TL)
 * body co--rotational full mesh (BC)
