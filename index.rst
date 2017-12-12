@@ -26,6 +26,7 @@ Recent blog posts:
     VBOX <vbox/index>
     TGZ <tgz/index>
     TRs <trs/index>
+    groups
     About <blog/about>
     contact
     patreon
