@@ -520,7 +520,8 @@ Before running a simulation, request time history output.
      (body force) ’FX’, ’FY’, ’FZ’, ’\|F\|’, (body torque) ’TX’, ’TY’,
      ’TZ’, ’\|T\|’; spring entities: (spring length) 'LENGTH', (spring
      stroke) ’STROKE’, (spring total force) ’STF’, (spring force without
-     damping) ’SF’;
+     damping) ’SF’, (spring state) 'SS', cf. :ref:`OUTPUT <parmec-command-OUTPUT>`
+     for description;
 
   -  **source** - particle number *i*, or a list of particle numbers
      [\ *i, j, ...*\ ], or a spatial sphere defined as tuple
@@ -638,6 +639,11 @@ included into the output file(s). PARMEC outputs:
 
      -  ’SF’ - scalar field of spring force magnitude, without dashpot
 	contribution (modes: ’CD’, ’SD’)
+
+     - 'SS' - scalar field of spring states, where -3.0 denotes a regular spring (always active),
+        -2.0 denotes an active spring, -1.0 denotes a deactivated spring (zero force), and values
+	:math:`\ge0` denote a spring currently being unloaded (the number itself denotes
+	:ref:`TSERIES <parmec-command-TSERIES>` used as an unloading curve) (modes: 'SD')
 
      -  ’AREA’ - scalar field of contact area (modes: ’CD’)
 
