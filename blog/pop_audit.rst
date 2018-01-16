@@ -22,5 +22,5 @@ Solfec has been analysed by `POP <https://pop-coe.eu>`_ experts. The initial aud
 |POP1|
 
 I would like to express my gratitude to All at `POP <https://pop-coe.eu>`_ who have contributed to making this possible:)
-In particular I would like to thank Nick Dingle who contact me and pursued this work from start to end. This report will
-potentially guide Solfec optimization in 2018. 
+In particular I would like to thank Nick Dingle who pursued this work from start to end. This report will potentially guide
+Solfec optimization in 2018. 
