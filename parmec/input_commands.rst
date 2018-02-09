@@ -354,6 +354,31 @@ modified (i.e. spring curve modification is an *and* operation, not *or*). For e
 results in the resultant elastic spring force (SF) being assessed against the (-1.0, 1.0) limits. For the spring curves of springs 3 and 4 to be modified,
 the sum of the forces of springs 1 and 2 must be outside of the (-1.0,1.0) limits for **nfreq** (=1) number of **nsteps** (=1).
 
+EQM
+---
+
+Calculate equivalent point mass from particle inertia and mass properties. Two particles can be passed for relative motion mass.
+This subroutine can be used to calculate linear stiffness and damping properties for spring based constraints, e.g.
+:math:`\text{stiffness}=\text{acceleration}\cdot\text{EQM}/\text{leeway}` and
+:math:`\text{damper}=\text{damping ratio}\cdot2\cdot\sqrt{\text{mass}\cdot\text{stiffness}}` can be used to define
+spring and dashpot curves as :math:`\left[-1,-\text{spring},1,\text{spring}\right]` and :math:`\left[-1,-\text{damper},1,\text{damper}\right]`
+respectively, with the critical time step equal to
+:math:`\left(2/\sqrt{\text{stiffness}\cdot\text{mass}}\right)\cdot\left(\sqrt{1+\text{damper}^{2}}-\text{damper}\right)`.
+
+.. topic:: mass = EQM (part1, point1 | part2, point2, direction) :red:`(experimental)`
+
+  - **mass** - equivalent point mass
+
+  - **part1** - particle number
+
+  - **point1** - point coordinates
+
+  - **part2** - optional second particle number; default: not specified
+
+  - **point2** - optional second particle point coordinates; default: not specified
+
+  - **direction** - optional direction of motion; default: not specified
+
 GRANULAR
 --------
 
