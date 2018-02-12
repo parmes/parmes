@@ -253,15 +253,19 @@ Hybrid solver allows to combine smooth rigid body nonlinear spring based :ref:`P
 library is shared memory parallel and in the MPI mode this part of modeling is executed on MPI rank 0 process, employing maximum available
 shared memory parallelism.
 
-.. topic:: obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver) :red:`(Under development)`
+.. topic:: obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver | parmec_argv) :red:`(Under development)`
 
   * obj -- created HYBRID_SOLVER object
+
+  * parmec_file -- PARMEC input file path
 
   * parmec_step -- an upper bound of the PARMEC time step
 
   * parmec2solfec -- Python dictionary based mapping of PARMEC particle numbers to SOLFEC body identifiers
 
   * solfec_solver -- SOLFEC constraint solver (e.g. NEWTON_SOLVER) 
+
+  * parmec_argv -- optional list of PARMEC arguments, retrieved by PARMEC command :ref:`ARGV <parmec-command-ARGV>`
 
   Notes:
 

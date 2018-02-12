@@ -14,6 +14,8 @@ Subroutines related to input processing are listed below.
 **In all cases below, when an object number is returned,
 indexing starts at 0 and increments on each call**.
 
+.. _parmec-command-ARGV:
+
 ARGV
 ----
 
