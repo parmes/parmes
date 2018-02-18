@@ -200,13 +200,114 @@ Tomasz Koziara, t.koziara@gmail.com
 Introduction
 \end_layout
 
+\begin_layout Standard
+This reports describes an implementation of an implicit-explicit co-simulation
+ approach in Solfec 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Koziara2010"
+
+\end_inset
+
+, where a multi-body domain modeled by means of non-smooth implicit equations
+ is coupled with an explicitly integrated rigid body and spring model.
+ This capability allows to mix geometrically resolved non-smooth multi-body
+ models with simplified models, which may result in saving of computational
+ time, without sacrificing the relevance of the obtained results.
+ The presented functionality has been developed in response to a need of
+ speeding up calculations in a practical application context - modeling
+ of nuclear graphite cores - where two types of models have already been
+ developed:
+\end_layout
+
+\begin_layout Enumerate
+Simplified multi-body models comprising analytical rigid bodies bodies and
+ predefined nonlinear springs (LS-DYNA based).
+\end_layout
+
+\begin_layout Enumerate
+Geometrically resolved multi-body models comprising finite element bodies
+ and (detected during simulation) non-smooth contact constraints (Solfec
+ based).
+\end_layout
+
+\begin_layout Standard
+In this context, hybrid models - comprised of a small Solfec subdomain,
+ incorporated into a larger simplified model - can be advantageous, delivering
+ relevant results at a fraction of computational cost.
+ Such functionality has been added to 
+\begin_inset CommandInset href
+LatexCommand href
+name "Solfec"
+target "http://parmes.github.io/solfec/index.html"
+
+\end_inset
+
+ as the 
+\begin_inset CommandInset href
+LatexCommand href
+name "hybrid solver"
+target "http://parmes.github.io/solfec/user/solvers.html#solfec-command-hybrid-solver"
+
+\end_inset
+
+, by combining Solfec with a new code called 
+\begin_inset CommandInset href
+LatexCommand href
+name "Parmec"
+target "http://parmes.github.io/parmec/index.html"
+
+\end_inset
+
+, replicating the minimum of LS-DYNA's capability - necessary to run unmodified
+ existing input files.
+ In what follows such co-simulation approach is presented in detail.
+\end_layout
+
 \begin_layout Section
 Design
 \end_layout
 
 \begin_layout Standard
-Generally speaking a model in Solfec is coupled with a model in Parmec as
- follows:
+There are two Solfec-Parmec co-simulations approaches, available in Solfec
+ via the 
+\begin_inset CommandInset href
+LatexCommand href
+name "hybrid solver"
+target "http://parmes.github.io/solfec/user/solvers.html#solfec-command-hybrid-solver"
+
+\end_inset
+
+ interface:
+\end_layout
+
+\begin_layout Enumerate
+The body-level coupling with displacement, velocity and force transfer (Algorith
+m 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:HS-body-level"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Enumerate
+The point-level coupling with displacement and force transfer (Algorithm
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:HS-point-level"
+
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Standard
+In the body-level coupling approach, generally speaking, a model in Solfec
+ is coupled with a model in Parmec as follows:
 \end_layout
 
 \begin_layout Itemize
@@ -218,7 +319,23 @@ boundary
 \begin_inset Quotes erd
 \end_inset
 
- rigid bodies is used, which are present in both models
+ rigid bodies is used, which are present in both models; the 
+\begin_inset Quotes eld
+\end_inset
+
+non-boundary
+\begin_inset Quotes erd
+\end_inset
+
+ bodies in both models are called 
+\begin_inset Quotes eld
+\end_inset
+
+bulk-bodies
+\begin_inset Quotes erd
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Itemize
@@ -226,44 +343,261 @@ Parmec time step is equal to the Solfec step divided by an even number
 \begin_inset Formula $n\ge2$
 \end_inset
 
-; this allows to perform 
+; this allows to split Solfec step in two sets of 
 \begin_inset Formula $n/2$
 \end_inset
 
- initial steps in order to mimic Solfec's half-step based time stepping
- approach
+ Parmec steps, mimicking Solfec's half-step based time stepping approach;
+ 
+\begin_inset Formula $n$
+\end_inset
+
+ is large enough to produce a stable step in Parmec.
 \end_layout
 
 \begin_layout Itemize
 Contact detection is disabled between boundary bodies in Solfec as their
- motion is controlled by Parmec model
+ motion is solely controlled by the Parmec model.
 \end_layout
 
 \begin_layout Itemize
-Resultant body force and torque from the remaining part of the model are
- calculated on Solfec boundary bodies and applied to Parmec boundary bodies;
- these forces are kept constant in Parmec during time integration
+Resultant body forces and torques from contacts between the bulk Solfec
+ bodies and the boundary bodies are applied to Parmec boundary bodies; these
+ forces are kept constant in Parmec during the time integration which spans
+ an individual Solfec step.
 \end_layout
 
 \begin_layout Itemize
-Positions and rotations of Parmec boundary bodies are read into Solfec bodies
- at the end of Parmec time stepping within one Solfec step
+Positions and rotations and velocities of Parmec boundary bodies are read
+ into Solfec bodies at the end of Parmec time stepping within every Solfec
+ step.
 \end_layout
 
 \begin_layout Itemize
-Average velocities of Parmec boundary bodies are read into Solfec bodies
- likewise
+Likewise, resultant forces and torques of Parmec boundary bodies are read
+ into Solfec bodies at the end of Parmec time stepping.
 \end_layout
 
 \begin_layout Itemize
-Likewise, resultant forces and torques from the remaining portion of the
- Parmec model are read from Parmec into Solfec boundary bodies
+Although boundary bodies are not integrated in Solfec, their positions are
+ used to detect contacts between them and the bulk bodies, and their velocities
+ and resultant forces/torques are used when formulating contact constraints.
 \end_layout
 
 \begin_layout Itemize
-These forces as well as the velocities are taken into account when calculating
- constraint interactions between the boundary bodies and the remaining part
- of the model in Solfec
+Solfec steps and Parmec time-stepping (across a single Solfec step) alternate
+ in an explicit manner: Solfec exploits the 
+\begin_inset Quotes eld
+\end_inset
+
+previous
+\begin_inset Quotes erd
+\end_inset
+
+ information from Parmec, which in turn exploits the 
+\begin_inset Quotes eld
+\end_inset
+
+previous
+\begin_inset Quotes erd
+\end_inset
+
+ information from Solfec, and so on.
+\end_layout
+
+\begin_layout Standard
+In the point-level coupling approach, a model in Solfec is coupled with
+ a model in Parmec as follows:
+\end_layout
+
+\begin_layout Itemize
+Solfec bodies have 
+\begin_inset Quotes eld
+\end_inset
+
+boundary
+\begin_inset Quotes erd
+\end_inset
+
+ points where Parmec springs are attached.
+ Boundary points can be placed outside of the physical domain of a body:
+ simply so in case of rigid and pseudo-rigid bodies or by means of multi-point
+ constraints (helpful in case of finite-element bodies).
+\end_layout
+
+\begin_layout Itemize
+Solfec model receives force from Parmec springs at boundary points.
+\end_layout
+
+\begin_layout Itemize
+Boundary spring end points in the Parmec model move according to the motion
+ of the Solfec model.
+\end_layout
+
+\begin_layout Standard
+The approaches described above and detailed in Algorithms 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:HS-body-level"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "alg:HS-point-level"
+
+\end_inset
+
+ can also be mixed in an arbitrary manner.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:HS-body-level"
+
+\end_inset
+
+Body-level coupling co-simulation approach available via the 
+\begin_inset CommandInset href
+LatexCommand href
+name "hybrid solver"
+target "http://parmes.github.io/solfec/user/solvers.html#solfec-command-hybrid-solver"
+
+\end_inset
+
+ in Solfec.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float algorithm
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "alg:HS-point-level"
+
+\end_inset
+
+Point-level coupling co-simulation approach via the the 
+\begin_inset CommandInset href
+LatexCommand href
+name "hybrid solver"
+target "http://parmes.github.io/solfec/user/solvers.html#solfec-command-hybrid-solver"
+
+\end_inset
+
+ in Solfec.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+Another mode for coupling could be:
+\end_layout
+
+\begin_layout Itemize
+Let boundary bodies be optional;
+\end_layout
+
+\begin_layout Itemize
+Let Solfec bodies have boundary points where Parmec springs are attached;
+\end_layout
+
+\begin_layout Itemize
+Let Solfec bodies receive force from Parmec springs at those points;
+\end_layout
+
+\begin_layout Itemize
+Let coupling points, to which springs are attached in Parmec, move according
+ to the motion of Solfec bodies;
+\end_layout
+
+\begin_layout Itemize
+Let the motion of boundary points in Parmec be linearly interpolated between
+ previous and current positions:
+\end_layout
+
+\begin_deeper
+\begin_layout Itemize
+Solfec half-step - produces previous and current position (includes most
+ recent spring forces at boundary points)
+\end_layout
+
+\begin_layout Itemize
+Parmec time integration over this half-step
+\end_layout
+
+\begin_layout Itemize
+Spring forces at boundary points, to be applied in Solfec, are time-averaged
+ from Parmec results; previous and half-step boundary point positions are
+ known;
+\end_layout
+
+\begin_layout Itemize
+Solfec second half-step - including updated spring forces at boundary points
+\end_layout
+
+\begin_layout Itemize
+Parmec time integration over this half-step
+\end_layout
+
+\begin_layout Itemize
+Spring forces at boundary points, to be applied in Solfec, are time-averaged
+ from Parmec results; half-step and end-step boundary point positions are
+ known;
+\end_layout
+
+\begin_layout Itemize
+Repeat the above
+\end_layout
+
+\end_deeper
+\begin_layout Itemize
+This may simplify and stabilize the implementation
+\end_layout
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -296,6 +630,17 @@ Rev.
 \end_inset
 
 1 Initial revision;
+\end_layout
+
+\begin_layout Standard
+\begin_inset CommandInset bibtex
+LatexCommand bibtex
+bibfiles "/Users/tomek/Dropbox/tkwork/bibs/my"
+options "plain"
+
+\end_inset
+
+
 \end_layout
 
 \end_body
