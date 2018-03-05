@@ -2682,12 +2682,12 @@ where
 \end_inset
 
  is a radii of spherical particles (when used below).
- Particles are first dropped in layers until all 
+ Particles are first dropped down until all 
 \begin_inset Formula $N$
 \end_inset
 
  of them are inserted into the simulation.
- Then rotation begins.
+ The drum begins to rotate next.
  The total simulation time is 
 \begin_inset Formula $10$
 \end_inset
@@ -3516,8 +3516,8 @@ or
 \end_inset
 
  is divergence free (with an exception of one data point).
- Hence clearly inexact linear solves are favored, case (c) samples sensitivity
- in the space of various 
+ Hence clearly inexact linear solves are favored.
+ Case (c) samples sensitivity in the space of various 
 \begin_inset Formula $\left(\epsilon,m\right)$
 \end_inset
 
@@ -4306,7 +4306,21 @@ reference "subsec:absdelta"
 \end_inset
 
  are repeated in the current case.
- The results are juxtaposed below.
+ The results are juxtaposed in Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum1-minWii"
+
+\end_inset
+
+-
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:drum2-maxWii"
+
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Standard
@@ -5390,7 +5404,8 @@ y more common when the choice of
  compared with the deformable counterpart: the no failure zone is significantly
  broader in case of pseudo-rigid ellipsoids.
  This corresponds to the fact that it is easier to resolve contact reactions
- with the extra kinematic freedom for the particles themselves to deform.
+ with the extra kinematic freedom allowing for the particles themselves
+ to deform.
 \end_layout
 
 \begin_layout Standard
@@ -5408,15 +5423,15 @@ reference "fig:drum2-maxWii"
 
 \end_inset
 
- the areas of shortest runtimes do not necessarily strictly reflect the
- areas of no solver failure.
+ the areas of shortest runtimes do not necessarily strictly correspond to
+ the areas of no solver failure.
  There are overlap zones where both properties meet, but in general shortest
  runtimes occur in areas where both, the average number of solver iterations
  per time step, and the number of solver failures, are simultaneously low.
  Having only few instances of a fallback on the Gauss-Seidel solver during
  the entire simulation does not significantly affect the runtime.
- Nonetheless, it is possible to select parameter sets for which there is
- no solver failure and the runtime is short.
+ Nonetheless, it is possible to select parameter sets for which there are
+ no solver failures and the runtime is short.
  For the rigid body case, the choice of 
 \begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,20\right)$
 \end_inset

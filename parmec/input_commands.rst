@@ -384,15 +384,16 @@ respectively, with the critical time step equal to
 GRANULAR
 --------
 
-Define surface pairing for the granular contact interaction model.
+Define surface pairing for the granular contact interaction model. Default parameters, for unspecified pairings,
+are: spring = 0.0, damper = 1.0, friction = (0.0, 0.0), rolling = 0.0, drilling = 0.0, and kskn = 0.5.
 
 .. topic:: GRANULAR (color1, color2, spring \| damper, friction, rolling, drilling, kskn)
 
   -  **color1** - first color (positive, or color1 = 0 and color2 = 0 to
-     redefine default parameters)
+     redefine default parameters for unspecified pairings)
 
   -  **color2** - second color (positive, or color1 = 0 and color2 = 0 to
-     redefine default parameters)
+     redefine default parameters for unspecified pairings)
 
   -  **spring** - normal spring constant
 
