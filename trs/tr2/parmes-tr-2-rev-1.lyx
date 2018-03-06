@@ -3585,44 +3585,37 @@ reference "fig:drum2"
 \end_inset
 
 .
- For the rigid body case, the choice of 
-\begin_inset Formula $\left(0.0001,0.1,15\right)$
-\end_inset
-
- for the 
+ For the rigid body case, the choice of (0.0001, 0.25, 1000) for the 
 \begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 
+ triad produces the shortest total runtime of 534s 
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-452s
+(less then ten solver failures occur in this case)
 \end_layout
 
 \end_inset
 
- (less then ten solver failures occur in this case).
- For the pseudo-rigid kinematic case, the choice of 
-\begin_inset Formula $\left(1\text{E-6},0.1,1000\right)$
-\end_inset
-
- for the 
+.
+ For the pseudo-rigid kinematic case, the choice of (0.001, 0.01, 1000) for
+ the 
 \begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 
+ triad produces the shortest total runtime of 378s
 \begin_inset Note Note
 status open
 
 \begin_layout Plain Layout
-318s
+ (one solver failure occurs in this case)
 \end_layout
 
 \end_inset
 
- (one solver failure occurs in this case).
+.
  These runtimes are well comparable with those produced by the Gauss-Seidel
  solver based runs and reported in Table 
 \begin_inset CommandInset ref

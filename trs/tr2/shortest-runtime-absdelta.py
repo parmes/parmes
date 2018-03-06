@@ -5,11 +5,11 @@ cases = ['A', 'B', 'C']
 X_label = ['delta', 'delta', 'delta']
 Y_label = ['epsilon', 'm', '(m, eps)']
 X_index = [6, 6, 6]
-Y_index = [7, 8, (7, 8)]
+Y_index = [8, 9, (8, 9)]
 X_Y_plots = ['Total ietarations', 'Avg. iter. when converged', 'Diverged solves']
 
-print 'Decompressing data files...'
-process = subprocess.Popen('unzip -o data.zip', shell=True)
+print 'Decompressing data-absdelta files...'
+process = subprocess.Popen('unzip -o data-absdelta.zip', shell=True)
 process.wait()
 
 print 'Scanning runtimes...'
@@ -20,7 +20,7 @@ for kin in kinem:
   mintm = 0
   for case in cases:
     ic = cases.index(case)
-    with open('data/tr2-dru100-runtimes', 'r') as inp:
+    with open('data-absdelta/tr2-dru100-absdelta-runtimes', 'r') as inp:
       ln = inp.readline()
       ln = ln.split(' = ')
       while ln != ['']:
@@ -49,5 +49,5 @@ for kin in kinem:
   print '%s: min runtime = %g for (delta, epsilon, m) = (%g, %g, %d)' % (kin, mintime, mintdelta, minteps, mintm)
 
 print 'Cleaning up...'
-process = subprocess.Popen('rm -fr data', shell=True)
+process = subprocess.Popen('rm -fr data-absdelta', shell=True)
 process.wait()
