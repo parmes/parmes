@@ -8,7 +8,7 @@
 
   <div style="text-align:center">
   <a href="../_static/reports/solfec-pop-report-1.pdf">
-  <img src="../_static/solfec-pop1-icon.png" title="POP1" width="128" height="180" />
+  <img src="../_static/icons/solfec-pop1-icon.png" title="POP1" width="128" height="180" />
   </a>
   </div>
 

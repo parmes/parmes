@@ -10,7 +10,7 @@ Technical Reports
 .. |tr1| raw:: html
 
   <a href="../_downloads/parmes-tr-1-rev-1.pdf">
-  <img src="../_static/tr1-icon.png" title="TR1" width="128" height="180" />
+  <img src="../_static/icons/tr1-icon.png" title="TR1" width="128" height="180" />
   </a>
 
 The following `PARMES <../>`_ technical reports are currently available:
