@@ -94,8 +94,10 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   | **obj.damping** -- stiffness proportional damping coefficient (default: 0.0) for the dynamic case       |
   | (ignored for rigid bodies).                                                                             |
   +---------------------------------------------------------------------------------------------------------+
-  | **obj.fracturecheck** -- check fracture criterion for FEM bodies ('ON' or default: 'OFF').              |
+  | **obj.fracturecheck** -- check fracture criterion for FEM bodies ('ON', or default: 'OFF').             |
   | :red:`(Under development)`                                                                              |
+  +---------------------------------------------------------------------------------------------------------+
+  | **obj.disable_rotation** -- for rigid bodies disable integration of rotation ('ON', or default: 'OFF')  |
   +---------------------------------------------------------------------------------------------------------+
 
 |
