@@ -271,11 +271,9 @@ shared memory parallelism.
 
   Notes:
 
-  * motion of the boundary bodies listed in the **parmec2solfec** mapping is driven by the PARMEC model
+  * motion of the boundary bodies listed in the **parmec2solfec** mapping is driven by the SOLFEC model
 
-  * SOLFEC boundary bodies listed in the **parmec2solfec** mapping must be rigid
-
-  * if motion of the boundary bodies is restrained in PARMEC, equivalent kinematic constraints need to applied to the same bodies in SOLFEC
+  * boundary bodies listed in the **parmec2solfec** mapping must be rigid
 
 Some parameters can also be accessed as members of a HYBRID_SOLVER object, cf. :numref:`hybrid-params`.
 
