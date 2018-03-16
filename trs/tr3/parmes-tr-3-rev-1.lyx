@@ -94,7 +94,7 @@ date{}
 
 \end_inset
 
-Feb, 2018
+Mar, 2018
 \end_layout
 
 \begin_layout Subject
@@ -109,8 +109,8 @@ target "http://parmes.github.io"
 \end_layout
 
 \begin_layout Title
-On the non-smooth implicit and smooth explicit multi-body coupling in Solfec's
- hybrid solver
+On the non-smooth implicit and smooth explicit multi-body co-simulation
+ coupling in Solfec's hybrid solver
 \end_layout
 
 \begin_layout Standard
@@ -337,13 +337,13 @@ Latest resultant body forces and torques from Parmec are applied to boundary
 
 \begin_layout Itemize
 Contact detection between boundary bodies themselves is disabled by default
- (can be enabled via solver argument and further controlled via the CONTACT_EXCL
-UDE_{BODIES, SURFACES} commands).
+ (it can be enabled via an optional solver argument, and further controlled
+ via the CONTACT_EXCLUDE_{BODIES, SURFACES} commands).
 \end_layout
 
 \begin_layout Itemize
 Contact detection between boundary and bulk bodies is enabled by default
- (can be controlled via the CONTACT_EXCLUDE_{BODIES, SURFACES} commands).
+ (it can be controlled via the CONTACT_EXCLUDE_{BODIES, SURFACES} commands).
 \end_layout
 
 \begin_layout Itemize
@@ -359,11 +359,34 @@ Parmec half-step-run is performed first (comprising
  Parmec steps), and so on.
 \end_layout
 
+\begin_layout Itemize
+Parmec runs in a multithreaded manner exploiting all available compute cores
+ (in parallel, it runs on the cluster node hosting the rank 0 MPI process).
+ Solfec can be run both in serial and MPI parallel modes.
+\end_layout
+
 \begin_layout Standard
 \begin_inset Float algorithm
 wide false
 sideways false
 status open
+
+\begin_layout Plain Layout
+
+\series bold
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+
+\series bold
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
 
 \begin_layout Plain Layout
 \begin_inset Caption Standard
@@ -400,12 +423,388 @@ target "http://parmes.github.io/solfec/user/solvers.html#solfec-command-hybrid-s
 Implementation
 \end_layout
 
+\begin_layout Standard
+\begin_inset CommandInset href
+LatexCommand href
+name "Parmec"
+target "http://parmes.github.io/parmec/index.html"
+
+\end_inset
+
+ compiles into parmec4 (single precision) and parmec8 (double precision
+ executables).
+ Along with these, in the Parmec source directory, static library libparmec{4,8}.
+a and header files parmec{4,8}.h are generated.
+ The double precision version of these is used by Solfec in order to interface
+ with Parmec via the 
+\begin_inset CommandInset href
+LatexCommand href
+name "HYBRID_SOLVER"
+target "http://parmes.github.io/solfec/user/solvers.html#solfec-command-hybrid-solver"
+
+\end_inset
+
+ interface.
+ The hybrid solver Python call itself is implemented in the 
+\begin_inset CommandInset href
+LatexCommand href
+name "lng.c"
+target "https://github.com/tkoziara/solfec/blob/master/lng.c#L5407"
+
+\end_inset
+
+ file.
+ The imlpementation is included in hys.{cpp, hpp} and hys.{c, h} files.
+ The C++ 
+\begin_inset CommandInset href
+LatexCommand href
+name "hys.cpp"
+target "https://github.com/tkoziara/solfec/blob/master/hys.cpp"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "hys.hpp"
+target "https://github.com/tkoziara/solfec/blob/master/hys.hpp"
+
+\end_inset
+
+ files are the glue layer between the actual C implementation and the libparmec8.
+{a, h} library interface.
+ The C implementation of the hybrid solver is contained in the 
+\begin_inset CommandInset href
+LatexCommand href
+name "hys.c"
+target "https://github.com/tkoziara/solfec/blob/master/hys.c"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset href
+LatexCommand href
+name "hys.h"
+target "https://github.com/tkoziara/solfec/blob/master/hys.h"
+
+\end_inset
+
+ files.
+\end_layout
+
 \begin_layout Section
 Examples
 \end_layout
 
+\begin_layout Subsection
+Interaction between a plate and a u-shaped body
+\end_layout
+
+\begin_layout Standard
+This example is can be found in the 
+\begin_inset CommandInset href
+LatexCommand href
+name "solfec/examples/hybrid–solver4"
+target "https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver4"
+
+\end_inset
+
+ directory.
+ The geometrical setup and boundary conditions are depicted in Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hs4-geom"
+
+\end_inset
+
+.
+ In the hybrid model, both the u-shaped body and the thin plate are modeled
+ in Solfec.
+ The fixed point constraints along the z-edge of the plate are modeled by
+ (maximally damped) stiff springs in Parmec.
+ The amount of leeway travel of the springs, under static conditions and
+ gravity loading, is controlled by the “leeway factor”, proportional to
+ the gap between the plate and the “u-way hole”, seen on the right hand
+ side of Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hs4-geom"
+
+\end_inset
+
+.
+ The far-x z-oriented edge of the u-shaped body is fixed in Solfec and its
+ motion along the y-direction is controlled: sine dwell (at 3 Hz and acc.
+ 5
+\begin_inset Formula $m/s^{2}$
+\end_inset
+
+) or sine sweep (2 to 8 Hz at acc.
+ 5
+\begin_inset Formula $m/s^{2}$
+\end_inset
+
+) are applied.
+ The whole system oscillates back and forth along the y-direction, while
+ exhibiting various degrees of secondary excitation, depending on the leeway
+ factor (and hence the stiffness of the springs realizing the fixed point
+ constraints) and the excitation frequency.
+ A Solfec-only model is also developed where there is no secondary excitation
+ as all constraints are exactly enforced.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename hs4-geom1.png
+	lyxscale 25
+	height 25theight%
+
+\end_inset
+
+
+\begin_inset Graphics
+	filename hs4-geom2.png
+	lyxscale 25
+	height 25theight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hs4-geom"
+
+\end_inset
+
+Geometrical setup and boundary conditions of the plate and u-shaped body
+ example.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\end_inset
+
+In the hybrid model, there are two scales of time stepping – the Solfec
+ model is integrated with a constant time step of 1E-3s – and the Parmec
+ model is integrated with a time step of order 1E-5s or less, depending
+ on the magnitude of leeway.
+ The gap size is 1mm, and hence for a leeway factor of 1.0 such is the allowed
+ free travel of Parmec fixed point constraints.
+ For the leeway factor of 0.1 the allowed free travel is 0.1mm and the Parmec
+ time step is 10-fold smaller, etc.
+\end_layout
+
+\begin_layout Standard
+In Figures 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hs4-dwell"
+
+\end_inset
+
+ and 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hs4-sweep"
+
+\end_inset
+
+ “node 0” is the point on the u-shaped body with the lowest x, y, z coordinates.
+ Figure 2 illustrates time history of node 0 displacement DY for the Solfec-only
+ model and for three hybrid models with leeway factors of 1.0, 0.1, 0.01, under
+ the sine-dwell excitation condition.
+ We can see that the behavior of the hybrid model approximates the Solfec-only
+ model the better, the higher the stiffness of the fixed point constraints
+ is (the lower leeway factor – “lwf”).
+ In the animated response for this example it is clear that for lwf = 1.0
+ there is a secondary excitation effect, due to interaction of Parmec springs
+ and contacts along the u-way, superimposed with the primary excitation
+ at the far end of the u-shaped body.
+ Figure 3 illustrates the time history of DY at node 0 for the sine sweep
+ condition.
+ In this case we can see that the Solfec-only and hybrid models do not easily
+ converge.
+ There is a more complex pattern of interactions between the primary and
+ secondary excitation effects, related to the frequency, stiffness and the
+ gap size.
+ 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename hs4_dwell_node0_dy.png
+	lyxscale 50
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hs4-dwell"
+
+\end_inset
+
+Displacement DY of node 0 (lowest x, y, z for the u-shaped body) for the
+ sine dwell excitation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename hs4_sweep_node0_dy.png
+	lyxscale 50
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+\begin_inset CommandInset label
+LatexCommand label
+name "fig:hs4-sweep"
+
+\end_inset
+
+Displacement DY of node 0 (lowest x, y, z for the U-shaped body) for the
+ sine sweep excitation.
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This example illustrates that hybrid models may exhibit behavior in their
+ own right, and are not a straightforward replacement of Solfec-only or
+ Parmec-only models.
+ Care is needed when preparing such models in order to control the possible
+ secondary interaction effects.
+\end_layout
+
+\begin_layout Subsection
+Online examples
+\end_layout
+
+\begin_layout Standard
+Other examples of the application of the hybrid solver 
+\begin_inset CommandInset href
+LatexCommand href
+name "can be found online"
+target "http://parmes.github.io/solfec/examples/hybrid_modeling.html"
+
+\end_inset
+
+.
+ These include:
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "A two–body impact problem"
+target "http://parmes.org/solfec/examples/hybrid_modeling/hs0.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "1,2,3–dimensional cube array acceleration dwell"
+target "http://parmes.org/solfec/examples/hybrid_modeling/hs123.html"
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Itemize
+\begin_inset CommandInset href
+LatexCommand href
+name "3–dimensional cube array parallel scaling"
+target "http://parmes.org/solfec/examples/hybrid_modeling/hs3_scaling.html"
+
+\end_inset
+
+
+\end_layout
+
 \begin_layout Section
 Conclusions
+\end_layout
+
+\begin_layout Standard
+Hybrid modeling extends the capability of Solfec by allowing coupling of
+ bulk model areas comprising rigid or deformable bodies with non-sooth,
+ implicitly resolved contact constraints, and explicit rigid body and (nonlinear
+) spring models set up and run as a co-simulation, using Parmec.
+ This approach may help speed up calculations for larger models where only
+ limited areas may need to be resolved in a geometrically and kinematically
+ detailed manner, and include interactions by means of non-smooth contact
+ constraints.
 \end_layout
 
 \begin_layout Section*
