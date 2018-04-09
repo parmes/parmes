@@ -617,7 +617,7 @@ included into the output file(s). PARMEC outputs:
    specified as subsets, where numbers 1, 2, ... match consecutive
    OUTPUT calls
 
-.. topic:: OUTPUT (entities \| subset, mode, format)
+.. topic:: OUTPUT ( \| entities, subset, mode, format)
 
   -  **entities** - list of output entities; default: [’NUMBER’, ’COLOR’,
      ’DISPL’, ’LENGTH’, ’ORIENT’, 'ORIENT1', 'ORIENT2', 'ORIENT3', ’LINVEL’,
