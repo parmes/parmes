@@ -27,6 +27,8 @@ List command line arguments.
 
   - **nonparmec** - optional boolean flag enabling filtering out parmec arguments; default: True
 
+.. _parmec-command-RESET:
+
 RESET
 -----
 
@@ -720,7 +722,8 @@ Run DEM simulation.
      interval frequencies, depending on current time;
 
   -  **prefix** - output file name prefix (default: input file name
-     without the “.py” extension)
+     without the “.py” extension); Note: **prefix** can only change
+     at time 0.0 or after :ref:`RESET() <parmec-command-RESET>`
 
   -  **adaptive** - adaptive time step reduction factor; zero turns off
      adaptive time stepping, values :math:`>0.0` and :math:`\le1.0` turn
