@@ -585,32 +585,32 @@ included into the output file(s). PARMEC outputs:
 
 -  \*.dump files for spherical particles
 
--  \*0.vtk.\* **and/or** (\*0.h5, \*0.xmf) **and/or** (\*0.med) files for obstacles and mesh
+-  \*0.vtk.\* **and/or** (\*0.h5, \*0.xmf) **and/or** (\*0.med) :red:`(experimental)` files for obstacles and mesh
    based particles **not** specified as **a subset** in the OUTPUT command
 
 -  \*1.vtk.\*, \*2.vtk.\*, ... **and/or** (\*1.h5, \*1.xmf, \*2.h5, \*2.xmf, ...) **and/or**
-   (\*1.med, \*2.med...) files for mesh based particles specified as subsets, where numbers
+   (\*1.med, \*2.med...) :red:`(experimental)` files for mesh based particles specified as subsets, where numbers
    1, 2, ... match consecutive OUTPUT calls
 
--  \*0rb.vtk.\* **and/or** (\*0rb.h5, \*0rb.xmf) **and/or** (\*0rb.med) files for rigid body
+-  \*0rb.vtk.\* **and/or** (\*0rb.h5, \*0rb.xmf) **and/or** (\*0rb.med) :red:`(under development)` files for rigid body
    data of particles **not** specified as **a subset** in the OUTPUT command
 
 -  \*1rb.vtk.\*, \*2rb.vtk.\*, ... **and/or** (\*1rb.h5, \*1rb.xmf, \*2rb.h5, \*2rb.xmf, ...)
-   **and/or** (\*1rb.med, \*2rb.med, ...) files for rigid body data of particles specified as
+   **and/or** (\*1rb.med, \*2rb.med, ...) :red:`(under development)` files for rigid body data of particles specified as
    subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
 
--  \*0cd.vtk.\* **and/or** (\*0cd.h5, \*0cd.xmf) **and/or** (\*0cd.med) files  for contact data
+-  \*0cd.vtk.\* **and/or** (\*0cd.h5, \*0cd.xmf) **and/or** (\*0cd.med) :red:`(under development)` files  for contact data
    including particles **not** specified as **a subset** in the OUTPUT command
 
 -  \*1cd.vtk.\*, \*2cd.vtk.\*, ... **and/or** (\*1cd.h5, \*1cd.xmf, \*2cd.h5, \*2cd.xmf, ...)
-   **and/or** (\*1cd.med, \*2cd.med, ...) files for contact data including particles specified
+   **and/or** (\*1cd.med, \*2cd.med, ...) :red:`(under development)` files for contact data including particles specified
    as subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
 
--  \*0sd.vtk.\* **and/or** (\*0sd.h5, \*0sd.xmf) **and/or** (\*0sd.med) files for spring data
+-  \*0sd.vtk.\* **and/or** (\*0sd.h5, \*0sd.xmf) **and/or** (\*0sd.med) :red:`(under development)` files for spring data
    including particles **not** specified as **a subset** in the OUTPUT command
 
 -  \*1sd.vtk.\*, \*2sd.vtk.\*, ... **and/or** (\*1sd.h5, \*1sd.xmf, \*2sd.h5, \*2sd.xmf, ...)
-   **and/or** (\*1sd.med, \*2sd.med, ...) files for spring data including particles specified
+   **and/or** (\*1sd.med, \*2sd.med, ...) :red:`(under development)` files for spring data including particles specified
    as subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
 
 .. topic:: OUTPUT ( \| entities, subset, mode, format)
@@ -683,12 +683,12 @@ included into the output file(s). PARMEC outputs:
      ’CD’ for contact data output, ’SD’ for spring data output; default:
      [’SPH’, ’MESH’, ’RB’, ’CD’, ’SD’]
 
-  -  **format** - optional output format, e.g. ’VTK’ or ’XDMF’ or 'MED' :red:`(experimental)`, or a list
-     e.g. [’VTK’, ’XDMF’, 'MED'], where ’VTK’ is the text based legacy
+  -  **format** - optional output format, e.g. ’VTK’ or ’XDMF’ or 'MED' :red:`(experimental/under development)`,
+     or a list e.g. [’VTK’, ’XDMF’, 'MED'], where ’VTK’ is the text based legacy
      `VTK format <http://www.vtk.org/wp-content/uploads/2015/04/file-formats.pdf>`_,
      ’XDMF’ is the HDF5/XML based `XDMF format <http://www.xdmf.org/index.php/XDMF_Model_and_Format>`_,
      and 'MED' is the binary `MED format <http://www.salome-platform.org/user-section/about/med>`_
-     :red:`(experimental)`; default: ’XDMF’
+     :red:`(experimental/under development)`; default: ’XDMF’
 
 .. _parmec-command-DEM:
 
