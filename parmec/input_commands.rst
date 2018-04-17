@@ -260,7 +260,7 @@ defined by means of lookup tables; :math:`\text{force}\left(t\right)` is applied
 :math:`-\text{force}\left(t\right)` is applied at :math:`\text{point1}\left(t\right)`; dashpot force is not applied when
 spring force is zero.
 
-.. topic:: sprnum = SPRING (part1, point1, part2, geom2, spring \| dashpot, direction, planar, unload, ylim, inactive) :red:`(experimental)`
+.. topic:: sprnum = SPRING (part1, point1, part2, geom2, spring \| dashpot, direction, planar, unload, ylim, inactive, offset) :red:`(experimental)`
 
   -  **sprnum** - spring number
 
