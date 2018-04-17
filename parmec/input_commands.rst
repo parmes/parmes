@@ -280,8 +280,7 @@ spring force is zero.
 
   -  **spring** - spring force lookup table
      :math:`\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]`;
-     used for both loading and unloading when the **unload** table and the
-     **yield** limits are not given
+     used for both loading and unloading when the **unload** table and the **yield** limits are not given
 
   -  **dashpot** - optional dashpot force lookup table
      :math:`\left[\text{velocity}_{1},\text{force}_{1},\text{velocity}_{2},\text{force}_{2},...,\text{velocity}_{m},\text{force}_{m}\right]`;
@@ -294,16 +293,27 @@ spring force is zero.
      :math:`\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|\text{point2}\left(t\right)-\text{point1}\left(t\right)\right|`
      is projected onto a plane orthogonal to :math:`\left(d_{x},d_{y},d_{z}\right)`; default: ’OFF’
 
-  -  **unload** - spring unloading lookup table
+  -  **unload** - optional spring unloading lookup table
      :math:`\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]`;
-     must be monotonically increasing
+     must be monotonically increasing; default: unspecified
 
-  -  **ylim** - tuple :math:`\left(f_{yc},f_{yt}\right)` defining the
-     compression, :math:`f_{yc}<0`, and tension, :math:`f_{yt}>0`, yield
-     limits; the unloading curve begins to be used once either of these
-     limits is crossed; default: (0, 0)
+  -  **ylim** - optional tuple :math:`\left(f_{yc},f_{yt}\right)` defining the compression, :math:`f_{yc}<0`, and tension, :math:`f_{yt}>0`, yield
+     limits; the unloading curve begins to be used once either of these limits is crossed; default: (0, 0)
 
-  -  **inactive** - if *True* create an inactive spring, that can be activated by the :ref:`UNSPRING <parmec-command-UNSPRING>` command; default: *False*
+  -  **inactive** - optional boolean flag: if *True* create an inactive spring, that can be activated by the :ref:`UNSPRING <parmec-command-UNSPRING>`
+     command; default: *False*
+
+  -  **offset** :red:`(under development)` - optional :ref:`TSERIES <parmec-command-TSERIES>` number representing a time dependent adjustment
+     applied to all stroke values of the spring curve (dashpot unchanged) as in :numref:`parmec-spring-stroke-offset`; default: unspecified
+
+.. _parmec-spring-stroke-offset:
+
+.. figure:: figures/spring-stroke-offset.png
+   :width: 60%
+   :align: center
+
+   The concept of time dependent spring stroke offset.
+
 
 .. _parmec-command-UNSPRING:
 
