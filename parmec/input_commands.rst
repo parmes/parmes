@@ -304,7 +304,8 @@ spring force is zero.
      command; default: *False*
 
   -  **offset** :red:`(under development)` - optional :ref:`TSERIES <parmec-command-TSERIES>` number representing a time dependent adjustment
-     applied to all stroke values of the spring curve (dashpot unchanged) as in :numref:`parmec-spring-stroke-offset`; default: unspecified
+     applied to all stroke values of the spring curve (dashpot unchanged) as in :numref:`parmec-spring-stroke-offset`; **offset** is applied
+     only prior to yielding for springs with **ylim** and **unload** specified; default: unspecified
 
 .. _parmec-spring-stroke-offset:
 
