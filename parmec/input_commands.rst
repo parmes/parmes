@@ -216,17 +216,10 @@ where
 
   \text{direction}\left(t\right)=\left\{ \begin{array}{c}
   \text{d1}\left(t\right)=\left(\text{geom2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|
-  \text{geom2}\left(t\right)-\text{point1}\left(t\right)\right|\mathbf{\,if\,}\text{geom2 = }\left(x,y,z\right)\\
-  \text{normal0}\left(t\right)\mathbf{\,if\,}
-  \text{ geom2 =[point0, normal0]}\\\text{constant }\mathbf{direction}=\left(d_{x},d_{y},d_{z}\right)\\
+  \text{geom2}\left(t\right)-\text{point1}\left(t\right)\right|\mathbf{\,if\,}\text{geom2}=\text{point2}\\
+  \text{normal2}\left(t\right)\mathbf{\,if\,}\text{ geom2 =[point2, normal2]}\\
+  \text{constant }\mathbf{direction}=\left(d_{x},d_{y},d_{z}\right)\\
   \text{d1}\left(t\right)-\text{d1}\left(t\right)\cdot\left(d_{x},d_{y},d_{z}\right)\text{if }\mathbf{planar}\text{ is enabled}
-  \end{array}\right.
-
-.. math::
-
-  \text{point2}\left(t\right)=\left\{ \begin{array}{c}
-  \text{geom2}\left(t\right)\mathbf{\,if\,}\text{geom2 = }\left(x,y,z\right)\\
-  \text{proj}_{\text{geom2}}\left(\text{point1}\right)\mathbf{\,if\,}\text{ geom2 =[point0, normal0]}
   \end{array}\right.
 
 .. math::
@@ -237,9 +230,9 @@ where
 
   \text{stroke}\left(t\right)=\left\{ \begin{array}{c}
   \text{direction}\left(t\right)\cdot\left[\text{point2}\left(t\right)-\text{point1}\left(t\right)\right]-
-  \text{stroke0}\mathbf{\,\,\,if\,}\text{geom2 = }\left(x,y,z\right)\\
-  \text{normal0}\left(t\right)\cdot\left[\text{point1}\left(t\right)-
-  \text{point2}\left(t\right)\right]\mathbf{\,\,\,if\,}\text{ geom2 =[point0, normal0]}
+  \text{stroke0}\mathbf{\,\,\,if\,}\text{geom2}=\text{point2}\\
+  \text{normal2}\left(t\right)\cdot\left[\text{point1}\left(t\right)-
+  \text{point2}\left(t\right)\right]\mathbf{\,\,\,if\,}\text{ geom2 =[point2, normal2]}
   \end{array}\right.
 
 .. math::
