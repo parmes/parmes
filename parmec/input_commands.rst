@@ -215,8 +215,8 @@ where
 .. math::
 
   \text{direction}\left(t\right)=\left\{ \begin{array}{c}
-  \text{d1}\left(t\right)=\left(\text{geom2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|
-  \text{geom2}\left(t\right)-\text{point1}\left(t\right)\right|\mathbf{\,if\,}\text{geom2}=\text{point2}\\
+  \text{d1}\left(t\right)=\left(\text{point2}\left(t\right)-\text{point1}\left(t\right)\right)/\left|
+  \text{point2}\left(t\right)-\text{point1}\left(t\right)\right|\mathbf{\,if\,}\text{geom2}=\text{point2}\\
   \text{normal2}\left(t\right)\mathbf{\,if\,}\text{ geom2 =[point2, normal2]}\\
   \text{constant }\mathbf{direction}=\left(d_{x},d_{y},d_{z}\right)\\
   \text{d1}\left(t\right)-\text{d1}\left(t\right)\cdot\left(d_{x},d_{y},d_{z}\right)\text{if }\mathbf{planar}\text{ is enabled}
