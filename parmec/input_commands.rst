@@ -276,8 +276,8 @@ spring force is zero.
      used for both loading and unloading when the **unload** table and the **yield** limits are not given
 
   -  **dashpot** - optional dashpot force lookup table
-     :math:`\left[\text{velocity}_{1},\text{force}_{1},\text{velocity}_{2},\text{force}_{2},...,\text{velocity}_{m},\text{force}_{m}\right]`;
-     default: :math:`\left[-\infty,0,+\infty,0\right]`
+     :math:`\left[\text{velocity}_{1},\text{force}_{1},\text{velocity}_{2},\text{force}_{2},...,\text{velocity}_{m},\text{force}_{m}\right]`
+     or a critical damping factor from interval :math:`\left[0,1\right]`; default: :math:`\left[-\infty,0,+\infty,0\right]`
 
   -  **direction** - optional constant direction
      :math:`\left(d_{x},d_{y},d_{z}\right)`
