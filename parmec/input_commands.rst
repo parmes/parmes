@@ -531,18 +531,25 @@ CRITICAL
 
 Estimate critical time step. By default this routine returns an estimate in the area of a practical stable step.
 When run with the optional parameter :math:`\text{perspring}=n` it will return a list of lowest estimates for 
-:math:`n` individual springs. The actual stable time step may be a factor of :math:`\left[0.1,10\right]` away of
-the returned step, depending on the degree of nonlinearity of the system.
-`See also <https://www.dynasupport.com/tutorial/ls-dyna-users-guide/time-integration>`_.
+:math:`n` individual springs. Similarly, when run with the optional parameter :math:`\text{perparticle}=n` it
+will return a list of lowest estimates for :math:`n` individual particles. The actual stable time step may be
+a factor of :math:`\left[0.1,10\right]` away of the returned step (estimated), depending on the degree of nonlinearity
+of the system. `See also <https://www.dynasupport.com/tutorial/ls-dyna-users-guide/time-integration>`_.
 
-.. topic:: h = CRITICAL (| perspring)
+.. topic:: h = CRITICAL (| perspring, perparticle)
 
   -  **h** - critical time step (when run without parameters), or a list
      :math:`\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]`
-     when **perspring** :math:`=n` is used, where :math:`h_{k}` is the per spring critical time step estimate,
-     :math:`i_{k}` is the spring index, :math:`\omega_{k}` is the maximum spring circular frequency,
-     and :math:`\xi_{k}` is the maximum spring damping ratio
-  -  **perspring** - optional integer :math:`n` indicating the number of lowest per-spring critical time step estimates; default: undefined
+     when **perspring** :math:`=n` or **perparticle** :math:`=n` is used, where :math:`h_{k}` is the per-spring/particle
+     critical time step estimate, :math:`i_{k}` is the spring/particle index, :math:`\omega_{k}` is the maximum spring/particle
+     circular frequency, and :math:`\xi_{k}` is the maximum spring/particle damping ratio; when both parameters **perspring**
+     :math:`=n` and **perparticle** :math:`=m` are used, a tuple of two corresponding lists is returned
+     (:math:`\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{n},i_{n},\omega_{n},\xi_{n}\right)\right]`,
+     :math:`\left[\left(h_{1},i_{1},\omega_{1},\xi_{1}\right),...,\left(h_{m},i_{m},\omega_{m},\xi_{m}\right)\right]`)
+  -  **perspring** - optional integer :math:`n` indicating the number of lowest per-spring critical time step estimates;
+     default: undefined
+  -  **perparticle** - optional integer :math:`n` indicating the number of lowest per-particle critical time step estimates;
+     default: undefined
 
 .. _parmec-command-HISTORY:
 
