@@ -7,7 +7,7 @@ Output files
 
 Currently Parmec supports the following output file formats:
 
-* For spherical and ellipsoidal particles:
+* For spherical particles:
 
   - `LAMMPS <http://lammps.sandia.gov/doc/dump.html>`_ \*.dump files :red:`(under development)`;
     can be viewed with `OVITO <https://ovito.org/>`_
