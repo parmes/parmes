@@ -5,7 +5,7 @@
 Output files
 ============
 
-Currently Parmec supports for the following output file formats:
+Currently Parmec supports the following output file formats:
 
 * For spherical and ellipsoidal particles:
 
