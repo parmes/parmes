@@ -603,7 +603,10 @@ OUTPUT
 Before running a simulation, define scalar and/or vector entities
 included into the output file(s). PARMEC outputs:
 
--  \*.dump files for spherical particles
+-  \*0.dump :red:`(under development)` files for spherical particles not specified as a subset in the OUTPUT command
+
+-  \*1.dump, \*2.dump, ... :red:`(under development)` files for spherical particles specified as subsets, where numbers
+   1, 2, ... match consecutive OUTPUT calls
 
 -  \*0.vtk.\* **and/or** (\*0.h5, \*0.xmf) **and/or** (\*0.med) :red:`(experimental)` files for obstacles and mesh
    based particles **not** specified as **a subset** in the OUTPUT command
@@ -703,12 +706,14 @@ included into the output file(s). PARMEC outputs:
      ’CD’ for contact data output, ’SD’ for spring data output; default:
      [’SPH’, ’MESH’, ’RB’, ’CD’, ’SD’]
 
-  -  **format** - optional output format, e.g. ’VTK’ or ’XDMF’ or 'MED' :red:`(experimental/under development)`,
-     or a list e.g. [’VTK’, ’XDMF’, 'MED'], where ’VTK’ is the text based legacy
-     `VTK format <http://www.vtk.org/wp-content/uploads/2015/04/file-formats.pdf>`_,
-     ’XDMF’ is the HDF5/XML based `XDMF format <http://www.xdmf.org/index.php/XDMF_Model_and_Format>`_,
+  -  **format** - optional output format, e.g. 'DUMP' :red:`(experimental/under development)` or
+     'VTK' or 'XDMF' or 'MED' :red:`(experimental/under development)`,
+     or a list e.g. ['DUMP', 'VTK', 'XDMF', 'MED'], where 'DUMP' is the text based
+     `LAMMPS format <http://lammps.sandia.gov/doc/dump.html>`_ (experimental/under development),
+     'VTK' is the text based legacy `VTK format <http://www.vtk.org/wp-content/uploads/2015/04/file-formats.pdf>`_,
+     'XDMF' is the HDF5/XML based `XDMF format <http://www.xdmf.org/index.php/XDMF_Model_and_Format>`_,
      and 'MED' is the binary `MED format <http://www.salome-platform.org/user-section/about/med>`_
-     :red:`(experimental/under development)`; default: ’XDMF’
+     :red:`(experimental/under development)`; default: 'XDMF'
 
 .. _parmec-command-DEM:
 
