@@ -15,13 +15,13 @@ Currently Parmec supports the following output file formats:
 * For mesh based particles, for rigid bodies, for contact points, and for springs:
 
   - `*.vtk <http://www.vtk.org/wp-content/uploads/2015/04/file-formats.pdf>`_ text files;
-    can viewed with `ParaView <https://www.paraview.org/>`_, `OVITO <https://ovito.org/>`_
+    can be viewed with `ParaView <https://www.paraview.org/>`_, `OVITO <https://ovito.org/>`_
 
   - `*.xmf <http://www.xdmf.org/index.php/XDMF_Model_and_Format>`_ binary files;
-    can viewed with `ParaView <https://www.paraview.org/>`_
+    can be viewed with `ParaView <https://www.paraview.org/>`_
 
   - `*.med <http://www.salome-platform.org/user-section/about/med>`_ binary files :red:`(under development)`;
-    can viewed with `Gmsh <http://gmsh.info/>`_, `SALOME <http://www.salome-platform.org/>`_
+    can be viewed with `Gmsh <http://gmsh.info/>`_, `SALOME <http://www.salome-platform.org/>`_
 
 See also the :ref:`OUTPUT <parmec-command-OUTPUT>` command for details on outputted entities and file kinds. 
 
