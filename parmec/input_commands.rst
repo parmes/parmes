@@ -89,7 +89,7 @@ Create a spherical particle.
 
   -  **parnum** - particle number
 
-  -  **center** - tuple *:math:`\left(x,y,z\right)`* defining the center
+  -  **center** - tuple :math:`\left(x,y,z\right)` defining the center
 
   -  **radius** - radius
 
