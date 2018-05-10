@@ -140,12 +140,12 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   | 'BC--MODAL'            | Body co--rotational, modal approach; 'DEF_LIM' integration scheme is always used for|
   |                        | this formulation (there is no computational advantage in using 'DEF_EXP' since all  |
   |                        | system matrices are diagonal); *Note:* the **base** argument must be passed;        |
-  |                        | See :ref:`TR1 <tr1>` for technical details; :red:`(Under development)`              | 
+  |                        | See :ref:`TR1 <tr1>` for technical details; :red:`(Experimental)`                   | 
   +------------------------+-------------------------------------------------------------------------------------+
   | 'BC--RO '              | Body co--rotational, reduced order approach; 'DEF_LIM' integration scheme is always |
   |                        | used for this formulation (there is no computational advantage in using 'DEF_EXP'   |
   |                        | since all system matrices are dense); *Note:** the **base** argument must be        |
-  |                        | passed; See :ref:`TR1 <tr1>` for technical details; :red:`(Under development)`      |
+  |                        | passed; See :ref:`TR1 <tr1>` for technical details; :red:`(Experimental)`           |
   +------------------------+-------------------------------------------------------------------------------------+
  
 |

@@ -253,7 +253,7 @@ Hybrid solver allows to combine smooth rigid body nonlinear spring based :ref:`P
 library is shared memory parallel and in the MPI mode this part of modeling is executed on MPI rank 0 process, employing maximum available
 shared memory parallelism.
 
-.. topic:: obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver | parmec_argv, boundary_contact_detection) :red:`(Under development)`
+.. topic:: obj = HYBRID_SOLVER (parmec_file, parmec_step, parmec2solfec, solfec_solver | parmec_argv, boundary_contact_detection) :red:`(Experimental)`
 
   * obj -- created HYBRID_SOLVER object
 

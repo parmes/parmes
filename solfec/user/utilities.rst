@@ -116,7 +116,7 @@ result in splitting of the body in two parts.
 
 .. role:: red
 
-.. topic:: (one, two) = SPLIT (shape, point, normal | surfid, topoadj, remesh) :red:`(Under development)`
+.. topic:: (one, two) = SPLIT (shape, point, normal | surfid, topoadj, remesh) :red:`(Experimental)`
 
   * one -- objects placed below the splitting plane (*None* if no objects were placed below the plane)
 
@@ -149,7 +149,7 @@ MESH_SPLIT
 This routine splits a mesh object along internal element boundaries whose nodes belong to the given node or face set.
 Depending on the topological properties of the mesh this may or may not result in splitting of the mesh in multiple parts.
 
-.. topic:: [out1, out2, ...] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) :red:`(Under development)`
+.. topic:: [out1, out2, ...] = MESH_SPLIT (mesh | nodeset, faceset, surfid1, surfid2) :red:`(Experimental)`
 
   * [out1, out2, ...] -- a list of output meshes (*None* if no internal element boundaries in the input mesh were split)
 

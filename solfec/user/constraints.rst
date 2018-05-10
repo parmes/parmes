@@ -140,7 +140,7 @@ PUT_SPRING
 This routine creates an arbitrary spring between two referential points of two distinct bodies.
 See also, formulation of the :ref:`spring constraint <simple-spring>`.
 
-.. topic:: obj = PUT_SPRING (body1, point1, body2, point2, function, limits | direction, update) :red:`(Under development)`
+.. topic:: obj = PUT_SPRING (body1, point1, body2, point2, function, limits | direction, update) :red:`(Experimental)`
 
   * obj -- created CONSTRAINT object
 
