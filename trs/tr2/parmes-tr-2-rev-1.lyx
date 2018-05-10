@@ -2605,7 +2605,7 @@ Rotating drum of rigid and pseudo-rigid ellipsoids
 \end_layout
 
 \begin_layout Standard
-This example illustrates motion of particles inside of a rotating drum.
+This example illustrates a motion of particles inside of a rotating drum.
  The drum geometry is depicted in Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -2613,8 +2613,8 @@ reference "fig:drum0"
 
 \end_inset
 
- (a): the drum is made out of a hollow pipe of inner radius 1.0m and thickness
- 0.05m, spanned between points 
+ (a): the drum is made out of a hollow pipe with inner radius of 1.0m and
+ thickness 0.05m, spanned between points 
 \begin_inset Formula $\left(0,0,0\right)$
 \end_inset
 
@@ -2745,7 +2745,7 @@ key "CM88"
 \begin_inset Formula $3\times3$
 \end_inset
 
- linear transformation (per-body deformation gradient) and hence ellipsoids
+ linear transformation (per-body deformation gradient) and hence the ellipsoids
  deform linearly (develop constant strain/stress).
  When labeling results reported below by 
 \emph on
@@ -3515,13 +3515,13 @@ or
 \begin_inset Formula $\delta\in\left\{ 0.001,0.01\right\} $
 \end_inset
 
- is divergence free (with an exception of one data point).
- Hence clearly inexact linear solves are favored.
+ is free of solver divergence (with an exception of one data point).
+ Quite clearly - inexact linear solves are favored.
  Case (c) samples sensitivity in the space of various 
 \begin_inset Formula $\left(\epsilon,m\right)$
 \end_inset
 
- choices and the regularization parameter 
+ choices and the varying regularization parameter 
 \begin_inset Formula $\delta$
 \end_inset
 
@@ -3841,7 +3841,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-599
+501
 \end_layout
 
 \end_inset
@@ -3877,7 +3877,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-526
+491
 \end_layout
 
 \end_inset
@@ -3886,7 +3886,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.83
+
 \end_layout
 
 \end_inset
@@ -3895,7 +3895,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-119
+
 \end_layout
 
 \end_inset
@@ -3904,7 +3904,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-31
+
 \end_layout
 
 \end_inset
@@ -3925,7 +3925,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-421
+422
 \end_layout
 
 \end_inset
@@ -3961,7 +3961,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-453
+476
 \end_layout
 
 \end_inset
@@ -3970,7 +3970,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.45
+
 \end_layout
 
 \end_inset
@@ -3979,7 +3979,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-15
+
 \end_layout
 
 \end_inset
@@ -3988,7 +3988,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
@@ -4009,7 +4009,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-242
+247
 \end_layout
 
 \end_inset
@@ -4045,7 +4045,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-406
+454
 \end_layout
 
 \end_inset
@@ -4054,7 +4054,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.94
+
 \end_layout
 
 \end_inset
@@ -4063,7 +4063,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-164
+
 \end_layout
 
 \end_inset
@@ -4072,7 +4072,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-180
+
 \end_layout
 
 \end_inset
@@ -4093,7 +4093,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-199
+209
 \end_layout
 
 \end_inset
@@ -4129,7 +4129,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-55
+66
 \end_layout
 
 \end_inset
@@ -4138,7 +4138,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.75
+
 \end_layout
 
 \end_inset
@@ -4147,7 +4147,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-19
+
 \end_layout
 
 \end_inset
@@ -4156,7 +4156,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
