@@ -168,7 +168,7 @@ Some parameters can also be accessed as members of a SURFACE_MATERIAL object, cf
   +---------------------------------------------------------------------------------------------------------+
   | **Read/write members:**                                                                                 |
   +---------------------------------------------------------------------------------------------------------+
-  | *obj.model,obj.friction, obj.cohesion, obj.restitution, obj.spring, obj.dashpot*                        |
+  | *obj.model,obj.friction, obj.cohesion, obj.restitution, obj.spring, obj.dashpot, obj.hpow*              |
   +---------------------------------------------------------------------------------------------------------+
 
 |
