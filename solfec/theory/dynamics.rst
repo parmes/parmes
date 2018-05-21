@@ -42,7 +42,7 @@ The referential angular momentum balance reads
 
   \mathbf{J}\dot{\mathbf{\Omega}}+\mathbf{\Omega}\times\mathbf{J}\mathbf{\Omega}=\mathbf{\Lambda}^{T}\mathbf{m}
   
-where \mathbf{m} is the torque
+where :math:`\mathbf{m}` is the torque
 
 .. math::
 
