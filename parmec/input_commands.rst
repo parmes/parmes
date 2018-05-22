@@ -253,7 +253,7 @@ defined by means of lookup tables; :math:`\text{force}\left(t\right)` is applied
 :math:`-\text{force}\left(t\right)` is applied at :math:`\text{point1}\left(t\right)`; dashpot force is not applied when
 spring force is zero.
 
-.. topic:: sprnum = SPRING (part1, point1, part2, geom2, spring \| dashpot, direction, planar, unload, ylim, inactive, offset) :red:`(experimental)`
+.. topic:: sprnum = SPRING (part1, point1, part2, geom2, spring \| dashpot, direction, planar, unload, ylim, inactive, offset, friction, kskn) :red:`(experimental)`
 
   -  **sprnum** - spring number
 
@@ -299,6 +299,10 @@ spring force is zero.
   -  **offset** - optional :ref:`TSERIES <parmec-command-TSERIES>` number representing a time dependent adjustment applied to all stroke values
      of the spring curve (dashpot unchanged) as in :numref:`parmec-spring-stroke-offset`; **offset** is applied only prior to yielding for springs
      with **ylim** and **unload** specified; default: unspecified
+
+  -  **friction** - optional tangential friction coefficient; default: 0.0
+
+  -  **kskn** - optional ratio of normal to tangential spring and dashpot parameters used when **friction** > 0; default: 0.5
 
 .. _parmec-spring-stroke-offset:
 
