@@ -19,6 +19,6 @@ by selecting the 'SS' entity and using "Coor Map Editor" in ParaView to "Interpr
 (-3.0, -2.0, -1.0, ...) as described for the :ref:`OUTPUT command <parmec-command-OUTPUT>`. Spring states
 can also be outputted as :ref:`HISTORY <parmec-command-HISTORY>` (as in the example).  (...)
 
-  .. youtube:: https://www.youtube.com/watch?v=DlGXRKHxOv8
-    :width: 640
-    :height: 360
+.. youtube:: https://www.youtube.com/watch?v=DlGXRKHxOv8
+   :width: 640
+   :height: 360
