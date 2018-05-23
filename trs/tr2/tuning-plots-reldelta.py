@@ -14,8 +14,8 @@ Y_index = [8, 9, (8, 9)]
 X_Y_plots = ['Total ietarations', 'Avg. iter. when converged', 'Diverged solves']
 
 
-print 'Decompressing data-reldelta files...'
-process = subprocess.Popen('unzip -o data-reldelta.zip', shell=True)
+print 'Decompressing data files...'
+process = subprocess.Popen('unzip -o data.zip', shell=True)
 process.wait()
 
 for rldl in reldelta:
@@ -26,7 +26,7 @@ for rldl in reldelta:
       V_Y = {}
       V_X_Y = {}
       ic = cases.index(case)
-      with open('data-reldelta/tr2-dru100-reldelta-iters', 'r') as inp:
+      with open('data/tr2-dru100-reldelta-iters', 'r') as inp:
 	ln = inp.readline()
 	ln = ln.split(' = ')
 	while ln != ['']:
@@ -76,7 +76,7 @@ for rldl in reldelta:
       V_Y = {}
       V_X_Y = {}
       ic = cases.index(case)
-      with open('data-reldelta/tr2-dru100-reldelta-runtimes', 'r') as inp:
+      with open('data/tr2-dru100-reldelta-runtimes', 'r') as inp:
 	ln = inp.readline()
 	ln = ln.split(' = ')
 	while ln != ['']:
@@ -125,7 +125,7 @@ for rldl in reldelta:
       V_Y = {}
       V_X_Y = {}
       ic = cases.index(case)
-      with open('data-reldelta/tr2-dru100-reldelta-timings', 'r') as inp:
+      with open('data/tr2-dru100-reldelta-timings', 'r') as inp:
 	ln = inp.readline()
 	ln = ln.split(' = ')
 	while ln != ['']:
@@ -168,5 +168,5 @@ for rldl in reldelta:
   '''
 
 print 'Cleaning up...'
-process = subprocess.Popen('rm -fr data-reldelta', shell=True)
+process = subprocess.Popen('rm -fr data', shell=True)
 process.wait()

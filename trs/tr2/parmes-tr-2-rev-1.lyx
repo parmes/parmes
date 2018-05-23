@@ -3585,11 +3585,11 @@ reference "fig:drum2"
 \end_inset
 
 .
- For the rigid body case, the choice of (0.0001, 0.25, 1000) for the 
+ For the rigid body case, the choice of (0.0001, 0.25, 15) for the 
 \begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 534s 
+ triad produces the shortest total runtime of 525s 
 \begin_inset Note Note
 status open
 
@@ -3600,12 +3600,12 @@ status open
 \end_inset
 
 .
- For the pseudo-rigid kinematic case, the choice of (0.001, 0.01, 1000) for
+ For the pseudo-rigid kinematic case, the choice of (1E-13, 0.25, 20) for
  the 
 \begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 378s
+ triad produces the shortest total runtime of 356s
 \begin_inset Note Note
 status open
 
@@ -3625,19 +3625,6 @@ reference "tab:drum1"
 \end_inset
 
 .
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: rerun the study in order to produce consistent runtimes with those
- in the table (these above are for the previous, gradual way of inserting
- the particles)
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -3841,7 +3828,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-501
+525s
 \end_layout
 
 \end_inset
@@ -3877,7 +3864,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-491
+495s
 \end_layout
 
 \end_inset
@@ -3925,7 +3912,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-422
+356s
 \end_layout
 
 \end_inset
@@ -3961,7 +3948,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-476
+482s
 \end_layout
 
 \end_inset
@@ -4009,15 +3996,6 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-247
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -4045,7 +4023,16 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-454
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -4093,15 +4080,6 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-209
-\end_layout
-
-\end_inset
-</cell>
-<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
-\begin_inset Text
-
-\begin_layout Plain Layout
 
 \end_layout
 
@@ -4129,7 +4107,16 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-66
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" leftline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+
 \end_layout
 
 \end_inset
@@ -4187,14 +4174,7 @@ Rotating drum
 \begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
- choice of 
-\begin_inset Formula $\left(0.0001,0.1,15\right)$
-\end_inset
-
- for the rigid body case and 
-\begin_inset Formula $\left(1\text{E-6},0.1,1000\right)$
-\end_inset
-
+ choice of (0.0001, 0.25, 15) for the rigid body case and (1E-13, 0.25, 20)
  for the deformable body case; respective columns stand for total runtime
  in seconds (runtime), solver time to runtime ratio (ratio), average number
  of iterations per step when converged (it/step), and number of diverged
@@ -5426,25 +5406,43 @@ reference "fig:drum2-maxWii"
  Nonetheless, it is possible to select parameter sets for which there are
  no solver failures and the runtime is short.
  For the rigid body case, the choice of 
-\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,20\right)$
+\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,10\right)$
 \end_inset
 
  for the 
 \begin_inset Formula $\left(\delta_{\text{avg}W_{ii}},\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 482s (no solver failure occurs
- in this case).
+ triad produces the shortest total runtime of 467s 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(no solver failure occurs in this case)
+\end_layout
+
+\end_inset
+
+.
  For the pseudo-rigid kinematic case, the choice of 
-\begin_inset Formula $\left(0.025_{\text{avg}W_{ii}},0.025,10\right)$
+\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.01,5\right)$
 \end_inset
 
  for the 
 \begin_inset Formula $\left(\delta_{\text{avg}W_{ii}},\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 380s (no solver failure also
- in this case).
+ triad produces the shortest total runtime of 352s 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(no solver failure also in this case)
+\end_layout
+
+\end_inset
+
+.
  These runtimes are well comparable with those produced by the Gauss-Seidel
  solver based runs and reported in Table 
 \begin_inset CommandInset ref
@@ -5453,7 +5451,17 @@ reference "tab:drum1-reldelta"
 
 \end_inset
 
- (note also the variation of the Newton based runtimes due to test reruns).
+ 
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+(note also the variation of the Newton based runtimes due to test reruns)
+\end_layout
+
+\end_inset
+
+.
  Table 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -5680,7 +5688,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-496
+467s
 \end_layout
 
 \end_inset
@@ -5689,7 +5697,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.73
+
 \end_layout
 
 \end_inset
@@ -5698,7 +5706,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-9
+
 \end_layout
 
 \end_inset
@@ -5707,7 +5715,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
@@ -5716,7 +5724,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-526
+495s
 \end_layout
 
 \end_inset
@@ -5725,7 +5733,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.83
+
 \end_layout
 
 \end_inset
@@ -5734,7 +5742,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-119
+
 \end_layout
 
 \end_inset
@@ -5743,7 +5751,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-31
+
 \end_layout
 
 \end_inset
@@ -5764,7 +5772,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-402
+352s
 \end_layout
 
 \end_inset
@@ -5773,7 +5781,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.58
+
 \end_layout
 
 \end_inset
@@ -5782,7 +5790,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-3
+
 \end_layout
 
 \end_inset
@@ -5791,7 +5799,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+
 \end_layout
 
 \end_inset
@@ -5800,7 +5808,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-453
+482s
 \end_layout
 
 \end_inset
@@ -5809,7 +5817,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.45
+
 \end_layout
 
 \end_inset
@@ -5818,7 +5826,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-15
+
 \end_layout
 
 \end_inset
@@ -5827,7 +5835,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
@@ -5848,7 +5856,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-271
+
 \end_layout
 
 \end_inset
@@ -5857,7 +5865,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.90
+
 \end_layout
 
 \end_inset
@@ -5866,7 +5874,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-14
+
 \end_layout
 
 \end_inset
@@ -5875,7 +5883,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
@@ -5884,7 +5892,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-406
+
 \end_layout
 
 \end_inset
@@ -5893,7 +5901,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.94
+
 \end_layout
 
 \end_inset
@@ -5902,7 +5910,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-164
+
 \end_layout
 
 \end_inset
@@ -5911,7 +5919,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-180
+
 \end_layout
 
 \end_inset
@@ -5932,7 +5940,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-123
+
 \end_layout
 
 \end_inset
@@ -5941,7 +5949,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.79
+
 \end_layout
 
 \end_inset
@@ -5950,7 +5958,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-4
+
 \end_layout
 
 \end_inset
@@ -5959,7 +5967,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
@@ -5968,7 +5976,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-55
+
 \end_layout
 
 \end_inset
@@ -5977,7 +5985,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.75
+
 \end_layout
 
 \end_inset
@@ -5986,7 +5994,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-19
+
 \end_layout
 
 \end_inset
@@ -5995,7 +6003,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-0
+
 \end_layout
 
 \end_inset
@@ -6027,11 +6035,31 @@ Rotating drum
 \end_inset
 
  choice of 
-\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,20\right)$
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,10\right)$
 \end_inset
 
  for the rigid body case and 
-\begin_inset Formula $\left(0.025_{\text{avg}W_{ii}},0.025,10\right)$
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.01,5\right)$
 \end_inset
 
  for the deformable body case; respective columns stand for total runtime
@@ -6158,7 +6186,7 @@ rigid
 \begin_inset Text
 
 \begin_layout Plain Layout
-486s
+495s
 \end_layout
 
 \end_inset
@@ -6176,7 +6204,7 @@ rigid
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.1
+0.25
 \end_layout
 
 \end_inset
@@ -6185,7 +6213,7 @@ rigid
 \begin_inset Text
 
 \begin_layout Plain Layout
-10
+15
 \end_layout
 
 \end_inset
@@ -6217,7 +6245,7 @@ rigid
 \begin_inset Text
 
 \begin_layout Plain Layout
-482s
+467s
 \end_layout
 
 \end_inset
@@ -6244,7 +6272,7 @@ rigid
 \begin_inset Text
 
 \begin_layout Plain Layout
-20
+10
 \end_layout
 
 \end_inset
@@ -6280,7 +6308,7 @@ rigid
 \begin_inset Text
 
 \begin_layout Plain Layout
-529s
+525s
 \end_layout
 
 \end_inset
@@ -6298,7 +6326,7 @@ rigid
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.01
+0.25
 \end_layout
 
 \end_inset
@@ -6307,7 +6335,7 @@ rigid
 \begin_inset Text
 
 \begin_layout Plain Layout
-5
+20
 \end_layout
 
 \end_inset
@@ -6339,7 +6367,7 @@ defo
 \begin_inset Text
 
 \begin_layout Plain Layout
-384s
+378s
 \end_layout
 
 \end_inset
@@ -6348,7 +6376,7 @@ defo
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.01
+0.1
 \end_layout
 
 \end_inset
@@ -6366,7 +6394,7 @@ defo
 \begin_inset Text
 
 \begin_layout Plain Layout
-10
+20
 \end_layout
 
 \end_inset
@@ -6398,7 +6426,7 @@ defo
 \begin_inset Text
 
 \begin_layout Plain Layout
-380s
+352s
 \end_layout
 
 \end_inset
@@ -6407,7 +6435,7 @@ defo
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.025
+0.01
 \end_layout
 
 \end_inset
@@ -6416,7 +6444,7 @@ defo
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.025
+0.01
 \end_layout
 
 \end_inset
@@ -6425,7 +6453,7 @@ defo
 \begin_inset Text
 
 \begin_layout Plain Layout
-10
+5
 \end_layout
 
 \end_inset
@@ -6479,7 +6507,7 @@ defo
 \begin_inset Text
 
 \begin_layout Plain Layout
-0.025
+0.05
 \end_layout
 
 \end_inset

@@ -9,8 +9,8 @@ X_index = [6, 6, 6]
 Y_index = [8, 9, (8, 9)]
 X_Y_plots = ['Total ietarations', 'Avg. iter. when converged', 'Diverged solves']
 
-print 'Decompressing data-reldelta files...'
-process = subprocess.Popen('unzip -o data-reldelta.zip', shell=True)
+print 'Decompressing data files...'
+process = subprocess.Popen('unzip -o data.zip', shell=True)
 process.wait()
 
 print 'Scanning runtimes...'
@@ -22,7 +22,7 @@ for kin in kinem:
     mintm = 0
     for case in cases:
       ic = cases.index(case)
-      with open('data-reldelta/tr2-dru100-reldelta-runtimes', 'r') as inp:
+      with open('data/tr2-dru100-reldelta-runtimes', 'r') as inp:
 	ln = inp.readline()
 	ln = ln.split(' = ')
 	while ln != ['']:
@@ -51,5 +51,5 @@ for kin in kinem:
     print '%s %s: min runtime = %g for (delta, epsilon, m) = (%g, %g, %d)' % (kin, rldl, mintime, mintdelta, minteps, mintm)
 
 print 'Cleaning up...'
-process = subprocess.Popen('rm -fr data-reldelta', shell=True)
+process = subprocess.Popen('rm -fr data', shell=True)
 process.wait()

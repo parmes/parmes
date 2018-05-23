@@ -9,16 +9,16 @@ X_label = 'delta'
 Y_label = 'density'
 X_Y_plots = ['Total ietarations', 'Avg. iter. when converged', 'Diverged solves']
 
-#print 'Decompressing data-density files...'
-#process = subprocess.Popen('unzip -o data-density.zip', shell=True)
-#process.wait()
+print 'Decompressing data files...'
+process = subprocess.Popen('unzip -o data.zip', shell=True)
+process.wait()
 
 print 'Plotting iterations...'
 for kin in kinem:
   V_X = {}
   V_Y = {}
   V_X_Y = {}
-  with open('data-density/tr2-dru100-density-iters', 'r') as inp:
+  with open('data/tr2-dru100-density-iters', 'r') as inp:
     ln = inp.readline()
     ln = ln.split(' = ')
     while ln != ['']:
@@ -64,7 +64,7 @@ for kin in kinem:
   V_X = {}
   V_Y = {}
   V_X_Y = {}
-  with open('data-density/tr2-dru100-density-runtimes', 'r') as inp:
+  with open('data/tr2-dru100-density-runtimes', 'r') as inp:
     ln = inp.readline()
     ln = ln.split(' = ')
     while ln != ['']:
@@ -102,6 +102,6 @@ for kin in kinem:
   plt.savefig ('dru100_%s_dens_runtimes.png' % kin, bbox_inches='tight', pad_inches=0)
   plt.close()
 
-#print 'Cleaning up...'
-#process = subprocess.Popen('rm -fr data-density', shell=True)
-#process.wait()
+print 'Cleaning up...'
+process = subprocess.Popen('rm -fr data', shell=True)
+process.wait()

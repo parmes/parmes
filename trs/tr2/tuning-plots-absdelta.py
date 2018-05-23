@@ -13,8 +13,8 @@ Y_index = [8, 9, (8, 9)]
 X_Y_plots = ['Total ietarations', 'Avg. iter. when converged', 'Diverged solves']
 
 
-print 'Decompressing data-absdelta files...'
-process = subprocess.Popen('unzip -o data-absdelta.zip', shell=True)
+print 'Decompressing data files...'
+process = subprocess.Popen('unzip -o data.zip', shell=True)
 process.wait()
 
 print 'Plotting iterations...'
@@ -24,7 +24,7 @@ for kin in kinem:
     V_Y = {}
     V_X_Y = {}
     ic = cases.index(case)
-    with open('data-absdelta/tr2-dru100-absdelta-iters', 'r') as inp:
+    with open('data/tr2-dru100-absdelta-iters', 'r') as inp:
       ln = inp.readline()
       ln = ln.split(' = ')
       while ln != ['']:
@@ -74,7 +74,7 @@ for kin in kinem:
     V_Y = {}
     V_X_Y = {}
     ic = cases.index(case)
-    with open('data-absdelta/tr2-dru100-absdelta-runtimes', 'r') as inp:
+    with open('data/tr2-dru100-absdelta-runtimes', 'r') as inp:
       ln = inp.readline()
       ln = ln.split(' = ')
       while ln != ['']:
@@ -122,7 +122,7 @@ for kin in kinem:
     V_Y = {}
     V_X_Y = {}
     ic = cases.index(case)
-    with open('data-absdelta/tr2-dru100-absdelta-timings', 'r') as inp:
+    with open('data/tr2-dru100-absdelta-timings', 'r') as inp:
       ln = inp.readline()
       ln = ln.split(' = ')
       while ln != ['']:
@@ -164,5 +164,5 @@ for kin in kinem:
     plt.close()
 
 print 'Cleaning up...'
-process = subprocess.Popen('rm -fr data-absdelta', shell=True)
+process = subprocess.Popen('rm -fr data', shell=True)
 process.wait()
