@@ -332,8 +332,8 @@ but generate zero forces.
   - **limits** - tuple of (min, max) **tsprings operator entity** limit values which need to be exceeded for **msprings** to be modified; if either
     value is *None* then no failure limit is assumed e.g. (*None*, max) only has an upper failure limit; also min < max
 
-  - **entity** - scalar spring entity string: (spring stroke) 'STROKE', (spring total force) 'STF', (spring force without damping) 'SF', cf.
-    :ref:`HISTORY <parmec-command-HISTORY>` and :ref:`OUTPUT <parmec-command-OUTPUT>`; default: 'SF'
+  - **entity** - scalar spring entity string: (spring stroke) 'STROKE', (spring total force) 'F', (spring force without damping) 'SF',
+    (spring total friction force) 'FF', cf.  :ref:`HISTORY <parmec-command-HISTORY>` and :ref:`OUTPUT <parmec-command-OUTPUT>`; default: 'SF'
 
   - **operator** - collective **tsprings** operator string: 'SUM', 'MIN', 'MAX'; default: 'SUM'
 
@@ -573,9 +573,9 @@ Before running a simulation, request time history output.
      ’VY’, ’VZ’, ’\|V\|’, (angular velocity) ’OX’, ’OY’, ’OZ’, ’\|O\|’,
      (body force) ’FX’, ’FY’, ’FZ’, ’\|F\|’, (body torque) ’TX’, ’TY’,
      ’TZ’, ’\|T\|’; spring entities: (spring length) 'LENGTH', (spring
-     stroke) ’STROKE’, (spring total force) ’STF’, (spring force without
-     damping) ’SF’, (spring state) 'SS', cf. :ref:`OUTPUT <parmec-command-OUTPUT>`
-     for description;
+     stroke) ’STROKE’, (spring total force) ’F’, (spring force without
+     damping) ’SF’, (spring total friction force) 'FF', (spring state)
+     'SS', cf. :ref:`OUTPUT <parmec-command-OUTPUT>` for description;
 
   -  **source** - particle number *i*, or a list of particle numbers
      [\ *i, j, ...*\ ], or a spatial sphere defined as tuple
@@ -644,7 +644,7 @@ included into the output file(s). PARMEC outputs:
 
   -  **entities** - list of output entities; default: [’NUMBER’, ’COLOR’,
      ’DISPL’, ’LENGTH’, ’ORIENT’, 'ORIENT1', 'ORIENT2', 'ORIENT3', ’LINVEL’,
-     ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’AREA’, ’PAIR’] where:
+     ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’FF’, ’SS’, ’AREA’, ’PAIR’] where:
 
      -  ’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
 	’RB’), or scalar field of spring numbers (modes: ’SD’)
@@ -690,6 +690,8 @@ included into the output file(s). PARMEC outputs:
 
      -  ’SF’ - scalar field of spring force magnitude, without dashpot
 	contribution (modes: ’CD’, ’SD’)
+
+     -  ’FF’ - scalar field of total friction force magnitude (modes: ’CD’, ’SD’)
 
      - 'SS' - scalar field of spring states, where -3.0 denotes a regular spring (always active),
         -2.0 denotes an active spring, -1.0 denotes a deactivated spring (zero force), and values
