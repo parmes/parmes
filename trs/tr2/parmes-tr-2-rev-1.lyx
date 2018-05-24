@@ -3589,33 +3589,13 @@ reference "fig:drum2"
 \begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 525s 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(less then ten solver failures occur in this case)
-\end_layout
-
-\end_inset
-
-.
+ triad produces the shortest total runtime of 525s (with zero solver failures).
  For the pseudo-rigid kinematic case, the choice of (1E-13, 0.25, 20) for
  the 
 \begin_inset Formula $\left(\delta,\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 356s
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
- (one solver failure occurs in this case)
-\end_layout
-
-\end_inset
-
-.
+ triad produces the shortest total runtime of 356s (with zero solver failures).
  These runtimes are well comparable with those produced by the Gauss-Seidel
  solver based runs and reported in Table 
 \begin_inset CommandInset ref
@@ -3837,7 +3817,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.78
 \end_layout
 
 \end_inset
@@ -3846,7 +3826,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+10
 \end_layout
 
 \end_inset
@@ -3855,7 +3835,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -3873,7 +3853,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.85
 \end_layout
 
 \end_inset
@@ -3882,7 +3862,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+112
 \end_layout
 
 \end_inset
@@ -3891,7 +3871,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+20
 \end_layout
 
 \end_inset
@@ -3921,7 +3901,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.64
 \end_layout
 
 \end_inset
@@ -3930,7 +3910,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5
 \end_layout
 
 \end_inset
@@ -3939,7 +3919,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -3957,7 +3937,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.45
 \end_layout
 
 \end_inset
@@ -3966,7 +3946,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+18
 \end_layout
 
 \end_inset
@@ -3975,7 +3955,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -3996,6 +3976,15 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -4032,7 +4021,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+462s
 \end_layout
 
 \end_inset
@@ -4041,7 +4030,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.96
 \end_layout
 
 \end_inset
@@ -4050,7 +4039,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+174
 \end_layout
 
 \end_inset
@@ -4059,7 +4048,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+330
 \end_layout
 
 \end_inset
@@ -4116,7 +4105,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+64s
 \end_layout
 
 \end_inset
@@ -4125,7 +4114,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.64
 \end_layout
 
 \end_inset
@@ -4134,7 +4123,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+21
 \end_layout
 
 \end_inset
@@ -4143,7 +4132,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -5413,17 +5402,7 @@ reference "fig:drum2-maxWii"
 \begin_inset Formula $\left(\delta_{\text{avg}W_{ii}},\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 467s 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(no solver failure occurs in this case)
-\end_layout
-
-\end_inset
-
-.
+ triad produces the shortest total runtime of 467s (with zero solver failures).
  For the pseudo-rigid kinematic case, the choice of 
 \begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.01,5\right)$
 \end_inset
@@ -5432,32 +5411,12 @@ status open
 \begin_inset Formula $\left(\delta_{\text{avg}W_{ii}},\epsilon,m\right)$
 \end_inset
 
- triad produces the shortest total runtime of 352s 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(no solver failure also in this case)
-\end_layout
-
-\end_inset
-
-.
+ triad produces the shortest total runtime of 352s (with zero solver failures).
  These runtimes are well comparable with those produced by the Gauss-Seidel
  solver based runs and reported in Table 
 \begin_inset CommandInset ref
 LatexCommand ref
 reference "tab:drum1-reldelta"
-
-\end_inset
-
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-(note also the variation of the Newton based runtimes due to test reruns)
-\end_layout
 
 \end_inset
 
@@ -5474,17 +5433,6 @@ reference "tab:drum1-normtimes"
 \end_inset
 
  norms.
- 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO: clarity of rerun variation in tables
-\end_layout
-
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
@@ -5697,7 +5645,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.77
 \end_layout
 
 \end_inset
@@ -5706,7 +5654,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+9
 \end_layout
 
 \end_inset
@@ -5715,7 +5663,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -5733,7 +5681,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.85
 \end_layout
 
 \end_inset
@@ -5742,7 +5690,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+112
 \end_layout
 
 \end_inset
@@ -5751,7 +5699,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+20
 \end_layout
 
 \end_inset
@@ -5781,7 +5729,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.65
 \end_layout
 
 \end_inset
@@ -5790,7 +5738,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+5
 \end_layout
 
 \end_inset
@@ -5799,7 +5747,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -5817,7 +5765,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.45
 \end_layout
 
 \end_inset
@@ -5826,7 +5774,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+18
 \end_layout
 
 \end_inset
@@ -5835,7 +5783,7 @@ ell.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -5856,6 +5804,15 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
@@ -5892,7 +5849,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+462s
 \end_layout
 
 \end_inset
@@ -5901,7 +5858,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.96
 \end_layout
 
 \end_inset
@@ -5910,7 +5867,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+174
 \end_layout
 
 \end_inset
@@ -5919,7 +5876,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+330
 \end_layout
 
 \end_inset
@@ -5976,7 +5933,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+64s
 \end_layout
 
 \end_inset
@@ -5985,7 +5942,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0.64
 \end_layout
 
 \end_inset
@@ -5994,7 +5951,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+21
 \end_layout
 
 \end_inset
@@ -6003,7 +5960,7 @@ sph.
 \begin_inset Text
 
 \begin_layout Plain Layout
-
+0
 \end_layout
 
 \end_inset
@@ -6035,30 +5992,10 @@ Rotating drum
 \end_inset
 
  choice of 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.25,10\right)$
 \end_inset
 
  for the rigid body case and 
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
-\end_inset
-
-
 \begin_inset Formula $\left(0.01_{\text{avg}W_{ii}},0.01,5\right)$
 \end_inset
 

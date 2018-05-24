@@ -6,7 +6,6 @@ X_label = ['delta', 'delta', 'delta']
 Y_label = ['epsilon', 'm', '(m, eps)']
 X_index = [6, 6, 6]
 Y_index = [8, 9, (8, 9)]
-X_Y_plots = ['Total ietarations', 'Avg. iter. when converged', 'Diverged solves']
 
 print 'Decompressing data files...'
 process = subprocess.Popen('unzip -o data.zip', shell=True)
@@ -18,6 +17,7 @@ for kin in kinem:
   mintdelta = 0
   minteps = 0.0
   mintm = 0
+  minrun = ''
   for case in cases:
     ic = cases.index(case)
     with open('data/tr2-dru100-absdelta-runtimes', 'r') as inp:
@@ -33,6 +33,7 @@ for kin in kinem:
 	    y = (float(name[yi[0]][4:]), float(name[yi[1]][4:]))
 	  else: y = float(name[yi][4:])
 	  if data < mintime:
+	    minrun = ln[0]
 	    mintime = data
 	    mintdelta = x
 	    if case == 'A':
@@ -46,7 +47,34 @@ for kin in kinem:
 	      mintm = y[1]
 	ln = inp.readline()
 	ln = ln.split(' = ')
-  print '%s: min runtime = %g for (delta, epsilon, m) = (%g, %g, %d)' % (kin, mintime, mintdelta, minteps, mintm)
+  print 'run:', minrun
+  print 'kinem:', kin
+  print 'shape:', 'ELL' if 'ELL' in minrun else 'SPH'
+  print 'min runtime = %g for (delta, epsilon, m) = (%g, %g, %d)' % (mintime, mintdelta, minteps, mintm)
+  with open('data/tr2-dru100-absdelta-timings', 'r') as inp:
+    ln = inp.readline()
+    ln = ln.split(' = ')
+    while ln != ['']:
+      if ln[0] == minrun:
+        import re
+	txt = ln[1][1:-2].replace(' ','').replace("'",'')
+	itm = re.split(',|:', txt)
+	if itm[-2] == 'TOTAL':
+	  print 'timing ratios:'
+	  tot = float(itm[-1])
+	  for i in range(1,len(itm),2):
+	    itm[i] = float(itm[i])/tot
+	    print '              ', itm[i-1], itm[i]
+      ln = inp.readline()
+      ln = ln.split(' = ')
+  with open('data/tr2-dru100-absdelta-iters', 'r') as inp:
+    ln = inp.readline()
+    ln = ln.split(' = ')
+    while ln != ['']:
+      if ln[0] == minrun:
+	print 'tot. iter, avg. iter, fails:', ln[1]
+      ln = inp.readline()
+      ln = ln.split(' = ')
 
 print 'Cleaning up...'
 process = subprocess.Popen('rm -fr data', shell=True)
