@@ -11,7 +11,10 @@ with open('data/tr2-dru100-nsgs-runtimes', 'r') as inp0:
   while ln != ['']:
     nsgsrun = ln[0]
     print 'run:', nsgsrun
-    print 'solver:', 'GS' if 'GS' in nsgsrun else 'GS'
+    print 'solver:', 'GS' if 'GS' in nsgsrun else 'NS'
+    if 'NS' in nsgsrun:
+      print 'reldelta:', 'OFF' if 'RLDLOFF' in nsgsrun else \
+      nsgsrun[nsgsrun.index('RLDL')+4:nsgsrun.index('LEPS')-1]
     print 'kinem:', 'RG' if 'RG' in nsgsrun else 'PR'
     print 'shape:', 'ELL' if 'ELL' in nsgsrun else 'SPH'
     print 'runtime = %g' % float(ln[1])

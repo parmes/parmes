@@ -49,7 +49,9 @@ for kin in kinem:
       Z[j][i] = float(d[k])
     #print kin, k, Z
     plt.figure()
-    plt.scatter(X, Y, c=Z, edgecolors='none', s=200, norm=colors.LogNorm(), cmap=cm.jet)
+    if Z.max() > 0.0:
+      plt.scatter(X, Y, c=Z, edgecolors='none', s=200, norm=colors.LogNorm(), cmap=cm.jet)
+    else: plt.scatter(X, Y, c=Z, edgecolors='none', s=200, cmap=cm.jet)
     plt.colorbar()
     plt.title(X_Y_plots[k])
     plt.xlabel(X_label)
