@@ -302,7 +302,9 @@ spring force is zero.
 
   -  **friction** - optional tangential friction coefficient; default: 0.0
 
-  -  **kskn** - optional ratio of normal to tangential spring and dashpot parameters used when **friction** > 0; default: 0.5
+  -  **kskn** - optional :math:`\ge0` ratio of normal to tangential spring and dashpot parameters used when **friction** > 0; using **kskn** = 0
+     disables tangential springs/dampers and applies frictional force opposing tangential velocity (in this case frictional sticking and stick-slip
+     transition are not modeled); default: 0.0
 
 .. _parmec-spring-stroke-offset:
 
