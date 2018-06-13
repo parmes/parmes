@@ -315,6 +315,83 @@ spring force is zero.
    The concept of time dependent spring stroke offset.
 
 
+.. _parmec-command-TORSION_SPRING:
+
+TORSION_SPRING
+--------------
+
+Create a torsional spring constraint. The applied torque formula reads
+
+.. math::
+
+  \mathbf{t}\left(t\right)=\left(\text{kroll}\left(\psi\right)+\text{droll}\left(\dot{\psi}\right)\right)\mathbf{x}\left(t\right)
+  +\left(\text{kpitch}\left(\phi\right)+\text{dpitch}\left(\dot{\phi}\right)\right)\mathbf{y}\left(t\right)
+  +\left(\text{kyaw}\left(\theta\right)+\text{dyaw}\left(\dot{\theta}\right)\right)\mathbf{z}\left(t\right)
+
+where the angles :math:`\psi`, :math:`\phi`, :math:`\theta` are calculated withe the help of co-rotated unit directions
+:math:`\mathbf{x}`, :math:`\mathbf{y}`, :math:`\mathbf{z}` as follows
+
+.. math::
+
+  \mathbf{y}=\mathbf{z}\times\mathbf{x}
+
+.. math::
+
+  \left[\begin{array}{ccc}
+  x_{1} & y_{1} & z_{1}\\
+  x_{2} & y_{2} & z_{2}\\
+  x_{3} & y_{3} & z_{3}
+  \end{array}\right]\left(t\right)=\mathbf{\Lambda}_{1}\left(t\right)\left[\begin{array}{ccc}
+  x_{1} & y_{1} & z_{1}\\
+  x_{2} & y_{2} & z_{2}\\
+  x_{3} & y_{3} & z_{3}
+  \end{array}\right]\left(0\right)
+
+.. math::
+
+  \dot{\psi}=\mathbf{x}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)
+
+.. math::
+
+  \dot{\phi}=\mathbf{z}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)
+
+.. math::
+
+  \dot{\theta}=\mathbf{y}\cdot\left(\mathbf{\omega}_{1}-\mathbf{\omega}_{2}\right)
+
+.. math::
+  
+  \psi\left(t\right)=\int_{0}^{t}\dot{\psi}\left(t\right)dt,\,\,\phi\left(t\right)=\int_{0}^{t}
+  \dot{\phi}\left(t\right)dt,\,\,\theta\left(t\right)=\int_{0}^{t}\dot{\theta}\left(t\right)dt
+
+and where :math:`\mathbf{\omega}_{i}` are the spatial angular velocities of particles 1 and 2,
+and :math:`\mathbf{\Lambda}_{1}` is the rigid rotation matrix of particle 1.
+
+
+.. topic:: trsnum = TORSION_SPRING (part1, part2, zdir, xdir | kroll, kpitch, kyaw, droll, dpitch, dyaw, cone) :red:`(experimental)`
+
+  - **trsnum** - torsion spring number
+
+  - **part1** - first particle number
+
+  - **part2** - second particle number; -1 can be used to indicate a single-particle constraint
+
+  - **zdir**, **xdir** - reference direction tuples, :math:`\mathbf{z}=\left(z_{1},z_{2},z_{3}\right)` and
+    :math:`\mathbf{x}=\left(x_{1},x_{2},x_{3}\right)`, co-rotated with the two particles, and used to determine
+    the torsion angles :math:`\psi`, :math:`\theta`, :math:`\phi` as described above; these directions must be
+    orthogonal
+
+  - **kyaw**, **kroll**, **kpitch** - spring torque lookup tables :math:`\left[\text{angle}_{1},\text{torque}_{1},\text{angle}_{2},\text{torque}_{2},...\right]`,
+    about the three torsion angles; default: :math:`\left[-\infty,0,+\infty,0\right]`
+
+  - **dyaw**, **droll**, **dpitch** - dashpot torque lookup tables :math:`\left[\text{angvel}_{1},\text{torque}_{1},\text{angvel}_{2},\text{torque}_{2},...\right]`
+    or a critical damping ratio from interval :math:`\left[0,+\infty\right)`; default: :math:`\left[-\infty,0,+\infty,0\right]`
+
+  - **cone** - optional tuple ('roll', 'yaw'), ('roll', 'pitch'), ('pitch', 'yaw') or ('roll', 'pitch', 'yaw') denoting a cone
+    constraint in the (roll, pitch, yaw) angle space; the spring/dashpot torque curves of the first in (roll, pitch, yaw) order
+    coordinate are used (hence it makes sense to define at least one of these curves), e.g. both ('roll', 'pitch') and
+    ('pitch', 'roll') result in torque formula :math:`\mathbf{t}=\left[\text{kroll}\left(\sqrt{\psi^{2}+\phi^{2}}\right)+\text{droll}\left(\frac{d}{dt}\sqrt{\psi^{2}+\phi^{2}}\right)\right]\left[\frac{\psi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{x}+\frac{\phi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{y}\right]`, etc.; default: not specified
+
 .. _parmec-command-UNSPRING:
 
 UNSPRING
