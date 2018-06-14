@@ -686,47 +686,55 @@ OUTPUT
 Before running a simulation, define scalar and/or vector entities
 included into the output file(s). PARMEC outputs:
 
--  \*0.dump :red:`(under development)` files for spherical particles not specified as a subset in the OUTPUT command
+-  \*0.dump files for spherical particles not specified as a subset in the OUTPUT command
 
--  \*1.dump, \*2.dump, ... :red:`(under development)` files for spherical particles specified as subsets, where numbers
+-  \*1.dump, \*2.dump, ... files for spherical particles specified as subsets, where numbers
    1, 2, ... match consecutive OUTPUT calls
 
--  \*0.vtk.\* **and/or** (\*0.h5, \*0.xmf) **and/or** (\*0.med) :red:`(experimental)` files for obstacles and mesh
+-  \*0.vtk.\* **and/or** (\*0.h5, \*0.xmf) **and/or** (\*0.med) files for obstacles and mesh
    based particles **not** specified as **a subset** in the OUTPUT command
 
 -  \*1.vtk.\*, \*2.vtk.\*, ... **and/or** (\*1.h5, \*1.xmf, \*2.h5, \*2.xmf, ...) **and/or**
-   (\*1.med, \*2.med...) :red:`(experimental)` files for mesh based particles specified as subsets, where numbers
+   (\*1.med, \*2.med...) files for mesh based particles specified as subsets, where numbers
    1, 2, ... match consecutive OUTPUT calls
 
--  \*0rb.vtk.\* **and/or** (\*0rb.h5, \*0rb.xmf) **and/or** (\*0rb.med) :red:`(under development)` files for rigid body
+-  \*0rb.vtk.\* **and/or** (\*0rb.h5, \*0rb.xmf) **and/or** (\*0rb.med) files for rigid body
    data of particles **not** specified as **a subset** in the OUTPUT command
 
 -  \*1rb.vtk.\*, \*2rb.vtk.\*, ... **and/or** (\*1rb.h5, \*1rb.xmf, \*2rb.h5, \*2rb.xmf, ...)
-   **and/or** (\*1rb.med, \*2rb.med, ...) :red:`(under development)` files for rigid body data of particles specified as
+   **and/or** (\*1rb.med, \*2rb.med, ...) files for rigid body data of particles specified as
    subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
 
--  \*0cd.vtk.\* **and/or** (\*0cd.h5, \*0cd.xmf) **and/or** (\*0cd.med) :red:`(under development)` files  for contact data
+-  \*0cd.vtk.\* **and/or** (\*0cd.h5, \*0cd.xmf) **and/or** (\*0cd.med) files  for contact data
    including particles **not** specified as **a subset** in the OUTPUT command
 
 -  \*1cd.vtk.\*, \*2cd.vtk.\*, ... **and/or** (\*1cd.h5, \*1cd.xmf, \*2cd.h5, \*2cd.xmf, ...)
-   **and/or** (\*1cd.med, \*2cd.med, ...) :red:`(under development)` files for contact data including particles specified
+   **and/or** (\*1cd.med, \*2cd.med, ...) files for contact data including particles specified
    as subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
 
--  \*0sd.vtk.\* **and/or** (\*0sd.h5, \*0sd.xmf) **and/or** (\*0sd.med) :red:`(under development)` files for spring data
+-  \*0sl.vtk.\* **and/or** (\*0sl.h5, \*0sl.xmf) **and/or** (\*0sl.med) files for linear spring data
    including particles **not** specified as **a subset** in the OUTPUT command
 
--  \*1sd.vtk.\*, \*2sd.vtk.\*, ... **and/or** (\*1sd.h5, \*1sd.xmf, \*2sd.h5, \*2sd.xmf, ...)
-   **and/or** (\*1sd.med, \*2sd.med, ...) :red:`(under development)` files for spring data including particles specified
+-  \*1sl.vtk.\*, \*2sl.vtk.\*, ... **and/or** (\*1sl.h5, \*1sl.xmf, \*2sl.h5, \*2sl.xmf, ...)
+   **and/or** (\*1sl.med, \*2sl.med, ...) files for linear spring data including particles specified
+   as subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
+
+-  \*0st.vtk.\* **and/or** (\*0st.h5, \*0st.xmf) **and/or** (\*0st.med) files for torsional spring data
+   including particles **not** specified as **a subset** in the OUTPUT command
+
+-  \*1st.vtk.\*, \*2st.vtk.\*, ... **and/or** (\*1st.h5, \*1st.xmf, \*2st.h5, \*2st.xmf, ...)
+   **and/or** (\*1st.med, \*2st.med, ...) files for torsional spring data including particles specified
    as subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
 
 .. topic:: OUTPUT ( \| entities, subset, mode, format)
 
   -  **entities** - list of output entities; default: [’NUMBER’, ’COLOR’,
      ’DISPL’, ’LENGTH’, ’ORIENT’, 'ORIENT1', 'ORIENT2', 'ORIENT3', ’LINVEL’,
-     ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’FF’, ’SS’, ’AREA’, ’PAIR’] where:
+     ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’FF’, ’SS’, ’AREA’, ’PAIR’,
+     'ZDIR', 'XDIR', 'RPY', 'RPYTOT', 'RPYSPR'] where:
 
      -  ’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
-	’RB’), or scalar field of spring numbers (modes: ’SD’)
+	’RB’), or scalar field of spring numbers (modes: ’SL’)
 
      -  ’COLOR’ - scalar field of surface colors (modes: ’SPH’, ’MESH’),
 	or 2-component vector field of contact surface colors (modes:
@@ -734,13 +742,13 @@ included into the output file(s). PARMEC outputs:
 
      -  ’DISPL’ - 3-component vector field of displacements (modes: ’SPH’,
 	’MESH’, ’RB’), or scalar field of contact depths (modes: ’CD’), or
-	scalar field of spring strokes (modes: ’SD’)
+	scalar field of spring strokes (modes: ’SL’)
 
-     -  ’LENGTH’ - scalar field of spring lengths (modes: 'SD')
+     -  ’LENGTH’ - scalar field of spring lengths (modes: 'SL')
 
      -  ’ORIENT’ - 9-component tensor field representing rigid rotation
         matrix (modes: 'RB'), or 3-component vector field of spring
-	orientations (modes: ’SD’)
+	orientations (modes: ’SL’)
 
      -  ’ORIENT1’, 'ORIENT2', 'ORIENT3' - three 3-component vector fields
         representing columns of rigid rotation matrix (orientation vectors)
@@ -759,7 +767,7 @@ included into the output file(s). PARMEC outputs:
 	body torque (modes: ’SPH’, ’MESH’, ’RB’)
 
      -  ’F’ - 3-component vector field of total contact forces (modes:
-	’CD’), or scalar field of total spring forces (modes: ’SD’)
+	’CD’), or scalar field of total spring forces (modes: ’SL’)
 
      -  ’FN’ - 3-component vector field of normal contact forces (modes:
 	’CD’)
@@ -768,19 +776,28 @@ included into the output file(s). PARMEC outputs:
 	(modes: ’CD’)
 
      -  ’SF’ - scalar field of spring force magnitude, without dashpot
-	contribution (modes: ’CD’, ’SD’)
+	contribution (modes: ’CD’, ’SL’)
 
-     -  ’FF’ - scalar field of total friction force magnitude (modes: ’CD’, ’SD’)
+     -  ’FF’ - scalar field of total friction force magnitude (modes: ’CD’, ’SL’)
 
      - 'SS' - scalar field of spring states, where -3.0 denotes a regular spring (always active),
         -2.0 denotes an active spring, -1.0 denotes a deactivated spring (zero force), and values
 	:math:`\ge0` denote a spring currently being unloaded (the number itself denotes
-	:ref:`TSERIES <parmec-command-TSERIES>` used as an unloading curve) (modes: 'SD')
+	:ref:`TSERIES <parmec-command-TSERIES>` used as an unloading curve) (modes: 'SL')
 
-     -  ’AREA’ - scalar field of contact area (modes: ’CD’)
+     - ’AREA’ - scalar field of contact area (modes: ’CD’)
 
-     -  ’PAIR’ - 2-component vector field of particle pair numbers (modes:
-	’CD’, ’SD’)
+     - ’PAIR’ - 2-component vector field of particle pair numbers (modes: ’CD’, ’SL’)
+
+     - 'ZDIR' - 3-component vector field of z-directions for torsion springs (modes: 'TS')
+
+     - 'XDIR' - 3-component vector field of x-directions for torsion springs (modes: 'TS')
+
+     - 'RPY' - 3-component vector field of (roll, pitch, yaw) angles for torsion springs (modes: 'TS')
+
+     - 'RPYTOT' - 3-component vector field of total torques conjugate to (roll, pitch, yaw) angles for torsion springs (modes: 'TS')
+
+     - 'RPYSPR' - 3-component vector field of angle-conjugate spring torques (without dampers) for torsion springs (modes: 'TS')
 
   -  **subset** - optional particle number *i,* or a list of particle
      numbers [\ *i, j, ...*\ ], to which this specification is narrowed
@@ -788,8 +805,8 @@ included into the output file(s). PARMEC outputs:
 
   -  **mode** - optional output mode or list of output modes: ’SPH’ for
      sphere output, ’MESH’ for mesh output, ’RB’ for rigid body output,
-     ’CD’ for contact data output, ’SD’ for spring data output; default:
-     [’SPH’, ’MESH’, ’RB’, ’CD’, ’SD’]
+     ’CD’ for contact data output, ’SL’ for linear spring data output,
+     ’ST’ for linear spring data output; default: [’SPH’, ’MESH’, ’RB’, ’CD’, ’SL’, ’ST’]
 
   -  **format** - optional output format, e.g. 'DUMP' :red:`(experimental/under development)` or
      'VTK' or 'XDMF' or 'MED' :red:`(experimental/under development)`,
