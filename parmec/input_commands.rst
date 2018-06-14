@@ -368,7 +368,7 @@ and where :math:`\mathbf{\omega}_{i}` are the spatial angular velocities of part
 and :math:`\mathbf{\Lambda}_{1}` is the rigid rotation matrix of particle 1.
 
 
-.. topic:: trsnum = TORSION_SPRING (part1, part2, zdir, xdir | kroll, kpitch, kyaw, droll, dpitch, dyaw, cone) :red:`(experimental)`
+.. topic:: trsnum = TORSION_SPRING (part1, part2, zdir, xdir | kroll, kpitch, kyaw, droll, dpitch, dyaw, cone, refpnt) :red:`(experimental)`
 
   - **trsnum** - torsion spring number
 
@@ -391,6 +391,10 @@ and :math:`\mathbf{\Lambda}_{1}` is the rigid rotation matrix of particle 1.
     constraint in the (roll, pitch, yaw) angle space; the spring/dashpot torque curves of the first in (roll, pitch, yaw) order
     coordinate are used (hence it makes sense to define at least one of these curves), e.g. both ('roll', 'pitch') and
     ('pitch', 'roll') result in torque formula :math:`\mathbf{t}=\left[\text{kroll}\left(\sqrt{\psi^{2}+\phi^{2}}\right)+\text{droll}\left(\frac{d}{dt}\sqrt{\psi^{2}+\phi^{2}}\right)\right]\left[\frac{\psi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{x}+\frac{\phi}{\sqrt{\psi^{2}+\phi^{2}}}\mathbf{y}\right]`, etc.; default: not specified
+
+  - **refpnt** - a reference point moving with **part1**, used to position in space the :ref:`OUTPUT <parmec-command-OUTPUT>` vector fields;
+    default: :math:`0.5\left(\text{centre}\left(\text{part1}\right)+\text{centre}\left(\text{part2}\right)\right)` or 
+    :math:`\text{centre}\left(\text{part1}\right)` when part2 = -1
 
 .. _parmec-command-UNSPRING:
 
