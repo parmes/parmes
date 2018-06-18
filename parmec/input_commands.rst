@@ -735,7 +735,7 @@ included into the output file(s). PARMEC outputs:
   -  **entities** - list of output entities; default: [’NUMBER’, ’COLOR’,
      ’DISPL’, ’LENGTH’, ’ORIENT’, 'ORIENT1', 'ORIENT2', 'ORIENT3', ’LINVEL’,
      ’ANGVEL’, ’FORCE’, ’TORQUE’, ’F’, ’FN’, ’FT’, ’SF’, ’FF’, ’SS’, ’AREA’, ’PAIR’,
-     'ZDIR', 'XDIR', 'RPY', 'RPYTOT', 'RPYSPR'] where:
+     'XDIR', 'YDIR', 'ZDIR', 'TRQROT', 'TRQTOT', 'TRQSPR'] where:
 
      -  ’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
 	’RB’), or scalar field of spring numbers (modes: ’SL’)
@@ -793,15 +793,22 @@ included into the output file(s). PARMEC outputs:
 
      - ’PAIR’ - 2-component vector field of particle pair numbers (modes: ’CD’, ’SL’)
 
-     - 'ZDIR' - 3-component vector field of z-directions for torsion springs (modes: 'TS')
+     - 'XDIR' - 3-component vector field of x-directions (roll rotation) for torsion springs (modes: 'TS')
 
-     - 'XDIR' - 3-component vector field of x-directions for torsion springs (modes: 'TS')
+     - 'YDIR' - 3-component vector field of y-directions (pitch rotation) for torsion springs (modes: 'TS')
 
-     - 'RPY' - 3-component vector field of (roll, pitch, yaw) angles for torsion springs (modes: 'TS')
+     - 'ZDIR' - 3-component vector field of z-directions (yaw rotation) for torsion springs (modes: 'TS')
 
-     - 'RPYTOT' - 3-component vector field of total torques conjugate to (roll, pitch, yaw) angles for torsion springs (modes: 'TS')
+     - 'TRQROT' - 3-component vector field of a relative rotation of torsion springs in global coordinates (modes: 'TS');
+       use dot products to retrieve local rotation angles, e.g. :math:`\text{TRQROT}\cdot\text{XDIR}` will give roll, etc.
 
-     - 'RPYSPR' - 3-component vector field of angle-conjugate spring torques (without dampers) for torsion springs (modes: 'TS')
+     - 'TRQTOT' - 3-component vector field of total torques of torsion springs in global coordinates (modes: 'TS'); use dot
+       products to retrieve components conjugate to (roll, pitch, yaw) angles, e.g. :math:`\text{TRQROT}\cdot\text{YDIR}`
+       will give the pitch-conjugate component, etc.
+
+     - 'TRQSPR' - 3-component vector field of spring torques (without dampers) of torsion springs in global
+       coordinates (modes: 'TS'); use dot products to retrieve components conjugate to (roll, pitch, yaw) angles,
+       e.g. :math:`\text{TRQSPR}\cdot\text{ZDIR}` will give the yaw-conjugate component, etc.
 
   -  **subset** - optional particle number *i,* or a list of particle
      numbers [\ *i, j, ...*\ ], to which this specification is narrowed
