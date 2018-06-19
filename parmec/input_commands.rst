@@ -655,10 +655,17 @@ Before running a simulation, request time history output.
      (displacement) ’DX’, ’DY’, ’DZ’, ’\|D\|’, (linear velocity) ’VX’,
      ’VY’, ’VZ’, ’\|V\|’, (angular velocity) ’OX’, ’OY’, ’OZ’, ’\|O\|’,
      (body force) ’FX’, ’FY’, ’FZ’, ’\|F\|’, (body torque) ’TX’, ’TY’,
-     ’TZ’, ’\|T\|’; spring entities: (spring length) 'LENGTH', (spring
-     stroke) ’STROKE’, (spring total force) ’F’, (spring force without
-     damping) ’SF’, (spring total friction force) 'FF', (spring state)
-     'SS', cf. :ref:`OUTPUT <parmec-command-OUTPUT>` for description;
+     ’TZ’, ’\|T\|’; linear spring entities: (spring length) 'LENGTH',
+     (spring stroke) ’STROKE’, (spring total force) ’F’, (spring force
+     without damping) ’SF’, (spring total friction force) 'FF', (spring
+     state) 'SS', cf. :ref:`OUTPUT <parmec-command-OUTPUT>` for description;
+     torsional spring entities: (spring local direction components:
+     :math:`\mathbf{z}` - yaw, :math:`\mathbf{x}` - roll, and
+     :math:`\mathbf{y}=\mathbf{z}\times\mathbf{x}` - pitch) 'ZDIR_X',
+     'ZDIR_Y', 'ZDIR_Z', 'XDIR_X', 'XDIR_Y', 'XDIR_Z', (spring rotation
+     angles) 'ROLL', 'PITCH', 'YAW', (spring total moment components:
+     r - roll, p - pitch, y - yaw) 'TRQTOT_R', 'TRQTOT_P', 'TRQTOT_Y',
+     (spring undamped moment components) 'TRQSPR_R', 'TRQSPR_P', 'TRQSPR_Y';
 
   -  **source** - particle number *i*, or a list of particle numbers
      [\ *i, j, ...*\ ], or a spatial sphere defined as tuple
