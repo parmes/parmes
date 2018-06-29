@@ -285,18 +285,13 @@ and rection :math:`\mathbf{R}`, is declared in
 `dom.h <https://github.com/tkoziara/solfec/blob/master/dom.h#L63>`_ as follows:
 
 .. literalinclude:: ../../../solfec/dom.h
-   :lines: 63-66
-   :lineno-start: 63
+   :lines: 67-78
+   :lineno-start: 67
    :linenos:
 
 .. literalinclude:: ../../../solfec/dom.h
-   :lines: 71-72
-   :lineno-start: 71
-   :linenos:
-
-.. literalinclude:: ../../../solfec/dom.h
-   :lines: 120
-   :lineno-start: 120
+   :lines: 124
+   :lineno-start: 124
    :linenos:
 
 .. |br| raw:: html
