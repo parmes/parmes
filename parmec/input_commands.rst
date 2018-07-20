@@ -449,6 +449,23 @@ modified (i.e. spring curve modification is an *and* operation, not *or*). For e
 results in the resultant elastic spring force (SF) being assessed against the (-1.0, 1.0) limits. For the spring curves of springs 3 and 4 to be modified,
 the sum of the forces of springs 1 and 2 must be outside of the (-1.0,1.0) limits for **nfreq** (=1) number of **nsteps** (=1).
 
+BALL_JOINT
+----------
+
+Create a ball joint between two particles at a coincident point. The joint is modeled as an algebraic constraint,
+without affecting the stable time step. Any number of joints between any number of particles can be added. A linear
+system is solved at every time step to calculate joint forces.
+
+.. topic:: jnum = BALL_JOINT (part1, point | point2) :red:`(experimental)`
+
+  - **jnum** - joint number
+
+  - **part1** - first particle number
+
+  - **point** - coincident point :math:`\left(x,y,z\right)`
+
+  - **part2** - optional second particle number; default: not specified (in this case **part1** is fixed in space at **point**)
+
 EQM
 ---
 
