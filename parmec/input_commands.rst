@@ -683,16 +683,16 @@ Before running a simulation, request time history output.
      angles) 'ROLL', 'PITCH', 'YAW', (spring total moment components:
      r - roll, p - pitch, y - yaw) 'TRQTOT_R', 'TRQTOT_P', 'TRQTOT_Y',
      (spring undamped moment components) 'TRQSPR_R', 'TRQSPR_P', 'TRQSPR_Y';
+     joint entities: '(joint reaction) 'JREAC_X', 'JREAC_Y', 'JREAC_Z', '\|JREAC\|'
 
   -  **source** - particle number *i*, or a list of particle numbers
      [\ *i, j, ...*\ ], or a spatial sphere defined as tuple
      :math:`\left(x,y,z,r\right)` :red:`(under development)`, or a spatial box defined as tuple
      :math:`\left(x_{\text{min}},y_{\text{min}},z_{\text{min}},x_{\text{max}},y_{\text{max}},z_{\text{max}}\right)`
      :red:`(under development)`; in case of a list of particle numbers the output entity is averaged
-     over the set of particles; in case of a spatial sphere or box the
-     output entity is averaged over the set of particles passing through
-     it :red:`(under development)`; default: 0 (useful when entity is ’TIME’); spring number or a
-     list of numbers can be used as a source in case of spring entities
+     over the set of particles; in case of a spatial sphere or box the output entity is averaged over
+     the set of particles passing through it :red:`(under development)`; default: 0 (useful when entity is ’TIME’);
+     spring/joint number or a list of numbers can be used as a source in case of spring/joint entities
 
   -  **point** - optional referential point used in case of a single
      particle source; default: particle mass centre
@@ -754,6 +754,13 @@ included into the output file(s). PARMEC outputs:
    **and/or** (\*1st.med, \*2st.med, ...) files for torsional spring data including particles specified
    as subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
 
+-  \*0jt.vtk.\* **and/or** (\*0jt.h5, \*0jt.xmf) **and/or** (\*0jt.med) files for joints data
+   including particles **not** specified as **a subset** in the OUTPUT command
+
+-  \*1jt.vtk.\*, \*2jt.vtk.\*, ... **and/or** (\*1jt.h5, \*1jt.xmf, \*2jt.h5, \*2jt.xmf, ...)
+   **and/or** (\*1jt.med, \*2jt.med, ...) files for joints data including particles specified
+   as subsets, where numbers 1, 2, ... match consecutive OUTPUT calls
+
 .. topic:: OUTPUT ( \| entities, subset, mode, format)
 
   -  **entities** - list of output entities; default: [’NUMBER’, ’COLOR’,
@@ -762,7 +769,7 @@ included into the output file(s). PARMEC outputs:
      'XDIR', 'YDIR', 'ZDIR', 'TRQROT', 'TRQTOT', 'TRQSPR'] where:
 
      -  ’NUMBER’ - scalar field of particle numbers (modes: ’SPH’, ’MESH’,
-	’RB’), or scalar field of spring numbers (modes: ’SL’)
+	’RB’), or scalar field of spring/joint numbers (modes: ’SL’, 'ST', 'JT')
 
      -  ’COLOR’ - scalar field of surface colors (modes: ’SPH’, ’MESH’),
 	or 2-component vector field of contact surface colors (modes:
@@ -834,14 +841,15 @@ included into the output file(s). PARMEC outputs:
        coordinates (modes: 'TS'); use dot products to retrieve components conjugate to (roll, pitch, yaw) angles,
        e.g. :math:`\text{TRQSPR}\cdot\text{ZDIR}` will give the yaw-conjugate component, etc.
 
+     - 'JREAC' - 3-component vector field of joint reactions (modes: 'JT')
+
   -  **subset** - optional particle number *i,* or a list of particle
      numbers [\ *i, j, ...*\ ], to which this specification is narrowed
      down
 
-  -  **mode** - optional output mode or list of output modes: ’SPH’ for
-     sphere output, ’MESH’ for mesh output, ’RB’ for rigid body output,
-     ’CD’ for contact data output, ’SL’ for linear spring data output,
-     ’ST’ for linear spring data output; default: [’SPH’, ’MESH’, ’RB’, ’CD’, ’SL’, ’ST’]
+  -  **mode** - optional output mode or list of output modes: ’SPH’ for sphere output, ’MESH’ for mesh output,
+     ’RB’ for rigid body output, ’CD’ for contact data output, ’SL’ for linear spring data output, ’ST’ for
+     linear spring data output, 'JT' for joints data output; default: [’SPH’, ’MESH’, ’RB’, ’CD’, ’SL’, ’ST’, 'JT']
 
   -  **format** - optional output format, e.g. 'DUMP' :red:`(experimental/under development)` or
      'VTK' or 'XDMF' or 'MED' :red:`(experimental/under development)`,
