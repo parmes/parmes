@@ -227,22 +227,22 @@ Implementation
 Dynamics is implement in `bod.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (rigid, pseudo--rigid)
 and `fem.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (finite--element) files. Mass and stiffness
 matrices :math:`\mathbf{M}` and :math:`\mathbf{K}`, and the damping factor :math:`\eta`, are declared in
-`bod.h <https://github.com/tkoziara/solfec/blob/master/bod.h#L178>`_ as follows:
+`bod.h <https://github.com/tkoziara/solfec/blob/master/bod.h#L193>`_ as follows:
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 139-140
-   :lineno-start: 139
-   :linenos:
+.. code-block:: c
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 178-182
-   :lineno-start: 178
-   :linenos:
+  struct general_body
+  {
+    /* ... */
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 214
-   :lineno-start: 214
-   :linenos:
+    MX *M;            /* inertia operator */
+
+    MX *K;            /* stiffness operator */
+
+    double damping;   /* stiffness proportional damping */
+
+    /* ... */
+  }
 
 .. |br| raw:: html
 

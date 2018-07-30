@@ -278,19 +278,18 @@ Implementation
 
 Kinematic models are implement in `bod.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (rigid, pseudo--rigid)
 and `fem.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (finite--element) files. Configuration and velocity
-vectors are declared in `bod.h <https://github.com/tkoziara/solfec/blob/master/bod.h#L153>`_ as follows:
+vectors are declared in `bod.h <https://github.com/tkoziara/solfec/blob/master/bod.h#L150>`_ as follows:
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 139-140
-   :lineno-start: 139
-   :linenos:
+.. code-block:: c
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 153-154
-   :lineno-start: 153
-   :linenos:
+  struct general_body
+  {
+    enum {OBS, RIG, PRB, FEM} kind; /* obstacle, rigid, pseudo-rigid, finite element */
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 214
-   :lineno-start: 214
-   :linenos:
+    /* ... */
+
+    double *conf,    /* configuration */
+	   *velo;    /* velocity */
+
+    /* ... */
+  }

@@ -124,22 +124,19 @@ Implementation
 
 Time integration is implement in `bod.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (rigid, pseudo--rigid)
 and `fem.c <https://github.com/tkoziara/solfec/blob/master/bod.c>`_ (finite--element) files. Inverse generalized
-inertia matrix :math:`\mathbf{A}^{-1}` is declared in `bod.h <https://github.com/tkoziara/solfec/blob/master/bod.h#L176>`_ as follows:
+inertia matrix :math:`\mathbf{A}^{-1}` is declared in `bod.h <https://github.com/tkoziara/solfec/blob/master/bod.h#L191>`_ as follows:
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 139-140
-   :lineno-start: 139
-   :linenos:
+.. code-block:: c
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 176-176
-   :lineno-start: 176
-   :linenos:
+  struct general_body
+  {
+    /* ... */
 
-.. literalinclude:: ../../../solfec/bod.h
-   :lines: 214
-   :lineno-start: 214
-   :linenos:
+    MX *inverse;      /* generalized inverse inertia oprator */
+
+    /* ... */
+  }
+
 
 .. |br| raw:: html
 
