@@ -449,6 +449,8 @@ modified (i.e. spring curve modification is an *and* operation, not *or*). For e
 results in the resultant elastic spring force (SF) being assessed against the (-1.0, 1.0) limits. For the spring curves of springs 3 and 4 to be modified,
 the sum of the forces of springs 1 and 2 must be outside of the (-1.0,1.0) limits for **nfreq** (=1) number of **nsteps** (=1).
 
+.. _parmec-command-BALL_JOINT:
+
 BALL_JOINT
 ----------
 
