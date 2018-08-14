@@ -454,7 +454,7 @@ target "https://github.com/tkoziara/solfec/blob/master/lng.c#L5407"
 \end_inset
 
  file.
- The imlpementation is included in hys.{cpp, hpp} and hys.{c, h} files.
+ The implementation is included in hys.{cpp, hpp} and hys.{c, h} files.
  The C++ 
 \begin_inset CommandInset href
 LatexCommand href
@@ -629,8 +629,15 @@ reference "fig:hs4-sweep"
 
 \end_inset
 
- “node 0” is the point on the u-shaped body with the lowest x, y, z coordinates.
- Figure 2 illustrates time history of node 0 displacement DY for the Solfec-only
+, “node 0” is a point on the u-shaped body with the lowest x, y, z coordinates.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hs4-dwell"
+
+\end_inset
+
+ illustrates time history of node 0 displacement DY for the Solfec-only
  model and for three hybrid models with leeway factors of 1.0, 0.1, 0.01, under
  the sine-dwell excitation condition.
  We can see that the behavior of the hybrid model approximates the Solfec-only
@@ -640,8 +647,14 @@ reference "fig:hs4-sweep"
  there is a secondary excitation effect, due to interaction of Parmec springs
  and contacts along the u-way, superimposed with the primary excitation
  at the far end of the u-shaped body.
- Figure 3 illustrates the time history of DY at node 0 for the sine sweep
- condition.
+ Figure 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "fig:hs4-sweep"
+
+\end_inset
+
+ illustrates the time history of DY at node 0 for the sine sweep condition.
  In this case we can see that the Solfec-only and hybrid models do not easily
  converge.
  There is a more complex pattern of interactions between the primary and
