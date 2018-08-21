@@ -20,6 +20,10 @@ We focus on the 2--dimensional example, leaving the 1-- and 3--dimensional cases
 
 - `hs2--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py>`_ -- including the :ref:`Solfec <solfec-index>` input code
 
+- `hs2--parmec--only.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec-only.py>`_ -- including the Parmec-only version of the example
+
+- `hs2--solfec--only.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec-only.py>`_ -- including the Solfec-only version of the example
+
 - `hs2--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-1.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for animation [1]_
 
 - `hs2--state--2.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-2.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for animation [2]_
@@ -27,6 +31,11 @@ We focus on the 2--dimensional example, leaving the 1-- and 3--dimensional cases
 - `hs2--state--3.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-3.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for :numref:`hs2-fig3`
 
 - `hs2--state--4.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-4.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for :numref:`hs2-fig4`
+
+- `hs2--state--5.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-5.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for :numref:`hs2-fig5`
+
+- `hs2--state--6.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-state-6.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for :numref:`hs2-fig6`
+
 
 .. _hybrid-solver2: https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2
 
@@ -146,3 +155,48 @@ Selection Over Time" feature.
    :align: center
 
    Example hybrid-solver2_: Displacement magnitude history at points A and B (:numref:`hs2-fig2`).
+
+Our current presentation is oriented at demonstrating the capability and performance aspects of the proposed framework. Therefore we
+did not attempt to consistently model a uniform physical system by means of the three approaches: Solfec-only, Parmec-only and hybrid.
+The physical parameters of the finite element (FE) Solfec-only model do not match those of the simplified Parmec-only model: the FE
+model is stiffer then the mass-and-spring model. The hybrid model thus represents a stiff inclusion surrounded by a softer surrounding
+material, rather than a uniform material modeled by means of two approaches. We did not attempt to fine-tune the physical parameters
+of the three models, apart from choosing parameters that resulted in stable simulations at a practical time step size. Below, in
+:numref:`hs2-fig5` and :numref:`hs2-fig6`, we include comparisons of linear velocity magnitude and displacement magnitude, between
+the three approaches, recorded at point B of the geometry depicted in :numref:`hs2-fig2`. It is quite clear that finite element based
+Solfec-only model has quite different dynamic response when compared with the latter two approaches. The Parmec-only and hybrid approaches
+have similar responses because the softer surrounding material dominates the hybrid model and determines the motion of the stiffer inclusion.
+
+
+.. _hs2-fig5:
+
+.. figure:: hs2-velo-comp.png
+   :width: 100%
+   :align: center
+
+   Example hybrid-solver2_: Velocity magnitude time history, at point B, for the three modeling approaches.
+
+.. _hs2-fig6:
+
+.. figure:: hs2-disp-comp.png
+   :width: 100%
+   :align: center
+
+   Example hybrid-solver2_: Displacement magnitude time history, at point B, for the three modeling approaches.
+
+Finally, the most basic comparison of the practical advantage of simplified modeling is depicted in :numref:`hs2-runtimes`.
+The Solfec-only approach takes about 38 minutes to complete calculations. The most simplified Parmec-only approach takes only
+10 seconds and is 230 times faster. The hybrid approach, on the other hard, which includes both rigid bodies (modeled in Parmec)
+and finite element bodies (modeled in Solfec) takes 6.7 seconds to complete. This is 5.7 times faster than the Solfec-only case,
+and 40 times slower than Parmec-only. All Solfec calculations were done in sequential mode, while Parmec calculations took full
+advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro laptop (mid 2012 model).
+
+.. _hs2-runtimes:
+
+.. table:: 2D array runtime comparison, between the NSCD (Solfec), DEM (Parmec) and hybrid approaches.
+
+  +---------------+-------------+--------------+--------------+
+  | Approach      | Solfec-only | Parmec-only  |  Hybrid      |
+  +---------------+-------------+--------------+--------------+
+  | Runtime [sec] | 2300        | 10           | 402          |
+  +---------------+-------------+--------------+--------------+
