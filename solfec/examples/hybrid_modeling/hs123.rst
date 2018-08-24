@@ -185,11 +185,11 @@ have similar responses because the softer surrounding material dominates the hyb
    Example hybrid-solver2_: Displacement magnitude time history, at point B, for the three modeling approaches.
 
 Finally, the most basic comparison of the practical advantage of simplified modeling is depicted in :numref:`hs2-runtimes`.
-The Solfec-only approach takes about 38 minutes to complete calculations. The most simplified Parmec-only approach takes only
-10 seconds and is 230 times faster. The hybrid approach, on the other hard, which includes both rigid bodies (modeled in Parmec)
-and finite element bodies (modeled in Solfec) takes 6.7 seconds to complete. This is 5.7 times faster than the Solfec-only case,
-and 40 times slower than Parmec-only. All Solfec calculations were done in sequential mode, while Parmec calculations took full
-advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro laptop (mid 2012 model).
+The Solfec-only approach takes about 18 minutes to complete calculations. The most simplified Parmec-only approach takes only
+10 seconds and is 105 times faster. The hybrid approach, on the other hard, which includes both rigid bodies (modeled in Parmec)
+and finite element bodies (modeled in Solfec) takes about 5 minutes to complete. This is 3.4 times faster than the Solfec-only
+case, and 31 times slower than Parmec-only. All Solfec calculations were done using 4 MPI processes, while Parmec calculations
+took full advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro laptop (mid 2012 model).
 
 .. _hs2-runtimes:
 
@@ -198,5 +198,5 @@ advantage of a 4-core 2.3 GHz Intel Core i7 CPU on a MacBook Pro laptop (mid 201
   +---------------+-------------+--------------+--------------+
   | Approach      | Solfec-only | Parmec-only  |  Hybrid      |
   +---------------+-------------+--------------+--------------+
-  | Runtime [sec] | 2300        | 10           | 402          |
+  | Runtime [sec] | 1053        | 10           | 308          |
   +---------------+-------------+--------------+--------------+
