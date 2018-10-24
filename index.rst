@@ -29,4 +29,3 @@ Recent blog posts:
     groups
     About <blog/about>
     contact
-    donate
