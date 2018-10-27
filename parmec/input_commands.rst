@@ -458,7 +458,7 @@ Create a ball joint between two particles at a coincident point. The joint is mo
 without affecting the stable time step. Any number of joints between any number of particles can be added. A linear
 system is solved at every time step to calculate joint forces.
 
-.. topic:: jnum = BALL_JOINT (part1, point | point2) :red:`(experimental)`
+.. topic:: jnum = BALL_JOINT (part1, point | part2) :red:`(experimental)`
 
   - **jnum** - joint number
 
