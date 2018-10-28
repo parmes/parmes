@@ -29,3 +29,4 @@ Recent blog posts:
     groups
     About <blog/about>
     contact
+    Liberpay <https://liberapay.com/Tomek/>

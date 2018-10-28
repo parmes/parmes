@@ -1,3 +1,10 @@
+.. raw:: html
+  
+  <span style="float:right;">
+  <script src="https://liberapay.com/Tomek/widgets/button.js"></script>
+  <noscript><a href="https://liberapay.com/Tomek/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+  </span>
+
 .. _parmec-index:
 
 PARMEC

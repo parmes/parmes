@@ -1,10 +1,17 @@
+.. raw:: html
+  
+  <span style="float:right;">
+  <script src="https://liberapay.com/Tomek/widgets/button.js"></script>
+  <noscript><a href="https://liberapay.com/Tomek/donate"><img alt="Donate using Liberapay" src="https://liberapay.com/assets/widgets/donate.svg"></a></noscript>
+  </span>
+
 .. _solfec-index:
 
 SOLFEC
 ======
 
 .. raw:: html
-
+  
   <iframe src="https://ghbtns.com/github-btn.html?user=tkoziara&repo=solfec&type=watch&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 
