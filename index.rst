@@ -6,10 +6,6 @@
 Parallel mechanics and particulate media software :ref:`blog <about-parmes>` |feed|
 ===================================================================================
 
-Recently modified pages:
-
-.. include:: recent.rst
-
 Recent blog posts:
 
 .. postlist:: 5
@@ -26,7 +22,13 @@ Recent blog posts:
     VBOX <vbox/index>
     TGZ <tgz/index>
     TRs <trs/index>
-    groups
     About <blog/about>
+    groups
     contact
-    Liberpay <https://liberapay.com/Tomek/>
+    Liberpay <https://liberapay.com/PARMES/>
+
+Recently modified pages:
+
+.. include:: recent.rst
+
+

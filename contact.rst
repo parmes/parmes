@@ -1,7 +1,10 @@
+.. |email| image:: ./_static/icons/tkemail.png
+   :height: 14px
+
 Contact
 -------
 
-You can contact me using the below form.
+You can contact me using the below form or via email |email|. Tomek:)
 
 .. raw:: html
 
