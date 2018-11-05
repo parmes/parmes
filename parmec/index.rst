@@ -30,3 +30,4 @@ More details can be found in:
    Implementation status <implementation_status>
    Input commands <input_commands>
    Output files <output_files>
+   Google group <https://groups.google.com/forum/#!forum/parmec>

@@ -35,6 +35,7 @@ More details can be found in:
    XDMF export <xdmf>
    Applications <applications>
    Examples <examples>
+   Google group <https://groups.google.com/forum/#!forum/solfec>
 ..   ABAQUS import <abaqus>
 
 References:

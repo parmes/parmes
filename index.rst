@@ -23,7 +23,6 @@ Recent blog posts:
     VBOX <vbox/index>
     TGZ <tgz/index>
     TRs <trs/index>
-    groups
     authors
     contact
 

@@ -16,3 +16,10 @@ DYNLB
 
 Dynlb is a minimalist dynamic load balancer for points in 3d. This library is currently used in
 :ref:`Solfec <solfec-index>` as an optional replacement for `Zoltan <http://www.cs.sandia.gov/zoltan/>`_.
+
+More details can be found in:
+
+.. toctree::
+   :maxdepth: 1
+
+   Google group <https://groups.google.com/forum/#!forum/dynlb>
