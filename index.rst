@@ -16,14 +16,15 @@ Recent blog posts:
     :hidden:
     :glob:
 
+    parmec-pro/index
     solfec/index
     dynlb/index
     parmec/index
     VBOX <vbox/index>
     TGZ <tgz/index>
     TRs <trs/index>
-    About <blog/about>
     groups
+    authors
     contact
     Liberpay <https://liberapay.com/PARMES/>
 

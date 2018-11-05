@@ -3,11 +3,16 @@
 PARMEC
 ======
 
+**Website:** https://parmes.org/parmec
+
+**Blog authors:** `Tomek <../blog/author/tomek.html>`_
+
+**Kind:** open-source
+
 .. raw:: html
 
   <iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=parmec&type=watch&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
-
 
 Parmec is a prototype of a vectorized and task based discrete element software, implemented using
 `ISPC <http://ispc.github.io>`_ and C++. This code is at an early stage of development and it is

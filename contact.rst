@@ -4,7 +4,9 @@
 Contact
 -------
 
-You can contact me using the below form or via email |email|. Tomek:)
+You are welcome to join PARMES blog as an author as well as join software development. You are also welcome if
+you would like to contribute your own code to this project or reference a commercial product that you support.
+Also about any other matter, do not hesitate to contact me using the below form or via email |email|. Tomek:)
 
 .. raw:: html
 

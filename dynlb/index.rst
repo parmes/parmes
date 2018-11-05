@@ -3,6 +3,12 @@
 DYNLB
 =====
 
+**Website:** https://parmes.org/dynlb
+
+**Blog authors:** `Tomek <../blog/author/tomek.html>`_
+
+**Kind:** open-source
+
 .. raw:: html
 
   <iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=dynlb&type=watch&count=true&size=large&v=2"
