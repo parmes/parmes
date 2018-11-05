@@ -7,8 +7,8 @@ PARMEC-PRO
 
 **Blog authors:** `Tomek <../blog/author/tomek.html>`_
 
-**Kind:** proprietary and open-source
+**Kind:** proprietary, open-source
 
 PARMEC-PRO is a descendant of `PARMEC <../parmec>`_ and `SOLFEC <../solfec>`_ codes, currently undergoing conception:)
-The meta-idea is to try and mix proprietary and open-source paradigms in a way that could work for users and developers
-across various modalities.
+The meta-idea is to mix proprietary and open-source paradigms in a way that could work for users and developers across
+various modalities.
