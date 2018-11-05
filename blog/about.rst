@@ -16,8 +16,8 @@ which I would like to develop, share and write about. Some of those are included
 My other blog, about waking up from the experience of separation, `can be found here. <http://m21s.tk>`_
 
 You are welcome to join PARMES blog as an author as well as join software development. You are also welcome if
-you would like to contribute your own code to this project. `Do contact me. <../contact.html>`_ All are welcome:)
-Tomek.
+you would like to contribute your own code to this project or reference a commercial product that you develop.
+`Do contact me. <../contact.html>`_ All are welcome:) Tomek.
 
 (PARMES website is written using `Sphinx <http://www.sphinx-doc.org>`_ generator,
 `alabaster <http://alabaster.readthedocs.io>`_ theme, and `ablog <http://ablog.readthedocs.io>`_ extension)
