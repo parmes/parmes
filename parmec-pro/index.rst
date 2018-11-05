@@ -9,5 +9,5 @@ PARMEC-PRO
 
 **Kind:** proprietary, open-source
 
-PARMEC-PRO is a descendant of `PARMEC <../parmec>`_ and `SOLFEC <../solfec>`_ codes, currently under development.
+PARMEC-PRO is a descendant of `PARMEC <../parmec>`_ and `SOLFEC <../solfec>`_ codes, currently undergoing conception:)
 The idea is to try and mix open-source and proprietary paradigms in a way that could work for users and developers:)
