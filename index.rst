@@ -26,7 +26,6 @@ Recent blog posts:
     groups
     authors
     contact
-    Liberpay <https://liberapay.com/PARMES/>
 
 Recently modified pages:
 

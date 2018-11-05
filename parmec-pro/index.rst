@@ -1,4 +1,4 @@
-.. _parmecpro:
+.. _parmec-pro-index:
 
 PARMEC-PRO
 ==========
@@ -7,8 +7,7 @@ PARMEC-PRO
 
 **Blog authors:** `Tomek <../blog/author/tomek.html>`_
 
-**Kind:** proprietary
+**Kind:** proprietary, open-source
 
-PARMEC-PRO is a proprietary descendant of `PARMEC <../parmec>`_ and `SOLFEC <../solfec>`_ codes, currently under development.
-This is something that I would like to try, as there is an unexpressed energy of this kind in my makeup. This thread of work
-may merge back with PARMEC at some point:)
+PARMEC-PRO is a descendant of `PARMEC <../parmec>`_ and `SOLFEC <../solfec>`_ codes, currently under development.
+The idea is to try and mix open-source and proprietary paradigms in a way that could work for users and developers:)
