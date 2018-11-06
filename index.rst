@@ -16,7 +16,6 @@ Recent blog posts:
     :hidden:
     :glob:
 
-    parmec-pro/index
     solfec/index
     dynlb/index
     parmec/index
