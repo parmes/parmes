@@ -32,11 +32,10 @@ Once all this is set up:
 
   5. Write a blog post (`see existing examples <https://github.com/parmes/parmes/tree/master/blog>`_).
 
-  6. Type *make* in the root directory of your cloned PARMES sources. This compiles the website
-     and generates html code inside of the *_build/html* subdirectory. You can view the results
-     using your web browers by opening *_build/html/index.html* file. Typically you will make
-     many edits and recompile the sources several times before you are satisfied with the result.
-     Once you are satisfied:
+  6. Type *make* on the command line from the inside of your cloned *parmes* directory. This generates
+     html code inside of the *_build/html* subdirectory. You can view the results using your web browsers
+     by opening *_build/html/index.html* file. Typically you will make many edits and recompile the sources
+     several times before you are satisfied with the result. Once you are satisfied:
 
   6. Submit a `pull request <https://help.github.com/articles/about-pull-requests/>`_ 
      (`guide page <https://help.github.com/articles/creating-a-pull-request/>`_).
