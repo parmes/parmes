@@ -15,7 +15,5 @@ other computational codes and libraries, which I would like to share about. Some
 the Navigation area.
 
 You are welcome to join PARMES blog as an author, as well as contribute or reference on this website
-software that you develop or support. `Do contact me <../contact.html>`_. All are welcome:) Tomek.
-
-(PARMES website is written using `Sphinx <http://www.sphinx-doc.org>`_ generator,
-`alabaster <http://alabaster.readthedocs.io>`_ theme, and `ablog <http://ablog.readthedocs.io>`_ extension)
+software that you develop or support. Do feel free to `contact me <../contact.html>`_ and see `how to
+join <../howtojoin.html>`_. All are welcome:) Tomek.
