@@ -25,6 +25,7 @@ Recent blog posts:
     About <blog/about>
     contact
     authors
+    howtojoin
 
 Recently modified pages:
 
