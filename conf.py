@@ -43,6 +43,7 @@ html_sidebars = {
     ]
 }
 html_theme_options = {
+    'body_min_width': 320, # (mobile friendly wrapping) http://www.sphinx-doc.org/en/master/theming.html
     'description': "Parallel mechanics and particulate media software blog",
     'github_user': 'parmes',
     'github_repo': 'parmes',
