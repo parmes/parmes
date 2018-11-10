@@ -41,5 +41,5 @@ Once all this is set up:
      (`guide page <https://help.github.com/articles/creating-a-pull-request/>`_).
 
 Later you will be able to edit and improve your posts and pages. The whole process becomes
-smooth and habituated with time. I will be there with you, communicating via GitHub messages
+smooth and habituated with time. We will be there with you, communicating via GitHub messages
 and emails, in case you needed assistance:)
