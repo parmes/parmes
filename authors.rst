@@ -8,4 +8,5 @@ Authors
 |                   | website and a contributor to codes: `SOLFEC <./solfec>`_, `DYNLB <./dynlb>`_, and                  |
 |                   | `PARMEC <./parmec>`_. See also: `Linkedin <http://www.linkedin.com/in/tkoziara>`_                  |
 |                   | and `Researchgate <https://www.researchgate.net/profile/Tomasz_Koziara>`_ profiles.                |
+|                   | Donate: `Liberapay <https://liberapay.com/Tomek>`_.                                                |
 +-------------------+----------------------------------------------------------------------------------------------------+
