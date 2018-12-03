@@ -4,7 +4,7 @@
 Contact
 -------
 
-You can contact us using the below form or via email |email|. Tomek:)
+You can contact us using the below form or via email |email|.
 
 .. raw:: html
 

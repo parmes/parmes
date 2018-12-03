@@ -40,6 +40,6 @@ Once all this is set up:
   6. Submit a `pull request <https://help.github.com/articles/about-pull-requests/>`_ 
      (`guide page <https://help.github.com/articles/creating-a-pull-request/>`_).
 
-Later you will be able to edit and improve your posts and pages. The whole process becomes
-smooth and habituated with time. We will be there with you, communicating via GitHub messages
-and emails, in case you needed assistance:)
+You can edit and improve your posts and pages, and write new blog posts, by creating new pull requests.
+Once the whole process becomes smooth and habituated you will get write access to the main repository.
+We will be there with you, communicating via GitHub messages and emails, in case you needed assistance:)
