@@ -8,12 +8,14 @@
 About PARMES
 ============
 
+.. image:: ../_static/icons/tkimg.jpg
+   :align: right
+   :width: 128
+
 Hi:) This website is an outlet for ideas and resources in the area of programming parallel computational
 mechanics, multi-body analysis and particulate media software. On and off, I have been working on one
 such software, :ref:`solfec-index`, which you will find gradually better documented here. There are also
 other computational codes and libraries, which I would like to share about. Some of those are included in
-the Navigation area.
-
-You are welcome to join PARMES blog as an author, as well as contribute or reference on this website
-software that you develop or support. Feel free to `contact me <../contact.html>`_ and check out `how
-to join <../howtojoin.html>`_. All are welcome:) Tomek.
+the Navigation area. See also: `Linkedin <http://www.linkedin.com/in/tkoziara>`_ and `Researchgate
+<https://www.researchgate.net/profile/Tomasz_Koziara>`_ profiles. Donate: `Liberapay <https://liberapay.com/Tomek>`_.
+Tomek:)

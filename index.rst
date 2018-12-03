@@ -24,11 +24,7 @@ Recent blog posts:
     TRs <trs/index>
     About <blog/about>
     contact
-    authors
-    howtojoin
 
 Recently modified pages:
 
 .. include:: recent.rst
-
-
