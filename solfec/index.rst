@@ -3,12 +3,6 @@
 SOLFEC
 ======
 
-**Website:** https://parmes.org/solfec
-
-**Blog authors:** `Tomek <../blog/author/tomek.html>`_
-
-**Kind:** open-source
-
 .. raw:: html
   
   <iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=solfec&type=watch&count=true&size=large&v=2"
