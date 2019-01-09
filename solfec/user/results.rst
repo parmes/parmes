@@ -223,4 +223,34 @@ while arguments *time* and *attributes* are ignored. See also :ref:`XDMF export 
    'REAC' (constraint reactions), 'RELV' (relative constraint velocities), 'GAP' (contact gaps);
    a non-optional scalar attribute 'BID' (body identifier) is always included with exported geometry;
 
+.. _solfec-command-SOLFEC_EXPORT:
+
+SOLFEC_EXPORT
+-------------
+
+Export results in XDMF format. In 'WRITE' mode only the geometry at time :math:`t=0` is saved,
+while the argument *time* is ignored.
+
+.. role:: red
+
+.. topic:: SOLFEC_EXPORT (solfec, time, path | subset) :red:`(Experimental)`
+	
+ * solfec -- SOLFEC object;
+
+ * time -- time instant, e.g. t0, a collection of time instants,
+   e.g. [t0, t1, t2, ..., tN], or a time interval, e.g. (t0, t1);
+
+ * path -- output path to the directory that will contain the Solfec output file(s), e.g. '/tmp/sim0'
+   will possibly result in /tmp/sim0/sim0.py and /tmp/sim0/sim0.h5 output files; Such output path can
+   be opened with Solfec viewer by specifying it as the input path, e.g. solfec -v /tmp/sim0
+
+ * subset -- specification of a subset of exported bodies; a string can be used to define a POSIX regular
+   expression [1]_ that will be matched against body labels; a list of body objects or integer body identifiers
+   can be used [body1, body2, id3, id4, body5, ...] mixed up in an arbitrary manner; or a tuple specifying
+   extents of a bounding box can be used (xlow, ylow, zlow, xhigh, yhigh, zhigh), which the bounding boxes of
+   exported bodies overlapped at time t=0; also a list of an arbitrary combination of those can be used,
+   e.g. ['BOD*A', 123, body1, body2, 256, (0, 0, 0, 1, 1, 1), 'KEY??7', (3, 3, 3, 4, 4, 4)] defines two labels,
+   two integer body ids, two body objects, and two bounding boxes, that together define a subset of bodies
+   that will be used during export;
+
 .. [1] `POSIX regular expressions <https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions>`_
