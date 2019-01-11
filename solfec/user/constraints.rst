@@ -157,7 +157,8 @@ See also, formulation of the :ref:`spring constraint <simple-spring>`.
     **force = function (stroke, velocity)**
 
     where :math:`\text{stroke=}\mathbf{n}\cdot\text{current}\left(\text{point2}-\text{point1}\right)-\text{initial}\left(\left|\text{point2}-\text{point1}\right|\right)`
-    and *velocity* is the current relative velocity along the spring direction :math:`\mathbf{n}` (positive if stroke increases)
+    and *velocity* is the current relative velocity along the spring direction :math:`\mathbf{n}` (positive if stroke increases).
+    See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
 
   * limits -- (smin, smax) tuple defining stroke limits (smin :math:`\le` 0 and smax :math:`\ge` 0)
 

@@ -45,6 +45,7 @@ This routine applies a point force to a body.
     and step is the current time step passed to the callback. The callback returns a force tuple.
     For rigid body the force reads (spatial force, spatial torque, referential torque), while for other
     kinds of bodies this is a generalized force of the same dimension as the velocity u (power conjugate to it).
+    See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
 
   * data -- callback routine user data
 

@@ -25,6 +25,7 @@ An object of type FIELD represents a three--dimensional, scalar, time dependent 
     where *data* is the optional user data passed to FIELD routine (if data is a tuple it will expand
     the list of parameters to the callback), *x, y, z* are the point coordinates, and *t* is time.
     The function should return a numeric value of the scalar field at given point and instant of time.
+    See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
 
   * label -- label string (default: 'FIELD_i', where i is incremented for each call)
 

@@ -110,7 +110,8 @@ Routines below help control runtime behaviour.
 
   * data -- data passed to the callback function
 
-  * callback -- callback function of form: value = callback (data), where for the returned value equal zero Solfec run is stopped
+  * callback -- callback function of form: value = callback (data), where for the returned value equal zero Solfec run is stopped.
+    See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
 
 .. topic:: WARNINGS (state)
 

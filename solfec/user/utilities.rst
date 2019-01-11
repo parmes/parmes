@@ -5,6 +5,20 @@ Utilities
 
 Various utility routines are listed below.
 
+.. _solfec-command-REGISTER_CALLBACK:
+
+REGISTER_CALLBACK
+-----------------
+
+This routine registers a Python callback later used by Solfec. All callback and data pairs must be registered
+in the same order on all MPI ranks, when Solfec is run in parallel. This function is ignored in sequential mode.
+
+.. topic:: REGISTER_CALLBACK (callback | data)
+
+  * callback -- callback function of form: *value = callback (data)*
+
+  * data -- data passed to the callback function
+
 VIEWER
 ------
 
@@ -13,7 +27,6 @@ This routine tests whether the viewer is enabled.
 .. topic:: obj = VIEWER ()
 
   * obj -- True or False depending on whether the viewer (--v command line option) was enabled
-
 
 SUBDIR
 ------

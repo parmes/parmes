@@ -43,7 +43,7 @@ employed for the calculation of constraint reactions.
     accordingly expand the parameter list of the callback routine)
 
   * callback -- failure callback function of form: **value = callback (obj, data)**,
-    where for the returned value equal zero Solfec run is stopped
+    where for the returned value equal zero Solfec run is stopped. See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
 
 Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object, cf. :numref:`gauss-seidel-params`.
 
