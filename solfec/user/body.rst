@@ -27,8 +27,8 @@ An object of type BODY represents a solid body.
     * shape is solely composed of CONVEX objects: here a separate mesh must
       be given to discretise motion of a body (see the mesh argument below) 
 
-  * material -- a BULK_MATERIAL object or a label of a bulk material (specifies an initial body--wise material,
-    see also the MATERIAL (...) routine in Section [sec:util])
+  * material -- a :ref:`BULK_MATERIAL <solfec-command-BULK_MATERIAL>` object or a label of a bulk material;
+    specifies an initial body--wise material, see also :ref:`APPLY_BULKMAT <solfec-command-APPLY_BULKMAT>`
 
   * label -- a label string (no label is assigned by default)
 

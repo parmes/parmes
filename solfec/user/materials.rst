@@ -102,6 +102,8 @@ Some parameters can also be accessed as members of a BULK_MATERIAL object, cf. :
   | 'KIRCHHOFF'                    | young, poisson, density                                                |
   +--------------------------------+------------------------------------------------------------------------+
 
+.. _solfec-command-APPLY_BULKMAT:
+
 APPLY_BULKMAT
 -------------
 
