@@ -25,4 +25,3 @@ More details can be found in:
    Input commands <input_commands>
    Output files <output_files>
    Google group <https://groups.google.com/forum/#!forum/parmec>
-   Liberapay team <https://liberapay.com/PARMEC/>
