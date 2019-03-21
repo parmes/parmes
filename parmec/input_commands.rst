@@ -288,10 +288,10 @@ spring force is zero.
 
   -  **unload** - optional spring unloading lookup table
      :math:`\left[\text{stroke}_{1},\text{force}_{1},\text{stroke}_{2},\text{force}_{2},...,\text{stroke}_{n},\text{force}_{n}\right]`;
-     must be monotonically increasing; default: unspecified
+     must be monotonically increasing; see also :numref:`parmec-spring-nonlin-cycles`; default: unspecified
 
-  -  **ylim** - optional tuple :math:`\left(f_{yc},f_{yt}\right)` defining the compression, :math:`f_{yc}<0`, and tension, :math:`f_{yt}>0`, yield
-     limits; the unloading curve begins to be used once either of these limits is crossed; default: (0, 0)
+  -  **ylim** - optional tuple :math:`\left(f_{yc},f_{yt}\right)` defining the compression, :math:`f_{yc}\le0`, and tension, :math:`f_{yt}\ge0`, yield
+     limits; the unloading curve begins to be used once either of these limits is crossed; see also :numref:`parmec-spring-nonlin-cycles`; default: (0, 0)
 
   -  **inactive** - optional boolean flag: if *True* create an inactive spring, that can be activated by the :ref:`UNSPRING <parmec-command-UNSPRING>`
      command; default: *False*
@@ -305,6 +305,20 @@ spring force is zero.
   -  **kskn** - optional :math:`\ge0` ratio of normal to tangential spring and dashpot parameters used when **friction** > 0; using **kskn** = 0
      disables tangential springs/dampers and applies frictional force opposing tangential velocity (in this case frictional sticking and stick-slip
      transition are not modeled); default: 0.0
+
+.. _parmec-spring-nonlin-cycles:
+
+.. figure:: figures/nonlinear-spring-cycles.png
+   :width: 90%
+   :align: center
+
+   The type of nonlinear cycles that can be realized using the spring model. Note, that the yield limits do not
+   determine the post-yield behavior: crossing them only activates the unloading curve. Prior to their crossing
+   unloading happens along the original loading curve. Unloading continues until the latest point on the tension
+   or compression path has been reached. Then, this path is continued until the next unloading. During unloading,
+   any path reversals within the latest compression-tension bounds remain on the unloading curve.
+
+
 
 .. _parmec-spring-stroke-offset:
 
