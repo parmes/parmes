@@ -1,5 +1,5 @@
-#LyX 2.2 created this file. For more info see http://www.lyx.org/
-\lyxformat 508
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
 \begin_document
 \begin_header
 \save_transient_properties true
@@ -21,6 +21,8 @@
 \font_osf false
 \font_sf_scale 100 100
 \font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
 \graphics default
 \default_output_format default
 \output_sync 0
@@ -60,6 +62,7 @@
 \suppress_date false
 \justification true
 \use_refstyle 0
+\use_minted 0
 \index Index
 \shortcut idx
 \color #008000
@@ -68,7 +71,10 @@
 \tocdepth 3
 \paragraph_separation indent
 \paragraph_indentation default
-\quotes_language english
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
 \papercolumns 1
 \papersides 1
 \paperpagestyle default
@@ -102,6 +108,7 @@ Oct, 2017
 LatexCommand href
 name "PARMES"
 target "http://parmes.github.io"
+literal "false"
 
 \end_inset
 
@@ -133,6 +140,7 @@ We present a simple projected quasi-Newton approach for dealing with frictional
 \begin_inset CommandInset href
 LatexCommand href
 target "https://parmes.github.io/solfec"
+literal "false"
 
 \end_inset
 
@@ -189,6 +197,7 @@ The motivation behind the presented work is in modeling the dynamics of
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Moreau01"
+literal "true"
 
 \end_inset
 
@@ -196,6 +205,7 @@ key "Moreau01"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Jean01"
+literal "true"
 
 \end_inset
 
@@ -207,6 +217,7 @@ key "Jean01"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Koziara2010"
+literal "true"
 
 \end_inset
 
@@ -215,6 +226,7 @@ key "Koziara2010"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Koziara2008"
+literal "true"
 
 \end_inset
 
@@ -238,6 +250,7 @@ e and Feng
 \begin_inset CommandInset citation
 LatexCommand citep
 key "DeSaxce1998"
+literal "true"
 
 \end_inset
 
@@ -246,6 +259,7 @@ key "DeSaxce1998"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002"
+literal "true"
 
 \end_inset
 
@@ -260,6 +274,7 @@ key "Fukushima2002"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Stewart2000,Brogliato2002"
+literal "true"
 
 \end_inset
 
@@ -269,6 +284,7 @@ key "Stewart2000,Brogliato2002"
 LatexCommand href
 name "The list of cross-references"
 target "http://epubs.siam.org/doi/10.1137/S0036144599360110"
+literal "false"
 
 \end_inset
 
@@ -276,6 +292,7 @@ target "http://epubs.siam.org/doi/10.1137/S0036144599360110"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Stewart2000"
+literal "true"
 
 \end_inset
 
@@ -285,6 +302,7 @@ key "Stewart2000"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Mazhar2015"
+literal "true"
 
 \end_inset
 
@@ -419,6 +437,7 @@ At time
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Moreau01"
+literal "true"
 
 \end_inset
 
@@ -476,6 +495,7 @@ reference "eq:b"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Moreau01,Koziara2008PhD"
+literal "true"
 
 \end_inset
 
@@ -499,6 +519,7 @@ reference "eq:b"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Zhang1997"
+literal "true"
 
 \end_inset
 
@@ -763,6 +784,7 @@ e and Feng
 \begin_inset CommandInset citation
 LatexCommand citep
 key "DeSaxce1998"
+literal "true"
 
 \end_inset
 
@@ -989,6 +1011,7 @@ reference "eq:C1"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "RW98"
+literal "true"
 
 \end_inset
 
@@ -997,6 +1020,7 @@ key "RW98"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Koziara2008"
+literal "true"
 
 \end_inset
 
@@ -1007,6 +1031,7 @@ key "Koziara2008"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002"
+literal "true"
 
 \end_inset
 
@@ -1088,6 +1113,7 @@ We use the analysis from
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002"
+literal "true"
 
 \end_inset
 
@@ -1100,6 +1126,7 @@ key "Fukushima2002"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002"
+literal "true"
 
 \end_inset
 
@@ -1365,6 +1392,7 @@ reference "eq:proj_K_po"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002,Hayashi2005"
+literal "true"
 
 \end_inset
 
@@ -1467,6 +1495,7 @@ A detailed derivation of the above formula can be found in Appendix 2, where
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002,Hayashi2005"
+literal "true"
 
 \end_inset
 
@@ -1804,6 +1833,7 @@ approximately measures the amount of spurious energy, due to an inexact
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Koziara2010"
+literal "true"
 
 \end_inset
 
@@ -1830,6 +1860,7 @@ reference "sec:PQN"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Renouf2005,Radjai2009"
+literal "true"
 
 \end_inset
 
@@ -2179,6 +2210,7 @@ reference "alg:PQN"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Koziara2010"
+literal "true"
 
 \end_inset
 
@@ -2286,6 +2318,7 @@ If
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Koziara2010"
+literal "true"
 
 \end_inset
 
@@ -2333,6 +2366,7 @@ We do not attempt to analyze the convergence of the presented scheme.
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Kelley1998"
+literal "true"
 
 \end_inset
 
@@ -2724,6 +2758,7 @@ where
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Jean01"
+literal "true"
 
 \end_inset
 
@@ -2736,6 +2771,7 @@ key "Jean01"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "CM88"
+literal "true"
 
 \end_inset
 
@@ -6803,19 +6839,18 @@ TODO
 
  for pseudo-rigid ellipsoids, or using the Gauss-Seidel solver.
  In each of those four cases 1, 2, 4, 8, and 16 nodes of a parallel cluster
- are used, utilizing 24 CPU cores per cluster node
+ are used, utilizing 36 CPU cores per cluster node
 \begin_inset Foot
 status open
 
 \begin_layout Plain Layout
-Cluster nodes use Intel Xeon E5-2600 V2 Ivy Bridge 2.7GHz CPUs and have 64GB
- of RAM.
- They are interconnected via 1x56Gb/s FDR InfiniBand network.
+Cluster nodes use Intel Xeon Gold 6140 CPUs and have 192GB of RAM.
+ They are interconnected via Intel Omni-Path network.
 \end_layout
 
 \end_inset
 
- (this produces a range of MPI jobs spanning between 24 and 384 ranks).
+ (this produces a range of MPI jobs spanning between 36 and 576 ranks).
  Figure 
 \begin_inset CommandInset ref
 LatexCommand ref
@@ -8774,16 +8809,56 @@ Sine sweep excitation of stacked finite element cubes
 \end_layout
 
 \begin_layout Standard
-\begin_inset Note Note
-status open
-
-\begin_layout Plain Layout
-TODO
-\end_layout
-
+In this example we use an array of 
+\begin_inset Formula $0.1\times0.1\times0.1$
 \end_inset
 
+ meter cubes, uniformly discretized using 8 hexahedral bi-linear elements,
+ subject to gravity of 
+\begin_inset Formula $-10\text{ m}/\text{s}^{2}$
+\end_inset
 
+ along the 
+\begin_inset Formula $z$
+\end_inset
+
+ axis, and excited along direction 
+\begin_inset Formula $\left(1,1,0\right)$
+\end_inset
+
+ with an acceleration sine sweep signal of magnitude 
+\begin_inset Formula $1\text{ m}/\text{s}^{2}$
+\end_inset
+
+ and frequency varying linearly between 
+\begin_inset Formula $1\text{Hz}$
+\end_inset
+
+ and 
+\begin_inset Formula $5\text{ Hz}$
+\end_inset
+
+ across the 
+\begin_inset Formula $5$
+\end_inset
+
+ second duration.
+ There are six massless rigid obstacle walls, bounding the array from all
+ sides, with the gap size initial clearance, to which the sine sweep signal
+ is applied.
+ The initial gap size is calculated as 
+\begin_inset Formula $0.01/\text{M}$
+\end_inset
+
+, where 
+\begin_inset Formula $\text{M}$
+\end_inset
+
+ is the number of cubes along the array edge.
+ The gap is applied between the cubes and the walls, as well as between
+ the cubes themselves.
+ The material properties are 1E6, 0.25, 100 for the Young modulus, Poisson
+ ratio and density, respectively.
 \end_layout
 
 \begin_layout Subsubsection
@@ -8868,6 +8943,7 @@ reference "eq:proj_K_po"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002,Hayashi2005"
+literal "true"
 
 \end_inset
 
@@ -8935,6 +9011,7 @@ reference "eq:proj_K_ps_1"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002"
+literal "true"
 
 \end_inset
 
@@ -9130,6 +9207,7 @@ We now need to ensure that
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Fukushima2002"
+literal "true"
 
 \end_inset
 
@@ -9137,6 +9215,7 @@ key "Fukushima2002"
 \begin_inset CommandInset citation
 LatexCommand citep
 key "Hayashi2005"
+literal "true"
 
 \end_inset
 
