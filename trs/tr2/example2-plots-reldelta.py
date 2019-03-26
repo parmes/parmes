@@ -4,7 +4,8 @@ import numpy as np
 import subprocess
 import ast
 
-reldelta = ['minWii', 'avgWii', 'maxWii']
+reldelta = ['avgWii']
+#kinem = ['BC', 'RG']
 kinem = ['BC']
 cases = ['A', 'B', 'C']
 X_label = ['delta', 'delta', 'delta']

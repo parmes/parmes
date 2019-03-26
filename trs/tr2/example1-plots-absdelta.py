@@ -7,7 +7,7 @@ import ast
 kinem = ['RG', 'PR']
 cases = ['A', 'B', 'C']
 X_label = ['delta', 'delta', 'delta']
-Y_label = ['epsilon', 'm', '(m, eps)']
+Y_label = ['epsilon', 'm', '(eps, m)']
 X_index = [6, 6, 6]
 Y_index = [8, 9, (8, 9)]
 X_Y_plots = ['Total ietarations', 'Avg. iter. when converged', 'Diverged solves']

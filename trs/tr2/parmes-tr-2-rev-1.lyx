@@ -100,7 +100,7 @@ date{}
 
 \end_inset
 
-Oct, 2017
+Mar, 2019
 \end_layout
 
 \begin_layout Subject
@@ -2385,7 +2385,7 @@ Examples
 
 \begin_layout Standard
 Two examples are presented: a rotating drum of rigid or pseudo-rigid ellipsoids
- and a sine sweep excitation of stacked finite element cubes.
+ and a sine dwell excitation of stacked finite element or rigid cubes.
  In the examples, when not mentioned otherwise, default parameters from
  Table 
 \begin_inset CommandInset ref
@@ -2402,7 +2402,6 @@ reference "alg:PQN"
 \end_inset
 
 .
- 
 \end_layout
 
 \begin_layout Standard
@@ -6815,6 +6814,28 @@ TODO: explain missing dots on the pseudo-rigid graphs – did these simulations
 \end_layout
 
 \begin_layout Subsubsection
+Sensitivity study: friction value vs.
+ relative 
+\begin_inset Formula $\delta$
+\end_inset
+
+ choices
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
 Larger scale parallel runs
 \end_layout
 
@@ -8805,7 +8826,7 @@ Rotating drum
 \end_layout
 
 \begin_layout Subsection
-Sine sweep excitation of stacked finite element cubes
+Sine dwell excitation of stacked cubes
 \end_layout
 
 \begin_layout Standard
@@ -8826,25 +8847,24 @@ In this example we use an array of
 \begin_inset Formula $\left(1,1,0\right)$
 \end_inset
 
- with an acceleration sine sweep signal of magnitude 
-\begin_inset Formula $1\text{ m}/\text{s}^{2}$
+ with an acceleration sine dwell signal of magnitude 
+\begin_inset Formula $5\text{ m}/\text{s}^{2}$
 \end_inset
 
- and frequency varying linearly between 
-\begin_inset Formula $1\text{Hz}$
+ and frequency of 
+\begin_inset Formula $2\text{Hz}$
 \end_inset
 
- and 
-\begin_inset Formula $5\text{ Hz}$
-\end_inset
-
- across the 
-\begin_inset Formula $5$
+ over the 
+\begin_inset Formula $3$
 \end_inset
 
  second duration.
+ The cubes kinematics is either finite element based or rigid, in which
+ case the FE discretization has a purely geometrical significance (generating
+ more contact points).
  There are six massless rigid obstacle walls, bounding the array from all
- sides, with the gap size initial clearance, to which the sine sweep signal
+ sides, with the gap size initial clearance, to which the sine dwell signal
  is applied.
  The initial gap size is calculated as 
 \begin_inset Formula $0.01/\text{M}$
@@ -8857,12 +8877,84 @@ In this example we use an array of
  is the number of cubes along the array edge.
  The gap is applied between the cubes and the walls, as well as between
  the cubes themselves.
- The material properties are 1E6, 0.25, 100 for the Young modulus, Poisson
+ The material properties are 1E9, 0.25, 1000 for the Young modulus, Poisson
  ratio and density, respectively.
+ The Signoroni-Coulomb material model 
+\begin_inset CommandInset citation
+LatexCommand citep
+key "Jean01"
+literal "true"
+
+\end_inset
+
+ is used and the coefficient of friction is 
+\begin_inset Formula $0.1$
+\end_inset
+
+.
+ The simulation time step is 
+\begin_inset Formula $h=\text{5E-4}$
+\end_inset
+
+.
+ A small amount, 
+\begin_inset Formula $h\cdot\mathbf{K}\cdot\mathbf{u}$
+\end_inset
+
+, of arbitrary stiffness proportional damping is used in case of finite
+ element simulations.
 \end_layout
 
 \begin_layout Subsubsection
-Small scale serial runs
+Sensitivity study: relative 
+\begin_inset Formula $\delta$
+\end_inset
+
+ values
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sensitivity study: material density vs.
+ relative 
+\begin_inset Formula $\delta$
+\end_inset
+
+ choices
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Sensitivity study: friction value vs.
+ relative 
+\begin_inset Formula $\delta$
+\end_inset
+
+ choices
 \end_layout
 
 \begin_layout Standard
@@ -9645,6 +9737,35 @@ Hence, as required
 \[
 \nabla h\left(\mathbf{z}\right)=\dot{g}\left(\lambda_{1}\right)\mathbf{I}\mbox{.}
 \]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Appendix - NAFEMS benchmark: quasi-static contact of 2 punches with rounded
+ edges
+\end_layout
+
+\begin_layout Standard
+\begin_inset Note Note
+status open
+
+\begin_layout Plain Layout
+TODO? If included refer to this benchmark from the introduction to Section
+ 
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "sec:Examples"
+plural "false"
+caps "false"
+noprefix "false"
+
+\end_inset
+
+
+\end_layout
 
 \end_inset
 
