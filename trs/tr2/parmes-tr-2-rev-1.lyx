@@ -8903,6 +8903,13 @@ literal "true"
 
 , of arbitrary stiffness proportional damping is used in case of finite
  element simulations.
+ To decrease the computational time for diverging runs, in all cases presented
+ within this example, the upper bound of the number of solver iterations
+ was 
+\begin_inset Formula $n=200$
+\end_inset
+
+.
 \end_layout
 
 \begin_layout Subsubsection
