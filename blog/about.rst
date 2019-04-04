@@ -17,5 +17,6 @@ mechanics, multi-body analysis and particulate media software. On and off, I hav
 such software, :ref:`solfec-index`, which you will find gradually better documented here. There are also
 other computational codes and libraries, which I would like to share about. Some of those are included in
 the Navigation area. See also: `Linkedin <http://www.linkedin.com/in/tkoziara>`_ and `Researchgate
-<https://www.researchgate.net/profile/Tomasz_Koziara>`_ profiles. Donate: `Liberapay <https://liberapay.com/Tomek>`_.
+<https://www.researchgate.net/profile/Tomasz_Koziara>`_ profiles, and `personal blog <https://m21s.tk>`_.
+Donate: `Liberapay <https://liberapay.com/Tomek>`_.
 Tomek:)
