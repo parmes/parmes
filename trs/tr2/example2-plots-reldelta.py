@@ -5,8 +5,8 @@ import subprocess
 import ast
 
 reldelta = ['avgWii']
-#kinem = ['BC', 'RG']
-kinem = ['BC']
+kinem = ['BC', 'RG']
+#kinem = ['BC']
 cases = ['A', 'B', 'C']
 X_label = ['delta', 'delta', 'delta']
 Y_label = ['epsilon', 'm', '(m, eps)']

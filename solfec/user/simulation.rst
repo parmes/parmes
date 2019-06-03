@@ -147,8 +147,7 @@ Routines listed below affect contact detection and contact handling.
 .. topic:: CONTACT_EXCLUDE_BODIES (body1, body2)
 
   This routine disables contact detection for a specific pair of bodies. By default contact detection
-  is enabled for all possible body pairs. *Note:* must be invoked on all processors during a parallel
-  run (do not use from within a callback).
+  is enabled for all possible body pairs.
 
   * body1 -- first BODY object
 
@@ -157,8 +156,7 @@ Routines listed below affect contact detection and contact handling.
 .. topic:: CONTACT_EXCLUDE_SURFACES (solfec, surf1, surf2)
 
   This routine disables contact detection for a specific pair of surfaces. By default contact detection
-  is enabled for all possible surface pairs. *Note:* must be invoked on all processors during a parallel
-  run (do not use from within a callback).
+  is enabled for all possible surface pairs.
 
   * solfec -- SOLFEC object
 
