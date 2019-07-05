@@ -147,7 +147,7 @@ Routines listed below affect contact detection and contact handling.
 .. topic:: CONTACT_EXCLUDE_BODIES (body1, body2)
 
   This routine disables contact detection for a specific pair of bodies. By default contact detection
-  is enabled for all possible body pairs.
+  is enabled for all possible body pairs. Must be called on MPI rank 0 process to take effect.
 
   * body1 -- first BODY object
 
@@ -156,7 +156,7 @@ Routines listed below affect contact detection and contact handling.
 .. topic:: CONTACT_EXCLUDE_SURFACES (solfec, surf1, surf2)
 
   This routine disables contact detection for a specific pair of surfaces. By default contact detection
-  is enabled for all possible surface pairs.
+  is enabled for all possible surface pairs. Must be called on MPI rank 0 process to take effect.
 
   * solfec -- SOLFEC object
 
