@@ -1,4 +1,4 @@
-.. _solfec-theory-locdyn:
+.. _solfec-1.0-theory-locdyn:
 
 Local dynamics
 ==============
@@ -180,7 +180,7 @@ where
   
   \mathbf{H}_{k\alpha}=\mathbf{H}\left(\left\{ \mathbf{a}^{i}\right\} \in\mathcal{C}_{\alpha},\mathbf{X}\in\mathcal{B}_{k}\right)
 
-is evaluated according to one of the specific formulas :ref:`introduced in the section on constraints <solfec-theory-constraints>`.
+is evaluated according to one of the specific formulas :ref:`introduced in the section on constraints <solfec-1.0-theory-constraints>`.
 
 .. _W_matrix:
 

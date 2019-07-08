@@ -1,4 +1,4 @@
-.. _solfec-applications-multibody_pattern_formation:
+.. _solfec-1.0-applications-multibody_pattern_formation:
 
 Multibody pattern formation
 ===========================

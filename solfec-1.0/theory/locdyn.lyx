@@ -73,7 +73,7 @@
 \begin_layout Standard
 \noindent
 Let us start by restating the constrained time stepping scheme from the
- :ref:`previous section <solfec-theory-constraints>`
+ :ref:`previous section <solfec-1.0-theory-constraints>`
 \end_layout
 
 \begin_layout Standard
@@ -500,7 +500,7 @@ where
 \end_inset
 
 is evaluated according to one of the specific formulas :ref:`introduced
- in the section on constraints <solfec-theory-constraints>`.
+ in the section on constraints <solfec-1.0-theory-constraints>`.
 \end_layout
 
 \begin_layout Section

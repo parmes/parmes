@@ -24,7 +24,7 @@ The following `PARMES <../>`_ technical reports are currently available:
 | |tr1zen|                | This report describes the finite element formulations and time integrators, implemented |
 |                         | in `Solfec <../solfec>`_, and available as “DEF_LIM” integrator choice, and “TL”, “BC”, |
 |                         | “BC--RO” and “BC--MODAL” formulation choice, for the Solfec's input :ref:`BODY command  |
-|                         | <solfec-user-body>`. These formulations allow to vary the amount of deformation         |
+|                         | <solfec-1.0-user-body>`. These formulations allow to vary the amount of deformation     |
 |                         | expressed by a finite element mesh and facilitate saving computational time and storage.|
 |                         | They may be helpful in the context of multibody modeling.                               | 
 +-------------------------+-----------------------------------------------------------------------------------------+

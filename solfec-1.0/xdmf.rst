@@ -1,4 +1,4 @@
-.. _solfec-xdmf:
+.. _solfec-1.0-xdmf:
 
 Solfec-1.0 XDMF export
 ======================

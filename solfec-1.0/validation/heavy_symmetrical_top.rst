@@ -1,4 +1,4 @@
-.. _solfec-validation-heavy_symmetrical_top:
+.. _solfec-1.0-validation-heavy_symmetrical_top:
 
 Heavy symmetrical top
 =====================

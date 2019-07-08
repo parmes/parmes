@@ -634,7 +634,7 @@ where the relation
 
 .
  Now, including constraints, we can modify the :ref:`previously introduced
- time stepping <solfec-theory-timeint>` as follows
+ time stepping <solfec-1.0-theory-timeint>` as follows
 \end_layout
 
 \begin_layout Standard

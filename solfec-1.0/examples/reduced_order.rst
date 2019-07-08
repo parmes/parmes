@@ -1,4 +1,4 @@
-.. _solfec-examples-reduced_order:
+.. _solfec-1.0-examples-reduced_order:
 
 Reduced order modeling
 ======================

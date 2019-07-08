@@ -1,13 +1,13 @@
-.. _solfec-user-constraints:
+.. _solfec-1.0-user-constraints:
 
 Constraints
 ===========
 
 An object of type CONSTRAINT represents a constraint and its associated data (e.g. constraint reaction).
 Both, user prescribed constraints (routines below) and contact constraints (detected automatically) are
-represented by an object of the same type. See also, the :ref:`Joints section <solfec-theory-joints>`.
+represented by an object of the same type. See also, the :ref:`Joints section <solfec-1.0-theory-joints>`.
 
-.. _solfec-command-FIX_POINT:
+.. _solfec-1.0-command-FIX_POINT:
 
 FIX_POINT
 ---------
@@ -24,7 +24,7 @@ This routine creates a :ref:`fixed point constraint <fixed-point>`.
 
   * strength - optionally an ultimate magnitude of the reaction force, beyond which the constraint will be deleted (default: infinity)
 
-.. _solfec-command-FIX_DIRECTION:
+.. _solfec-1.0-command-FIX_DIRECTION:
 
 FIX_DIRECTION 
 -------------
@@ -47,7 +47,7 @@ See also, formulation of the :ref:`fixed direction constraint <fixed-direction>`
 
   * point2 -- (x, y, z) tuple with referential point on body2
 
-.. _solfec-command-SET_DISPLACEMENT: 
+.. _solfec-1.0-command-SET_DISPLACEMENT: 
 
 SET_DISPLACEMENT 
 ----------------
@@ -67,7 +67,7 @@ See also, formulation of the :ref:`prescribed displacement constraint <prescribe
 
   * tms -- TIME_SERIES object with the displacement history
 
-.. _solfec-command-SET_VELOCITY: 
+.. _solfec-1.0-command-SET_VELOCITY: 
 
 SET_VELOCITY 
 ------------
@@ -87,7 +87,7 @@ See also, formulation of the :ref:`prescribed velocity constraint <prescribed-ve
 
   * value -- a constant value or a TIME_SERIES object with the velocity history
 
-.. _solfec-command-SET_ACCELERATION: 
+.. _solfec-1.0-command-SET_ACCELERATION: 
 
 SET_ACCELERATION 
 ----------------
@@ -107,7 +107,7 @@ See also, formulation of the :ref:`prescribed acceleration constraint <prescribe
 
   * tms -- TIME_SERIES object with the acceleration history
 
-.. _solfec-command-PUT_RIGID_LINK: 
+.. _solfec-1.0-command-PUT_RIGID_LINK: 
 
 PUT_RIGID_LINK 
 --------------
@@ -132,7 +132,7 @@ See also, formulation of the :ref:`rigid link constraint <rigid-link>`.
 
 .. role:: red
 
-.. _solfec-command-PUT_SPRING:
+.. _solfec-1.0-command-PUT_SPRING:
 
 PUT_SPRING 
 ----------
@@ -158,7 +158,7 @@ See also, formulation of the :ref:`spring constraint <simple-spring>`.
 
     where :math:`\text{stroke=}\mathbf{n}\cdot\text{current}\left(\text{point2}-\text{point1}\right)-\text{initial}\left(\left|\text{point2}-\text{point1}\right|\right)`
     and *velocity* is the current relative velocity along the spring direction :math:`\mathbf{n}` (positive if stroke increases).
-    See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
+    See also: :ref:`REGISTER_CALLBACK <solfec-1.0-command-REGISTER_CALLBACK>`.
 
   * limits -- (smin, smax) tuple defining stroke limits (smin :math:`\le` 0 and smax :math:`\ge` 0)
 

@@ -1,4 +1,4 @@
-.. _solfec-validation-masonry_arch:
+.. _solfec-1.0-validation-masonry_arch:
 
 Masonry arch
 ============

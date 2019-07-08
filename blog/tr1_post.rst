@@ -15,11 +15,11 @@ combined with a family of finite element formulations: (...)
 * body co--rotational reduced order (BC--RO)
 * body co--rotational modal (BC--MODAL)
 
-as they are implemented in :ref:`solfec-1-index`. These formulations allow to vary the amount of deformation 
+as they are implemented in :ref:`solfec-1.0-index`. These formulations allow to vary the amount of deformation 
 expressed by a finite element mesh and facilitate saving computational time and storage. They may be helpful in the context
 of multibody modeling.
 
-The methods described in :ref:`TR1 <tr1>` can be accessed by creating a :ref:`BODY object <solfec-user-body>` as follows
+The methods described in :ref:`TR1 <tr1>` can be accessed by creating a :ref:`BODY object <solfec-1.0-user-body>` as follows
 
 ::
 
@@ -36,7 +36,7 @@ The methods described in :ref:`TR1 <tr1>` can be accessed by creating a :ref:`BO
                form = 'BC-MODAL', base = modal_base)
 
 In case of the 'BC--RO' and 'BC--MODAL' the linearly implicit integrator is default.
-For 'TL' and 'BC' the default time integration scheme is 'DEF_EXP' (:numref:`solfec-body-scheme`);
+For 'TL' and 'BC' the default time integration scheme is 'DEF_EXP' (:numref:`solfec-1.0-body-scheme`);
 we change it to 'DEF_LIM' after body creation.
 
 The *base* format is a tuple of two lists
@@ -49,10 +49,10 @@ The *base* format is a tuple of two lists
 	   ..., evecnm])
 
 where we assumed *n* base vectors of size *m*. The first list stores eigenvalues and the second list stores
-eigenvectors. :ref:`COROTATED_DISPLACEMENTS <solfec-command-COROTATED_DISPLACEMENTS>` and
-:ref:`RIGID_DISPLACEMENTS <solfec-command-RIGID_DISPLACEMENTS>` commands can be used together to sample
+eigenvectors. :ref:`COROTATED_DISPLACEMENTS <solfec-1.0-command-COROTATED_DISPLACEMENTS>` and
+:ref:`RIGID_DISPLACEMENTS <solfec-1.0-command-RIGID_DISPLACEMENTS>` commands can be used together to sample
 displacements and generate a reduced base using `Python's modred package <https://pypi.python.org/pypi/modred>`_.
-:ref:`MODAL_ANALYSIS <solfec-command-MODAL_ANALYSIS>` command can be used to generate a modal base.
+:ref:`MODAL_ANALYSIS <solfec-1.0-command-MODAL_ANALYSIS>` command can be used to generate a modal base.
 
 Input decks for the rotating bar, pipe impact, and array excitation examples from :ref:`TR1 <tr1>`
 can be respectively found in
@@ -61,4 +61,4 @@ can be respectively found in
 * `solfec/example/reduced--order1 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1>`_
 * `solfec/example/81array <https://github.com/tkoziara/solfec/tree/master/examples/81array>`_
 
-directories. See also :ref:`the online version of these examples <solfec-examples-reduced_order>`.
+directories. See also :ref:`the online version of these examples <solfec-1.0-examples-reduced_order>`.

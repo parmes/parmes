@@ -1,4 +1,4 @@
-.. _solfec-applications-overturning_block_stacks:
+.. _solfec-1.0-applications-overturning_block_stacks:
 
 Overturning of multiple--block stacks
 =====================================

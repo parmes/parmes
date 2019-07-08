@@ -1,4 +1,4 @@
-.. _solfec-examples:
+.. _solfec-1.0-examples:
 
 Solfec-1.0 Examples
 ===================

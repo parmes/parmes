@@ -1,4 +1,4 @@
-.. _solfec-user-solvers:
+.. _solfec-1.0-user-solvers:
 
 Solvers
 =======
@@ -7,7 +7,7 @@ Solver objects represent a constraint solution scheme applied at every time step
 of a simulation in order to resolve the equality and inequality constraints. User defined
 constraints and contact constraints are handled together as one nonlinear root finding problem.
 
-.. _solfec-command-GAUSS_SEIDEL_SOLVER:
+.. _solfec-1.0-command-GAUSS_SEIDEL_SOLVER:
 
 Gauss--Seidel
 -------------
@@ -43,7 +43,7 @@ employed for the calculation of constraint reactions.
     accordingly expand the parameter list of the callback routine)
 
   * callback -- failure callback function of form: **value = callback (obj, data)**,
-    where for the returned value equal zero Solfec-1.0 run is stopped. See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
+    where for the returned value equal zero Solfec-1.0 run is stopped. See also: :ref:`REGISTER_CALLBACK <solfec-1.0-command-REGISTER_CALLBACK>`.
 
 Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object, cf. :numref:`gauss-seidel-params`.
 
@@ -117,7 +117,7 @@ Some parameters can also be accessed as members of a GAUSS_SEIDEL_SOLVER object,
   |                          | most cases. It servers as illustration.                                      |
   +--------------------------+------------------------------------------------------------------------------+
 
-.. _solfec-command-NEWTON_SOLVER:
+.. _solfec-1.0-command-NEWTON_SOLVER:
 
 Projected Newton
 ----------------
@@ -163,7 +163,7 @@ the Gauss--Seidel solver will be invoked, starting from the previous time step s
 
   * gsflag -- 'ON' or 'OFF' deciding whether to us Gauss-Seidel iterations in case of failure (default: 'ON')
 
-  * reldelta -- make **delta** relative to the :ref:`generalized inverse inertia <solfec-theory-locdyn>` :math:`\mathbf{W}` operator;
+  * reldelta -- make **delta** relative to the :ref:`generalized inverse inertia <solfec-1.0-theory-locdyn>` :math:`\mathbf{W}` operator;
     possible choices are: 'OFF' - delta is regarded as an absolute value, 'avgWii' - delta is relative to the average of the diagonal
     entries of :math:`\mathbf{W}`, 'minWii' - delta is relative to the minimum of the diagonal entries of :math:`\mathbf{W}`,
     'maxWii' - delta is relative to the maximum of the diagonal entries of :math:`\mathbf{W}`; (default: 'OFF')
@@ -241,7 +241,7 @@ Some parameters can also be accessed as members of a SICONOS_SOLVER object, cf. 
   | *obj.epsilon, obj.maxiter*                                                                              |
   +---------------------------------------------------------------------------------------------------------+
 
-.. _solfec-command-HYBRID_SOLVER:
+.. _solfec-1.0-command-HYBRID_SOLVER:
 
 Hybrid solver
 -------------
@@ -249,7 +249,7 @@ Hybrid solver
 .. role:: red
 
 Hybrid solver allows to combine smooth rigid body nonlinear spring based :ref:`PARMEC <parmec-index>` models with non--smooth SOLFEC models
-(see :ref:`examples <solfec-examples-hybrid_modeling>`). The solver is supported both in the serial and MPI version of Solfec-1.0. The Parmec
+(see :ref:`examples <solfec-1.0-examples-hybrid_modeling>`). The solver is supported both in the serial and MPI version of Solfec-1.0. The Parmec
 library is shared memory parallel and in the MPI mode this part of modeling is executed on MPI rank 0 process, employing maximum available
 shared memory parallelism.
 

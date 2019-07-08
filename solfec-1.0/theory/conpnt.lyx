@@ -723,7 +723,7 @@ Contact geometries made of many individual convex objects often generate
 \end_inset
 
  matrix ill-conditioned, as already explained in :ref:`the section on local
- dynamics <solfec-theory-locdyn>`.
+ dynamics <solfec-1.0-theory-locdyn>`.
  For the above reasons, a heuristic method of refining contact points, or
  
 \emph on

@@ -1,4 +1,4 @@
-.. _solfec-validation-projectile:
+.. _solfec-1.0-validation-projectile:
 
 Projectile in a ballistic motion
 ================================

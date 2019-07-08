@@ -1,4 +1,4 @@
-.. _solfec-theory-kinematics:
+.. _solfec-1.0-theory-kinematics:
 
 Kinematics
 ==========
@@ -9,7 +9,7 @@ A kinematic model defines an allowed type of deformation for an individual body.
 * pseudo--rigid body
 * finite--element body
 
-A kinematic model is selected by specifying the *kind* paramter of the :ref:`BODY command <solfec-user-body>`.
+A kinematic model is selected by specifying the *kind* paramter of the :ref:`BODY command <solfec-1.0-user-body>`.
 
 .. role:: red
 

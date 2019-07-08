@@ -105,7 +105,7 @@ The provided `Linux Lite <https://www.linuxliteos.com/>`_ system is set up as fo
 **Using the software**
 
 :numref:`linuxlite2` shows a `Solfec <../solfec>`_ viewer session of a domino toppling example.
-Executables :ref:`*solfec*, *solfec-mpi* <solfec-running>`, and :ref:`*parmec4*, *parmec8* <parmec-running>`
+Executables :ref:`*solfec*, *solfec-mpi* <solfec-1.0-running>`, and :ref:`*parmec4*, *parmec8* <parmec-running>`
 are available at the command prompt.
 
 .. _linuxlite2:
@@ -114,7 +114,7 @@ are available at the command prompt.
    :width: 80%
    :align: center
 
-   :ref:`Solfec-1.0 <solfec-1-index>` viewer session of a domino toppling example.
+   :ref:`Solfec-1.0 <solfec-1.0-index>` viewer session of a domino toppling example.
 
 .. topic:: Updating `PARMES <../>`_ software
 

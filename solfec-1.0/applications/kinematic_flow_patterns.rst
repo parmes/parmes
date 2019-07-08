@@ -1,4 +1,4 @@
-.. _solfec-applications-kinematic_flow_patterns:
+.. _solfec-1.0-applications-kinematic_flow_patterns:
 
 Kinematic flow patterns
 =======================

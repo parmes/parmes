@@ -1,4 +1,4 @@
-.. _solfec-examples-hybrid_modeling:
+.. _solfec-1.0-examples-hybrid_modeling:
 
 Hybrid modeling
 ===============
@@ -11,7 +11,7 @@ frequency response of a large scale multi--body structure, a fraction of it (an 
 could be modeled using the NSCD approach, while the remaining (predominate) part could be modeled
 in a simplified manner (using rigid bodies and springs).
 
-Hybrid modeling is available in Solfec-1.0 via the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`
+Hybrid modeling is available in Solfec-1.0 via the :ref:`HYBRID_SOLVER <solfec-1.0-command-HYBRID_SOLVER>`
 interface.  In this case :ref:`Parmec <parmec-index>` is used as a software library facilitating
 modeling of the rigid body -- spring systems. Currently available examples of the hybrid modeling
 functionality include:

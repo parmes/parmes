@@ -1,4 +1,4 @@
-.. _solfec-user-simulation:
+.. _solfec-1.0-user-simulation:
 
 Simulation
 ==========
@@ -6,7 +6,7 @@ Simulation
 Routines listed in this section control the solution process.
 A simulation can be run be invoking the RUN command, documented below.
 
-.. _solfec-command-RUN:
+.. _solfec-1.0-command-RUN:
 
 .. topic:: RUN (solfec, solver, duration)
 
@@ -76,7 +76,7 @@ Runtime utilities
 
 Routines below help control runtime behaviour.
 
-.. _solfec-command-OUTPUT:
+.. _solfec-1.0-command-OUTPUT:
 
 .. topic:: OUTPUT (solfec, interval | compression)
 
@@ -97,7 +97,7 @@ Routines below help control runtime behaviour.
 
   * extents -- (xmin, ymin, zmin, xmax, ymax, zmax) tuple
 
-.. _solfec-command-CALLBACK:
+.. _solfec-1.0-command-CALLBACK:
 
 .. topic:: CALLBACK (solfec, interval, data, callback)
 
@@ -111,7 +111,7 @@ Routines below help control runtime behaviour.
   * data -- data passed to the callback function
 
   * callback -- callback function of form: value = callback (data), where for the returned value equal zero Solfec-1.0 run is stopped.
-    See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
+    See also: :ref:`REGISTER_CALLBACK <solfec-1.0-command-REGISTER_CALLBACK>`.
 
 .. topic:: WARNINGS (state)
 
@@ -125,13 +125,13 @@ Contact handling
 
 Routines listed below affect contact detection and contact handling.
 
-.. _solfec-command-GEOMETRIC_EPSILON:
+.. _solfec-1.0-command-GEOMETRIC_EPSILON:
 
 .. topic:: GEOMETRIC_EPSILON (epsilon)
 
   This routine sets a numerical tolerance for geometric tests performed within Solfec-1.0.
   The tolerance is a characteristic distance between two distinct points below which they can be regarded as one.
-  See also :ref:`this comment <geometric_epsilon_section>` in the :ref:`Theory Manual <solfec-theory>`.
+  See also :ref:`this comment <geometric_epsilon_section>` in the :ref:`Theory Manual <solfec-1.0-theory>`.
 
   * epsilon -- geometrical tolerance (default: 1E-6)
 
@@ -164,7 +164,7 @@ Routines listed below affect contact detection and contact handling.
 
   * surf2 -- second BODY object
 
-.. _solfec-command-CONTACT_SPARSIFY:
+.. _solfec-1.0-command-CONTACT_SPARSIFY:
 
 .. topic:: CONTACT_SPARSIFY (solfec | threshold, minarea, mindist)
 
@@ -226,7 +226,7 @@ Routines listed below are related to prallel runtime and performance.
 
   * solfec -- optional SOLFEC object (useful in 'READ' mode)
 
-.. _solfec-command-HERE:
+.. _solfec-1.0-command-HERE:
 
 .. topic:: ret = HERE (solfec, object)
 

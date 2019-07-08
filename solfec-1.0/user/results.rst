@@ -1,4 +1,4 @@
-.. _solfec-user-results:
+.. _solfec-1.0-user-results:
 
 Results
 =======
@@ -17,7 +17,7 @@ This routine returns the duration of a simulation in SOLFEC's 'READ' mode, or so
 
   * solfec -- SOLFEC object
 
-.. _solfec-command-FORWARD:
+.. _solfec-1.0-command-FORWARD:
 
 FORWARD
 -------
@@ -31,7 +31,7 @@ This routine steps forward within the simulation output file. Ignored in SOLFEC'
   * steps -- numbers of steps forward
 
   * corotated_displacements -- optional co--rotated displacements sampling flag; if 'TRUE' and a call or multiple
-    calls to :ref:`COROTATED_DISPLACEMENTS <solfec-command-COROTATED_DISPLACEMENTS>` was/were made prior to FORWARD,
+    calls to :ref:`COROTATED_DISPLACEMENTS <solfec-1.0-command-COROTATED_DISPLACEMENTS>` was/were made prior to FORWARD,
     co-rotated displacements will be sampled for every time instant visited by FORWARD (the original sampling interval
     will be ignored); default: 'FALSE'
 
@@ -196,7 +196,7 @@ XDMF_EXPORT
 -----------
 
 Export results in XDMF format. In 'WRITE' mode only the geometry at time :math:`t=0` is saved,
-while arguments *time* and *attributes* are ignored. See also :ref:`XDMF export manual <solfec-xdmf>`.
+while arguments *time* and *attributes* are ignored. See also :ref:`XDMF export manual <solfec-1.0-xdmf>`.
 
 .. topic:: XDMF_EXPORT (solfec, time, path | subset, attributes)
 	
@@ -223,7 +223,7 @@ while arguments *time* and *attributes* are ignored. See also :ref:`XDMF export 
    'REAC' (constraint reactions), 'RELV' (relative constraint velocities), 'GAP' (contact gaps);
    a non-optional scalar attribute 'BID' (body identifier) is always included with exported geometry;
 
-.. _solfec-command-SOLFEC_EXPORT:
+.. _solfec-1.0-command-SOLFEC_EXPORT:
 
 SOLFEC_EXPORT
 -------------

@@ -1,4 +1,4 @@
-.. _solfec-theory-conform:
+.. _solfec-1.0-theory-conform:
 
 Contact formulations
 ====================
@@ -9,7 +9,7 @@ Contact formulations are used in Solfec-1.0 to facilitate solution of the constr
 
   \mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}
 
-once contact points are detected between bodies and included into the :ref:`constraints <solfec-theory-constraints>`.
+once contact points are detected between bodies and included into the :ref:`constraints <solfec-1.0-theory-constraints>`.
 Depending on a solver type a contact formulation can be either used locally (on a single contact point level) or globally
 (on the level of a all contact points simultaneously). This however does not affect the mathematics of a contact formulation
 itself. Sections below describe the formulations employed by Solfec-1.0 and point to references, source code sections, and
@@ -47,7 +47,7 @@ Projected gradient formulation
 ------------------------------
 
 This is an implicit formulation based on [1]_ and it is optionally used on an individual contact point level within the
-:ref:`Gauss--Seidel solver <solfec-theory-solvers-gs>`. On the point level this formulation is implemented in
+:ref:`Gauss--Seidel solver <solfec-1.0-theory-solvers-gs>`. On the point level this formulation is implemented in
 `dbs.c:35 <https://github.com/tkoziara/solfec/blob/master/dbs.c#L35>`_.  The Signorini condition :eq:`Signorini` is expressed
 as a projection
 
@@ -72,7 +72,7 @@ De Saxcé and Feng formulation
 -----------------------------
 
 This is an implicit formulation based on [2]_ and it is optionally used on an individual contact point level within the
-:ref:`Gauss--Seidel solver <solfec-theory-solvers-gs>`. On the point level this formulation is implemented in
+:ref:`Gauss--Seidel solver <solfec-1.0-theory-solvers-gs>`. On the point level this formulation is implemented in
 `dbs.c:96 <https://github.com/tkoziara/solfec/blob/master/dbs.c#L96>`_. We express the Signorini--Coulomb law :eq:`Signorini` and :eq:`Coulomb`
 as an inclusion. The friction cone :math:`K_{\alpha}` is defined as
 
@@ -113,7 +113,7 @@ Non--smooth force equation formulation
 --------------------------------------
 
 This is an implicit formulation based on [3]_ and it is used by default on an individual contact point level within the
-:ref:`Gauss--Seidel solver <solfec-theory-solvers-gs>`. On the point level this formulation is implemented in
+:ref:`Gauss--Seidel solver <solfec-1.0-theory-solvers-gs>`. On the point level this formulation is implemented in
 `dbs.c:142 <https://github.com/tkoziara/solfec/blob/master/dbs.c#L142>`_. The authors of [3]_ propose to express the Signorini and Coulomb
 conditions :eq:`Signorini` and :eq:`Coulomb` as a non--smooth equation :math:`\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}`, where
 
@@ -140,15 +140,15 @@ and
 while :math:`\rho>0`. Equation :eq:`NSFEQ` encapsulates the projection formulas :eq:`RNproj` and :eq:`RTproj` and it has been shown to work well
 as a basis for Newton type solution schemes in the finite--element context.
 
-.. _solfec-theory-conform-nsveq:
+.. _solfec-1.0-theory-conform-nsveq:
 
 Non--smooth velocity equation formulation
 -----------------------------------------
 
 This is an implicit formulation developed specifically for Solfec-1.0 based on formula :eq:`DSF` from [2]_. It is optionally used on an individual
-contact point level within the :ref:`Gauss--Seidel solver <solfec-theory-solvers-gs>`. It is also the basis of contact linearization within the
-:ref:`projected Newton solver <solfec-theory-solvers-pqn>`. On the point level this formulation is implemented in
-`scf.c <https://github.com/tkoziara/solfec/blob/master/scf.c#L28>`_. Using the :ref:`local dynamics <solfec-theory-locdyn>` relationship 
+contact point level within the :ref:`Gauss--Seidel solver <solfec-1.0-theory-solvers-gs>`. It is also the basis of contact linearization within the
+:ref:`projected Newton solver <solfec-1.0-theory-solvers-pqn>`. On the point level this formulation is implemented in
+`scf.c <https://github.com/tkoziara/solfec/blob/master/scf.c#L28>`_. Using the :ref:`local dynamics <solfec-1.0-theory-locdyn>` relationship 
 
 .. math::
   :label: locdyn
@@ -220,7 +220,7 @@ Semi--explicit penalty formulation
 ----------------------------------
 
 This is a simple penalty based formulation developed specifically for Solfec-1.0 and used within the
-:ref:`penalty solver <solfec-theory-solvers-penalty>`. On the point level this formulation is implemented
+:ref:`penalty solver <solfec-1.0-theory-solvers-penalty>`. On the point level this formulation is implemented
 in `pes.c <https://github.com/tkoziara/solfec/blob/master/pes.c#L33>`_. Let
 
 .. math::
@@ -234,7 +234,7 @@ where :math:`hpow` stands for the “Hertz power”. The normal reaction is comp
 
   R_{N}=-s\cdot\frac{g^{t+h}+g^{t}}{2}-d\cdot\frac{U_{N}^{t+h}+U_{N}^{t}}{2}
 
-where :math:`U_{N}` is the normal relative velocity. :ref:`Recall <solfec-theory-basics>`, that the gap function is computed for the configuration
+where :math:`U_{N}` is the normal relative velocity. :ref:`Recall <solfec-1.0-theory-basics>`, that the gap function is computed for the configuration
 :math:`\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}`, so that the gap function value computed during geometrical contact detection reads
 
 .. math::

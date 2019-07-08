@@ -1,10 +1,10 @@
-.. _solfec-user-geometry:
+.. _solfec-1.0-user-geometry:
 
 Geometry
 ========
 
 Shapes of bodies can be defined by means of the routines defined below.
-Note, that for rigid and pseudo-rigid body types, cf. :ref:`BODY <solfec-user-body>`,
+Note, that for rigid and pseudo-rigid body types, cf. :ref:`BODY <solfec-1.0-user-body>`,
 a shape can comprise a list combining all possible geometry types.
 For finite element type bodies, a single MESH object is used to define shape,
 or a list of CONVEX objects can be used in combination with a background MESH.
@@ -68,7 +68,7 @@ MESH2CONVEX
 This routine converts a MESH object into a list of CONVEX objects.
 It can be useful for containing one MESH defining a body shape inside of
 another background mesh defining deformability
-(see the background mesh parameters of the :ref:`BODY object <solfec-user-body>`).
+(see the background mesh parameters of the :ref:`BODY object <solfec-1.0-user-body>`).
 
 .. topic:: obj = MESH2CONVEX (mesh)
 
@@ -76,7 +76,7 @@ another background mesh defining deformability
 
   * mesh -- input mesh
 
-.. _solfec-command-MESH:
+.. _solfec-1.0-command-MESH:
 
 MESH
 ----
@@ -139,7 +139,7 @@ Some parameters can also be accessed as members and methods of a MESH object, cf
   | indices of inter--element faces on a plane, e.g. [[n0, n1, n2], [n0, n1, n2, n3], ...], where **point**,|
   | **normal** define the plane, **ref** can be *True* or *False* and determines whether the plane is in    |
   | the reference or current configuration (default: *True*), **eps** determines the tolerance for the      |
-  | "on plane" test (default: :ref:`geometric epsilon <solfec-command-GEOMETRIC_EPSILON>`)                  |
+  | "on plane" test (default: :ref:`geometric epsilon <solfec-1.0-command-GEOMETRIC_EPSILON>`)              |
   +---------------------------------------------------------------------------------------------------------+
   | **Read-write members and methods:**                                                                     |
   +---------------------------------------------------------------------------------------------------------+
@@ -154,7 +154,7 @@ Some parameters can also be accessed as members and methods of a MESH object, cf
   | menu :math:`\to` kinds of :math:`\to` volumes. Note that materials are also assigned by volume id.      |
   +---------------------------------------------------------------------------------------------------------+
 
-.. _solfec-command-HEX:
+.. _solfec-1.0-command-HEX:
 
 HEX
 ---

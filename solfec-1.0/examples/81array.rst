@@ -1,4 +1,4 @@
-.. _solfec-examples-81array:
+.. _solfec-1.0-examples-81array:
 
 81 bricks array
 ===============

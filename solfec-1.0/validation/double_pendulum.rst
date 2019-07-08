@@ -1,4 +1,4 @@
-.. _solfec-validation-double_pendulum:
+.. _solfec-1.0-validation-double_pendulum:
 
 Double pendulum impacting a rigid wall
 ======================================

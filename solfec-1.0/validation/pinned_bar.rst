@@ -1,4 +1,4 @@
-.. _solfec-validation-pinned_bar:
+.. _solfec-1.0-validation-pinned_bar:
 
 Pinned bar
 ==========

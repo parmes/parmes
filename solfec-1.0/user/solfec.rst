@@ -1,4 +1,4 @@
-.. _solfec-user-solfec:
+.. _solfec-1.0-user-solfec:
 
 SOLFEC object
 =============
@@ -19,9 +19,9 @@ An object of type SOLFEC represents the Solfec-1.0 algorithm. One can use severa
     and contains valid output data SOLFEC is created in 'READ' mode,
     otherwise SOLFEC is created in 'WRITE' mode)
 
-Some parameters can be accessed as members of a SOLFEC object, cf. :numref:`solfec-params`.
+Some parameters can be accessed as members of a SOLFEC object, cf. :numref:`solfec-1.0-params`.
 
-.. _solfec-params:
+.. _solfec-1.0-params:
 
 .. table:: SOLFEC object parameters.
 
@@ -34,11 +34,11 @@ Some parameters can be accessed as members of a SOLFEC object, cf. :numref:`solf
   +---------------------------------------------------------------------------------------------------------+
   | **obj.mode** -- either 'READ' or 'WRITE' as described above                                             |
   +---------------------------------------------------------------------------------------------------------+
-  | **obj.constraints** -- list of constraints (cf. :ref:`Constraints <solfec-user-constraints>`)           |
+  | **obj.constraints** -- list of constraints (cf. :ref:`Constraints <solfec-1.0-user-constraints>`)       |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.ncon** -- number of constraints                                                                   |
   +---------------------------------------------------------------------------------------------------------+
-  | **obj.bodies** -- list of bodies (cf. :ref:`BODY object <solfec-user-body>`)                            |
+  | **obj.bodies** -- list of bodies (cf. :ref:`BODY object <solfec-1.0-user-body>`)                        |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.nbod** -- number of bodies                                                                        |
   +---------------------------------------------------------------------------------------------------------+
@@ -49,8 +49,8 @@ Some parameters can be accessed as members of a SOLFEC object, cf. :numref:`solf
   +---------------------------------------------------------------------------------------------------------+
   | *obj.step*                                                                                              |
   +---------------------------------------------------------------------------------------------------------+
-  | **obj.verbose** -- 'ON' or 'OFF' enabling or disabling writing to standard output (default: 'ON');      |
-  | '%' can also be used to enable plain percentage printout per individual :ref:`RUN <solfec-command-RUN>`;|
+  | **obj.verbose** -- 'ON' or 'OFF' enabling or disabling writing to standard output (default: 'ON'); '%'  |
+  | can also be used to enable plain percentage printout per individual :ref:`RUN <solfec-1.0-command-RUN>`;|
   | '%\n' can be used for the same purpose with a newline inserted after finished calculations              |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.cleanup** -- either 'ON' or 'OFF' enabling or disabling removal of the output directory in 'WRITE'|

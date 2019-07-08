@@ -1,4 +1,4 @@
-.. _solfec-theory-timeint:
+.. _solfec-1.0-theory-timeint:
 
 Time integration
 ================
@@ -17,7 +17,7 @@ And two variants of time integration for pseudo–rigid and finite–element kin
 
 * DEF_LIM -- a linearly implicit leap--frog scheme, [3]_ and :ref:`TR1 <tr1>`
 
-A time integration scheme is selected by modifying the *scheme* parameter of the :ref:`BODY object <solfec-user-body>`.
+A time integration scheme is selected by modifying the *scheme* parameter of the :ref:`BODY object <solfec-1.0-user-body>`.
 
 Rigid integration
 -----------------

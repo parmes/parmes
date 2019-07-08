@@ -1,6 +1,6 @@
 :orphan:
 
-.. _solfec-abaqus:
+.. _solfec-1.0-abaqus:
 
 Solfec-1.0 ABAQUS import
 ========================

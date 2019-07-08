@@ -1,4 +1,4 @@
-.. _solfec-validation:
+.. _solfec-1.0-validation:
 
 Solfec-1.0 Validation Manual
 ============================

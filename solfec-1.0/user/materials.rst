@@ -1,4 +1,4 @@
-.. _solfec-user-materials:
+.. _solfec-1.0-user-materials:
 
 Materials
 =========
@@ -25,7 +25,7 @@ An object of type FIELD represents a three--dimensional, scalar, time dependent 
     where *data* is the optional user data passed to FIELD routine (if data is a tuple it will expand
     the list of parameters to the callback), *x, y, z* are the point coordinates, and *t* is time.
     The function should return a numeric value of the scalar field at given point and instant of time.
-    See also: :ref:`REGISTER_CALLBACK <solfec-command-REGISTER_CALLBACK>`.
+    See also: :ref:`REGISTER_CALLBACK <solfec-1.0-command-REGISTER_CALLBACK>`.
 
   * label -- label string (default: 'FIELD_i', where i is incremented for each call)
 
@@ -43,7 +43,7 @@ Some parameters can also be accessed as members of a FIELD object, cf. :numref:`
   | *obj.label*                                                                                             |
   +---------------------------------------------------------------------------------------------------------+
 
-.. _solfec-command-BULK_MATERIAL:
+.. _solfec-1.0-command-BULK_MATERIAL:
 
 BULK_MATERIAL
 -------------
@@ -102,7 +102,7 @@ Some parameters can also be accessed as members of a BULK_MATERIAL object, cf. :
   | 'KIRCHHOFF'                    | young, poisson, density                                                |
   +--------------------------------+------------------------------------------------------------------------+
 
-.. _solfec-command-APPLY_BULKMAT:
+.. _solfec-1.0-command-APPLY_BULKMAT:
 
 APPLY_BULKMAT
 -------------
@@ -119,7 +119,7 @@ This routine applies bulk material to a subset of geometric objects with the giv
 
   * material -- MATERIAL object or material label
 
-.. _solfec-command-SURFACE_MATERIAL:
+.. _solfec-1.0-command-SURFACE_MATERIAL:
 
 SURFACE_MATERIAL
 ----------------

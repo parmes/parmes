@@ -1,4 +1,4 @@
-.. _solfec-xdmf-export:
+.. _solfec-1.0-xdmf-export:
 
 XDMF_EXPORT command
 ===================
@@ -45,6 +45,6 @@ Currently missing features:
 
 * Export of ELLIP shape based bodies.
 
-In the :ref:`following section <solfec-xdmf-example>` we give an example of an application of the above command.
+In the :ref:`following section <solfec-1.0-xdmf-example>` we give an example of an application of the above command.
 
 .. [1] `POSIX regular expressions <https://en.wikibooks.org/wiki/Regular_Expressions/POSIX_Basic_Regular_Expressions>`_

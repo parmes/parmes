@@ -1,4 +1,4 @@
-.. _solfec-theory:
+.. _solfec-1.0-theory:
 
 Solfec-1.0 Theory Manual
 ========================
@@ -8,7 +8,7 @@ Solfec-1.0 implements instances of the Non--Smooth `Contact Dynamics <https://en
 from the PhD research [3]_ and its further development [4]_. Thesis [3]_ can be used as an auxiliary "theory manual". The intention
 behind this document is to provide a minimalist exposition of core computational methods and algorithms implemented in Solfec-1.0
 and facilitate cross--referencing with `the source code <https://github.com/tkoziara/solfec>`_ and the functionalities described
-in the :ref:`User Manual <solfec-user>`. The theory manual comprises the following sections:
+in the :ref:`User Manual <solfec-1.0-user>`. The theory manual comprises the following sections:
 
 .. toctree::
 

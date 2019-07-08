@@ -1,4 +1,4 @@
-.. _solfec-applications-suspended_sediment_propagation:
+.. _solfec-1.0-applications-suspended_sediment_propagation:
 
 Suspended sediment propagation
 ==============================

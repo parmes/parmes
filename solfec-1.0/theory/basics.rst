@@ -1,4 +1,4 @@
-.. _solfec-theory-basics:
+.. _solfec-1.0-theory-basics:
 
 Basics
 ======

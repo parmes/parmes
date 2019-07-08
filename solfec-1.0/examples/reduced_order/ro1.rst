@@ -1,4 +1,4 @@
-.. _solfec-examples-reduced_order-ro1:
+.. _solfec-1.0-examples-reduced_order-ro1:
 
 Pipe impact
 ===========
@@ -24,7 +24,7 @@ These are:
 
 - `ro1--run--all.py <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-run-all.py>`_ -- input file that runs all tests and generates all plots
 
-- `ro1--view.py <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-view.py>`_ -- input file suitable for use with Solfec-1.0 :ref:`viewer <solfec-running>`
+- `ro1--view.py <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-view.py>`_ -- input file suitable for use with Solfec-1.0 :ref:`viewer <solfec-1.0-running>`
 
 .. _reduced-order1: https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1
 
@@ -155,10 +155,10 @@ example can be seen in video [1]_.
 
 :numref:`ro1-lst1` exemplifies the Total Lagrangian analysis input file. The simulation creation code
 is hidden inside of the library subroutine `ro1_simulation <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L10>`_,
-which returns the :ref:`SOLFEC object <solfec-user-solfec>`, the pipe :ref:`BODY object <solfec-user-body>`
+which returns the :ref:`SOLFEC object <solfec-1.0-user-solfec>`, the pipe :ref:`BODY object <solfec-1.0-user-body>`
 and the duration of the analysis, ``stop``, in line 6. When Solfec-1.0 is opened in ``'WIRITE'`` mode (no results exist)
 and without the graphical viewer (--v switch not used), we sample co--rotated deformable and rigid displacements in lines 10 and 11.
-:ref:`COROTATED_DISPLACEMENTS <solfec-command-COROTATED_DISPLACEMENTS>` and :ref:`RIGID_DISPLACEMENTS <solfec-command-RIGID_DISPLACEMENTS>`
+:ref:`COROTATED_DISPLACEMENTS <solfec-1.0-command-COROTATED_DISPLACEMENTS>` and :ref:`RIGID_DISPLACEMENTS <solfec-1.0-command-RIGID_DISPLACEMENTS>`
 commands are respectively used. Further, the simulation is run and the sampled displacements saved in lines 14--24. In case Solfec-1.0 is opened
 in ``'READ'`` mode, in line 28, existing results are processed and time histories are extracted using a library routine
 `ro1_read_histories <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L61>`_. For comparison

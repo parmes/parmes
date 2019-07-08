@@ -85,7 +85,7 @@ s equation
 \end_inset
 
 once contact points are detected between bodies and included into the :ref:`cons
-traints <solfec-theory-constraints>`.
+traints <solfec-1.0-theory-constraints>`.
  Depending on a solver type a contact formulation can be either used locally
  (on a single contact point level) or globally (on the level of a all contact
  points simultaneously).
@@ -190,7 +190,7 @@ key "AlartCurnier"
 \end_inset
 
  and it is optionally used on an individual contact point level within the
- :ref:`Gauss-Seidel solver <solfec-theory-solvers-gs>`.
+ :ref:`Gauss-Seidel solver <solfec-1.0-theory-solvers-gs>`.
  On the point level this formulation is implemented in `dbs.c:35 <https://github.c
 om/tkoziara/solfec/blob/master/dbs.c#L35>`_.
  The Signorini condition (
@@ -289,7 +289,7 @@ key "DeSaxceFeng"
 \end_inset
 
  and it is optionally used on an individual contact point level within the
- :ref:`Gauss-Seidel solver <solfec-theory-solvers-gs>`.
+ :ref:`Gauss-Seidel solver <solfec-1.0-theory-solvers-gs>`.
  On the point level this formulation is implemented in `dbs.c:96 <https://github.c
 om/tkoziara/solfec/blob/master/dbs.c#L96>`_.We express the Signorini-Coulomb
  law (
@@ -499,7 +499,7 @@ key "Hueber"
 \end_inset
 
  and it is used by default on an individual contact point level within the
- :ref:`Gauss-Seidel solver <solfec-theory-solvers-gs>`.
+ :ref:`Gauss-Seidel solver <solfec-1.0-theory-solvers-gs>`.
  On the point level this formulation is implemented in `dbs.c:142 <https://github.
 com/tkoziara/solfec/blob/master/dbs.c#L142>`_.
  The authors of 
@@ -615,12 +615,12 @@ key "DeSaxceFeng"
 
 .
  It is optionally used on an individual contact point level within the :ref:`Gau
-ss-Seidel solver <solfec-theory-solvers-gs>`.
+ss-Seidel solver <solfec-1.0-theory-solvers-gs>`.
  It is also the basis of contact linearization within the :ref:`projected
- Newton solver <solfec-theory-solvers-pqn>`.
+ Newton solver <solfec-1.0-theory-solvers-pqn>`.
  On the point level this formulation is implemented in `scf.c <https://github.com/
 tkoziara/solfec/blob/master/scf.c#L28>`_.
- Using the :ref:`local dynamics <solfec-theory-locdyn>` relationship 
+ Using the :ref:`local dynamics <solfec-1.0-theory-locdyn>` relationship 
 \end_layout
 
 \begin_layout Standard
@@ -815,7 +815,7 @@ Semi-explicit penalty formulation
 
 \begin_layout Standard
 This is a simple penalty based formulation developed specifically for Solfec-1.0
- and used within the :ref:`penalty solver <solfec-theory-solvers-penalty>`.
+ and used within the :ref:`penalty solver <solfec-1.0-theory-solvers-penalty>`.
  On the point level this formulation is implemented in `pes.c <https://github.com/
 tkoziara/solfec/blob/master/pes.c#L33>`_.
  Let
@@ -858,7 +858,7 @@ where
 \end_inset
 
  is the normal relative velocity.
- :ref:`Recall <solfec-theory-basics>`, that the gap function is computed
+ :ref:`Recall <solfec-1.0-theory-basics>`, that the gap function is computed
  for the configuration 
 \begin_inset Formula $\mathbf{q}^{t}+\frac{h}{2}\mathbf{u}^{t}$
 \end_inset

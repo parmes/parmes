@@ -2,7 +2,7 @@
 
   <br />
 
-.. _solfec-user-times:
+.. _solfec-1.0-user-times:
 
 Time series
 ===========
@@ -30,7 +30,7 @@ An object of type TIME_SERIES is a linear spline based on a series of 2-points.
     memory just once; this facilitates more optimal memory usage in cases where many identical
     TIME_SERIES objects are used in multiple constraints (for example); the label should be unique;
     **Note:** labeled time series should be declared globally on all MPI ranks and must not be defined
-    within if blocks dependent on the :ref:`HERE(...) <solfec-command-HERE>` command
+    within if blocks dependent on the :ref:`HERE(...) <solfec-1.0-command-HERE>` command
 
   * cache -- optional partial cache size; if **points** = file path and **cache** > 0 then only the
     cache size of points is stored in memory at any given time; this helps to save memory in case of

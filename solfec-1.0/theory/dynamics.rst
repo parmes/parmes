@@ -1,4 +1,4 @@
-.. _solfec-theory-dynamics:
+.. _solfec-1.0-theory-dynamics:
 
 Dynamics
 ========

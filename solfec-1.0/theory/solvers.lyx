@@ -73,7 +73,7 @@
 \begin_layout Standard
 \noindent
 Constraint solvers are used to find approximate a solution to the :ref:`constrai
-nts <solfec-theory-constraints>` equations
+nts <solfec-1.0-theory-constraints>` equations
 \end_layout
 
 \begin_layout Standard
@@ -84,8 +84,8 @@ nts <solfec-theory-constraints>` equations
 
 \end_inset
 
-expressing :ref:`joints <solfec-theory-joints>` and :ref:`contact conditions
- <solfec-theory-conform>`, together with the :ref:`local dynamics <solfec-theory
+expressing :ref:`joints <solfec-1.0-theory-joints>` and :ref:`contact conditions
+ <solfec-1.0-theory-conform>`, together with the :ref:`local dynamics <solfec-1.0-theory
 -locdyn>` equations
 \end_layout
 
@@ -107,7 +107,7 @@ Merit function (all solvers)
 \end_layout
 
 \begin_layout Standard
-As discussed on the :ref:`basics page <solfec-theory-basics>`, at every
+As discussed on the :ref:`basics page <solfec-1.0-theory-basics>`, at every
  time step an implicit equation 
 \begin_inset Formula $\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}$
 \end_inset
@@ -119,7 +119,7 @@ As discussed on the :ref:`basics page <solfec-theory-basics>`, at every
 \end_inset
 
  in terms of velocity (see :ref:`the non-smooth velocity equation formulation
- <solfec-theory-conform-nsveq>`) and use
+ <solfec-1.0-theory-conform-nsveq>`) and use
 \end_layout
 
 \begin_layout Standard
@@ -187,7 +187,7 @@ Gauss-Seidel solver
 \end_layout
 
 \begin_layout Standard
-The equations of :ref:`local dynamics <solfec-theory-locdyn>` read
+The equations of :ref:`local dynamics <solfec-1.0-theory-locdyn>` read
 \end_layout
 
 \begin_layout Standard
@@ -922,7 +922,7 @@ n (e.g.
 \end_layout
 
 \begin_layout Standard
-In :ref:`User Manual Solvers Section <solfec-user-solvers>` several variants
+In :ref:`User Manual Solvers Section <solfec-1.0-user-solvers>` several variants
  of the parallel Gauss--Seidel algorithm are listed.
  Algorithm PARALLEL_GS corresponds to the FULL variant.
  We might like to relax the bottleneck of LOOP in line 8 of PARALLEL_GS
@@ -1030,7 +1030,7 @@ Projected Newton Solver
 \end_layout
 
 \begin_layout Standard
-Using the :ref:`non--smooth velocity equation formulation <solfec-theory-conform
+Using the :ref:`non--smooth velocity equation formulation <solfec-1.0-theory-conform
 -nsveq>` let us rewrite the frictional contact problem as
 \end_layout
 

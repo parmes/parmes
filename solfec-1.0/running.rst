@@ -1,4 +1,4 @@
-.. _solfec-running:
+.. _solfec-1.0-running:
 
 Running Solfec-1.0
 ==================
@@ -14,8 +14,15 @@ results in the hint
 
 ::
 
+  VERSION: 1.04a53f2 (2019-07-05)
   SYNOPSIS: solfec [-v] [-w] [-c] [-f] [-g WIDTHxHEIGHT]
                    [-s sub-directory] [-i verbosity interval] path
+
+The version string has syntax "1." (denoting Solfec-1.0's primary version number) followed by a shorthand
+hexadecimal number (`"04a53f2" <https://github.com/parmes/solfec-1.0/commit/04a53f2d54128413d617f84df6f701c4242eb95d>`_
+in this case) of a `GitHub commit <https://github.com/parmes/solfec-1.0/commits/master>`_ that most
+recently modified Solfec-1.0's source code. This is followed by the date of that most recent modification
+of the source code.
 
 **The --v switch** opens the interactive graphical viewer (cf. :numref:`viewer-1`). In this mode the user
 can view the geometrical model, run or step through analysis, and view results.

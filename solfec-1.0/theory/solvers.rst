@@ -1,16 +1,16 @@
-.. _solfec-theory-solvers:
+.. _solfec-1.0-theory-solvers:
 
 Constraint solvers
 ==================
 
-Constraint solvers are used to find approximate a solution to the :ref:`constraints <solfec-theory-constraints>` equations
+Constraint solvers are used to find approximate a solution to the :ref:`constraints <solfec-1.0-theory-constraints>` equations
 
 .. math::
 
   \mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0}
 
-expressing :ref:`joints <solfec-theory-joints>` and :ref:`contact conditions <solfec-theory-conform>`, together with
-the :ref:`local dynamics <solfec-theory-locdyn>` equations
+expressing :ref:`joints <solfec-1.0-theory-joints>` and :ref:`contact conditions <solfec-1.0-theory-conform>`, together with
+the :ref:`local dynamics <solfec-1.0-theory-locdyn>` equations
 
 .. math::
 
@@ -22,10 +22,10 @@ are described in sections below.
 Merit function
 --------------
 
-As discussed on the :ref:`basics page <solfec-theory-basics>`, at every time step an implicit equation
+As discussed on the :ref:`basics page <solfec-1.0-theory-basics>`, at every time step an implicit equation
 :math:`\mathbf{C}\left(\mathbf{R}\right)=\mathbf{0}` is solved. This solution is approximate. In order to express its accuracy
 as a scalar value, we formulate :math:`\mathbf{C}\left(\mathbf{R}\right)` in terms of velocity
-(see :ref:`the non-smooth velocity equation formulation <solfec-theory-conform-nsveq>`) and use
+(see :ref:`the non-smooth velocity equation formulation <solfec-1.0-theory-conform-nsveq>`) and use
 
 .. math::
 
@@ -44,12 +44,12 @@ we only use the diagonal blocks, which are always positive definite. To recapitu
   
 Such merit function is used as one of the stopping criterions for the solvers described below.
 
-.. _solfec-theory-solvers-gs:
+.. _solfec-1.0-theory-solvers-gs:
 
 Gauss--Seidel solver
 --------------------
 
-The equations of :ref:`local dynamics <solfec-theory-locdyn>` read
+The equations of :ref:`local dynamics <solfec-1.0-theory-locdyn>` read
 
 .. math::
 
@@ -196,7 +196,7 @@ process the :math:`Bottom_{i}` and :math:`Inner1_{i}` sets in the same way as we
 attempts to balance the amount of computations needed to hide the communication (e.g. the larger the :math:`Top_{i}` set is, the larger the :math:`Inner2_{i}` set becomes).
 It should be noted that the convergence criterion in line 13 is global across all processors. 
 
-In :ref:`User Manual Solvers Section <solfec-user-solvers>` several variants of the parallel Gauss--Seidel algorithm are listed. Algorithm **PARALLEL_GS** corresponds to
+In :ref:`User Manual Solvers Section <solfec-1.0-user-solvers>` several variants of the parallel Gauss--Seidel algorithm are listed. Algorithm **PARALLEL_GS** corresponds to
 the FULL variant. We might like to relax the bottleneck of **LOOP** in line 8 of **PARALLEL_GS** by replacing it with
 
 8.1 :math:`\,\,` SWEEP :math:`\left(Middle_{i}\right)` |br|
@@ -220,12 +220,12 @@ In this case, lines 4--12 of **PARALLEL_GS** need to be replaced with
 
 Although this kind of approach does work as a multigrid smoother, it has little use in our context. Nevertheless, we use it for illustration sake and name the BOUNDARY_JACOBI.
 
-.. _solfec-theory-solvers-pqn:
+.. _solfec-1.0-theory-solvers-pqn:
 
 Projected Newton solver
 -----------------------
 
-Using the :ref:`non--smooth velocity equation formulation <solfec-theory-conform-nsveq>` let us rewrite the frictional contact problem as
+Using the :ref:`non--smooth velocity equation formulation <solfec-1.0-theory-conform-nsveq>` let us rewrite the frictional contact problem as
 
 .. math::
 
@@ -292,7 +292,7 @@ needs to be adjusted “by hand”. The automatic update formulas that can be fo
 For ill--conditioned problems one should pick :math:`\delta` that delivers an overall best convergence behavior. Large values will slow down convergence, but stabilize it;
 small values may destabilize convergence for ill--conditioned problems; :math:`\delta` (typically :math:`\ll1`) should be tuned together with :math:`\epsilon` and :math:`m`
 (e.g. find a suitably small :math:`\delta` first, then tweak :math:`\epsilon`). Since rigorous analysis is still missing for these parameters, please experiment before settling
-on specific values for a specific problem. Use linver = 'GMRES' in :ref:`NEWTON_SOLVER <solfec-command-NEWTON_SOLVER>` to enable this variant (this is also the default).
+on specific values for a specific problem. Use linver = 'GMRES' in :ref:`NEWTON_SOLVER <solfec-1.0-command-NEWTON_SOLVER>` to enable this variant (this is also the default).
 
 2. PQN2:
 
@@ -301,7 +301,7 @@ on specific values for a specific problem. Use linver = 'GMRES' in :ref:`NEWTON_
   \mathbf{R}^{k+1}=\mbox{proj}_{K}\left[\mathbf{R}^{k}+\left(1-\theta\right)\triangle\mathbf{R}^{k}-\theta\left(\mbox{diag}_{3\times3}\left[\nabla_{\omega}\mathbf{C}^{k}\right]\right)^{-1}\mathbf{C}^{k}\right]
   
 where :math:`\theta\in\left[0,1\right]` and the diagonal :math:`3\times3` blocks of :math:`\nabla_{\omega}\mathbf{C}^{k}` are directly inverted. This simple scheme is interesting
-because it converges for a sufficiently small :math:`\theta`, while it is essentially a nonlinear Jacobi--type method. Use linver = 'DIAG' in :ref:`NEWTON_SOLVER <solfec-command-NEWTON_SOLVER>`
+because it converges for a sufficiently small :math:`\theta`, while it is essentially a nonlinear Jacobi--type method. Use linver = 'DIAG' in :ref:`NEWTON_SOLVER <solfec-1.0-command-NEWTON_SOLVER>`
 to enable this variant.
 
 Both variants are summarized as algorithms below.
@@ -326,7 +326,7 @@ Both variants are summarized as algorithms below.
 7 :math:`\,\,\,\,\,\,` :math:`k=k+1` |br|
 8 :math:`\,\,` while :math:`g\left(\mathbf{R}^{k}\right)\ge\gamma` and :math:`k<n` |br|
 
-.. _solfec-theory-solvers-penalty:
+.. _solfec-1.0-theory-solvers-penalty:
 
 Penalty Solver
 --------------

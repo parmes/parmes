@@ -7,7 +7,7 @@
 SOLFEC_EXPORT command
 =====================
 
-In analogy to Solfec's :ref:`XDMF_EXPORT <solfec-xdmf>` command, a new :ref:`SOLFEC_EXPORT <solfec-command-SOLFEC_EXPORT>`
+In analogy to Solfec's :ref:`XDMF_EXPORT <solfec-1.0-xdmf>` command, a new :ref:`SOLFEC_EXPORT <solfec-1.0-command-SOLFEC_EXPORT>`
 command has been added. This allows to save a subset of results into a separate directory and view them using Solfec's
 viewer. Within Solfec sources example `inp/devel/solfec-export.py <https://github.com/parmes/solfec/blob/master/inp/devel/solfec-export.py>`_
 depicts an application of this idea. (...)

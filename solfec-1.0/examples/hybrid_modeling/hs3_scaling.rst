@@ -1,20 +1,20 @@
-.. _solfec-examples-hybrid_modeling-hs3_scaling:
+.. _solfec-1.0-examples-hybrid_modeling-hs3_scaling:
 
 3--dimensional cube array parallel scaling
 ==========================================
 
 This is a 3--dimensional case, `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_,
-of the family of :ref:`1,2 and 3--dismenional examples <solfec-examples-hybrid_modeling-hs123>`, demonstrating applications of
-the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>` to hybrid, :ref:`Parmec <parmec-index>`--:ref:`Solfec-1.0 <solfec-1-index>` based, arrays of cubes
+of the family of :ref:`1,2 and 3--dismenional examples <solfec-1.0-examples-hybrid_modeling-hs123>`, demonstrating applications of
+the :ref:`HYBRID_SOLVER <solfec-1.0-command-HYBRID_SOLVER>` to hybrid, :ref:`Parmec <parmec-index>`--:ref:`Solfec-1.0 <solfec-1.0-index>` based, arrays of cubes
 subject to an acceleration sine dwell signal. The specifcation of geomery and material data are exactly generalized from
-:ref:`the 2--dimensional counterpart <solfec-examples-hybrid_modeling-hs123>`.
+:ref:`the 2--dimensional counterpart <solfec-1.0-examples-hybrid_modeling-hs123>`.
 The `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_ directory contains:
 
 - `README <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/README>`_ -- a text based specification of the problem
 
 - `hs3--parmec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-parmec.py>`_ -- including the :ref:`Parmec <parmec-index>` input code
 
-- `hs3--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py>`_ -- including the :ref:`Solfec-1.0 <solfec-1-index>` input code
+- `hs3--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py>`_ -- including the :ref:`Solfec-1.0 <solfec-1.0-index>` input code
 
 - `hs3--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for animation [1]_
 
@@ -26,7 +26,7 @@ The `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/ma
   `hs3--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm>`_.
   The see--through array is modeled in Parmec: rotations are restrained and spring--dashpot elements, emulating contact,
   are insered at the centres of faces of neighbouring cubes. The solid 3x3 inner arrays is modeled in Solfec-1.0: hexahedral
-  finite elements are used and contact interactions are modeled via :ref:`a non--smooth Signorini--Coulomb law <solfec-theory-conform>`
+  finite elements are used and contact interactions are modeled via :ref:`a non--smooth Signorini--Coulomb law <solfec-1.0-theory-conform>`
 
 .. youtube:: https://www.youtube.com/watch?v=7ED5jDdhrtI
   :width: 648
@@ -78,12 +78,12 @@ array generates up to 100k contact points on average, as seen in :numref:`hs3-fi
 the minimum, average and maximum numbers of bodies and contact points for 24--192 MPI rank (CPU cores) runs. Solfec-1.0
 utilizes a single geometrical partitioning in order to balance together the bodies and the contact points. Contact
 points are favoured in the load balancing due to the higher computational work related to their processing.
-:numref:`hs3-stats-2` shows that contact update, detection, solution and assembling of the :ref:`local dynamics <solfec-theory-locdyn>`
+:numref:`hs3-stats-2` shows that contact update, detection, solution and assembling of the :ref:`local dynamics <solfec-1.0-theory-locdyn>`
 take up the majority of the computational time. The remaining time is spent in load balancing. In this example,
-Solfec-1.0 :ref:`solves an implicit frictional contact problem <solfec-theory-solvers>` of varying size at every time step.
+Solfec-1.0 :ref:`solves an implicit frictional contact problem <solfec-1.0-theory-solvers>` of varying size at every time step.
 :numref:`hs3-fig1` depicts the time history of the number of contact points over the one second duration of the simulation.
 
-.. [4] :ref:`Solfec-1.0 viewer <solfec-running>` based animation of load balancing for the 30x30x30 model with N=20.
+.. [4] :ref:`Solfec-1.0 viewer <solfec-1.0-running>` based animation of load balancing for the 30x30x30 model with N=20.
   Contact points are colored according to processor rank for the 48 CPU cores based parallel run. Solfec-1.0 utilizes
   :ref:`dynamic load balancing <dynlb-index>` in order maintain parallel balance.
 

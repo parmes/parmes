@@ -1,4 +1,4 @@
-.. _solfec-theory-constraints:
+.. _solfec-1.0-theory-constraints:
 
 Constraints
 ===========
@@ -238,7 +238,7 @@ where the relation :math:`\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{0
 implicitly expresses a control over local velocities :math:`\mathbf{U}_{\alpha}`,
 exerted using reaction forces :math:`\mathbf{R}_{\alpha}`. Now, including
 constraints, we can modify the :ref:`previously introduced time stepping
-<solfec-theory-timeint>` as follows
+<solfec-1.0-theory-timeint>` as follows
 
 .. _timestepping1:
 

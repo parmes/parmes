@@ -1,9 +1,9 @@
-.. _solfec-examples-time_series:
+.. _solfec-1.0-examples-time_series:
 
 Time series
 ===========
 
-This example illustrates the :ref:`TIME_SERIES <solfec-user-times>` functionality in Solfec-1.0. The input files for this example
+This example illustrates the :ref:`TIME_SERIES <solfec-1.0-user-times>` functionality in Solfec-1.0. The input files for this example
 are located in the `solfec-1.0/examples/time--series <https://github.com/tkoziara/solfec/tree/master/examples/time-series>`_ directory.
 These are:
 
@@ -21,8 +21,8 @@ These are:
 
 .. _timeseries: https://github.com/tkoziara/solfec/tree/master/examples/time-series
 
-:ref:`TIME_SERIES <solfec-user-times>` object can be used in Solfec-1.0 to prescribe time--dependent :ref:`constraints <solfec-user-constraints>` and
-:ref:`loads <solfec-user-loads>`. The three minimalist input files included with this example illustrate the ways the time series can be used:
+:ref:`TIME_SERIES <solfec-1.0-user-times>` object can be used in Solfec-1.0 to prescribe time--dependent :ref:`constraints <solfec-1.0-user-constraints>` and
+:ref:`loads <solfec-1.0-user-loads>`. The three minimalist input files included with this example illustrate the ways the time series can be used:
 :numref:`basic-ts`, :numref:`cached-ts`, :numref:`labeled-ts` below include comments and are self--explanatory. An animated output of the *cached--ts.py*
 example is included as video [1]_.
 

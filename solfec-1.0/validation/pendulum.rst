@@ -1,4 +1,4 @@
-.. _solfec-validation-pendulum:
+.. _solfec-1.0-validation-pendulum:
 
 Pendulum
 ========

@@ -1,4 +1,4 @@
-.. _solfec-user-body:
+.. _solfec-1.0-user-body:
 
 BODY object
 ===========
@@ -15,7 +15,7 @@ An object of type BODY represents a solid body.
 
   * kind -- a string: 'RIGID', 'PSEUDO_RIGID', 'FINITE_ELEMENT' or
     'OBSTACLE' describing the kinematic model. See :numref:`body-kind`
-    and the :ref:`Kinematics manual page <solfec-theory-kinematics>`.
+    and the :ref:`Kinematics manual page <solfec-1.0-theory-kinematics>`.
 
   * shape (emptied) - this is can be a CONVEX/MESH/SPHERE/ELLIP object, or a list [obj1, obj2, ...],
     where each object is of type CONVEX/MESH/SPHERE/ELLIP. If the kind is 'FINITE_ELEMENT',
@@ -27,8 +27,8 @@ An object of type BODY represents a solid body.
     * shape is solely composed of CONVEX objects: here a separate mesh must
       be given to discretise motion of a body (see the mesh argument below) 
 
-  * material -- a :ref:`BULK_MATERIAL <solfec-command-BULK_MATERIAL>` object or a label of a bulk material;
-    specifies an initial body--wise material, see also :ref:`APPLY_BULKMAT <solfec-command-APPLY_BULKMAT>`
+  * material -- a :ref:`BULK_MATERIAL <solfec-1.0-command-BULK_MATERIAL>` object or a label of a bulk material;
+    specifies an initial body--wise material, see also :ref:`APPLY_BULKMAT <solfec-1.0-command-APPLY_BULKMAT>`
 
   * label -- a label string (no label is assigned by default)
 
@@ -40,8 +40,8 @@ An object of type BODY represents a solid body.
     the 'FINITE_ELEMENT' model allows to handle complicated shapes with less finite elements,
     e.g. an arbitrary shape could be contained in just one hexahedron.
 
-  * base -- optional reduced order or modal base definition, or a string label of a :ref:`registered base <solfec-command-REGISTER_BASE>`;
-    when **form** = 'BC--MODAL', results of :ref:`the MODAL_ANALYSIS command <solfec-command-MODAL_ANALYSIS>`, or equivalent user data,
+  * base -- optional reduced order or modal base definition, or a string label of a :ref:`registered base <solfec-1.0-command-REGISTER_BASE>`;
+    when **form** = 'BC--MODAL', results of :ref:`the MODAL_ANALYSIS command <solfec-1.0-command-MODAL_ANALYSIS>`, or equivalent user data,
     can be used; the same format is used for the 'BC--RO' formulation; This argument must be passed if **form** = 'BC--MODAL' or 'BC--RO',
     see Table :numref:`fem-form`.
 
@@ -68,7 +68,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   | or inertia tensor (rigid kinematics) of the body                                                        |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.constraints** -- list of constraints attached to the body                                         |
-  | (cf. :ref:`Constraints <solfec-user-constraints>`)                                                      |
+  | (cf. :ref:`Constraints <solfec-1.0-user-constraints>`)                                                  |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.ncon** -- number of constraints attached to the body                                              |
   +---------------------------------------------------------------------------------------------------------+
@@ -88,8 +88,9 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
   +---------------------------------------------------------------------------------------------------------+
   | **obj.selfcontact** -- self-contact detection flag (default: 'OFF”) taking values 'ON' or 'OFF'         |
   +---------------------------------------------------------------------------------------------------------+
-  | **obj.scheme** -- time integration scheme (default: 'DEFAULT') used to integrate motion.                |
-  | See :numref:`solfec-body-scheme` and the :ref:`Time integration manual page <solfec-theory-timeint>`.   |
+  | **obj.scheme** -- time integration scheme (default: 'DEFAULT') used to integrate motion. See            |
+  | :numref:`solfec-1.0-body-scheme` and the                                                                |
+  | :ref:`Time integration manual page <solfec-1.0-theory-timeint>`.                                        |
   +---------------------------------------------------------------------------------------------------------+
   | **obj.damping** -- stiffness proportional damping coefficient (default: 0.0) for the dynamic case       |
   | (ignored for rigid bodies).                                                                             |
@@ -104,7 +105,7 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
 
 .. _body-kind:
 
-.. table:: Body kinds. See also the :ref:`Kinematics manual page <solfec-theory-kinematics>`.
+.. table:: Body kinds. See also the :ref:`Kinematics manual page <solfec-1.0-theory-kinematics>`.
 
   +-------------------+-------------------------------------------------------------------------------------+
   | Body kind         | Remarks                                                                             |
@@ -186,9 +187,9 @@ Some parameters can also be accessed as members of a BODY object, cf. :numref:`b
 
 |
 
-.. _solfec-body-scheme:
+.. _solfec-1.0-body-scheme:
 
-.. table:: Time integration schema. See also the :ref:`Time integration manual page <solfec-theory-timeint>`.
+.. table:: Time integration schema. See also the :ref:`Time integration manual page <solfec-1.0-theory-timeint>`.
 
   +-----------+----------------+----------------------------------------------------------------------------+
   | Scheme    | Kinematics     | Remarks                                                                    |

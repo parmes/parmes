@@ -1,4 +1,4 @@
-.. _solfec-applications:
+.. _solfec-1.0-applications:
 
 Solfec-1.0 Applications
 =======================

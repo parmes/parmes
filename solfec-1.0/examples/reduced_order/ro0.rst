@@ -1,4 +1,4 @@
-.. _solfec-examples-reduced_order-ro0:
+.. _solfec-1.0-examples-reduced_order-ro0:
 
 Rotating bar
 ============
@@ -23,7 +23,7 @@ These are:
 
 - `ro0--run--all.py <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-run-all.py>`_ -- input file that runs all tests and generates all plots
 
-- `ro0--view.py <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-view.py>`_ -- input file suitable for use with Solfec-1.0 :ref:`viewer <solfec-running>`
+- `ro0--view.py <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-view.py>`_ -- input file suitable for use with Solfec-1.0 :ref:`viewer <solfec-1.0-running>`
 
 .. _reduced-order0: https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0
 
@@ -121,7 +121,7 @@ in lines 36--42. The `ro0_model <https://github.com/tkoziara/solfec/blob/master/
 creates a rotating bar model, runs the analysis, or reads the results, depending on parameters.
 The `ro0_times <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L180>`_ function returners
 the time history of time itself. The `ro0_elongation <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L186>`_
-function reads and returns the time history of bar elongation, given a :ref:`SOLFEC object <solfec-user-solfec>` in ``'READ'`` mode as an input.
+function reads and returns the time history of bar elongation, given a :ref:`SOLFEC object <solfec-1.0-user-solfec>` in ``'READ'`` mode as an input.
 Finally, in lines 44--55, we use `matplotlib <https://matplotlib.org>`_ to generate figures that contribute to :numref:`ro0-fig2`.
 
 .. literalinclude:: ../../../../solfec-1.0/examples/reduced-order0/ro0-gen-bases.py
@@ -134,13 +134,13 @@ file. Because this code is used by multiple tests, in lines 9--10 we first attem
 been called already and those bases may have been saved. If this is not the case, in lines 12--29 we generate and save the reduced order
 and modal bases. To generate the proper orthogonal decomposition reduced order base, we first create a Total Lagrangian model, in line 16,
 but do not run it yet (the ``runduration`` parameter of `ro0_model <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L14>`_
-is not used). Instead, we used the :ref:`RIGID_DISPLACEMENTS <solfec-command-RIGID_DISPLACEMENTS>`
-and :ref:`COROTATED_DISPLACEMENTS <solfec-command-COROTATED_DISPLACEMENTS>` commands in order to sample rigid and co--rotated deformable displacements,
+is not used). Instead, we used the :ref:`RIGID_DISPLACEMENTS <solfec-1.0-command-RIGID_DISPLACEMENTS>`
+and :ref:`COROTATED_DISPLACEMENTS <solfec-1.0-command-COROTATED_DISPLACEMENTS>` commands in order to sample rigid and co--rotated deformable displacements,
 and then run the analysis in line 20. The rigid displacements ``rig`` and the sampled deformable displacements ``defo`` are then passed to the library
 routine `ro0_POD_base <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L100>`_ which employs the `modred package
 <https://pypi.python.org/pypi/modred>`_ to calculate the reduced base. Following this, in line 24, the modal base is generated using library call
 to `ro0_modal_base <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/ro0-lib.py#L69>`_, which employs Solfec-1.0's utility
-function :ref:`MODAL_ANALYSIS <solfec-command-MODAL_ANALYSIS>` in order to calculate the modal base.  Finally, the results are saved in lines 28 and 29.
+function :ref:`MODAL_ANALYSIS <solfec-1.0-command-MODAL_ANALYSIS>` in order to calculate the modal base.  Finally, the results are saved in lines 28 and 29.
 
 .. _ro0-fig4:
 

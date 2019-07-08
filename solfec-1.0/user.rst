@@ -1,4 +1,4 @@
-.. _solfec-user:
+.. _solfec-1.0-user:
 
 Solfec-1.0 User Manual
 ======================

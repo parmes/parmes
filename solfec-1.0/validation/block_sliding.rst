@@ -1,4 +1,4 @@
-.. _solfec-validation-block_sliding:
+.. _solfec-1.0-validation-block_sliding:
 
 Block sliding on a frictional table
 ===================================
