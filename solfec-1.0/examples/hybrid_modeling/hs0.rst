@@ -11,7 +11,7 @@ These are:
 
 - `hs0--parmec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-parmec.py>`_ -- including the :ref:`Parmec <parmec-index>` input code
 
-- `hs0--solfec--1.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-1.py>`_ -- including the simpler version of the :ref:`Solfec-1.0 <solfec-index>` input code
+- `hs0--solfec--1.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-1.py>`_ -- including the simpler version of the :ref:`Solfec-1.0 <solfec-1-index>` input code
 
 - `hs0--solfec--2.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/hs0-solfec-2.py>`_ -- Solfec-1.0 input file demonstrating a more elaborate usage of Parmec and Solfec-1.0 features
 

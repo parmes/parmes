@@ -15,7 +15,7 @@ combined with a family of finite element formulations: (...)
 * body co--rotational reduced order (BC--RO)
 * body co--rotational modal (BC--MODAL)
 
-as they are implemented in :ref:`Solfec <solfec-index>`. These formulations allow to vary the amount of deformation 
+as they are implemented in :ref:`solfec-1-index`. These formulations allow to vary the amount of deformation 
 expressed by a finite element mesh and facilitate saving computational time and storage. They may be helpful in the context
 of multibody modeling.
 

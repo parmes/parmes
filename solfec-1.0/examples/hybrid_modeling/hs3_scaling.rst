@@ -5,7 +5,7 @@
 
 This is a 3--dimensional case, `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_,
 of the family of :ref:`1,2 and 3--dismenional examples <solfec-examples-hybrid_modeling-hs123>`, demonstrating applications of
-the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>` to hybrid, :ref:`Parmec <parmec-index>`--:ref:`Solfec-1.0 <solfec-index>` based, arrays of cubes
+the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>` to hybrid, :ref:`Parmec <parmec-index>`--:ref:`Solfec-1.0 <solfec-1-index>` based, arrays of cubes
 subject to an acceleration sine dwell signal. The specifcation of geomery and material data are exactly generalized from
 :ref:`the 2--dimensional counterpart <solfec-examples-hybrid_modeling-hs123>`.
 The `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_ directory contains:
@@ -14,7 +14,7 @@ The `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/ma
 
 - `hs3--parmec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-parmec.py>`_ -- including the :ref:`Parmec <parmec-index>` input code
 
-- `hs3--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py>`_ -- including the :ref:`Solfec-1.0 <solfec-index>` input code
+- `hs3--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-solfec.py>`_ -- including the :ref:`Solfec-1.0 <solfec-1-index>` input code
 
 - `hs3--state--1.pvsm <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver3/hs3-state-1.pvsm>`_ -- `ParaView <http://www.paraview.org>`_ state for animation [1]_
 

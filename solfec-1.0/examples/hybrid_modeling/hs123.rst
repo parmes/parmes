@@ -18,7 +18,7 @@ We focus on the 2--dimensional example, leaving the 1-- and 3--dimensional cases
 
 - `hs2--parmec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec.py>`_ -- including the :ref:`Parmec <parmec-index>` input code
 
-- `hs2--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py>`_ -- including the :ref:`Solfec-1.0 <solfec-index>` input code
+- `hs2--solfec.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-solfec.py>`_ -- including the :ref:`Solfec-1.0 <solfec-1-index>` input code
 
 - `hs2--parmec--only.py <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/hs2-parmec-only.py>`_ -- including the Parmec-only version of the example
 

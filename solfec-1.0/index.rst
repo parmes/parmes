@@ -1,4 +1,4 @@
-.. _solfec-index:
+.. _solfec-1-index:
 
 SOLFEC-1.0
 ==========

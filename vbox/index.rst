@@ -114,7 +114,7 @@ are available at the command prompt.
    :width: 80%
    :align: center
 
-   :ref:`Solfec <solfec-index>` viewer session of a domino toppling example.
+   :ref:`Solfec-1.0 <solfec-1-index>` viewer session of a domino toppling example.
 
 .. topic:: Updating `PARMES <../>`_ software
 
