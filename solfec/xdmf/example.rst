@@ -10,7 +10,7 @@ Lines 25--40 exemplify the remaining export capability. Within Solfec sources
 this example can be found as `inp/devel/xdmf-export.py
 <https://github.com/tkoziara/solfec/blob/master/inp/devel/xdmf-export.py>`_.
 
-.. literalinclude:: ../../../solfec/inp/devel/xdmf-export.py
+.. literalinclude:: ../../../solfec-1.0/inp/devel/xdmf-export.py
    :linenos:
 
 Assuming we are inside of Solfec source directory, this example can be executed as follows:

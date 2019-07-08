@@ -1,14 +1,14 @@
 .. _solfec-index:
 
-SOLFEC
-======
+SOLFEC-1.0
+==========
 
 .. raw:: html
   
-  <iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=solfec&type=watch&count=true&size=large&v=2"
+  <iframe src="https://ghbtns.com/github-btn.html?user=parmes&repo=solfec-1.0&type=watch&count=true&size=large&v=2"
   allowtransparency="true" frameborder="0" scrolling="0" width="200px" height="35px"></iframe>
 
-Solfec implements instances of the Non--Smooth `Contact Dynamics <https://en.wikipedia.org/wiki/Contact_dynamics>`_
+Solfec-1.0 implements instances of the Non--Smooth `Contact Dynamics <https://en.wikipedia.org/wiki/Contact_dynamics>`_
 Method [1]_, [2]_ and the `Discrete Element Method <https://en.wikipedia.org/wiki/Discrete_element_method>`_ using
 MPI, C, Python and several 3rd party codes written in C/C++/Fortran. It includes mesh, convex polyhedra,
 sphere and ellipsoid based shapes, linear elastic first order finite elements, pseudo-rigid and rigid
@@ -29,7 +29,7 @@ More details can be found in:
    XDMF export <xdmf>
    Applications <applications>
    Examples <examples>
-   Google group <https://groups.google.com/forum/#!forum/solfec>
+   Google group <https://groups.google.com/forum/#!forum/solfec-1>
 ..   ABAQUS import <abaqus>
 
 References:

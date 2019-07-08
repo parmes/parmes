@@ -249,7 +249,7 @@ diagonal block :math:`\mathbf{W}_{\alpha\alpha}` :eq:`Walal`,
 and the entire :math:`\mathbf{U}=\mathbf{B}+\mathbf{W}\mathbf{R}` system :eq:`UBWR` are
 declared in `ldy.h:39 <https://github.com/tkoziara/solfec/blob/master/ldy.h#L39>`_ as follows:
 
-.. literalinclude:: ../../../solfec/ldy.h
+.. literalinclude:: ../../../solfec-1.0/ldy.h
    :lines: 39-41
    :lineno-start: 39
    :linenos:

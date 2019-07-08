@@ -43,5 +43,5 @@ and then view any of the output files:
 Listing of the input file, below, may help to associate those directories with a particular kind
 of exported subset.
 
-.. literalinclude:: ../../solfec/inp/devel/solfec-export.py
+.. literalinclude:: ../../solfec-1.0/inp/devel/solfec-export.py
    :linenos:

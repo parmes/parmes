@@ -284,12 +284,12 @@ the spatial point :math:`\mathbf{x}`, the constraint velocity :math:`\mathbf{U}`
 and rection :math:`\mathbf{R}`, is declared in
 `dom.h <https://github.com/tkoziara/solfec/blob/master/dom.h#L63>`_ as follows:
 
-.. literalinclude:: ../../../solfec/dom.h
+.. literalinclude:: ../../../solfec-1.0/dom.h
    :lines: 67-78
    :lineno-start: 67
    :linenos:
 
-.. literalinclude:: ../../../solfec/dom.h
+.. literalinclude:: ../../../solfec-1.0/dom.h
    :lines: 124
    :lineno-start: 124
    :linenos:

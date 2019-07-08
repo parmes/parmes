@@ -4,7 +4,7 @@ A two--body impact problem
 ==========================
 
 This is a simplest application of the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`. The input files for this example are
-located in the `solfec/examples/hybrid--solver0 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver0>`_ directory.
+located in the `solfec-1.0/examples/hybrid--solver0 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver0>`_ directory.
 These are:
 
 - `README <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver0/README>`_ -- a text based specification of the problem
@@ -36,7 +36,7 @@ The cube's motion is :ref:`restrained <parmec-command-RESTRAIN>` along x, y tran
 <parmec-command-SPRING>` is created in line 20. We note, that no damping is applied and that the spring direction is fixed along z.
 :ref:`Gravity <parmec-command-GRAVITY>` is applied in line 23. This concludes the input file.
 
-.. literalinclude:: ../../../../solfec/examples/hybrid-solver0/hs0-parmec.py
+.. literalinclude:: ../../../../solfec-1.0/examples/hybrid-solver0/hs0-parmec.py
    :linenos:
    :caption: Listing of hs0--parmec.py
    :name: hs0-lst1
@@ -63,7 +63,7 @@ is created in line 22. This is a *boundary body*, coinciding with the Parmec bod
 forces between Solfec and Parmec, and its motion will be driven by the Parmec model.*  The upper body "bod2" is created in line 26. In both cases Solfec's
 :ref:`MESH <solfec-command-MESH>` object is used to define geometry. 
 
-.. literalinclude:: ../../../../solfec/examples/hybrid-solver0/hs0-solfec-1.py
+.. literalinclude:: ../../../../solfec-1.0/examples/hybrid-solver0/hs0-solfec-1.py
    :linenos:
    :caption: Listing of hs0--solfec--1.py
    :name: hs0-lst2
@@ -105,7 +105,7 @@ This input file demonstrates several more elaborate features of the :ref:`HYBRID
  - an application of `matplotlib <http://matplotlib.org>`_ within Solfec input file (lines 59--73)
  - XDMF export of Solfec results (lines 75--80)
 
-.. literalinclude:: ../../../../solfec/examples/hybrid-solver0/hs0-solfec-2.py
+.. literalinclude:: ../../../../solfec-1.0/examples/hybrid-solver0/hs0-solfec-2.py
    :linenos:
    :caption: Listing of hs0--solfec--2.py
    :name: hs0-lst3

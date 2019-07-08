@@ -7,12 +7,12 @@ This is a family of 1,2 and 3--dismenional examples demonstrating applications o
 on an array of cubes subject to a constant amplitude and frequency acceleration since dwell signal. The input files for these examples
 are located in:
 
-- `solfec/examples/hybrid--solver1 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver1>`_ for the 1--dimensional array.
-- `solfec/examples/hybrid--solver2 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2>`_ for the 2--dimensional array.
-- `solfec/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_ for the 3--dimensional array.
+- `solfec-1.0/examples/hybrid--solver1 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver1>`_ for the 1--dimensional array.
+- `solfec-1.0/examples/hybrid--solver2 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2>`_ for the 2--dimensional array.
+- `solfec-1.0/examples/hybrid--solver3 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver3>`_ for the 3--dimensional array.
 
 We focus on the 2--dimensional example, leaving the 1-- and 3--dimensional cases for self--study. The
-`solfec/examples/hybrid--solver2 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2>`_ directory contains:
+`solfec-1.0/examples/hybrid--solver2 <https://github.com/tkoziara/solfec/tree/master/examples/hybrid-solver2>`_ directory contains:
 
 - `README <https://github.com/tkoziara/solfec/blob/master/examples/hybrid-solver2/README>`_ -- a text based specification of the problem
 
@@ -74,7 +74,7 @@ in lines 43--58, the array of cubes is generated in lines 60--68. Then the presc
 Finally, between the lines 78 and 98 contact spring--dashpot elements are defined and inserted into the model. For information, the critical time
 step estimation for the model is printed out in line 101.
 
-.. literalinclude:: ../../../../solfec/examples/hybrid-solver2/hs2-parmec.py
+.. literalinclude:: ../../../../solfec-1.0/examples/hybrid-solver2/hs2-parmec.py
    :linenos:
    :caption: Listing of hs2--parmec.py
    :name: hs2-lst1
@@ -97,7 +97,7 @@ of the :ref:`HYBRID_SOLVER <solfec-command-HYBRID_SOLVER>`. In line 56 the Parme
 to line 67 in :numref:`hs2-lst1`, where Parmec bodies are created. The rest of the file is similar to that already detailed in the
 description of :numref:`hs0-lst3`, in the context of the :ref:`two body impact example <solfec-examples-hybrid_modeling-hs0>`.
 
-.. literalinclude:: ../../../../solfec/examples/hybrid-solver2/hs2-solfec.py
+.. literalinclude:: ../../../../solfec-1.0/examples/hybrid-solver2/hs2-solfec.py
    :linenos:
    :caption: Listing of hs2--solfec.py
    :name: hs2-lst2

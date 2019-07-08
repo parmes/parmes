@@ -5,7 +5,7 @@ Rotating bar
 
 This is a simplest application of the reduced order modeling functionality. This example is also included in :ref:`TR1 <tr1>`:
 having a look into this technical report may be helpful. The input files for this example are located in the
-`solfec/examples/reduced--order0 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0>`_ directory.
+`solfec-1.0/examples/reduced--order0 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order0>`_ directory.
 These are:
 
 - `README <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order0/README>`_ -- a text based specification of the problem
@@ -65,16 +65,16 @@ as visually corresponding to the predominantly longitudinal deformation of the b
   from images import merge_images
   merge_images ('trs/tr1/ro0_elongation_h64_d0.png',
                 'trs/tr1/ro0_elongation_h256_d0.png',
-		'solfec/examples/reduced_order/ro0_elongation_d0.png')
+		'solfec-1.0/examples/reduced_order/ro0_elongation_d0.png')
   merge_images ('trs/tr1/ro0_elongation_h64_d0.01.png',
                 'trs/tr1/ro0_elongation_h64_d0.05.png',
-		'solfec/examples/reduced_order/ro0_elongation_d0.05.png')
+		'solfec-1.0/examples/reduced_order/ro0_elongation_d0.05.png')
   merge_images ('trs/tr1/ro0_energy_h64_d0_100s.png',
                 'trs/tr1/ro0_energy_h256_d0_100s.png',
-		'solfec/examples/reduced_order/ro0_energy_d0_100s.png')
+		'solfec-1.0/examples/reduced_order/ro0_energy_d0_100s.png')
   merge_images ('trs/tr1/ro0_convtest_undamped_E200E4.png',
                 'trs/tr1/ro0_convtest_damped_E200E9.png',
-		'solfec/examples/reduced_order/ro0_convtest.png')
+		'solfec-1.0/examples/reduced_order/ro0_convtest.png')
 
 .. _ro0-fig2:
 
@@ -101,7 +101,7 @@ deviates from the co--rotational solution since for the TL the stiffness matrix 
 the stiffness proportional damping. We can conclude the 5 deformable modes used by the BC--RO and BC--MODAL approaches represent
 well the longitudinal oscillation accompanying the rotational motion of the bar.
 
-.. literalinclude:: ../../../../solfec/examples/reduced-order0/ro0-elong.py
+.. literalinclude:: ../../../../solfec-1.0/examples/reduced-order0/ro0-elong.py
    :lines: 9-55
    :lineno-match:
    :caption: Listing of a portion of ro0--elong.py responsible for creation of :numref:`ro0-fig2`
@@ -124,7 +124,7 @@ the time history of time itself. The `ro0_elongation <https://github.com/tkoziar
 function reads and returns the time history of bar elongation, given a :ref:`SOLFEC object <solfec-user-solfec>` in ``'READ'`` mode as an input.
 Finally, in lines 44--55, we use `matplotlib <https://matplotlib.org>`_ to generate figures that contribute to :numref:`ro0-fig2`.
 
-.. literalinclude:: ../../../../solfec/examples/reduced-order0/ro0-gen-bases.py
+.. literalinclude:: ../../../../solfec-1.0/examples/reduced-order0/ro0-gen-bases.py
    :linenos:
    :caption: Listing of ro0--gen--bases.py
    :name: ro0-lst2

@@ -4,7 +4,7 @@ Time series
 ===========
 
 This example illustrates the :ref:`TIME_SERIES <solfec-user-times>` functionality in Solfec. The input files for this example
-are located in the `solfec/examples/time--series <https://github.com/tkoziara/solfec/tree/master/examples/time-series>`_ directory.
+are located in the `solfec-1.0/examples/time--series <https://github.com/tkoziara/solfec/tree/master/examples/time-series>`_ directory.
 These are:
 
 - `README <https://github.com/tkoziara/solfec/blob/master/examples/time-series/README>`_ -- a text based summary of the examples
@@ -26,17 +26,17 @@ These are:
 :numref:`basic-ts`, :numref:`cached-ts`, :numref:`labeled-ts` below include comments and are self--explanatory. An animated output of the *cached--ts.py*
 example is included as video [1]_.
 
-.. literalinclude:: ../../../solfec/examples/time-series/basic-ts.py
+.. literalinclude:: ../../../solfec-1.0/examples/time-series/basic-ts.py
    :linenos:
    :caption: Listing of basic--ts.py
    :name: basic-ts
 
-.. literalinclude:: ../../../solfec/examples/time-series/cached-ts.py
+.. literalinclude:: ../../../solfec-1.0/examples/time-series/cached-ts.py
    :linenos:
    :caption: Listing of cached--ts.py
    :name: cached-ts
 
-.. literalinclude:: ../../../solfec/examples/time-series/labeled-ts.py
+.. literalinclude:: ../../../solfec-1.0/examples/time-series/labeled-ts.py
    :linenos:
    :caption: Listing of labeled--ts.py
    :name: labeled-ts

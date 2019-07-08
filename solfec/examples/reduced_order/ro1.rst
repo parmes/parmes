@@ -4,7 +4,7 @@ Pipe impact
 ===========
 
 This example, also included in :ref:`TR1 <tr1>`, illustrates the reduced order modeling functionality on a pipe impact problem. The input files for
-this example are located in the `solfec/examples/reduced--order1 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1>`_ directory.
+this example are located in the `solfec-1.0/examples/reduced--order1 <https://github.com/tkoziara/solfec/tree/master/examples/reduced-order1>`_ directory.
 These are:
 
 - `README <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/README>`_ -- a text based specification of the problem
@@ -36,7 +36,7 @@ These are:
   merge_horizontal (['trs/tr1/ro1_pipe0.png',
                      'trs/tr1/ro1_pipe1.png',
                      'trs/tr1/ro1_pipe2.png'],
-		    'solfec/examples/reduced_order/ro1_pipe.png')
+		    'solfec-1.0/examples/reduced_order/ro1_pipe.png')
 
 .. _ro1-fig1:
 
@@ -73,16 +73,16 @@ displacement samples from the Total Lagrangian solution and 6 rigid motion modes
   from images import merge_images
   merge_images ('trs/tr1/ro1_kin_energy.png',
                 'trs/tr1/ro1_int_energy.png',
-		'solfec/examples/reduced_order/ro1_energy.png')
+		'solfec-1.0/examples/reduced_order/ro1_energy.png')
   merge_images ('trs/tr1/ro1_p4z_p5z.png',
                 'trs/tr1/ro1_rotation.png',
-		'solfec/examples/reduced_order/ro1_p4zp5z_rot.png')
+		'solfec-1.0/examples/reduced_order/ro1_p4zp5z_rot.png')
   merge_images ('trs/tr1/ro1_inner_diameter.png',
                 'trs/tr1/ro1_outer_diameter.png',
-		'solfec/examples/reduced_order/ro1_diameters.png')
+		'solfec-1.0/examples/reduced_order/ro1_diameters.png')
   merge_images ('trs/tr1/ro1_p0mises.png',
                 'trs/tr1/ro1_p2mises.png',
-		'solfec/examples/reduced_order/ro1_p0p2_mises.png')
+		'solfec-1.0/examples/reduced_order/ro1_p0p2_mises.png')
 
 :numref:`ro1-fig3` illustrates the energy balance: in all cases the graphs coincide relatively well. While the BC approach closely
 follows the Total Lagrangian approach (TL), the reduced order BC--RO approach slightly deviates in its post-impact response.
@@ -148,7 +148,7 @@ example can be seen in video [1]_.
 
 .. youtube:: https://www.youtube.com/watch?v=RoSfE7-7ZH8
 
-.. literalinclude:: ../../../../solfec/examples/reduced-order1/ro1-fem-tl.py
+.. literalinclude:: ../../../../solfec-1.0/examples/reduced-order1/ro1-fem-tl.py
    :linenos:
    :caption: Listing of ro1--fem--tl.py
    :name: ro1-lst1
@@ -168,12 +168,12 @@ The sampled displacements are used by `ro1--modred.py <https://github.com/tkozia
 invoked internally from within `ro1_simulation <https://github.com/tkoziara/solfec/blob/master/examples/reduced-order1/ro1-lib.py#L10>`_,
 when creating the reduced order model of the pipe body. This is depicted in lines 34--49 of :numref:`ro1-lst3`.
 
-.. literalinclude:: ../../../../solfec/examples/reduced-order1/ro1-reduced.py
+.. literalinclude:: ../../../../solfec-1.0/examples/reduced-order1/ro1-reduced.py
    :linenos:
    :caption: Listing of ro1--reduced.py
    :name: ro1-lst2
 
-.. literalinclude:: ../../../../solfec/examples/reduced-order1/ro1-lib.py
+.. literalinclude:: ../../../../solfec-1.0/examples/reduced-order1/ro1-lib.py
    :lines: 30-49
    :lineno-match:
    :caption: Listing of a portion of ro1--lib.py responsible for creation of the pipe body.
