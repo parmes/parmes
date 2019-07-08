@@ -1,5 +1,5 @@
 .. post:: Dec 12, 2017
-   :tags: solfec, performance, optimization
+   :tags: solfec-1.0, performance, optimization
    :author: Tomek
 
 .. _blog-solfec-pop-report-1:

@@ -1,5 +1,5 @@
 .. post:: Apr 27, 2017
-   :tags: solfec, parmec
+   :tags: solfec-1.0, parmec
    :author: Tomek
 
 .. _blog-hybrid-solver:

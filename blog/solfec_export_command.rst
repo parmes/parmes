@@ -1,5 +1,5 @@
 .. post:: Jan 9, 2019
-   :tags: solfec
+   :tags: solfec-1.0
    :author: Tomek
 
 .. _blog-solfec_export:

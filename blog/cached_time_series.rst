@@ -1,5 +1,5 @@
 .. post:: Aug 1, 2017
-   :tags: solfec
+   :tags: solfec-1.0
    :author: Tomek
 
 .. _blog-cached-time-series:
