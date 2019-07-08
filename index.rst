@@ -16,7 +16,7 @@ Recent blog posts:
     :hidden:
     :glob:
 
-    solfec/index
+    solfec-1.0/index
     dynlb/index
     parmec/index
     VBOX <vbox/index>

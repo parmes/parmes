@@ -1,0 +1,452 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\noindent
+Joints are implemented via suitably setting values of components of relative
+ constraint velocities or constraint reactions.
+ That is to say, the general implicit relation
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{C}_{\alpha}\left(\mathbf{U}_{\alpha},\mathbf{R}_{\alpha}\right)=\mathbf{0}\label{eq:Cal}
+\end{equation}
+
+\end_inset
+
+for a bilateral constraint with index 
+\begin_inset Formula $\alpha$
+\end_inset
+
+ takes a particular shape.
+ In order to work with components of relative velocities and forces it is
+ convenient to introduce the following naming convention.
+ Let every local frame be defined by a matrix 
+\begin_inset Formula $\left\{ \mathbf{a}_{T1},\mathbf{a}_{T2},\mathbf{a}_{N}\right\} $
+\end_inset
+
+ made of juxtaposed column vectors: 
+\begin_inset Formula $\mathbf{a}_{T1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{a}_{T2}$
+\end_inset
+
+, called 
+\emph on
+tangent
+\emph default
+, and 
+\begin_inset Formula $\mathbf{a}_{N}$
+\end_inset
+
+, called 
+\emph on
+normal
+\emph default
+.
+ We also assume, that these vectors are mutually perpendicular: 
+\begin_inset Formula $\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}$
+\end_inset
+
+ .
+ With this convention at hand, below we define particular versions of relation
+ (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:Cal"
+
+\end_inset
+
+) for joint types available in Solfec-1.0.
+\end_layout
+
+\begin_layout Section
+Fixed point
+\end_layout
+
+\begin_layout Standard
+Joint corresponding to the :ref:`FIX_POINT` command is realized by defining
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\mathbf{U}
+\]
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{U}=\mathbf{0}
+\]
+
+\end_inset
+
+imposes the fixed point constraint.
+\end_layout
+
+\begin_layout Section
+Fixed direction
+\end_layout
+
+\begin_layout Standard
+Joint corresponding to the :ref:`FIX_DIRECTION` command is realized by defining
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}
+\end{array}\right]
+\]
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=0
+\]
+
+\end_inset
+
+imposes the fixed direction constraint.
+ In this case the normal direction is taken to be the fixed direction, while
+ the tangential plane is unused (hence zero tangential reaction, 
+\begin_inset Formula $\mathbf{R}_{T}=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}
+\end{array}\right]$
+\end_inset
+
+).
+\end_layout
+
+\begin_layout Section
+Prescribed displacement
+\end_layout
+
+\begin_layout Standard
+Joint corresponding to the :ref:`SET_DISPLACEMENT` command is realized by
+ defining
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}-\frac{d}{dt}\text{disp}\left(t\right)
+\end{array}\right]
+\]
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\frac{d}{dt}\text{disp}\left(t\right)
+\]
+
+\end_inset
+
+where the displacement signal 
+\begin_inset Formula $\text{disp}\left(t\right)$
+\end_inset
+
+ is provided by the user as a linear spline and differentiated numerically
+ to obtain velocity.
+ The tangential plane is unused, hence zero tangential reaction.
+\end_layout
+
+\begin_layout Section
+Prescribed velocity
+\end_layout
+
+\begin_layout Standard
+Joint corresponding to the :ref:`SET_VELOCITY` command is realized by defining
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}-\text{velo}\left(t\right)
+\end{array}\right]
+\]
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\text{velo}\left(t\right)
+\]
+
+\end_inset
+
+where the velocity signal 
+\begin_inset Formula $\text{velo}\left(t\right)$
+\end_inset
+
+ is provided by the user as a linear spline.
+ The tangential plane is unused, hence zero tangential reaction.
+\end_layout
+
+\begin_layout Section
+Prescribed acceleration
+\end_layout
+
+\begin_layout Standard
+Joint corresponding to the :ref:`SET_ACCELERATION` command is realized by
+ defining
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}-\int_{0}^{t}\text{acc}\left(t\right)
+\end{array}\right]
+\]
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=\int_{0}^{t}\text{acc}\left(t\right)
+\]
+
+\end_inset
+
+where the acceleration signal 
+\begin_inset Formula $\text{acc}\left(t\right)$
+\end_inset
+
+ is provided by the user as a linear spline and integrated numerically to
+ obtain velocity.
+ The tangential plane is unused, hence zero tangential reaction.
+\end_layout
+
+\begin_layout Section
+Rigid link constraint
+\end_layout
+
+\begin_layout Standard
+Joint corresponding to the :ref:`PUT_RIGID_LINK` command is realized by
+ defining a normal direction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{a}_{N}=\frac{\mathbf{x}_{1}\left(\mathbf{X}_{1},t\right)-\mathbf{x}_{2}\left(\mathbf{X}_{2},t\right)}{\left\Vert \mathbf{x}_{1}-\mathbf{x}_{2}\right\Vert }
+\]
+
+\end_inset
+
+and tangential plane as orthogonal to this direction 
+\begin_inset Formula $\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}$
+\end_inset
+
+, followed by imposing 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+U_{N}
+\end{array}\right]
+\]
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{R}_{T}=\mathbf{0},\,\,\,U_{N}=0
+\]
+
+\end_inset
+
+which fixes the relative motion of points 
+\begin_inset Formula $\mathbf{x}_{1}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{x}_{2}$
+\end_inset
+
+ along the normal direction.
+ The tangential plane is unused, hence zero tangential reaction.
+\end_layout
+
+\begin_layout Section
+Spring constraint
+\end_layout
+
+\begin_layout Standard
+Joint corresponding to the :ref:`PUT_SPRING` command is realized by defining
+ a stretch
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+d=\left\Vert \mathbf{x}_{1}\left(\mathbf{X}_{1},t\right)-\mathbf{x}_{2}\left(\mathbf{X}_{2},t\right)\right\Vert -\left\Vert \mathbf{X}_{1}-\mathbf{X}_{2}\right\Vert 
+\]
+
+\end_inset
+
+a normal direction
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{a}_{N}=\frac{\mathbf{x}_{1}\left(\mathbf{X}_{1},t\right)-\mathbf{x}_{2}\left(\mathbf{X}_{2},t\right)}{\left\Vert \mathbf{x}_{1}-\mathbf{x}_{2}\right\Vert }
+\]
+
+\end_inset
+
+and tangential plane as orthogonal to this direction 
+\begin_inset Formula $\mathbf{a}_{T1}\perp\mathbf{a}_{T2}\perp\mathbf{a}_{N}$
+\end_inset
+
+, followed by imposing 
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{C}\left(\mathbf{U},\mathbf{R}\right)=\left[\begin{array}{c}
+R_{T1}\\
+R_{T2}\\
+R_{N}=\text{user\_force}\left(d,\dot{d}\right)
+\end{array}\right]
+\]
+
+\end_inset
+
+and hence
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{R}_{T}=\mathbf{0},\,\,\,R_{N}=\text{user\_force}\left(d,\dot{d}\right)
+\]
+
+\end_inset
+
+where the user force is prescribed as a Python subroutine.
+ The tangential plane is unused, hence zero tangential reaction.
+\end_layout
+
+\end_body
+\end_document

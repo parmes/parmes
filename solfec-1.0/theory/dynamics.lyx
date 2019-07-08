@@ -1,0 +1,580 @@
+#LyX 2.2 created this file. For more info see http://www.lyx.org/
+\lyxformat 508
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\use_default_options true
+\maintain_unincluded_children false
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\graphics default
+\default_output_format default
+\output_sync 0
+\bibtex_command default
+\index_command default
+\paperfontsize default
+\use_hyperref false
+\papersize default
+\use_geometry false
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\quotes_language english
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes false
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\end_header
+
+\begin_body
+
+\begin_layout Section
+Rigid dynamics
+\end_layout
+
+\begin_layout Standard
+Linear momentum balance reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+m\ddot{\bar{\mathbf{x}}}=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
+\end{equation}
+
+\end_inset
+
+The spatial angular momentum balance reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\frac{d}{dt}\left(\mathbf{j}\mathbf{\omega}\right)=\mathbf{j}\dot{\mathbf{\omega}}+\mathbf{\omega}\times\mathbf{j}\mathbf{\omega}=\mathbf{m}
+\]
+
+\end_inset
+
+The referential angular momentum balance reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{J}\dot{\mathbf{\Omega}}+\mathbf{\Omega}\times\mathbf{J}\mathbf{\Omega}=\mathbf{\Lambda}^{T}\mathbf{m}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{m}$
+\end_inset
+
+ is the torque
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{m}=\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv
+\]
+
+\end_inset
+
+and 
+\begin_inset Formula $\mathbf{j}$
+\end_inset
+
+ and 
+\begin_inset Formula $\mathbf{J}$
+\end_inset
+
+ are
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{j}=\mathbf{\Lambda}\mathbf{J}\mathbf{\Lambda}^{T},\,\,\,\mathbf{J}=\mbox{tr}\left(\mathbf{E}_{0}\right)\mathbf{I}-\mathbf{E}_{0}
+\]
+
+\end_inset
+
+the spatial and the referential inertia tensors, respectively.
+ 
+\begin_inset Formula $\mathbf{I}$
+\end_inset
+
+ is the 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ identity matrix.
+ 
+\begin_inset Formula $\mathbf{E}_{0}$
+\end_inset
+
+ is the referential Euler tensor
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{E}_{0}=\int_{\mathcal{B}_{0}}\left(\mathbf{X}-\bar{\mathbf{X}}\right)\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)\rho_{0}dV\label{eq:E0}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathcal{B}_{0}$
+\end_inset
+
+ is the reference configuration, 
+\begin_inset Formula $\rho_{0}$
+\end_inset
+
+ is the referential mass density, and the tensor product operator 
+\begin_inset Formula $\otimes$
+\end_inset
+
+ makes a 
+\begin_inset Formula $3\times3$
+\end_inset
+
+ matrix out of two 
+\begin_inset Formula $3$
+\end_inset
+
+-vectors, e.g.
+ 
+\begin_inset Formula $\mathbf{a}=\mathbf{b}\otimes\mathbf{c}$
+\end_inset
+
+ means 
+\begin_inset Formula $a_{ij}=b_{i}c_{j}$
+\end_inset
+
+.
+\begin_inset Newline newline
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\noindent
+In matrix notation these balance principles read
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}
+\]
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{M}=\left[\begin{array}{cc}
+\mathbf{J}\\
+ & m\mathbf{I}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{f}=\left[\begin{array}{c}
+\mathbf{\Lambda}^{T}\int_{\partial\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\mathbf{t}da+\mathbf{\Lambda}^{T}\int_{\mathcal{B}}\left(\mathbf{x}-\bar{\mathbf{x}}\right)\times\rho\mathbf{b}dv-\mathbf{\Omega}\times\mathbf{J}\mathbf{\Omega}\\
+\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Pseudo-rigid dynamics
+\end_layout
+
+\begin_layout Standard
+Linear momentum balance reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+m\ddot{\bar{\mathbf{x}}}=\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
+\end{equation}
+
+\end_inset
+
+The referential angular momentum balance reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\ddot{\mathbf{F}}\mathbf{E}_{0}+V\bar{\mathbf{P}}=\int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV\label{eq:angprb}
+\end{equation}
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{E}_{0}$
+\end_inset
+
+ is defined in (
+\begin_inset CommandInset ref
+LatexCommand ref
+reference "eq:E0"
+
+\end_inset
+
+), 
+\begin_inset Formula $V$
+\end_inset
+
+ is the volume of the domain, and 
+\begin_inset Formula $\bar{\mathbf{P}}$
+\end_inset
+
+ is the average referential first Piola stress, defined as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\bar{\mathbf{P}}=\partial_{\mathbf{F}}\Psi\left(\mathbf{F}\right)
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\Psi=\frac{1}{4}\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]:\mathbf{C}:\left[\mathbf{F}^{T}\mathbf{F}-\mathbf{I}\right]
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+C_{ijkl}=\lambda\delta_{ij}\delta_{kl}+\mu\left[\delta_{ik}\delta_{jl}+\delta_{il}\delta_{jk}\right]
+\]
+
+\end_inset
+
+where the hyperelastic Saint Venant - Kirchhoff material is adopted.
+ In the above 
+\begin_inset Formula $\lambda$
+\end_inset
+
+ and 
+\begin_inset Formula $\mu$
+\end_inset
+
+ are Lam
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+e constants, while 
+\begin_inset Formula $\delta_{ij}$
+\end_inset
+
+ is the Kronecker delta.
+ The Lam
+\begin_inset ERT
+status collapsed
+
+\begin_layout Plain Layout
+
+
+\backslash
+'
+\end_layout
+
+\end_inset
+
+e constants can be expressed in terms of the Young modulus 
+\begin_inset Formula $E$
+\end_inset
+
+ and the Poisson ratio 
+\begin_inset Formula $\nu$
+\end_inset
+
+ as
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\lambda=\frac{E\nu}{\left(1+\nu\right)\left(1-2\nu\right)}
+\end{equation}
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mu=\frac{E}{2+2\nu}
+\end{equation}
+
+\end_inset
+
+In matrix notation these balance principles read
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{M}\dot{\mathbf{u}}=\mathbf{f}
+\]
+
+\end_inset
+
+where
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{M}=\left[\begin{array}{cccc}
+\mathbf{E}_{0}\\
+ & \mathbf{E}_{0}\\
+ &  & \mathbf{E}_{0}\\
+ &  &  & m\mathbf{I}
+\end{array}\right]
+\end{equation}
+
+\end_inset
+
+and
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\begin{equation}
+\mathbf{f}=\left[\begin{array}{c}
+\int_{\partial\mathcal{B}_{0}}\mathbf{t}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dA+\int_{\mathcal{B}_{0}}\rho_{o}\mathbf{b}\otimes\left(\mathbf{X}-\bar{\mathbf{X}}\right)dV-V\bar{\mathbf{P}}\\
+\int_{\partial\mathcal{B}}\mathbf{t}da+\int_{\mathcal{B}}\rho\mathbf{b}dv
+\end{array}\right]\label{eq:fprb}
+\end{equation}
+
+\end_inset
+
+It should be noted, that it is the row-wise composition of 
+\begin_inset Formula $\dot{\mathbf{F}}$
+\end_inset
+
+ in 
+\begin_inset Formula $\mathbf{u}$
+\end_inset
+
+ (cf.
+ Section sec:kinematics), which allows us to use the computationally convenient
+ block-diagonal form of 
+\begin_inset Formula $\mathbf{M}$
+\end_inset
+
+ for pseudo-rigid bodies.
+\end_layout
+
+\begin_layout Section
+Finite-element dynamics
+\end_layout
+
+\begin_layout Standard
+The linear momentum balance reads
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{M}\dot{\mathbf{u}}+\mathbf{f}_{\text{int}}\left(\mathbf{q}\right)+\mathbf{f}_{\text{damp}}\left(\mathbf{q},\mathbf{u}\right)=\mathbf{f}_{\text{ext}}\left(\mathbf{q}\right)
+\]
+
+\end_inset
+
+where 
+\begin_inset Formula $\mathbf{M}$
+\end_inset
+
+ is the mass matrix, 
+\begin_inset Formula $\mathbf{f}_{\text{int}}$
+\end_inset
+
+ is a vector of internal forces, 
+\begin_inset Formula $\mathbf{f}_{\text{damp}}$
+\end_inset
+
+ is a vector of damping forces, and 
+\begin_inset Formula $\mathbf{f}_{\text{ext}}$
+\end_inset
+
+ is a vector of external forces.
+ These matrices and vectors are defined as follows
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{M}=\int_{\mathcal{B}_{0}}\rho_{0}\mathbf{N}^{T}\mathbf{N}dV
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{f}_{\text{int}}=\int_{\mathcal{B}_{0}}\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}\colon\mathbf{P}dV
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{K}=\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{f}_{\text{damp}}=\eta\mathbf{K}
+\]
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Formula 
+\[
+\mathbf{f}_{\text{ext}}=\int_{\mathcal{B}}\rho\mathbf{N}^{T}\mathbf{b}dv+\int_{\partial\mathcal{B}}\mathbf{N}^{T}\mathbf{t}da
+\]
+
+\end_inset
+
+where, except for 
+\begin_inset Formula $\mathbf{f}_{\text{ext}}$
+\end_inset
+
+, the so called total Lagrangian notation was used.
+ The contraction of the strain matrix 
+\begin_inset Formula $\mathbf{B}=\left\{ \partial\mathbf{N}/\partial\mathbf{X}\right\} ^{T}$
+\end_inset
+
+ with the first Piola stress tensor, 
+\begin_inset Formula $\mathbf{B}:\mathbf{P}=\sum_{ij}B_{ij}P_{ij}$
+\end_inset
+
+, creates the nodal components of the internal force vector.
+ The derivative of the internal force with respect to displacements, 
+\begin_inset Formula $\partial\mathbf{f}_{\text{int}}/\partial\mathbf{q}$
+\end_inset
+
+, is customarily called the stiffness matrix, 
+\begin_inset Formula $\mathbf{K}$
+\end_inset
+
+.
+ Stiffness proportional damping is used in Solfec-1.0, hence 
+\begin_inset Formula $\left\{ \mathbf{f}_{\text{damp}}=\right\} \eta\mathbf{K}$
+\end_inset
+
+, where 
+\begin_inset Formula $\eta\ge0$
+\end_inset
+
+.
+\end_layout
+
+\end_body
+\end_document
