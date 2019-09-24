@@ -240,9 +240,10 @@ This routine calculates the mass center of a geometrical object or a collection 
 LOCDYN_DUMP
 -----------
 
-This routine dumps into a file the most recent state of local dynamics.
-It is meant for debugging and test purposes, e.g. comparing local dynamics
-between runs on various processor counts.
+This routine dumps into a file the most recent state of local dynamics. It is meant for debugging and test purposes,
+e.g. comparing local dynamics between runs on various processor counts. There is a Python script in Solfec-1.0
+source tree: `solfec-1.0/scripts/locdyn_compare <https://github.com/parmes/solfec-1.0/blob/master/scripts/locdyn_compare>`_
+which can be used to compare local dynamics dumps.
 
 .. topic:: LOCDYN_DUMP (solfec, path)
 
