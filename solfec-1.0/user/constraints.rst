@@ -67,6 +67,25 @@ See also, formulation of the :ref:`prescribed displacement constraint <prescribe
 
   * tms -- TIME_SERIES object with the displacement history
 
+.. _solfec-1.0-command-SET_DISPLACEMENT3: 
+
+SET_DISPLACEMENT3 
+-----------------
+
+This routine prescribes a displacement history of a referential point along all directions at a local orthogonal base.
+
+.. topic:: obj = SET_DISPLACEMENT3 (body, point, base, tms)
+
+  * obj -- created CONSTRAINT object
+
+  * body -- BODY object whose motion is constrained
+
+  * point -- (x, y, z) tuple with referential point coordinates
+
+  * base -- (ux, uy, yz, vx, vy, vz, wx, wy, wz) tuple with the local orthogonal base components
+
+  * tms -- (ts0, ts1, ts2) tuple of TIME_SERIES objects with the displacement histories
+
 .. _solfec-1.0-command-SET_VELOCITY: 
 
 SET_VELOCITY 
@@ -87,6 +106,25 @@ See also, formulation of the :ref:`prescribed velocity constraint <prescribed-ve
 
   * value -- a constant value or a TIME_SERIES object with the velocity history
 
+.. _solfec-1.0-command-SET_VELOCITY3: 
+
+SET_VELOCITY3 
+-------------
+
+This routine prescribes a velocity history of a referential point along all directions at a local orthogonal base.
+
+.. topic:: obj = SET_VELOCITY3 (body, point, base, tms)
+
+  * obj -- created CONSTRAINT object
+
+  * body -- BODY object whose motion is constrained
+
+  * point -- (x, y, z) tuple with referential point coordinates
+
+  * base -- (ux, uy, yz, vx, vy, vz, wx, wy, wz) tuple with the local orthogonal base components
+
+  * tms -- (ts0, ts1, ts2) tuple of TIME_SERIES objects with the velocity histories
+
 .. _solfec-1.0-command-SET_ACCELERATION: 
 
 SET_ACCELERATION 
@@ -106,6 +144,25 @@ See also, formulation of the :ref:`prescribed acceleration constraint <prescribe
   * direction -- (vx, vy, vz) tuple with spatial direction components
 
   * tms -- TIME_SERIES object with the acceleration history
+
+.. _solfec-1.0-command-SET_ACCELERATION3: 
+
+SET_ACCELERATION3 
+-----------------
+
+This routine prescribes an acceleration history of a referential point along all directions at a local orthogonal base.
+
+.. topic:: obj = SET_ACCELERATION3 (body, point, base, tms)
+
+  * obj -- created CONSTRAINT object
+
+  * body -- BODY object whose motion is constrained
+
+  * point -- (x, y, z) tuple with referential point coordinates
+
+  * base -- (ux, uy, yz, vx, vy, vz, wx, wy, wz) tuple with the local orthogonal base components
+
+  * tms -- (ts0, ts1, ts2) tuple of TIME_SERIES objects with the acceleration histories
 
 .. _solfec-1.0-command-PUT_RIGID_LINK: 
 
