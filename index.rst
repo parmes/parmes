@@ -17,14 +17,9 @@ Recent blog posts:
     :glob:
 
     solfec-1.0/index
-    solfec-2.0/index
     dynlb/index
     parmec/index
-    VBOX <vbox/index>
-    TGZ <tgz/index>
     TRs <trs/index>
-    About <blog/about>
-    contact
 
 Recently modified pages:
 
